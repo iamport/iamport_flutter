@@ -45,7 +45,6 @@ class _IamportPaymentState extends State<IamportPayment> {
     super.initState();
     _onUrlChanged = webView.onUrlChanged.listen((String url) async {
       if (mounted) {
-        print('onUrlChanged: $url');
         if (isPaymentOver(url)) {
           String decodedUrl = Uri.decodeComponent(url);
           Uri parsedUrl = Uri.parse(decodedUrl);
@@ -75,7 +74,6 @@ class _IamportPaymentState extends State<IamportPayment> {
         if (type == WebViewState.finishLoad) {
           String userCode = widget.userCode;
           String data = widget.data.toJsonString();
-          print(data);
           webView.evalJavascript('''
             IMP.init("$userCode");
             IMP.request_pay($data, function(response) {

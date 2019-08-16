@@ -9,8 +9,6 @@ class IamportUrl {
 
   static const MethodChannel _channel = const MethodChannel('iamport_flutter');
   static String redirectUrl = 'http://localhost/iamport';
-  static String redirectUrlForInicisTrans = 'http://localhost/iamport';
-  static String redirectUrlForNiceTrans = 'http://localhost/iamport';
 
   IamportUrl(String url) {
     this.url = url;

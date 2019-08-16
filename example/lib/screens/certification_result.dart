@@ -7,8 +7,6 @@ class CertificationResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<String, String> result = ModalRoute.of(context).settings.arguments;
-
-    print('$result');
     String message;
     IconData icon;
     Color color;
