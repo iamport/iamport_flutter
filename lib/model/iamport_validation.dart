@@ -2,9 +2,9 @@ import './payment_data.dart';
 
 class IamportValidation {
   bool isValid = true;
-  String  errorMessage;
+  String errorMessage;
 
-  IamportValidation (String userCode, PaymentData data, Function callback) {
+  IamportValidation(String userCode, PaymentData data, Function callback) {
     print('data: $data');
     if (userCode == null) {
       isValid = false;
@@ -16,7 +16,7 @@ class IamportValidation {
       isValid = false;
       errorMessage = '결제 데이터(data)는 필수입력입니다.';
       return;
-    } 
+    }
 
     if (callback == null) {
       isValid = false;
@@ -61,7 +61,7 @@ class IamportValidation {
       errorMessage = '휴대폰 소액결제시 실물 컨텐츠 여부(digital)는 필수입력입니다.';
       return;
     }
-    
+
     if (data.pg == 'kcp_billing' && data.customer_uid == null) {
       isValid = false;
       errorMessage = '정기결제시 구매자 카드정보(customer_uid)는 필수입력입니다.';
@@ -80,13 +80,14 @@ class IamportValidation {
       return;
     }
 
-    if ((data.pg == 'naverpay' || data.pg == 'naverco') && data.naverPopupMode == true) {
+    if ((data.pg == 'naverpay' || data.pg == 'naverco') &&
+        data.naverPopupMode == true) {
       isValid = false;
       errorMessage = '해당 모듈에서 네이버페이 - 팝업 방식은 지원하지 않습니다.';
       return;
     }
   }
-  
+
   bool getIsValid() {
     return isValid;
   }

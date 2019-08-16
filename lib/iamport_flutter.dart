@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class IamportFlutter {
-  static const MethodChannel _channel =
-      const MethodChannel('iamport_flutter');
+  static const MethodChannel _channel = const MethodChannel('iamport_flutter');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');

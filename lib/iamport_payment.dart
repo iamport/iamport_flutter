@@ -50,7 +50,7 @@ class _IamportPaymentState extends State<IamportPayment> {
           Uri parsedUrl = Uri.parse(decodedUrl);
           Map<String, String> query = parsedUrl.queryParameters;
           await webView.close();
-          widget.callback(query);  
+          widget.callback(query);
         }
 
         IamportUrl iamportUrl = new IamportUrl(url);
@@ -67,7 +67,8 @@ class _IamportPaymentState extends State<IamportPayment> {
       }
     });
 
-    _onStateChanged = webView.onStateChanged.listen((WebViewStateChanged state) async {
+    _onStateChanged =
+        webView.onStateChanged.listen((WebViewStateChanged state) async {
       if (mounted) {
         WebViewState type = state.type;
         String url = state.url;
@@ -109,7 +110,9 @@ class _IamportPaymentState extends State<IamportPayment> {
           String decodedUrl = Uri.decodeComponent(link);
           Uri parsedUrl = Uri.parse(decodedUrl);
           String scheme = parsedUrl.scheme;
-          if (scheme == data.app_scheme.toLowerCase() && data.pg == 'nice' && data.pay_method == 'trans') {
+          if (scheme == data.app_scheme.toLowerCase() &&
+              data.pg == 'nice' &&
+              data.pay_method == 'trans') {
             String queryToString = parsedUrl.query;
             await webView.evalJavascript(''' 
               location.href = "https://web.nicepay.co.kr/smart/bank/payTrans.jsp?$queryToString";
@@ -143,17 +146,19 @@ class _IamportPaymentState extends State<IamportPayment> {
       String scheme = parsedUrl.scheme;
       if (data.pg == 'html5_inicis') {
         Map<String, String> query = parsedUrl.queryParameters;
-        if (scheme == data.app_scheme.toLowerCase() && query['m_redirect_url'].contains(redirectUrl)) {
+        if (scheme == data.app_scheme.toLowerCase() &&
+            query['m_redirect_url'].contains(redirectUrl)) {
           return true;
         }
       }
     }
     return false;
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    IamportValidation validation = IamportValidation(widget.userCode, widget.data, widget.callback);
+    IamportValidation validation =
+        IamportValidation(widget.userCode, widget.data, widget.callback);
     bool isValid = validation.getIsValid();
 
     if (isValid) {

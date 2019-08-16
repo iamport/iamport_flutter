@@ -27,28 +27,31 @@ class IamportWebView extends StatelessWidget {
   Widget build(BuildContext context) {
     return new WebviewScaffold(
       url: new Uri.dataFromString(html, mimeType: 'text/html').toString(),
-      appBar: appBar ?? new AppBar(
-        title: new Text('아임포트 $type'),
-        backgroundColor: primaryColor,
-      ),
-      hidden: true,
-      initialChild: initialChild ?? Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/iamport-logo.png'),
-              Container(
-                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                child: Text(
-                  '잠시만 기다려주세요...',
-                  style: TextStyle(fontSize: 20.0)),
-              ),
-            ],
+      appBar: appBar ??
+          new AppBar(
+            title: new Text('아임포트 $type'),
+            backgroundColor: primaryColor,
           ),
-        ),
-      ),
-      invalidUrlRegex: Platform.isAndroid ? '^(?!https://|http://|about:blank|data:).+' : null,
+      hidden: true,
+      initialChild: initialChild ??
+          Container(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/iamport-logo.png'),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                    child:
+                        Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
+                  ),
+                ],
+              ),
+            ),
+          ),
+      invalidUrlRegex: Platform.isAndroid
+          ? '^(?!https://|http://|about:blank|data:).+'
+          : null,
     );
   }
 }
