@@ -1,6 +1,6 @@
 name: iamport_flutter
 description: Plugin that allows Flutter to use Iamport payment and certification functions.
-version: 0.9.0
+version: 0.9.1
 author: Solee Deedee Choi <mymusese@gmail.com>
 homepage: https://github.com/iamport/iamport_flutter
 
