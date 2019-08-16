@@ -136,7 +136,7 @@ class Certification extends StatelessWidget {
       userCode: 'iamport',
       /* [필수입력] 본인인증 데이터 */
       data: CertificationData.fromJson({
-        'merchant_uid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
+        'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
         'company': '아임포트',                                            // 회사명 또는 URL
         'carrier': 'SKT',                                               // 통신사
         'name': '홍길동',                                                 // 이름
@@ -168,7 +168,7 @@ class Certification extends StatelessWidget {
 
 | Key          | Type   |  Description    | Required |
 | ------------ | ------ | --------------- | -------- |
-| merchant_uid | String | 주문번호          | true     |
+| merchantUid  | String | 주문번호          | true     |
 | company      | String | 회사명 또는 URL    | false    |
 | carrier      | String | 통신사            | false    |
 |              |        | - `SKT`: SKT    |          |
@@ -177,4 +177,4 @@ class Certification extends StatelessWidget {
 |              |        | - `MVNO`: 알뜰폰  |          |
 | name         | String | 본인인증 할 이름    | false    |
 | phone        | String | 본인인증 할 전화번호 | false    |
-| min_age      | int    | 허용 최소 만 나이   | false    |
+| minAge       | int    | 허용 최소 만 나이   | false    |

@@ -11,12 +11,12 @@ class CertificationTest extends StatefulWidget {
 
 class _CertificationTestState extends State<CertificationTest> {
   final _formKey = GlobalKey<FormState>();
-  String merchant_uid;        // 주문번호
-  String company = '아임포트';  // 회사명 또는 URL
-  String carrier = 'SKT';     // 통신사
-  String name;                // 본인인증 할 이름
-  String phone;               // 본인인증 할 전화번호
-  String min_age;             // 최소 허용 만 나이
+  String merchantUid;        // 주문번호
+  String company = '아임포트'; // 회사명 또는 URL
+  String carrier = 'SKT';    // 통신사
+  String name;               // 본인인증 할 이름
+  String phone;              // 본인인증 할 전화번호
+  String minAge;             // 최소 허용 만 나이
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,11 @@ class _CertificationTestState extends State<CertificationTest> {
                 validator: (value) => value.isEmpty ? '주문번호는 필수입력입니다' : null,
                 initialValue: 'mid_${DateTime.now().millisecondsSinceEpoch}',
                 onSaved: (String value) {
-                  merchant_uid = value;
+                  merchantUid = value;
                 },
               ),
               TextFormField(
+                initialValue: company,
                 decoration: InputDecoration(
                   labelText: '회사명',
                 ),
@@ -102,7 +103,7 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
                 keyboardType: TextInputType.number,
                 onSaved: (String value) {
-                  min_age = value;
+                  minAge = value;
                 },
               ),
               Container(
@@ -113,7 +114,7 @@ class _CertificationTestState extends State<CertificationTest> {
                       _formKey.currentState.save();
 
                       CertificationData data = CertificationData.fromJson({
-                        'merchant_uid': merchant_uid,
+                        'merchantUid': merchantUid,
                         'carrier': carrier,
                       });
                       if (company != null) {
@@ -125,8 +126,8 @@ class _CertificationTestState extends State<CertificationTest> {
                       if (phone != null) {
                         data.phone = phone; 
                       }
-                      if (min_age.length != null && min_age.length > 0) {
-                        data.min_age = int.parse(min_age);
+                      if (minAge.length != null && minAge.length > 0) {
+                        data.minAge = int.parse(minAge);
                       }
 
                       Navigator.pushNamed(
