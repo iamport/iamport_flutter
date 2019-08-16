@@ -110,9 +110,9 @@ class _IamportPaymentState extends State<IamportPayment> {
           String decodedUrl = Uri.decodeComponent(link);
           Uri parsedUrl = Uri.parse(decodedUrl);
           String scheme = parsedUrl.scheme;
-          if (scheme == data.app_scheme.toLowerCase() &&
+          if (scheme == data.appScheme.toLowerCase() &&
               data.pg == 'nice' &&
-              data.pay_method == 'trans') {
+              data.payMethod == 'trans') {
             String queryToString = parsedUrl.query;
             await webView.evalJavascript(''' 
               location.href = "https://web.nicepay.co.kr/smart/bank/payTrans.jsp?$queryToString";
@@ -139,14 +139,14 @@ class _IamportPaymentState extends State<IamportPayment> {
       return true;
     }
 
-    if (data.pay_method == 'trans') {
-      /* TODO: [IOS] imp_uid와 merchant_uid값만 전달되기 때문에 결제 성공 또는 실패 구분할 수 없음 */
+    if (data.payMethod == 'trans') {
+      /* [IOS] imp_uid와 merchant_uid값만 전달되기 때문에 결제 성공 또는 실패 구분할 수 없음 */
       String decodedUrl = Uri.decodeComponent(url);
       Uri parsedUrl = Uri.parse(decodedUrl);
       String scheme = parsedUrl.scheme;
       if (data.pg == 'html5_inicis') {
         Map<String, String> query = parsedUrl.queryParameters;
-        if (scheme == data.app_scheme.toLowerCase() &&
+        if (scheme == data.appScheme.toLowerCase() &&
             query['m_redirect_url'].contains(redirectUrl)) {
           return true;
         }

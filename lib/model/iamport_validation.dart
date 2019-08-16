@@ -24,9 +24,9 @@ class IamportValidation {
       return;
     }
 
-    if (data.merchant_uid == null) {
+    if (data.merchantUid == null) {
       isValid = false;
-      errorMessage = '주문번호(merchant_uid)는 필수입력입니다.';
+      errorMessage = '주문번호(merchantUid)는 필수입력입니다.';
       return;
     }
 
@@ -36,35 +36,35 @@ class IamportValidation {
       return;
     }
 
-    if (data.app_scheme == null) {
+    if (data.appScheme == null) {
       isValid = false;
-      errorMessage = '앱 스킴(app_scheme)은 필수입력입니다.';
+      errorMessage = '앱 스킴(appScheme)은 필수입력입니다.';
       return;
     }
 
-    if (data.pay_method == 'vbank') {
-      if (data.vbank_due == null) {
+    if (data.payMethod == 'vbank') {
+      if (data.vbankDue == null) {
         isValid = false;
-        errorMessage = '가상계좌 결제시 입금기한(vbank_due)은 필수입력입니다.';
+        errorMessage = '가상계좌 결제시 입금기한(vbankDue)은 필수입력입니다.';
         return;
       }
 
-      if (data.pg == 'danal_tpay' && data.biz_num == null) {
+      if (data.pg == 'danal_tpay' && data.bizNum == null) {
         isValid = false;
-        errorMessage = '다날 - 가상계좌 결제시 사업자 등록번호(biz_num)은 필수입력입니다.';
+        errorMessage = '다날 - 가상계좌 결제시 사업자 등록번호(bizNum)은 필수입력입니다.';
         return;
       }
     }
 
-    if (data.pay_method == 'phone' && data.digital == null) {
+    if (data.payMethod == 'phone' && data.digital == null) {
       isValid = false;
       errorMessage = '휴대폰 소액결제시 실물 컨텐츠 여부(digital)는 필수입력입니다.';
       return;
     }
 
-    if (data.pg == 'kcp_billing' && data.customer_uid == null) {
+    if (data.pg == 'kcp_billing' && data.customerUid == null) {
       isValid = false;
-      errorMessage = '정기결제시 구매자 카드정보(customer_uid)는 필수입력입니다.';
+      errorMessage = '정기결제시 구매자 카드정보(customerUid)는 필수입력입니다.';
       return;
     }
 

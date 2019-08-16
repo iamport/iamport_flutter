@@ -3,99 +3,99 @@ import 'dart:convert';
 import './iamport_url.dart';
 
 class PaymentData {
-  String pg;                        // PG사
-  String pay_method;                // 결제수단
-  Map<String, List<int>> display;   // 할부개월수
-  String vbank_due;                 // 가상계좌 입금기한
-  String biz_num;                   // 사업자번호
-  bool digital;                     // 실물컨텐츠 여부
-  bool escrow;                      // 에스크로 여부
-  String name;                      // 주문명
-  int amount;                       // 결제금액
-  String currency;                  // 화폐단위
-  Map<String, String> custom_data;  // 임의 지정 데이터
-  int tax_free;                     // 면세 공급 가액
-  int vat;                          // 부가세
-  String language;                  // 언어설정
-  String merchant_uid;              // 주문번호
-  String buyer_name;                // 구매자 이름
-  String buyer_tel;                 // 구매자 연락처
-  String buyer_email;               // 구매자 이메일
-  String buyer_addr;                // 구매자 주소
-  String buyer_postcode;            // 구매자 우편번호
-  String notice_url;
-  String customer_uid;              // 정기결제 카드정보
-  String app_scheme;                // 앱 스킴
-  bool popup;                       // 페이팔 팝업 여부
-  bool naverPopupMode;              // 네이버페이 팝업 여부
+  String pg;                      // PG사
+  String payMethod;               // 결제수단
+  Map<String, List<int>> display; // 할부개월수
+  String vbankDue;                // 가상계좌 입금기한
+  String bizNum;                  // 사업자번호
+  bool digital;                   // 실물컨텐츠 여부
+  bool escrow;                    // 에스크로 여부
+  String name;                    // 주문명
+  int amount;                     // 결제금액
+  String currency;                // 화폐단위
+  Map<String, String> customData; // 임의 지정 데이터
+  int taxFree;                    // 면세 공급 가액
+  int vat;                        // 부가세
+  String language;                // 언어설정
+  String merchantUid;             // 주문번호
+  String buyerName;               // 구매자 이름
+  String buyerTel;                // 구매자 연락처
+  String buyerEmail;              // 구매자 이메일
+  String buyerAddr;               // 구매자 주소
+  String buyerPostcode;           // 구매자 우편번호
+  String noticeUrl;
+  String customerUid;             // 정기결제 카드정보
+  String appScheme;               // 앱 스킴
+  bool popup;                     // 페이팔 팝업 여부
+  bool naverPopupMode;            // 네이버페이 팝업 여부
 
   PaymentData(
     this.pg,
-    this.pay_method,
+    this.payMethod,
     this.display,
-    this.vbank_due,
-    this.biz_num,
+    this.vbankDue,
+    this.bizNum,
     this.digital,
     this.escrow,
     this.name,
     this.amount,
     this.currency,
-    this.custom_data,
-    this.tax_free,
+    this.customData,
+    this.taxFree,
     this.vat,
     this.language,
-    this.merchant_uid,
-    this.buyer_name,
-    this.buyer_tel,
-    this.buyer_email,
-    this.buyer_addr,
-    this.buyer_postcode,
-    this.notice_url,
-    this.customer_uid,
-    this.app_scheme,
+    this.merchantUid,
+    this.buyerName,
+    this.buyerTel,
+    this.buyerEmail,
+    this.buyerAddr,
+    this.buyerPostcode,
+    this.noticeUrl,
+    this.customerUid,
+    this.appScheme,
     this.popup,
     this.naverPopupMode,
   );
 
   PaymentData.fromJson(Map<String, dynamic> data) :
     pg = data['pg'],
-    pay_method = data['pay_method'],
+    payMethod = data['payMethod'],
     display = data['display'],
-    vbank_due = data['vbank_due'],
-    biz_num = data['biz_num'],
+    vbankDue = data['vbankDue'],
+    bizNum = data['bizNum'],
     digital = data['digital'],
     escrow = data['escrow'],
     name = data['name'],
     amount = data['amount'],
     currency = data['currency'],
-    custom_data = data['custom_data'],
-    tax_free = data['tax_free'],
+    customData = data['customData'],
+    taxFree = data['taxFree'],
     vat = data['vat'],
     language = data['language'],
-    merchant_uid = data['merchant_uid'],
-    buyer_name = data['buyer_name'],
-    buyer_tel = data['buyer_tel'],
-    buyer_email = data['buyer_email'],
-    buyer_addr = data['buyer_addr'],
-    buyer_postcode = data['buyer_postcode'],
-    notice_url = data['notice_url'],
-    customer_uid = data['customer_uid'],
-    app_scheme = data['app_scheme'],
+    merchantUid = data['merchantUid'],
+    buyerName = data['buyerName'],
+    buyerTel = data['buyerTel'],
+    buyerEmail = data['buyerEmail'],
+    buyerAddr = data['buyerAddr'],
+    buyerPostcode = data['buyerPostcode'],
+    noticeUrl = data['noticeUrl'],
+    customerUid = data['customerUid'],
+    appScheme = data['appScheme'],
     popup = data['popup'],
     naverPopupMode = data['naverPopupMode'];
 
   String toJsonString() {
     Map<String, dynamic> jsonData =  {
       'pg': pg,
-      'pay_method': pay_method,
+      'pay_method': payMethod,
       'name': name,
       'amount': amount,
-      'merchant_uid': merchant_uid,
-      'buyer_name': buyer_name,
-      'buyer_tel': buyer_tel,
-      'buyer_email': buyer_email,
+      'merchant_uid': merchantUid,
+      'buyer_name': buyerName,
+      'buyer_tel': buyerTel,
+      'buyer_email': buyerEmail,
       'm_redirect_url': IamportUrl.redirectUrl,
-      'app_scheme': app_scheme,
+      'app_scheme': appScheme,
     };
 
     if (escrow != null) {
@@ -104,41 +104,43 @@ class PaymentData {
     if (currency != null) {
       jsonData['currency'] = currency;
     }
-    if (tax_free != null) {
-      jsonData['tax_free'] = tax_free;
+    if (taxFree != null) {
+      jsonData['tax_free'] = taxFree;
     }
     if (vat != null) {
       jsonData['vat'] = vat;
     }
-    if (custom_data != null) {
-      jsonData['custom_data'] = custom_data;
+    if (customData != null) {
+      jsonData['custom_data'] = customData;
     }
     if (language != null) {
       jsonData['language'] = language;
     }
     if (display != null) {
-      jsonData['display'] = display;
+      jsonData['display'] = {
+        'card_auota': display['cardQuota'],
+      };
     }
-    if (vbank_due != null) {
-      jsonData['vbank_due'] = vbank_due;
+    if (vbankDue != null) {
+      jsonData['vbank_due'] = vbankDue;
     }
-    if (biz_num != null) {
-      jsonData['biz_num'] = biz_num;
+    if (bizNum != null) {
+      jsonData['biz_num'] = bizNum;
     }
     if (digital != null) {
       jsonData['digital'] = digital;
     }
-    if (notice_url != null) {
-      jsonData['notice_url'] = notice_url;
+    if (noticeUrl != null) {
+      jsonData['notice_url'] = noticeUrl;
     }
-    if (buyer_addr != null) {
-      jsonData['buyer_addr'] = buyer_addr;
+    if (buyerAddr != null) {
+      jsonData['buyer_addr'] = buyerAddr;
     }
-    if (buyer_postcode != null) {
-      jsonData['buyer_postcode'] = buyer_postcode;
+    if (buyerPostcode != null) {
+      jsonData['buyer_postcode'] = buyerPostcode;
     }
-    if (customer_uid != null) {
-      jsonData['customer_uid'] = customer_uid;
+    if (customerUid != null) {
+      jsonData['customer_uid'] = customerUid;
     }
     if (popup != null) {
       jsonData['popup'] = popup;
