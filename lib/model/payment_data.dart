@@ -13,7 +13,7 @@ class PaymentData {
   String name;                      // 주문명
   int amount;                       // 결제금액
   String currency;                  // 화폐단위
-  Map<String, Future> custom_data;  // 임의 지정 데이터
+  Map<String, String> custom_data;  // 임의 지정 데이터
   int tax_free;                     // 면세 공급 가액
   int vat;                          // 부가세
   String language;                  // 언어설정
@@ -67,30 +67,40 @@ class PaymentData {
     escrow = data['escrow'],
     name = data['name'],
     amount = data['amount'],
+    currency = data['currency'],
+    custom_data = data['custom_data'],
+    tax_free = data['tax_free'],
+    vat = data['vat'],
+    language = data['language'],
     merchant_uid = data['merchant_uid'],
     buyer_name = data['buyer_name'],
     buyer_tel = data['buyer_tel'],
     buyer_email = data['buyer_email'],
+    buyer_addr = data['buyer_addr'],
+    buyer_postcode = data['buyer_postcode'],
+    notice_url = data['notice_url'],
     customer_uid = data['customer_uid'],
-    app_scheme = data['app_scheme'];
+    app_scheme = data['app_scheme'],
+    popup = data['popup'],
+    naverPopupMode = data['naverPopupMode'];
 
   String toJsonString() {
     Map<String, dynamic> jsonData =  {
       'pg': pg,
       'pay_method': pay_method,
-      'escrow': escrow,
       'name': name,
       'amount': amount,
       'merchant_uid': merchant_uid,
       'buyer_name': buyer_name,
       'buyer_tel': buyer_tel,
       'buyer_email': buyer_email,
-      'buyer_addr': buyer_addr,
-      'buyer_postcode': buyer_postcode,
       'm_redirect_url': IamportUrl.redirectUrl,
       'app_scheme': app_scheme,
     };
 
+    if (escrow != null) {
+      jsonData['escrow'] = escrow;
+    }
     if (currency != null) {
       jsonData['currency'] = currency;
     }
@@ -121,8 +131,20 @@ class PaymentData {
     if (notice_url != null) {
       jsonData['notice_url'] = notice_url;
     }
+    if (buyer_addr != null) {
+      jsonData['buyer_addr'] = buyer_addr;
+    }
+    if (buyer_postcode != null) {
+      jsonData['buyer_postcode'] = buyer_postcode;
+    }
     if (customer_uid != null) {
       jsonData['customer_uid'] = customer_uid;
+    }
+    if (popup != null) {
+      jsonData['popup'] = popup;
+    }
+    if (naverPopupMode!= null) {
+      jsonData['naverPopupMode'] = naverPopupMode;
     }
 
     return jsonEncode(jsonData);
