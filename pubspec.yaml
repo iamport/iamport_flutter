@@ -1,5 +1,5 @@
 name: iamport_flutter
-description: flutter용 아임포트 결제/본인인증 모듈입니다.
+description: Plugin that allows Flutter to use Iamport payment and certification functions.
 version: 0.9.0
 author: Solee Deedee Choi <mymusese@gmail.com>
 homepage: https://github.com/iamport/iamport_flutter
