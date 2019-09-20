@@ -51,7 +51,8 @@ class _IamportCertificationState extends State<IamportCertification> {
       }
     });
 
-    _onStateChanged = webView.onStateChanged.listen((WebViewStateChanged state) {
+    _onStateChanged =
+        webView.onStateChanged.listen((WebViewStateChanged state) {
       if (mounted) {
         if (state.type == WebViewState.finishLoad) {
           String userCode = widget.userCode;
