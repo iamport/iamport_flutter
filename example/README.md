@@ -1,6 +1,6 @@
 # iamport_flutter_example
 
-아임포트 리액트 네이티브 모듈 예제 안내입니다.
+아임포트 플러터 모듈 예제 안내입니다.
 
 ## 일반/정기결제 예제
 ```dart
@@ -64,12 +64,13 @@ class Payment extends StatelessWidget {
 
 ### IamportPayment 모델
 
-| Prop             | Type          |  Description         | Required   |
-| ---------------- | ------------- | -------------------- | ---------- |
-| userCode         | String        | 가맹점 식별코드          | true       |
-| initialChild     | 플러터 컴포넌트   | 웹뷰 로드시 보여질 컴포넌트 | false      |
-| data             | `PaymentData` | 결제에 필요한 정보        | true       |
-| callback         | function      | 결제 후 실행 될 함수      | true       |
+| Prop             | Type                |  Description         | Required   |
+| ---------------- | ------------------- | -------------------- | ---------- |
+| appBar           | PreferredSizeWidget | 앱 네비게이션 헤더 바     | false      |
+| userCode         | String              | 가맹점 식별코드          | true       |
+| initialChild     | 플러터 컴포넌트         | 웹뷰 로드시 보여질 컴포넌트 | false      |
+| data             | `PaymentData`       | 결제에 필요한 정보        | true       |
+| callback         | function            | 결제 후 실행 될 함수      | true       |
 
 ### PaymentData 모델 [자세히보기](https://docs.iamport.kr/tech/imp#param)
 
@@ -157,12 +158,13 @@ class Certification extends StatelessWidget {
 
 ### IamportCertification 모델
 
-| Prop          | Type                | Description                        | Required   |
-| ------------- | ------------------- | ---------------------------------- | ---------- |
-| userCode      | string              | 가맹점 식별코드                        | true       |
-| initialChild  | 플러터 컴포넌트         | 웹뷰 로드시 보여질 컴포넌트               | false      |
-| data          | `CertificationData` | 본인인증에 필요한 정보                   | true       |
-| callback      | function            | 본인인증 후 실행 될 함수                 | true       |
+| Prop          | Type                | Description          | Required   |
+| ------------- | ------------------- | -------------------- | ---------- |
+| appBar        | PreferredSizeWidget | 앱 네비게이션 헤더 바     | false      |
+| userCode      | string              | 가맹점 식별코드          | true       |
+| initialChild  | 플러터 컴포넌트         | 웹뷰 로드시 보여질 컴포넌트 | false      |
+| data          | `CertificationData` | 본인인증에 필요한 정보     | true       |
+| callback      | function            | 본인인증 후 실행 될 함수   | true       |
 
 ### CertificationData 모델 [자세히보기](https://docs.iamport.kr/tech/mobile-authentication#call-authentication)
 
