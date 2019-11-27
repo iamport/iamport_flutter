@@ -19,7 +19,7 @@ class IamportWebView extends StatelessWidget {
   ''';
 
   final String type;
-  final AppBar appBar;
+  final PreferredSizeWidget appBar;
   final Widget initialChild;
   IamportWebView(this.type, this.appBar, this.initialChild);
 

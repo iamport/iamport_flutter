@@ -12,7 +12,7 @@ import './widget/iamport_webview.dart';
 String redirectUrl = IamportUrl.redirectUrl;
 
 class IamportCertification extends StatefulWidget {
-  final AppBar appBar;
+  final PreferredSizeWidget appBar;
   final Container initialChild;
   final String userCode;
   final CertificationData data;

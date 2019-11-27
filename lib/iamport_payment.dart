@@ -15,7 +15,7 @@ import './model/payment_data.dart';
 String redirectUrl = IamportUrl.redirectUrl;
 
 class IamportPayment extends StatefulWidget {
-  final AppBar appBar;
+  final PreferredSizeWidget appBar;
   final Container initialChild;
   final String userCode;
   final PaymentData data;
