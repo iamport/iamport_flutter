@@ -1,4 +1,7 @@
-## [0.9.2](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.9.3](https://github.com/iamport/iamport_flutter/tree/master)
+- CupertinoNavigationBar 지원을 위한 로직을 추가하였습니다.
+
+## [0.9.2](https://github.com/iamport/iamport_flutter/tree/v0.9.2)
 - 3rd-party 앱 URL scheme값에 하나멤버스를 추가하였습니다.
 
 ## [0.9.1](https://github.com/iamport/iamport_flutter/tree/v0.9.1)

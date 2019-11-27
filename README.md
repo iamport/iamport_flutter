@@ -17,7 +17,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.9.2](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.9.3](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -27,7 +27,7 @@
 
 ```
 dependencies:
-  iamport_flutter: ^0.9.0
+  iamport_flutter: ^0.9.3
 ```
 
 ## 설정하기
@@ -169,7 +169,7 @@ class Payment extends StatelessWidget {
         'payMethod': 'card',                                           // 결제수단
         'name': '아임포트 결제데이터 분석',                                  // 주문명
         'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
-        'amount': '39000',                                             // 결제금액
+        'amount': 39000,                                               // 결제금액
         'buyerName': '홍길동',                                           // 구매자 이름
         'buyerTel': '01012345678',                                     // 구매자 연락처
         'buyerEmail': 'example@naver.com',                             // 구매자 이메일
