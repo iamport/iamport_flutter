@@ -14,8 +14,13 @@ class IamportUrl {
     this.url = url;
 
     List<String> splittedUrl = url.split('://');
-    String appScheme = Uri.parse(url).scheme;
-    this.appScheme = appScheme;
+
+    try {
+      String appScheme = Uri.parse(url).scheme;
+      this.appScheme = appScheme;
+    } catch (Exception) {
+      this.appScheme = splittedUrl[0];
+    }
     this.appUrl = appScheme == 'itmss' ? 'https://$splittedUrl[1]' : url;
   }
 
@@ -28,11 +33,27 @@ class IamportUrl {
 
   Future<String> getAppUrl() async {
     if (Platform.isIOS) {
-      return appUrl;
+      return this.appUrl;
+    }
+    
+    String url = await _channel.invokeMethod('getAppUrl', <String, Object>{'url': this.url});
+    List<String> splittedUrl = url.split('://');
+    String convertedScheme = splittedUrl[0];
+    if (convertedScheme == 'v3mobileplusweb') {
+      /**
+       * V3 일반결제 대비 코드
+       * Uri.encodingFull 또는 Uri.encodingComponent로 URL을 인코딩 할 경우 해석 불가해
+       * 피치못하게 콜론(:)을 강제로 인코딩 값 %3A로 변환
+       */
+      String encodedUrl = url.replaceAll(new RegExp(r':'), '%3A');
+      List<String> splittedUrl = encodedUrl.split('$convertedScheme%3A//');
+      String replacedData = splittedUrl[1];
+      String replacedUrl = '$convertedScheme://$replacedData';
+
+      return replacedUrl;
     }
 
-    return await _channel
-        .invokeMethod('getAppUrl', <String, Object>{'url': this.url});
+    return url;
   }
 
   Future<String> getMarketUrl() async {
