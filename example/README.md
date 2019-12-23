@@ -101,6 +101,25 @@ class Payment extends StatelessWidget {
 | appScheme      | String                   | 앱 스킴          | true                      |
 | popup          | bool                     | 페이팔 팝업 여부    | false                    |
 | naverPopupMode | bool                     | 네이버페이 팝업 여부 | false                    |
+| period         | `PeriodData`             | 제공기간          | false                    |
+
+### PeriodData
+이니시스 정기결제, 나이스 그리고 다날 일반결제시 제공기간 표기를 위한 파라미터입니다. 제공기간 시작 날짜와 끝 날짜를 
+
+| key  | Type             | Description   |
+| ---- | ---------------- | ------------- |
+| from | String(YYYYMMDD) | 제공기간 시작 날짜 |
+| to   | String(YYYYMMDD) | 제공기간 종료날짜  |
+
+```
+data: PaymentData.fromJson({
+  ...
+  period: { // 제공기간 2020년 1월 1일 ~ 2020년 12월 31일
+    from: '20200101', // 제공기간 시작 날짜
+    to: '20201231', // 제공기간 종료 날짜
+  },
+}),
+```
 
 ## 휴대폰 본인인증 예제
 ```dart
