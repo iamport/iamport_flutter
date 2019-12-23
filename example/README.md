@@ -104,7 +104,7 @@ class Payment extends StatelessWidget {
 | `period`       | Map<String, String>      | 제공기간          | false                    |
 
 ### period
-이니시스 정기결제, 나이스 그리고 다날 일반결제시 제공기간 표기를 위한 파라미터입니다. 제공기간 시작 날짜(`from`)와 끝 날짜(`to`)를 아래와 같이 `YYYYMMDD` 형태로 넘겨주세요. 
+이니시스, 나이스 그리고 다날 일반 결제시 제공기간 표기를 위한 파라미터입니다. 제공기간 시작 날짜(`from`)와 끝 날짜(`to`)를 아래와 같이 `YYYYMMDD` 형태로 넘겨주세요. 
 
 | key  | Type             | Description   |
 | ---- | ---------------- | ------------- |

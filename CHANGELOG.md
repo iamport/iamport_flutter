@@ -1,5 +1,8 @@
-## [0.9.5](https://github.com/iamport/iamport_flutter/tree/master)
-- 이니시스 정기결제, 나이스, 다날 일반결제 용 제공기간 표기 파라미터(period)를 추가하였습니다.
+## [0.9.6](https://github.com/iamport/iamport_flutter/tree/master)
+- niceMobileV2를 true로 기본으로 적용하고 이와 관련된 실시간 계좌이체 대비 코드를 적용하였습니다.
+
+## [0.9.5](https://github.com/iamport/iamport_flutter/tree/v0.9.5)
+- 이니시스, 나이스 그리고 다날 일반결제시 제공기간 표기를 위한 파라미터(period)를 추가하였습니다.
 
 ## [0.9.4](https://github.com/iamport/iamport_flutter/tree/v0.9.4)
 - 안드로이드에서 NH농협카드 일반결제시, intent uri를 파싱할때 발생하는 exception을 처리하였습니다.
