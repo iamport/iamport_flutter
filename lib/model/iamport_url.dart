@@ -35,8 +35,9 @@ class IamportUrl {
     if (Platform.isIOS) {
       return this.appUrl;
     }
-    
-    String url = await _channel.invokeMethod('getAppUrl', <String, Object>{'url': this.url});
+
+    String url = await _channel
+        .invokeMethod('getAppUrl', <String, Object>{'url': this.url});
     List<String> splittedUrl = url.split('://');
     String convertedScheme = splittedUrl[0];
     if (convertedScheme == 'v3mobileplusweb') {
