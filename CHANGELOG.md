@@ -1,4 +1,7 @@
-## [0.9.6](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.9.7](https://github.com/iamport/iamport_flutter/tree/master)
+- 할부개월수 설정 파라미터 오타를 고쳤습니다.
+
+## [0.9.6](https://github.com/iamport/iamport_flutter/tree/v0.9.6)
 - niceMobileV2를 true로 기본으로 적용하고 이와 관련된 실시간 계좌이체 대비 코드를 적용하였습니다.
 
 ## [0.9.5](https://github.com/iamport/iamport_flutter/tree/v0.9.5)
