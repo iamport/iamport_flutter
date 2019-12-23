@@ -28,6 +28,7 @@ class PaymentData {
   String appScheme; // 앱 스킴
   bool popup; // 페이팔 팝업 여부
   bool naverPopupMode; // 네이버페이 팝업 여부
+  Map<String, String> period; // [이니시스. 다날. 나이스] 서비스 제공기간 표기
 
   PaymentData(
     this.pg,
@@ -55,6 +56,7 @@ class PaymentData {
     this.appScheme,
     this.popup,
     this.naverPopupMode,
+    this.period,
   );
 
   PaymentData.fromJson(Map<String, dynamic> data)
@@ -82,7 +84,8 @@ class PaymentData {
         customerUid = data['customerUid'],
         appScheme = data['appScheme'],
         popup = data['popup'],
-        naverPopupMode = data['naverPopupMode'];
+        naverPopupMode = data['naverPopupMode'],
+        period = data['period'];
 
   String toJsonString() {
     Map<String, dynamic> jsonData = {
@@ -96,6 +99,7 @@ class PaymentData {
       'buyer_email': buyerEmail,
       'm_redirect_url': IamportUrl.redirectUrl,
       'app_scheme': appScheme,
+      'niceMobileV2': true,
     };
 
     if (escrow != null) {
@@ -147,6 +151,9 @@ class PaymentData {
     }
     if (naverPopupMode != null) {
       jsonData['naverPopupMode'] = naverPopupMode;
+    }
+    if (period != null) {
+      jsonData['period'] = period;
     }
 
     return jsonEncode(jsonData);

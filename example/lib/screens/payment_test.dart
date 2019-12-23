@@ -268,6 +268,12 @@ class _PaymentTestState extends State<PaymentTest> {
                         data.customerUid = 'cuid_${DateTime.now().millisecondsSinceEpoch}';
                       }
 
+                      // [이니시스-빌링.나이스.다날] 제공기간 표기
+                      data.period = {
+                        'from': '20200101',
+                        'to': '20201231',
+                      };
+
                       Navigator.pushNamed(
                         context,
                         '/payment',
