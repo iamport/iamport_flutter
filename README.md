@@ -176,6 +176,9 @@ class Payment extends StatelessWidget {
         'buyerAddr': '서울시 강남구 신사동 661-16',                         // 구매자 주소
         'buyerPostcode': '06018',                                      // 구매자 우편번호
         'appScheme': 'example',                                        // 앱 URL scheme
+        'display' : {
+          'cardQuota' : [2,3]                                            //결제창 UI 내 할부개월수 제한
+        }
       }),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
