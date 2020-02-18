@@ -122,7 +122,7 @@ class PaymentData {
     }
     if (display != null) {
       jsonData['display'] = {
-        'card_auota': display['cardQuota'],
+        'card_quota': display['cardQuota'],
       };
     }
     if (vbankDue != null) {

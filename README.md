@@ -17,7 +17,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.9.7](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.9.8](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -27,7 +27,7 @@
 
 ```
 dependencies:
-  iamport_flutter: ^0.9.7
+  iamport_flutter: ^0.9.8
 ```
 
 ## 설정하기
@@ -87,7 +87,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>lottesmartpay</string> <!-- 롯데카드-모바일결제 -->
   <string>lotteappcard</string> <!-- 롯데카드-앱카드 -->
   <string>cloudpay</string> <!-- 하나카드-앱카드 -->
-  <string>nhappvardansimclick</string> <!-- 농협카드-앱카드 -->
+  <string>nhappcardansimclick</string> <!-- 농협카드-앱카드 -->
   <string>nonghyupcardansimclick</string> <!-- 농협카드-공인인증서 -->
   <string>citispay</string> <!-- 씨티카드-앱카드 -->
   <string>citicardappkr</string> <!-- 씨티카드-공인인증서 -->
@@ -176,6 +176,9 @@ class Payment extends StatelessWidget {
         'buyerAddr': '서울시 강남구 신사동 661-16',                         // 구매자 주소
         'buyerPostcode': '06018',                                      // 구매자 우편번호
         'appScheme': 'example',                                        // 앱 URL scheme
+        'display' : {
+          'cardQuota' : [2,3]                                            //결제창 UI 내 할부개월수 제한
+        }
       }),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
