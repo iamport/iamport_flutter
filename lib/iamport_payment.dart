@@ -163,6 +163,16 @@ class _IamportPaymentState extends State<IamportPayment> {
     return false;
   }
 
+  String getPaymentType() {
+    PaymentData data = widget.data;
+    String pg = data.pg;
+    String payMethod = data.payMethod;
+    if (pg == 'nice' && payMethod == 'trans') {
+      return 'nice';
+    }
+    return 'payment';
+  }
+
   @override
   Widget build(BuildContext context) {
     IamportValidation validation =
@@ -170,7 +180,15 @@ class _IamportPaymentState extends State<IamportPayment> {
     bool isValid = validation.getIsValid();
 
     if (isValid) {
-      return IamportWebView('결제', widget.appBar, widget.initialChild);
+      // return IamportWebView('결제', widget.appBar, widget.initialChild);
+      return new IamportWebView(
+        title: '결제',
+        type: getPaymentType(),
+        appBar: widget.appBar,
+        initialChild: widget.initialChild,
+        userCode: widget.userCode,
+        data: widget.data.toJsonString(),
+      );
     }
 
     String errorMessage = validation.getErrorMessage();
