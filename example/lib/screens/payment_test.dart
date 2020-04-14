@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:iamport_flutter/iamport_flutter.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 
 import '../model/pg.dart';
 import '../model/method.dart';
 import '../model/quota.dart';
+import '../utils/index.dart';
 
 class PaymentTest extends StatefulWidget {
   @override
@@ -274,11 +276,23 @@ class _PaymentTestState extends State<PaymentTest> {
                         'to': '20201231',
                       };
 
-                      Navigator.pushNamed(
-                        context,
-                        '/payment',
-                        arguments: data
+                      IamportFlutter imp = new IamportFlutter(
+                        Utils.getUserCodeByPg(data.pg),
+                        data,
+                        (Map<String, String> result) {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            '/payment-result',
+                            arguments: result,
+                          );
+                        },
                       );
+                      imp.payment();
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   '/payment',
+                      //   arguments: data
+                      // );
                     }
                   },
                   child: Text('결제하기', style: TextStyle(fontSize: 20)),

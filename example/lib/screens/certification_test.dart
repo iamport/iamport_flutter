@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:iamport_flutter/iamport_flutter.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 
 import '../model/carrier.dart';
@@ -10,6 +11,7 @@ class CertificationTest extends StatefulWidget {
 }
 
 class _CertificationTestState extends State<CertificationTest> {
+  static const String userCode = 'imp10391932';
   final _formKey = GlobalKey<FormState>();
   String merchantUid;        // 주문번호
   String company = '아임포트'; // 회사명 또는 URL
@@ -130,11 +132,23 @@ class _CertificationTestState extends State<CertificationTest> {
                         data.minAge = int.parse(minAge);
                       }
 
-                      Navigator.pushNamed(
-                        context,
-                        '/certification',
-                        arguments: data
+                      IamportFlutter imp = new IamportFlutter(
+                        userCode,
+                        data,
+                        (Map<String, String> result) {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            '/certification-result',
+                            arguments: result,
+                          );
+                        },
                       );
+                      imp.certification();
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   '/certification',
+                      //   arguments: data
+                      // );
                     }
                   },
                   child: Text('본인인증 하기', style: TextStyle(fontSize: 20)),

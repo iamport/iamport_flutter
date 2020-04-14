@@ -36,5 +36,6 @@
                 <data android:scheme="example" />
             </intent-filter>
         </activity>
+        <activity android:label="IamportActivity" android:name="kr.iamport.iamport_flutter.IamportActivity" />
     </application>
 </manifest>
