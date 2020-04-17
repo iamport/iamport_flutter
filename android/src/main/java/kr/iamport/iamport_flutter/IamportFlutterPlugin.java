@@ -55,8 +55,10 @@ public class IamportFlutterPlugin implements MethodCallHandler, ActivityResultLi
         Intent intent = new Intent(activity.getApplicationContext(), IamportActivity.class);
 
         String type = call.argument("type");
+        String titleOptions = call.argument("titleOptions");
         String params = call.argument("params");
         intent.putExtra("type", type);
+        intent.putExtra("titleOptions", titleOptions);
         intent.putExtra("params", params);
 
         activity.startActivityForResult(intent, REQUEST_CODE);

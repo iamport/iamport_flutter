@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import './model/payment_data.dart';
 import './model/certification_data.dart';
+import './model/title_options.dart';
 
 class IamportFlutter {
   Function callback;
@@ -22,8 +23,9 @@ class IamportFlutter {
     }
   ''';
 
-  IamportFlutter(String userCode, data, Function callbackFunc) {
+  IamportFlutter(String userCode, data, TitleOptions titleOptions, Function callbackFunc) {
     webViewData['type'] = getType(data);
+    webViewData['titleOptions'] = titleOptions.toJsonString();
 
     Map<String, String> params = {
       'userCode': userCode,
@@ -31,8 +33,7 @@ class IamportFlutter {
       'redirectUrl': redirectUrl,
       'triggerCallback': triggerCallback.replaceAll(new RegExp(r'\n||\t'), '').trim(),
     };
-    webViewData['params'] = params;
-    // webViewData['params'] = jsonEncode(params);
+    webViewData['params'] = jsonEncode(params);
 
     callback = callbackFunc;
   }

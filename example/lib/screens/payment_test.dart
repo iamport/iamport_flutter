@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:iamport_flutter/iamport_flutter.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:iamport_flutter/model/title_options.dart';
 
 import '../model/pg.dart';
 import '../model/method.dart';
@@ -14,6 +15,12 @@ class PaymentTest extends StatefulWidget {
 }
 
 class _PaymentTestState extends State<PaymentTest> {
+  final TitleOptions titleOptions = TitleOptions.fromJson({
+    'text': '아임포트 결제 테스트',
+    'textColor': '#ffffff',
+    'backgroundColor': '#344e81',
+  });
+
   final _formKey = GlobalKey<FormState>();
   String pg = 'html5_inicis'; // PG사
   String payMethod = 'card';  // 결제수단
@@ -279,6 +286,7 @@ class _PaymentTestState extends State<PaymentTest> {
                       IamportFlutter imp = new IamportFlutter(
                         Utils.getUserCodeByPg(data.pg),
                         data,
+                        titleOptions,
                         (Map<String, String> result) {
                           Navigator.pushNamed(
                             context,

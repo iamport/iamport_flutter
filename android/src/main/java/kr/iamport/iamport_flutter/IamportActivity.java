@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -43,8 +44,8 @@ public class IamportActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         /* SET ACTION BAR */
-//        String title = extras.getString("title");
-//        setActionBar(title);
+        String titleOptions = extras.getString("titleOptions");
+        setActionBar(titleOptions);
 
         /* SET WEBVIEW */
         String type = extras.getString("type");
@@ -66,20 +67,21 @@ public class IamportActivity extends Activity {
         webview.setWebViewClient(webViewClient);
     }
 
-    private void setActionBar(String title) {
+    private void setActionBar(String titleOptions) {
         ActionBar ab = getActionBar();
 
-        if (title.equals("{}")) {
+        if (titleOptions.equals("{}")) {
             ab.hide();
         } else {
             try {
-                JSONObject titleParams = new JSONObject(title);
+                JSONObject titleParams = new JSONObject(titleOptions);
 
-                String name = titleParams.getString("name");
-                String color = titleParams.getString("color");
+                String text = titleParams.getString("text");
+                String textColor= titleParams.getString("textColor");
+                String backgroundColor = titleParams.getString("backgroundColor");
 
-                ab.setTitle(name);
-                ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(color)));
+                ab.setTitle(Html.fromHtml("<font color='" + textColor + "'>" + text + "</font>"));
+                ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(backgroundColor)));
                 ab.setDisplayHomeAsUpEnabled(true);
 
             } catch (Exception e) {

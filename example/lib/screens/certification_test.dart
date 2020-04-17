@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:iamport_flutter/iamport_flutter.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:iamport_flutter/model/title_options.dart';
 
 import '../model/carrier.dart';
 
@@ -11,7 +12,13 @@ class CertificationTest extends StatefulWidget {
 }
 
 class _CertificationTestState extends State<CertificationTest> {
-  static const String userCode = 'imp10391932';
+  final String userCode = 'imp10391932';
+  final TitleOptions titleOptions = TitleOptions.fromJson({
+    'text': '아임포트 본인인증 테스트',
+    'textColor': '#ffffff',
+    'backgroundColor': '#344e81',
+  });
+
   final _formKey = GlobalKey<FormState>();
   String merchantUid;        // 주문번호
   String company = '아임포트'; // 회사명 또는 URL
@@ -135,6 +142,7 @@ class _CertificationTestState extends State<CertificationTest> {
                       IamportFlutter imp = new IamportFlutter(
                         userCode,
                         data,
+                        titleOptions,
                         (Map<String, String> result) {
                           Navigator.pushNamed(
                             context,
