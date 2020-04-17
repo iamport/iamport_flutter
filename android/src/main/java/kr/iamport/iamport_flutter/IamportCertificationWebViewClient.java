@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.os.Build;
 import android.webkit.WebView;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class IamportCertificationWebViewClient extends IamportWebViewClient {
 
-    public IamportCertificationWebViewClient(Activity activity, String params) {
+    public IamportCertificationWebViewClient(Activity activity, HashMap<String, String> params) {
         super(activity, params);
     }
 

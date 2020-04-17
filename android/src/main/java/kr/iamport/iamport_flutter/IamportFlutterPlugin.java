@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import org.json.JSONObject;
-
 import java.net.URISyntaxException;
 import java.util.HashMap;
 
@@ -59,7 +57,7 @@ public class IamportFlutterPlugin implements MethodCallHandler, ActivityResultLi
 
         String type = call.argument("type");
         HashMap<String, String> titleOptions = call.argument("titleOptions");
-        String params = call.argument("params");
+        HashMap<String, String> params = call.argument("params");
         intent.putExtra("type", type);
         intent.putExtra("titleOptions", titleOptions);
         intent.putExtra("params", params);

@@ -9,8 +9,8 @@ import android.util.Log;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class IamportNiceWebViewClient extends IamportPaymentWebViewClient {
@@ -18,7 +18,7 @@ public class IamportNiceWebViewClient extends IamportPaymentWebViewClient {
 
     private String BANK_TID = "";
 
-    public IamportNiceWebViewClient(Activity activity, String params) {
+    public IamportNiceWebViewClient(Activity activity, HashMap<String, String> params) {
         super(activity, params);
     }
 

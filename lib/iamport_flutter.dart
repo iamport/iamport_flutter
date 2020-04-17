@@ -33,7 +33,7 @@ class IamportFlutter {
       'redirectUrl': redirectUrl,
       'triggerCallback': triggerCallback.replaceAll(new RegExp(r'\n||\t'), '').trim(),
     };
-    webViewData['params'] = jsonEncode(params);
+    webViewData['params'] = params;
 
     callback = callbackFunc;
   }

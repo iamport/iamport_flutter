@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.webkit.WebView;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class IamportPaymentWebViewClient extends IamportWebViewClient {
     protected final static String BANKPAY = "kftc-bankpay";
@@ -12,7 +12,7 @@ public class IamportPaymentWebViewClient extends IamportWebViewClient {
     private final static String PACKAGE_ISP = "kvp.jjy.MispAndroid320";
     private final static String PACKAGE_BANKPAY = "com.kftc.bankpay.android";
 
-    public IamportPaymentWebViewClient(Activity activity, String params) {
+    public IamportPaymentWebViewClient(Activity activity, HashMap<String, String> params) {
         super(activity, params);
     }
 

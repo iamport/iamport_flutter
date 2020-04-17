@@ -49,7 +49,7 @@ public class IamportActivity extends Activity {
 
         /* SET WEBVIEW */
         String type = extras.getString("type");
-        String params = extras.getString("params");
+        HashMap<String, String> params = (HashMap<String, String>) getIntent().getSerializableExtra("params");
         switch (type) {
             case "nice": { // 나이스 && 실시간 계좌이체
                 webViewClient = new IamportNiceWebViewClient(this, params);

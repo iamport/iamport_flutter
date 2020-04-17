@@ -9,7 +9,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.net.URISyntaxException;
-import java.util.Map;
+import java.util.HashMap;
 
 import org.json.JSONObject;
 
@@ -26,16 +26,14 @@ abstract public class IamportWebViewClient extends WebViewClient {
 
     protected final static String MARKET_PREFIX = "market://details?id=";
 
-    public IamportWebViewClient(Activity activity, String params) {
+    public IamportWebViewClient(Activity activity, HashMap<String, String> params) {
         this.activity = activity;
 
         try {
-            JSONObject jsonParams = new JSONObject(params);
-
-            userCode = jsonParams.getString("userCode");
-            data = new JSONObject(jsonParams.getString("data"));
-            triggerCallback = jsonParams.getString("triggerCallback");
-            redirectUrl = jsonParams.getString("redirectUrl");
+            userCode = params.get("userCode");
+            data = new JSONObject(params.get("data"));
+            triggerCallback = params.get("triggerCallback");
+            redirectUrl = params.get("redirectUrl");
         } catch (Exception e) {
 
         }
