@@ -15,19 +15,16 @@ class TitleOptions {
 
   TitleOptions.fromJson(Map<String, dynamic> data)
       : show = data['show'] ?? true,
-        text = data['text'],
-        textColor = data['textColor'],
-        backgroundColor = data['backgroundColor'];
+        text = data['text'] ?? '아임포트 테스트',
+        textColor = data['textColor'] ?? '#ffffff',
+        backgroundColor = data['backgroundColor'] ?? '#344e81';
 
-  String toJsonString() {
-    Map<String, dynamic> jsonData = {};
-
-    if (show) {
-      jsonData['text'] = text ?? '아임포트 테스트';
-      jsonData['textColor'] = textColor ?? '#ffffff';
-      jsonData['backgroundColor'] = backgroundColor ?? '#344e81';
-    }
-
-    return jsonEncode(jsonData);
+  Map<String, dynamic> toJson() {
+    return {
+      'show': show.toString(),
+      'text': text,
+      'textColor': textColor,
+      'backgroundColor': backgroundColor,
+    };
   }
 }

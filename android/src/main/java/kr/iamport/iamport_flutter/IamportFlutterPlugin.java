@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.net.URISyntaxException;
+import java.util.HashMap;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -55,7 +58,7 @@ public class IamportFlutterPlugin implements MethodCallHandler, ActivityResultLi
         Intent intent = new Intent(activity.getApplicationContext(), IamportActivity.class);
 
         String type = call.argument("type");
-        String titleOptions = call.argument("titleOptions");
+        HashMap<String, String> titleOptions = call.argument("titleOptions");
         String params = call.argument("params");
         intent.putExtra("type", type);
         intent.putExtra("titleOptions", titleOptions);

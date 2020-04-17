@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import org.json.JSONObject;
+import java.util.HashMap;
 
 public class IamportActivity extends Activity {
     WebView webview;
@@ -44,7 +44,7 @@ public class IamportActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         /* SET ACTION BAR */
-        String titleOptions = extras.getString("titleOptions");
+        HashMap<String, String> titleOptions = (HashMap<String, String>) getIntent().getSerializableExtra("titleOptions");
         setActionBar(titleOptions);
 
         /* SET WEBVIEW */
@@ -67,26 +67,20 @@ public class IamportActivity extends Activity {
         webview.setWebViewClient(webViewClient);
     }
 
-    private void setActionBar(String titleOptions) {
+    private void setActionBar(HashMap<String, String> titleOptions) {
         ActionBar ab = getActionBar();
 
-        if (titleOptions.equals("{}")) {
-            ab.hide();
+        String show = titleOptions.get("show");
+        if (show.equals("true")) {
+            String text = titleOptions.get("text");
+            String textColor= titleOptions.get("textColor");
+            String backgroundColor = titleOptions.get("backgroundColor");
+
+            ab.setTitle(Html.fromHtml("<font color='" + textColor + "'>" + text + "</font>"));
+            ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(backgroundColor)));
+            ab.setDisplayHomeAsUpEnabled(true);
         } else {
-            try {
-                JSONObject titleParams = new JSONObject(titleOptions);
-
-                String text = titleParams.getString("text");
-                String textColor= titleParams.getString("textColor");
-                String backgroundColor = titleParams.getString("backgroundColor");
-
-                ab.setTitle(Html.fromHtml("<font color='" + textColor + "'>" + text + "</font>"));
-                ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(backgroundColor)));
-                ab.setDisplayHomeAsUpEnabled(true);
-
-            } catch (Exception e) {
-
-            }
+            ab.hide();
         }
     }
 

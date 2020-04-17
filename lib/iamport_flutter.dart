@@ -25,7 +25,7 @@ class IamportFlutter {
 
   IamportFlutter(String userCode, data, TitleOptions titleOptions, Function callbackFunc) {
     webViewData['type'] = getType(data);
-    webViewData['titleOptions'] = titleOptions.toJsonString();
+    webViewData['titleOptions'] = titleOptions.toJson();
 
     Map<String, String> params = {
       'userCode': userCode,
