@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -40,6 +41,13 @@ public class IamportActivity extends Activity {
         webview.setWebChromeClient(new IamportWebChromeClient());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webview.setWebContentsDebuggingEnabled(true);
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // 쿠키 허용 설정: 스마일페이 등
+            CookieManager cookieManager = CookieManager.getInstance();
+            cookieManager.setAcceptCookie(true);
+            cookieManager.setAcceptThirdPartyCookies(webview, true);
         }
 
         Bundle extras = getIntent().getExtras();
