@@ -23,11 +23,9 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
-  } else if ([@"launch" isEqualToString:call.method]) {
+  if ([@"launch" isEqualToString:call.method]) {
     NSString* type = [call.arguments objectForKey:@"type"];
-    NSDictionary* titleData = [call.arguments objectForKey:@"titleData"];
+    NSDictionary* titleOptions = [call.arguments objectForKey:@"titleOptions"];
     NSDictionary* params = [call.arguments objectForKey:@"params"];
     
     IamportViewController *iamportViewController = nil;
@@ -42,40 +40,40 @@
     }
       
     iamportViewController.type = type;
-    iamportViewController.titleData = titleData;
+    iamportViewController.titleOptions = titleOptions;
     iamportViewController.params = params;
     iamportViewController.registrar = _registrar;
     /*
-     delegate 메소드에 전달
+     delegate 메소드에 전달 result 전달
      delegate 메소드에서 result에 접근할 수 없는 점 방지
-     */
-      iamportViewController.result = result;
+    */
+    iamportViewController.result = result;
     
-    if ([self isNavigationBarHidden:titleData]) {
-        [self.viewController presentViewController:iamportViewController animated:YES completion:nil];
-    } else {
+    NSString *show = [titleOptions valueForKey:@"show"];
+    if ([show isEqual:@"true"]) {
         // NavigationController 설정
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:iamportViewController];
         
-        NSString *name = [titleData valueForKey:@"name"];
-        NSString *color = [titleData valueForKey:@"color"];
+        NSString *text = [titleOptions valueForKey:@"text"];
+        NSString *textColor = [titleOptions valueForKey:@"textColor"];
+        NSString *backgroundColor = [titleOptions valueForKey:@"backgroundColor"];
         UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(onClose)];
+        UIColor *tintColor = [self colorFromHexString:textColor];
         
-        navigationController.navigationBar.topItem.title = name;
+        navigationController.navigationBar.topItem.title = text;
         navigationController.navigationBar.translucent = NO;
-        navigationController.navigationBar.barTintColor = [self colorFromHexString:color];
+        navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
+        navigationController.navigationBar.barTintColor = [self colorFromHexString:backgroundColor];
         navigationController.navigationBar.topItem.rightBarButtonItem = closeButton;
+        navigationController.navigationBar.tintColor = tintColor;
 
         [self.viewController presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        [self.viewController presentViewController:iamportViewController animated:YES completion:nil];
     }
   } else {
     result(FlutterMethodNotImplemented);
   }
-}
-
-- (BOOL)isNavigationBarHidden:(NSDictionary *)titleData
-{
-    return [titleData count] == 0;
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString

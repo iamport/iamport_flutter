@@ -10,7 +10,7 @@
 @property (strong, nonatomic) IBOutlet WKWebView *webView;
 @property () BOOL isWebViewLoaded;
 @property (strong, nonatomic) NSString *type;
-@property (strong, nonatomic) NSDictionary *titleData;
+@property (strong, nonatomic) NSDictionary *titleOptions;
 @property (strong, nonatomic) NSDictionary *params;
 @property (strong, nonatomic) NSObject<FlutterPluginRegistrar>* registrar;
 @property (strong, nonatomic) FlutterResult result;

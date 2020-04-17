@@ -12,7 +12,6 @@
 @property (nonatomic, retain) UIViewController *viewController;
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result;
-- (BOOL)isNavigationBarHidden:(NSDictionary *)titleData;
 - (UIColor *)colorFromHexString:(NSString *)hexString;
 - (void)onClose;
 - (void)setDelegate:(id<IamportDelegate>)delegate;
