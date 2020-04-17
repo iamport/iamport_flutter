@@ -280,7 +280,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         Utils.getUserCodeByPg(data.pg),
                         data,
                         (Map<String, String> result) {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             '/payment-result',
                             arguments: result,

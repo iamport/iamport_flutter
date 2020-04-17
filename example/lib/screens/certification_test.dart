@@ -136,7 +136,7 @@ class _CertificationTestState extends State<CertificationTest> {
                         userCode,
                         data,
                         (Map<String, String> result) {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             '/certification-result',
                             arguments: result,

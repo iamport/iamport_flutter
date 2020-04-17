@@ -114,7 +114,7 @@ public class IamportFlutterPlugin implements MethodCallHandler, ActivityResultLi
 
   @Override
   public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == REQUEST_CODE) {
+    if (requestCode == REQUEST_CODE && data != null) {
       Bundle extras = data.getExtras();
       String url = extras.getString("url");
 
