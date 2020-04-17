@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    NSString* key = [_registrar lookupKeyForAsset:@"assets/html/webview_source.html"];
+    NSString* key = [_registrar lookupKeyForAsset:@"packages/iamport_flutter/assets/html/webview_source.html"];
     NSString* htmlFile = [[NSBundle mainBundle] pathForResource:key ofType:nil];
     NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     [_webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
