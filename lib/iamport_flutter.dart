@@ -41,7 +41,8 @@ class IamportFlutter {
   void payment() async {
     String url = await _channel.invokeMethod('launch', webViewData);
     if (url.contains(redirectUrl)) {
-      Uri parsedUrl = Uri.parse(url);
+      String decodedUrl = Uri.decodeComponent(url);
+      Uri parsedUrl = Uri.parse(decodedUrl);
       Map<String, String> query = parsedUrl.queryParameters;
       callback(query);
     }
@@ -50,7 +51,8 @@ class IamportFlutter {
   void certification() async {
     String url = await _channel.invokeMethod('launch', webViewData);
     if (url.contains(redirectUrl)) {
-      Uri parsedUrl = Uri.parse(url);
+      String decodedUrl = Uri.decodeComponent(url);
+      Uri parsedUrl = Uri.parse(decodedUrl);
       Map<String, String> query = parsedUrl.queryParameters;
       callback(query);
     }
