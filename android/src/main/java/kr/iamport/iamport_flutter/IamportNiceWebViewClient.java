@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,8 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 public class IamportNiceWebViewClient extends IamportPaymentWebViewClient {
-    private final static String NICE_TRANS_URL = "https://web.nicepay.co.kr/smart/bank/payTrans.jsp";    // 계좌이체 거래 요청 URL(V2부터는 가변적일 수 있음)
-
+    private String NICE_TRANS_URL = "";    // 계좌이체 거래 요청 URL(V2부터는 가변적일 수 있음)
     private String BANK_TID = "";
 
     public IamportNiceWebViewClient(Activity activity, HashMap<String, String> params) {
@@ -37,26 +37,19 @@ public class IamportNiceWebViewClient extends IamportPaymentWebViewClient {
     }
 
     private String makeBankPayData(String url) {
+        String prefix = BANKPAY + "://eftpay?";
+
         Uri uri = Uri.parse(url);
-        Set<String> args = uri.getQueryParameterNames();
+        BANK_TID = uri.getQueryParameter("user_key");
+        NICE_TRANS_URL = uri.getQueryParameter("callbackparam1");
 
-        StringBuilder ret_data = new StringBuilder();
-        List<String> keys = Arrays.asList(new String[] {"firm_name", "amount", "serial_no", "approve_no", "receipt_yn", "user_key", "callbackparam2", ""});
-
-        for (String arg: args) {
-            if (keys.contains(arg)) {
-                String value = uri.getQueryParameter(arg);
-                if (arg.equals("user_key")) {
-                    BANK_TID = value;
-                }
-                ret_data.append("&").append(arg).append("=").append(value);
-            }
+        String decodedUrl = null;
+        try {
+            decodedUrl = URLDecoder.decode(url.substring(prefix.length()), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
-
-        ret_data.append("&callbackparam1=" + "nothing");
-        ret_data.append("&callbackparam3=" + "nothing");
-
-        return ret_data.toString();
+        return decodedUrl;
     }
 
     /* 나이스 - 실시간 계좌이체 인증 후 후속처리 루틴 */
