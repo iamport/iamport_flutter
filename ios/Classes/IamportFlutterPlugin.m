@@ -5,12 +5,23 @@
 #import "IamportCertificationViewController.h"
 
 @implementation IamportFlutterPlugin
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    // openURL이 trigger되면 IamportFlutterPluginOpenURLNotification을 호출한다
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:IamportFlutterPluginOpenURLNotification object:url]];
+    return YES;
+}
+
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel methodChannelWithName:@"iamport_flutter" binaryMessenger:[registrar messenger]];
     
     UIViewController *viewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     IamportFlutterPlugin* instance = [[IamportFlutterPlugin alloc] initWithViewController:viewController registrar:registrar];
     [registrar addMethodCallDelegate:instance channel:channel];
+    
+    // openURL을 trigger하기 위해 UIApplicationDelegate에 등록한다
+    [registrar addApplicationDelegate:instance];
 }
 
 - (instancetype)initWithViewController:(UIViewController *)viewController registrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -102,3 +113,5 @@
 }
 
 @end
+
+NSString* const IamportFlutterPluginOpenURLNotification = @"IamportFlutterPluginOpenURLNotification";

@@ -5,7 +5,8 @@
 - (id)init
 {
     if (self = [super init]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDidReceiveData:) name:@"IamportFlutterPluginHandleOpenURLNotification" object:nil];
+        // IamportFlutterPluginOpenURLNotification에 대해 onDidReceiveData가 호출되도록 observer를 등록한다
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDidReceiveData:) name:IamportFlutterPluginOpenURLNotification object:nil];
     }
     
     return self;
@@ -51,7 +52,7 @@
         _webView = nil;
        
         // Notification 해제
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"IamportFlutterPluginHandleOpenURLNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:IamportFlutterPluginOpenURLNotification object:nil];
         
         // delegate 메소드 호출
         [self dismissViewControllerAnimated:YES completion:nil];

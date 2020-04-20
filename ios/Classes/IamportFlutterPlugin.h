@@ -18,3 +18,5 @@
 - (void)onOver:(NSString*)url result:(FlutterResult)result;
 
 @end
+
+extern NSString* const IamportFlutterPluginOpenURLNotification;

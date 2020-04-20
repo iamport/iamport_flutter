@@ -250,6 +250,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         'buyerName': buyerName,
                         'buyerTel': buyerTel,
                         'buyerEmail': buyerEmail,
+                        'appScheme': 'example',
                       });
                       if (payMethod == 'card' && cardQuota != '0') {
                         data.display = {
