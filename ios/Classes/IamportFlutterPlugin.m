@@ -68,6 +68,8 @@
         NSString *text = [titleOptions valueForKey:@"text"];
         NSString *textColor = [titleOptions valueForKey:@"textColor"];
         NSString *backgroundColor = [titleOptions valueForKey:@"backgroundColor"];
+        
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onClose)];
         UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(onClose)];
         UIColor *tintColor = [self colorFromHexString:textColor];
         
@@ -75,8 +77,10 @@
         navigationController.navigationBar.translucent = NO;
         navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
         navigationController.navigationBar.barTintColor = [self colorFromHexString:backgroundColor];
+        navigationController.navigationBar.topItem.leftBarButtonItem = backButton;
         navigationController.navigationBar.topItem.rightBarButtonItem = closeButton;
         navigationController.navigationBar.tintColor = tintColor;
+        
 
         [self.viewController presentViewController:navigationController animated:YES completion:nil];
     } else {
