@@ -180,15 +180,7 @@ class _IamportPaymentState extends State<IamportPayment> {
     bool isValid = validation.getIsValid();
 
     if (isValid) {
-      // return IamportWebView('결제', widget.appBar, widget.initialChild);
-      return new IamportWebView(
-        title: '결제',
-        type: getPaymentType(),
-        appBar: widget.appBar,
-        initialChild: widget.initialChild,
-        userCode: widget.userCode,
-        data: widget.data.toJsonString(),
-      );
+      return IamportWebView('결제', widget.appBar, widget.initialChild);
     }
 
     String errorMessage = validation.getErrorMessage();

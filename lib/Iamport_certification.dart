@@ -83,15 +83,6 @@ class _IamportCertificationState extends State<IamportCertification> {
 
   @override
   Widget build(BuildContext context) {
-    // return IamportWebView('본인인증', widget.appBar, widget.initialChild);
-
-    return new IamportWebView(
-      title: '본인인증',
-      type: 'certification',
-      appBar: widget.appBar,
-      initialChild: widget.initialChild,
-      userCode: widget.userCode,
-      data: widget.data.toJsonString(),
-    );
+    return IamportWebView('본인인증', widget.appBar, widget.initialChild);
   }
 }
