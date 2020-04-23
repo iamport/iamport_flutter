@@ -5,10 +5,13 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
@@ -19,6 +22,7 @@ import java.util.HashMap;
 public class IamportActivity extends Activity {
     WebView webview;
     IamportWebViewClient webViewClient;
+    HashMap<String, String> titleOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public class IamportActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         /* SET ACTION BAR */
-        HashMap<String, String> titleOptions = (HashMap<String, String>) getIntent().getSerializableExtra("titleOptions");
+        titleOptions = (HashMap<String, String>) getIntent().getSerializableExtra("titleOptions");
         setActionBar(titleOptions);
 
         /* SET WEBVIEW */
@@ -86,7 +90,17 @@ public class IamportActivity extends Activity {
 
             ab.setTitle(Html.fromHtml("<font color='" + textColor + "'>" + text + "</font>"));
             ab.setBackgroundDrawable(new ColorDrawable(Color.parseColor(backgroundColor)));
-            ab.setDisplayHomeAsUpEnabled(true);
+
+            String leftButtonColor = titleOptions.get("leftButtonColor");
+            String leftButtonType = titleOptions.get("leftButtonType");
+            if (!leftButtonType.equals("hide")) {
+                ab.setDisplayHomeAsUpEnabled(true);
+
+                int iconId = getLeftIconId(leftButtonType);
+                final Drawable closeIcon = getResources().getDrawable(iconId);
+                closeIcon.setColorFilter(Color.parseColor(leftButtonColor), PorterDuff.Mode.SRC_IN);
+                ab.setHomeAsUpIndicator(closeIcon);
+            }
         } else {
             ab.hide();
         }
@@ -112,16 +126,51 @@ public class IamportActivity extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        String rightButtonType = titleOptions.get("rightButtonType");
+        String rightButtonColor = titleOptions.get("rightButtonColor");
+
+        getMenuInflater().inflate(R.menu.actionbar_actions, menu);
+        if (!rightButtonType.equals("hide")) {
+            int iconId = getRightIconId(rightButtonType);
+            MenuItem meniItem = menu.findItem(iconId);
+            meniItem.setVisible(true);
+            meniItem.getIcon().setColorFilter(Color.parseColor(rightButtonColor), PorterDuff.Mode.SRC_IN);
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        Integer itemId = item.getItemId();
+        switch (itemId) {
             case android.R.id.home: {
                 finish();
                 break;
             }
-            default:
+            default: {
+                if (itemId.equals(R.id.action_close)) {
+                    finish();
+                }
                 break;
+            }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private int getLeftIconId(String buttonType) {
+        if (buttonType.equals("back")) {
+            return R.drawable.ic_action_back;
+        }
+        return R.drawable.ic_action_close;
+    }
+
+    private int getRightIconId(String buttonType) {
+        if (buttonType.equals("back")) {
+            return R.id.action_back;
+        }
+        return R.id.action_close;
     }
 }

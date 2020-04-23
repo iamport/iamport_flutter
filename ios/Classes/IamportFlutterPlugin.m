@@ -68,19 +68,24 @@
         NSString *text = [titleOptions valueForKey:@"text"];
         NSString *textColor = [titleOptions valueForKey:@"textColor"];
         NSString *backgroundColor = [titleOptions valueForKey:@"backgroundColor"];
-        
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onClose)];
-        UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(onClose)];
-        UIColor *tintColor = [self colorFromHexString:textColor];
+        NSString *leftButtonType = [titleOptions valueForKey:@"leftButtonType"];
+        NSString *leftButtonColor = [titleOptions valueForKey:@"leftButtonColor"];
+        NSString *rightButtonType = [titleOptions valueForKey:@"rightButtonType"];
+        NSString *rightButtonColor = [titleOptions valueForKey:@"rightButtonColor"];
         
         navigationController.navigationBar.topItem.title = text;
         navigationController.navigationBar.translucent = NO;
-        navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:tintColor forKey:NSForegroundColorAttributeName];
+        navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[self colorFromHexString:textColor] forKey:NSForegroundColorAttributeName];
         navigationController.navigationBar.barTintColor = [self colorFromHexString:backgroundColor];
-        navigationController.navigationBar.topItem.leftBarButtonItem = backButton;
-        navigationController.navigationBar.topItem.rightBarButtonItem = closeButton;
-        navigationController.navigationBar.tintColor = tintColor;
         
+        if (![leftButtonType isEqualToString:@"hide"]) {
+            navigationController.navigationBar.topItem.leftBarButtonItem = [self getBarButtonItem:leftButtonType];
+            navigationController.navigationBar.topItem.leftBarButtonItem.tintColor = [self colorFromHexString:leftButtonColor];
+        }
+        if (![rightButtonType isEqualToString:@"hide"]) {
+            navigationController.navigationBar.topItem.rightBarButtonItem = [self getBarButtonItem:rightButtonType];
+            navigationController.navigationBar.topItem.rightBarButtonItem.tintColor = [self colorFromHexString:rightButtonColor];
+        }
 
         [self.viewController presentViewController:navigationController animated:YES completion:nil];
     } else {
@@ -89,6 +94,19 @@
   } else {
     result(FlutterMethodNotImplemented);
   }
+}
+
+- (UIBarButtonItem *)getBarButtonItem:(NSString *)buttonType
+{
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onClose)];
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(onClose)];
+    if ([buttonType isEqualToString:@"back"]) {
+        return backButton;
+    }
+    if ([buttonType isEqualToString:@"close"]) {
+        return closeButton;
+    }
+    return nil;
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString
