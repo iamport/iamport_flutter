@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import './model/payment_data.dart';
 import './model/certification_data.dart';
 import './model/title_options.dart';
+import './model/iamport_validation.dart';
 
 class IamportFlutter {
   Function callback;
@@ -38,17 +39,27 @@ class IamportFlutter {
     callback = callbackFunc;
   }
 
-  void payment() async {
-    String url = await _channel.invokeMethod('launch', webViewData);
-    if (url.contains(redirectUrl)) {
-      String decodedUrl = Uri.decodeComponent(url);
-      Uri parsedUrl = Uri.parse(decodedUrl);
-      Map<String, String> query = parsedUrl.queryParameters;
-      callback(query);
+  static void payment(String userCode, data, TitleOptions titleOptions, Function callbackFunc) {
+    IamportValidation validation = IamportValidation(userCode, data, callbackFunc);
+    bool isValid = validation.getIsValid();
+    if (isValid) {
+      IamportFlutter imp = new IamportFlutter(userCode, data,titleOptions, callbackFunc);
+      imp.launch();
+    } else {
+      Map<String, String> response = {
+        'imp_success': 'false',
+        'error_msg': validation.getErrorMessage(),
+      };
+      callbackFunc(response);
     }
   }
 
-  void certification() async {
+  static void certification(String userCode, data, TitleOptions titleOptions, Function callbackFunc) {
+    IamportFlutter imp = new IamportFlutter(userCode, data,titleOptions, callbackFunc);
+    imp.launch();
+  }
+
+  void launch() async {
     String url = await _channel.invokeMethod('launch', webViewData);
     if (url.contains(redirectUrl)) {
       String decodedUrl = Uri.decodeComponent(url);
@@ -74,9 +85,4 @@ class IamportFlutter {
     }
     return 'certification';
   }
-
-  // static Future<String> get platformVersion async {
-  //   final String version = await _channel.invokeMethod('getPlatformVersion');
-  //   return version;
-  // }
 }

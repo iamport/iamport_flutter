@@ -284,7 +284,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         'to': '20201231',
                       };
 
-                      IamportFlutter imp = new IamportFlutter(
+                      IamportFlutter.payment(
                         Utils.getUserCodeByPg(data.pg),
                         data,
                         titleOptions,
@@ -296,12 +296,6 @@ class _PaymentTestState extends State<PaymentTest> {
                           );
                         },
                       );
-                      imp.payment();
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   '/payment',
-                      //   arguments: data
-                      // );
                     }
                   },
                   child: Text('결제하기', style: TextStyle(fontSize: 20)),

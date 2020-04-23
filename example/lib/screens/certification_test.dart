@@ -139,7 +139,7 @@ class _CertificationTestState extends State<CertificationTest> {
                         data.minAge = int.parse(minAge);
                       }
 
-                      IamportFlutter imp = new IamportFlutter(
+                      IamportFlutter.certification(
                         userCode,
                         data,
                         titleOptions,
@@ -151,12 +151,6 @@ class _CertificationTestState extends State<CertificationTest> {
                           );
                         },
                       );
-                      imp.certification();
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   '/certification',
-                      //   arguments: data
-                      // );
                     }
                   },
                   child: Text('본인인증 하기', style: TextStyle(fontSize: 20)),
