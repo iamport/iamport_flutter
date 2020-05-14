@@ -1,13 +1,18 @@
 import 'dart:async';
 import 'dart:core';
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:uni_links/uni_links.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import './model/iamport_url.dart';
 import './model/certification_data.dart';
 import './widget/iamport_webview.dart';
+import './model/iamport_url.dart';
 
 String redirectUrl = IamportUrl.redirectUrl;
 
@@ -52,9 +57,11 @@ class _IamportCertificationState extends State<IamportCertification> {
     });
 
     _onStateChanged =
-        webView.onStateChanged.listen((WebViewStateChanged state) {
+        webView.onStateChanged.listen((WebViewStateChanged state) async {
       if (mounted) {
-        if (state.type == WebViewState.finishLoad) {
+        WebViewState type = state.type;
+        String url = state.url;
+        if (type == WebViewState.finishLoad) {
           String userCode = widget.userCode;
           String data = widget.data.toJsonString();
           webView.evalJavascript('''
@@ -67,6 +74,19 @@ class _IamportCertificationState extends State<IamportCertification> {
               location.href = "$redirectUrl" + "?" + query.join("&");
             });
           ''');
+        }
+        IamportUrl iamportUrl = new IamportUrl(url);
+        bool isOpeningStore = (Platform.isIOS && type == WebViewState.shouldStart) || (Platform.isAndroid && type == WebViewState.abortLoad);
+        if (isOpeningStore && iamportUrl.isAppLink()) {
+          /* Android */
+          String appUrl = await iamportUrl.getAppUrl();
+          if (await canLaunch(appUrl)) {
+            // 3rd parth 앱 오픈
+            await launch(appUrl);
+          } else {
+            // 앱 미설치시 마켓 URL로 연결
+            await launch(await iamportUrl.getMarketUrl());
+          }
         }
       }
     });
