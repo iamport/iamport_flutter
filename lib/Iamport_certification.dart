@@ -68,7 +68,7 @@ class _IamportCertificationState extends State<IamportCertification> {
             IMP.init("$userCode");
             IMP.certification($data, function(response) {
               const query = [];
-              Object.keys(response).forEach(key => {
+              Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
               location.href = "$redirectUrl" + "?" + query.join("&");

@@ -79,7 +79,7 @@ class _IamportPaymentState extends State<IamportPayment> {
             IMP.init("$userCode");
             IMP.request_pay($data, function(response) {
               const query = [];
-              Object.keys(response).forEach(key => {
+              Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
               location.href = "$redirectUrl" + "?" + query.join("&");
