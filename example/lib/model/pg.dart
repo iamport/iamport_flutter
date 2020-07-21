@@ -18,6 +18,9 @@ class Pg {
     'naverco',
     'naverpay',
     'smilepay',
+    'chai',
+    'payple',
+    'alipay',
   ];
 
   static String getLabel(String pg) {
@@ -58,6 +61,12 @@ class Pg {
         return '네이버페이';
       case 'smilepay':
         return '스마일페이';
+      case 'chai':
+        return '차이페이';
+      case 'payple':
+        return '페이플';
+      case 'alipay':
+        return '알리페이';
       default:
         return '-';
     }
