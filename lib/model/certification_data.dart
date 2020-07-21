@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import './iamport_url.dart';
+
 class CertificationData {
   String merchnatUid; // 주문번호
   String company; // 회사명 또는 URL
@@ -28,6 +30,7 @@ class CertificationData {
   String toJsonString() {
     Map<String, dynamic> jsonData = {
       'merchant_uid': merchnatUid,
+      'm_redirect_url': IamportUrl.redirectUrl,
     };
 
     if (company != null) {

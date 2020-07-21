@@ -29,6 +29,7 @@ class Method {
   static List<String> METHOD_FOR_CARD = ['card'];
   static List<String> METHOD_FOR_PHONE = ['phone'];
   static List<String> METHOD_FOR_VBANK = ['vbank'];
+  static List<String> METHOD_FOR_TRANS = ['trans'];
 
   static String getLabel(String method) {
     switch (method) {
@@ -63,6 +64,8 @@ class Method {
         return 'phone';
       case 'settle':
         return 'vbank';
+      case 'payple':
+        return 'trans';
       default:
         return 'card';
     }
@@ -80,6 +83,8 @@ class Method {
       case 'paypal':
       case 'payco': 
       case 'smilepay':
+      case 'chai':
+      case 'alipay':
         return METHOD_FOR_CARD;
       case 'uplus':
         return METHODS_FOR_UPLUS;
@@ -89,6 +94,8 @@ class Method {
         return METHODS_FOR_MOBILIANS;
       case 'settle':
         return METHOD_FOR_VBANK;
+      case 'payple':
+        return METHOD_FOR_TRANS;
       default:
         return METHODS;
     }
