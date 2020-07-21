@@ -64,6 +64,7 @@ class Method {
         return 'phone';
       case 'settle':
         return 'vbank';
+      case 'chai':
       case 'payple':
         return 'trans';
       default:
@@ -83,7 +84,6 @@ class Method {
       case 'paypal':
       case 'payco': 
       case 'smilepay':
-      case 'chai':
       case 'alipay':
         return METHOD_FOR_CARD;
       case 'uplus':
@@ -94,6 +94,7 @@ class Method {
         return METHODS_FOR_MOBILIANS;
       case 'settle':
         return METHOD_FOR_VBANK;
+      case 'chai':
       case 'payple':
         return METHOD_FOR_TRANS;
       default:
