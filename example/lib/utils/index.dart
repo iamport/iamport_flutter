@@ -10,6 +10,14 @@ class Utils {
       case 'naverco':
       case 'naverpay':
         return 'imp41073887';
+      case 'smilepay':
+        return 'imp49241793';
+      case 'chai':
+        return 'imp37739582';
+      case 'alipay':
+        return 'imp87936124';
+      case 'payple':
+        return 'imp42284830';
       default:
         return 'imp19424728';
     }
