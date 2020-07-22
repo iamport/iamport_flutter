@@ -9,9 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_webview_plugin: ^0.3.5
-  # flutter_webview_plugin:
-  #   path: /Users/deedee/Desktop/iamport/flutter/flutter_webview_plugin
+  flutter_webview_plugin:
+    git:
+      url: git://github.com/SoleeChoi/flutter_webview_plugin.git
+      ref: develop
   url_launcher: ^5.1.1
   uni_links: ^0.2.0
 

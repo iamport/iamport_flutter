@@ -52,6 +52,9 @@ class IamportWebView extends StatelessWidget {
       invalidUrlRegex: Platform.isAndroid
           ? '^(?!https://|http://|about:blank|data:).+'
           : null,
+      appCacheEnabled: true,
+      cacheMode: 'LOAD_CACHE_ELSE_NETWORK',
+      thirdPartyCookiesEnabled: true,
     );
   }
 }
