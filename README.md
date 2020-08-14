@@ -27,7 +27,7 @@
 
 ```
 dependencies:
-  iamport_flutter: ^0.9.11
+  iamport_flutter: ^0.9.12
 ```
 
 ## 설정하기
