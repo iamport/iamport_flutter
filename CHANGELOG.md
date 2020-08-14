@@ -1,4 +1,8 @@
-## [0.9.11](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.9.12](https://github.com/iamport/iamport_flutter/tree/master)
+- [안드로이드] KG이니시스 - 실시간계좌이체시 국민리브, NH앱캐시, NG상상뱅크, BNK경남은행 앱의 링크가 누락된 부분을 추가하였습니다.
+- uni_links 패키지의 버전을 0.4.0으로 올렸습니다.
+
+## [0.9.11](https://github.com/iamport/iamport_flutter/tree/v0.9.11)
 - 스마일페이, 차이페이, 페이플, 알리페이 예제 코드를 추가하였습니다.
 - 다날 - 본인인증 방식을 리디렉션 방식으로 변경하였습니다.
 
