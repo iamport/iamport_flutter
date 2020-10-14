@@ -4,8 +4,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.net.URISyntaxException;
 
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -13,7 +16,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** IamportFlutterPlugin */
-public class IamportFlutterPlugin implements MethodCallHandler {
+public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
   private final static String BANKPAY = "kftc-bankpay";
   private final static String ISP = "ispmobile";
   private final static String KB_BANKPAY = "kb-bankpay";
@@ -28,6 +31,14 @@ public class IamportFlutterPlugin implements MethodCallHandler {
 	private final static String PACKAGE_MG_BANKPAY = "kr.co.kfcc.mobilebank";
 	private final static String PACKAGE_KN_BANKPAY = "com.knb.psb";
 
+  private MethodChannel channel;
+
+  @Override
+  public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+    channel = new MethodChannel(binding.getFlutterEngine().getDartExecutor(), "iamport_flutter");
+    channel.setMethodCallHandler(this);
+  }
+
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "iamport_flutter");
@@ -37,14 +48,9 @@ public class IamportFlutterPlugin implements MethodCallHandler {
   @Override
   public void onMethodCall(MethodCall call, Result result) {
     switch (call.method) {
-      case "getPlatformVersion": {
-        result.success("Android " + android.os.Build.VERSION.RELEASE);
-        break;
-      }
       case "getAppUrl": {
         try {
           String url = call.argument("url");
-          Log.i("url", url);
           Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
           result.success(intent.getDataString());
         } catch (URISyntaxException e) {
@@ -91,5 +97,10 @@ public class IamportFlutterPlugin implements MethodCallHandler {
         break;
       }
     }
+  }
+
+  @Override
+  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+    channel.setMethodCallHandler(null);
   }
 }
