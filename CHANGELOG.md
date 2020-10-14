@@ -1,4 +1,7 @@
-## [0.9.12](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.9.13](https://github.com/iamport/iamport_flutter/tree/master)
+- [다날 - 휴대폰 소액결제] 주문명이 중복되는 것을 방지하기 위해 company 파라메터를 추가하였습니다.
+
+## [0.9.12](https://github.com/iamport/iamport_flutter/tree/v0.9.12)
 - [안드로이드] KG이니시스 - 실시간계좌이체시 국민리브, NH앱캐시, NG상상뱅크, BNK경남은행 앱의 링크가 누락된 부분을 추가하였습니다.
 - uni_links 패키지의 버전을 0.4.0으로 올렸습니다.
 
