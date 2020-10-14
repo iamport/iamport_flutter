@@ -37,17 +37,20 @@ class Payment extends StatelessWidget {
       userCode: 'iamport',
       /* [필수입력] 결제 데이터 */
       data: PaymentData.fromJson({
-        'pg': 'html5_inicis',                                           // PG사
+        'pg': 'html5_inicis',                                          // PG사
         'payMethod': 'card',                                           // 결제수단
-        'name': '아임포트 결제데이터 분석',                                   // 주문명
+        'name': '아임포트 결제데이터 분석',                                  // 주문명
         'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
-        'amount': '39000',                                              // 결제금액
+        'amount': 39000,                                               // 결제금액
         'buyerName': '홍길동',                                           // 구매자 이름
         'buyerTel': '01012345678',                                     // 구매자 연락처
         'buyerEmail': 'example@naver.com',                             // 구매자 이메일
         'buyerAddr': '서울시 강남구 신사동 661-16',                         // 구매자 주소
         'buyerPostcode': '06018',                                      // 구매자 우편번호
         'appScheme': 'example',                                        // 앱 URL scheme
+        'display': {
+          'cardQuota' : [2,3]                                          //결제창 UI 내 할부개월수 제한
+        }
       }),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
@@ -101,17 +104,18 @@ class Payment extends StatelessWidget {
 | appScheme      | String                   | 앱 스킴          | true                      |
 | popup          | bool                     | 페이팔 팝업 여부    | false                    |
 | naverPopupMode | bool                     | 네이버페이 팝업 여부 | false                    |
-| `period`       | Map<String, String>      | 제공기간          | false                    |
+| `period`       | Map<String, String>      | 다날 - 신용카드/계좌이체/가상계좌 전용 제공기간 | false |
+| `company`      | String                   | 다날 - 휴대폰 소액결제 전용 주문명 앞 괄호 안 텍스트 | false |
 
 ### period
-이니시스, 나이스 그리고 다날 일반 결제시 제공기간 표기를 위한 파라미터입니다. 제공기간 시작 날짜(`from`)와 끝 날짜(`to`)를 아래와 같이 `YYYYMMDD` 형태로 넘겨주세요. 
+이니시스, 나이스 그리고 다날 신용카드/계좌이체/가상계좌 결제시 제공기간 표기를 위한 파라미터입니다. 제공기간 시작 날짜(`from`)와 끝 날짜(`to`)를 아래와 같이 `YYYYMMDD` 형태로 넘겨주세요. 
 
 | key  | Type             | Description   |
 | ---- | ---------------- | ------------- |
 | from | String(YYYYMMDD) | 제공기간 시작 날짜 |
 | to   | String(YYYYMMDD) | 제공기간 종료날짜  |
 
-```
+```dart
 data: PaymentData.fromJson({
   ...
   period: { // 제공기간 2020년 1월 1일 ~ 2020년 12월 31일
@@ -120,6 +124,9 @@ data: PaymentData.fromJson({
   },
 }),
 ```
+
+### company
+다날 휴대폰 소액결제시 주문명 앞 괄호 안 텍스트에 표기될 회사명을 위한 파라미터입니다. 결제창 내 주문명은 `(회사명) 주문명`과 같이 표기되며, 누락시 `(주문명) 주문명`과 같이 표기됩니다.
 
 ## 휴대폰 본인인증 예제
 ```dart

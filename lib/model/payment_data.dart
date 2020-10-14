@@ -29,6 +29,7 @@ class PaymentData {
   bool popup; // 페이팔 팝업 여부
   bool naverPopupMode; // 네이버페이 팝업 여부
   Map<String, String> period; // [이니시스. 다날. 나이스] 서비스 제공기간 표기
+  String company; // [다날 - 휴대폰 소액결제 전용] 주문명: (company) name 대비
 
   PaymentData(
     this.pg,
@@ -57,6 +58,7 @@ class PaymentData {
     this.popup,
     this.naverPopupMode,
     this.period,
+    this.company,
   );
 
   PaymentData.fromJson(Map<String, dynamic> data)
@@ -85,7 +87,8 @@ class PaymentData {
         appScheme = data['appScheme'],
         popup = data['popup'],
         naverPopupMode = data['naverPopupMode'],
-        period = data['period'];
+        period = data['period'],
+        company = data['company'];
 
   String toJsonString() {
     Map<String, dynamic> jsonData = {
@@ -154,6 +157,9 @@ class PaymentData {
     }
     if (period != null) {
       jsonData['period'] = period;
+    }
+    if (company != null) {
+      jsonData['company'] = company;
     }
 
     return jsonEncode(jsonData);
