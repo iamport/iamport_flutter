@@ -261,6 +261,10 @@ class _PaymentTestState extends State<PaymentTest> {
                       // 휴대폰 소액결제의 경우, 실물 컨텐츠 여부 추가
                       if (payMethod == 'phone') {
                         data.digital = digital;
+                        if (pg == 'danal') {
+                          // 다날 && 휴대폰 소액결제의 경우, company 파라메터 추가
+                          data.company = '아임포트';
+                        }
                       }
 
                       // 정기결제의 경우, customer_uid 추가
