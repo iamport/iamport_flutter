@@ -79,7 +79,7 @@ class _IamportPaymentState extends State<IamportPayment> {
             IMP.init("$userCode");
             IMP.request_pay($data, function(response) {
               const query = [];
-              Object.keys(response).forEach(key => {
+              Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
               location.href = "$redirectUrl" + "?" + query.join("&");
@@ -114,8 +114,16 @@ class _IamportPaymentState extends State<IamportPayment> {
               data.pg == 'nice' &&
               data.payMethod == 'trans') {
             String queryToString = parsedUrl.query;
+
+            /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
+            String niceTransRedirectionUrl;
+            parsedUrl.queryParameters.forEach((key, value) {
+              if (key == 'callbackparam1') {
+                niceTransRedirectionUrl = value;
+              }
+            });
             await webView.evalJavascript(''' 
-              location.href = "https://web.nicepay.co.kr/smart/bank/payTrans.jsp?$queryToString";
+              location.href = "$niceTransRedirectionUrl?$queryToString";
             ''');
           }
         }

@@ -16,8 +16,17 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class IamportFlutterPlugin implements MethodCallHandler {
   private final static String BANKPAY = "kftc-bankpay";
   private final static String ISP = "ispmobile";
+  private final static String KB_BANKPAY = "kb-bankpay";
+	private final static String NH_BANKPAY = "nhb-bankpay";
+	private final static String MG_BANKPAY = "mg-bankpay";
+	private final static String KN_BANKPAY = "kn-bankpay";
+
   private final static String PACKAGE_ISP = "kvp.jjy.MispAndroid320";
   private final static String PACKAGE_BANKPAY = "com.kftc.bankpay.android";
+  private final static String PACKAGE_KB_BANKPAY = "com.kbstar.liivbank";
+	private final static String PACKAGE_NH_BANKPAY = "com.nh.cashcardapp";
+	private final static String PACKAGE_MG_BANKPAY = "kr.co.kfcc.mobilebank";
+	private final static String PACKAGE_KN_BANKPAY = "com.knb.psb";
 
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
@@ -55,6 +64,14 @@ public class IamportFlutterPlugin implements MethodCallHandler {
             result.success("market://details?id=" + PACKAGE_ISP);
           } else if (BANKPAY.equalsIgnoreCase(scheme)) {
             result.success("market://details?id=" + PACKAGE_BANKPAY);
+          } else if (KB_BANKPAY.equalsIgnoreCase(scheme)) {
+            result.success("market://details?id=" + PACKAGE_KB_BANKPAY);
+          } else if (NH_BANKPAY.equalsIgnoreCase(scheme)) {
+            result.success("market://details?id=" + PACKAGE_NH_BANKPAY);
+          } else if (MG_BANKPAY.equalsIgnoreCase(scheme)) {
+            result.success("market://details?id=" + PACKAGE_MG_BANKPAY);
+          } else if (KN_BANKPAY.equalsIgnoreCase(scheme)) {
+            result.success("market://details?id=" + PACKAGE_KN_BANKPAY);
           } else {
             String packageName = intent.getPackage();
             if (packageName != null) {
