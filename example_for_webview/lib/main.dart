@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './screens/home.dart';
 import './screens/payment.dart';
+import './screens/certification.dart';
 
 void main() => runApp(new MyApp());
 
@@ -9,7 +11,7 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {  
+class _MyAppState extends State<MyApp> {
   static const Color primaryColor = Color(0xff344e81);
 
   @override
@@ -21,7 +23,9 @@ class _MyAppState extends State<MyApp> {
         buttonColor: primaryColor,
       ),
       routes: {
-        '/': (context) => Payment(),
+        '/': (context) => Home(),
+        '/payment': (context) => Payment(),
+        '/certification': (context) => Certification(),
       },
     );
   }
