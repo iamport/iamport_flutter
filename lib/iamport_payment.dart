@@ -51,16 +51,15 @@ class _IamportPaymentState extends State<IamportPayment> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          if (widget._iamportValidation.getIsValid())
-            IamportWebView(
-              type: IamportType.payment,
-              onIamportInitialized: (controller) {
-                _webViewController = controller;
-                controller.evaluateJavascript('''
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        if (widget._iamportValidation.getIsValid())
+          IamportWebView(
+            type: IamportType.payment,
+            onIamportInitialized: (controller) {
+              _webViewController = controller;
+              controller.evaluateJavascript('''
                   IMP.init("${widget.userCode}");
                   IMP.request_pay(${widget.data.toJsonString()}, function(response) {
                     const query = [];
@@ -70,14 +69,13 @@ class _IamportPaymentState extends State<IamportPayment> {
                     location.href = "${IamportUrl.redirectUrl}" + "?" + query.join("&");
                   });
                 ''');
-              },
-              isIamportComplete: (url) => _isPaymentOver(url),
-              onIamportComplete: (data) => widget.callback(data),
-            ),
-          if (!widget._iamportValidation.getIsValid())
-            IamportError('결제', widget._iamportValidation.errorMessage),
-        ],
-      ),
+            },
+            isIamportComplete: (url) => _isPaymentOver(url),
+            onIamportComplete: (data) => widget.callback(data),
+          ),
+        if (!widget._iamportValidation.getIsValid())
+          IamportError('결제', widget._iamportValidation.errorMessage),
+      ],
     );
   }
 
