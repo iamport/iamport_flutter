@@ -1,10 +1,14 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class IamportWebView extends StatelessWidget {
-  static final Color primaryColor = Color(0xff344e81);
+import '../model/iamport_url.dart';
+
+enum IamportType { payment, certificate }
+
+typedef CompleteChecker = bool Function(String url);
+
+class IamportWebView extends StatefulWidget {
   static final String html = '''
     <html>
       <head>
@@ -17,41 +21,74 @@ class IamportWebView extends StatelessWidget {
       <body></body>
     </html>
   ''';
+  static final String initialUrl =
+      Uri.dataFromString(IamportWebView.html, mimeType: 'text/html').toString();
 
-  final String type;
-  final PreferredSizeWidget appBar;
-  final Widget initialChild;
-  IamportWebView(this.type, this.appBar, this.initialChild);
+  final ValueSetter<WebViewController> onIamportInitialized;
+  final ValueSetter<Map<String, String>> onIamportComplete;
+  final ValueChanged<String> onPageStarted;
+  final CompleteChecker isIamportComplete;
+
+  final IamportType type;
+
+  IamportWebView({
+    @required this.type,
+    @required this.onIamportInitialized,
+    @required this.onIamportComplete,
+    @required this.isIamportComplete,
+    this.onPageStarted,
+  })  : assert(type != null),
+        assert(onIamportInitialized != null),
+        assert(onIamportComplete != null),
+        assert(isIamportComplete != null);
+
+  @override
+  _IamportWebViewState createState() => _IamportWebViewState();
+}
+
+class _IamportWebViewState extends State<IamportWebView> {
+  WebViewController _webViewController;
 
   @override
   Widget build(BuildContext context) {
-    return new WebviewScaffold(
-      url: new Uri.dataFromString(html, mimeType: 'text/html').toString(),
-      appBar: appBar ??
-          new AppBar(
-            title: new Text('아임포트 $type'),
-            backgroundColor: primaryColor,
-          ),
-      hidden: true,
-      initialChild: initialChild ??
-          Container(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('assets/images/iamport-logo.png'),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                    child:
-                        Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
-                  ),
-                ],
-              ),
-            ),
-          ),
-      invalidUrlRegex: Platform.isAndroid
-          ? '^(?!https://|http://|about:blank|data:).+'
-          : null,
+    return WebView(
+      initialUrl: IamportWebView.initialUrl,
+      javascriptMode: JavascriptMode.unrestricted,
+      onWebViewCreated: (controller) {
+        this._webViewController = controller;
+      },
+      navigationDelegate: (request) async {
+        if (widget.isIamportComplete(request.url)) {
+          widget.onIamportComplete(_extractCompleteData(request.url));
+          return NavigationDecision.prevent;
+        }
+
+        final iamportUrlUtil = IamportUrl(request.url);
+        if (iamportUrlUtil.isAppLink()) {
+          final appUrl = await iamportUrlUtil.getAppUrl();
+          if (await canLaunch(appUrl)) {
+            await launch(appUrl);
+          } else {
+            await launch(await iamportUrlUtil.getMarketUrl());
+          }
+
+          return NavigationDecision.prevent;
+        }
+
+        return NavigationDecision.navigate;
+      },
+      onPageStarted: (page) {
+        widget?.onPageStarted(page);
+      },
+      onPageFinished: (page) {
+        if (page.contains(IamportWebView.initialUrl)) {
+          widget.onIamportInitialized(this._webViewController);
+        }
+      },
     );
+  }
+
+  Map<String, String> _extractCompleteData(String url) {
+    return Uri.parse(url).queryParameters;
   }
 }
