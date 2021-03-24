@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  webview_flutter: ^1.0.7
-  url_launcher: ^5.1.1
+  webview_flutter: ^2.0.2
+  url_launcher: ^6.0.2
   uni_links: ^0.4.0
 
 dev_dependencies:
