@@ -89,14 +89,7 @@ class _IamportPaymentState extends State<IamportPayment> {
         IamportUrl iamportUrl = new IamportUrl(url);
         if (type == WebViewState.abortLoad && iamportUrl.isAppLink()) {
           /* Android */
-          String appUrl = await iamportUrl.getAppUrl();
-          if (await canLaunch(appUrl)) {
-            // 3rd parth 앱 오픈
-            await launch(appUrl);
-          } else {
-            // 앱 미설치시 마켓 URL로 연결
-            await launch(await iamportUrl.getMarketUrl());
-          }
+          await iamportUrl.launch();
         }
       }
     });

@@ -1,8 +1,9 @@
 package kr.iamport.iamport_flutter;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.util.Log;
+import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
@@ -17,6 +18,8 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** IamportFlutterPlugin */
 public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
+  private final static String MARKET_PREFIX = "market://details?id=";
+
   private final static String BANKPAY = "kftc-bankpay";
   private final static String ISP = "ispmobile";
   private final static String KB_BANKPAY = "kb-bankpay";
@@ -32,6 +35,8 @@ public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
 	private final static String PACKAGE_KN_BANKPAY = "com.knb.psb";
 
   private MethodChannel channel;
+  private static Activity activity;
+
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
@@ -41,56 +46,33 @@ public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
 
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
+    activity = registrar.activity();
+
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "iamport_flutter");
     channel.setMethodCallHandler(new IamportFlutterPlugin());
   }
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
+    Intent intent = null;
     switch (call.method) {
-      case "getAppUrl": {
+      case "launch": {
         try {
           String url = call.argument("url");
-          Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-          result.success(intent.getDataString());
-        } catch (URISyntaxException e) {
+          intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+          startNewActivity(intent.getDataString());
+          result.success(null);
+        } catch (URISyntaxException e){
           result.notImplemented();
         } catch (ActivityNotFoundException e) {
-          result.notImplemented();
-        }
-        break;
-      }
-      case "getMarketUrl": {
-        try {
-          String url = call.argument("url");
-          Log.i("url", url);
-          Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-          String scheme = intent.getScheme();
-          if (ISP.equalsIgnoreCase(scheme)) {
-            result.success("market://details?id=" + PACKAGE_ISP);
-          } else if (BANKPAY.equalsIgnoreCase(scheme)) {
-            result.success("market://details?id=" + PACKAGE_BANKPAY);
-          } else if (KB_BANKPAY.equalsIgnoreCase(scheme)) {
-            result.success("market://details?id=" + PACKAGE_KB_BANKPAY);
-          } else if (NH_BANKPAY.equalsIgnoreCase(scheme)) {
-            result.success("market://details?id=" + PACKAGE_NH_BANKPAY);
-          } else if (MG_BANKPAY.equalsIgnoreCase(scheme)) {
-            result.success("market://details?id=" + PACKAGE_MG_BANKPAY);
-          } else if (KN_BANKPAY.equalsIgnoreCase(scheme)) {
-            result.success("market://details?id=" + PACKAGE_KN_BANKPAY);
+          String marketUrl = getMarketUrl(intent);
+          if (marketUrl == null) {
+            result.notImplemented();
           } else {
-            String packageName = intent.getPackage();
-            if (packageName != null) {
-              result.success("market://details?id=" + packageName);
-            }
+            startNewActivity(marketUrl);
+            result.success(null);
           }
-          result.notImplemented();
-        } catch (URISyntaxException e) {
-          result.notImplemented();
-        } catch (ActivityNotFoundException e) {
-          result.notImplemented();
         }
-        break;
       }
       default: {
         result.notImplemented();
@@ -102,5 +84,40 @@ public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
     channel.setMethodCallHandler(null);
+  }
+
+  protected void startNewActivity(String parsingUri) {
+    Uri uri = Uri.parse(parsingUri);
+    Intent newIntent = new Intent(Intent.ACTION_VIEW, uri);
+
+    activity.startActivity(newIntent);
+  }
+
+  protected String getMarketUrl(Intent intent) {
+    String scheme = intent.getScheme();
+    if (ISP.equalsIgnoreCase(scheme)) {
+      return MARKET_PREFIX + PACKAGE_ISP;
+    }
+    if (BANKPAY.equalsIgnoreCase(scheme)) {
+      return MARKET_PREFIX + PACKAGE_BANKPAY;
+    }
+    if (KB_BANKPAY.equalsIgnoreCase(scheme)) {
+      return MARKET_PREFIX + PACKAGE_KB_BANKPAY;
+    }
+    if (NH_BANKPAY.equalsIgnoreCase(scheme)) {
+      return MARKET_PREFIX + PACKAGE_NH_BANKPAY;
+    }
+    if (MG_BANKPAY.equalsIgnoreCase(scheme)) {
+      return MARKET_PREFIX + PACKAGE_MG_BANKPAY;
+    }
+    if (KN_BANKPAY.equalsIgnoreCase(scheme)) {
+      return MARKET_PREFIX + PACKAGE_KN_BANKPAY;
+    }
+
+    String packageName = intent.getPackage();
+    if (packageName != null) {
+      return MARKET_PREFIX + packageName;
+    }
+    return null;
   }
 }
