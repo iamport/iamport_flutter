@@ -77,14 +77,7 @@ class _IamportCertificationState extends State<IamportCertification> {
         bool isOpeningStore = (Platform.isIOS && type == WebViewState.shouldStart) || (Platform.isAndroid && type == WebViewState.abortLoad);
         if (isOpeningStore && iamportUrl.isAppLink()) {
           /* Android */
-          String appUrl = await iamportUrl.getAppUrl();
-          if (await canLaunch(appUrl)) {
-            // 3rd parth 앱 오픈
-            await launch(appUrl);
-          } else {
-            // 앱 미설치시 마켓 URL로 연결
-            await launch(await iamportUrl.getMarketUrl());
-          }
+          await iamportUrl.launch();
         }
       }
     });

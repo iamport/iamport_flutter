@@ -1,4 +1,7 @@
-## [0.9.13](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.9.14](https://github.com/iamport/iamport_flutter/tree/master)
+- 안드로이드 API 30 지원을 위해 url_launcher의 canLaunch 코드를 제거하였습니다.
+
+## [0.9.13](https://github.com/iamport/iamport_flutter/tree/v0.9.13)
 - [다날 - 휴대폰 소액결제] 주문명이 중복되는 것을 방지하기 위해 company 파라메터를 추가하였습니다.
 
 ## [0.9.12](https://github.com/iamport/iamport_flutter/tree/v0.9.12)

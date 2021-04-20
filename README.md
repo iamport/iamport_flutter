@@ -12,12 +12,13 @@
 - 설치하기
 - 설정하기
   - IOS 설정하기
+  - Android 설정하기
   - [실시간 계좌이체 설정하기](example/manuals/TRANS.md)
 - [예제](example/README.md)
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.9.13](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.9.14](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -27,7 +28,7 @@
 
 ```
 dependencies:
-  iamport_flutter: ^0.9.13
+  iamport_flutter: ^0.9.14
 ```
 
 ## 설정하기
@@ -121,6 +122,20 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <true/>
 </dict>
 ...
+```
+
+### Android 설정하기
+안드로이드 API 레벨 30에서 특정 카드사로 결제 시도시 `net::ERR_CLEARTEXT_NOT_PERMITTED` 오류가 발생한다는 버그가 보고되었습니다. 이를 해결하기 위해서는 [AndroidManifest.xml 파일](https://github.com/iamport/iamport_flutter/blob/develop/example/android/app/src/main/AndroidManifest.xml#L13)에 아래와 같이 [usesclearTextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) 속성을 `true`로 설정해주셔야 합니다.
+
+```xml
+<manifest ...>
+    ...
+    <application
+        ...
+        android:usesCleartextTraffic="true"
+    >
+    </application>
+</manifest>
 ```
 
 ### 실시간 계좌이체 설정하기
