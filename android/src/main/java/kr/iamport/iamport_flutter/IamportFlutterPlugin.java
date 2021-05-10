@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import java.net.URISyntaxException;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.activity.ActivityAware;
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -17,7 +19,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** IamportFlutterPlugin */
-public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
+public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
   private final static String MARKET_PREFIX = "market://details?id=";
 
   private final static String BANKPAY = "kftc-bankpay";
@@ -119,5 +121,25 @@ public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler {
       return MARKET_PREFIX + packageName;
     }
     return null;
+  }
+
+  @Override
+  public void onAttachedToActivity(@NonNull ActivityPluginBinding activityPluginBinding) {
+    activity = activityPluginBinding.getActivity();
+  }
+
+  @Override
+  public void onDetachedFromActivityForConfigChanges() {
+
+  }
+
+  @Override
+  public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding activityPluginBinding) {
+    activity = activityPluginBinding.getActivity();
+  }
+
+  @Override
+  public void onDetachedFromActivity() {
+
   }
 }
