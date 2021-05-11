@@ -1,5 +1,3 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/services.dart';
 
 class IamportUrl {
