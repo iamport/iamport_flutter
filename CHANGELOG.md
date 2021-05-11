@@ -1,5 +1,8 @@
-## [0.9.14](https://github.com/iamport/iamport_flutter/tree/master)
-- 안드로이드 API 30 지원을 위해 url_launcher의 canLaunch 코드를 제거하였습니다.
+## [0.9.15](https://github.com/iamport/iamport_flutter/tree/master)
+- [안드로이드] 코틀린 환경에서 registerWith 함수가 트리거되지 않는 상황을 대비해 ActivityAware 인터페이스를 implement 하도록 로직을 추가하였습니다.
+
+## [0.9.14](https://github.com/iamport/iamport_flutter/tree/v0.9.14)
+- [안드로이드] API 30 지원을 위해 url_launcher의 canLaunch 코드를 제거하였습니다.
 
 ## [0.9.13](https://github.com/iamport/iamport_flutter/tree/v0.9.13)
 - [다날 - 휴대폰 소액결제] 주문명이 중복되는 것을 방지하기 위해 company 파라메터를 추가하였습니다.
