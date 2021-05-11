@@ -75,6 +75,7 @@ public class IamportFlutterPlugin implements FlutterPlugin, MethodCallHandler, A
             result.success(null);
           }
         }
+        break;
       }
       default: {
         result.notImplemented();
