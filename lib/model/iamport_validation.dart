@@ -2,9 +2,9 @@ import './payment_data.dart';
 
 class IamportValidation {
   bool isValid = true;
-  String errorMessage;
+  String? errorMessage;
 
-  IamportValidation(String userCode, PaymentData data, Function callback) {
+  IamportValidation(String? userCode, PaymentData? data, Function? callback) {
     print('data: $data');
     if (userCode == null) {
       isValid = false;
@@ -92,7 +92,7 @@ class IamportValidation {
     return isValid;
   }
 
-  String getErrorMessage() {
+  String? getErrorMessage() {
     return errorMessage;
   }
 }

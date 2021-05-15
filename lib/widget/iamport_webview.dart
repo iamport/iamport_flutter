@@ -1,9 +1,10 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:iamport_flutter/model/iamport_url.dart';
+import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
 
-class IamportWebView extends StatelessWidget {
+enum ActionType { auth, payment }
+
+class IamportWebView extends StatefulWidget {
   static final Color primaryColor = Color(0xff344e81);
   static final String html = '''
     <html>
@@ -18,40 +19,107 @@ class IamportWebView extends StatelessWidget {
     </html>
   ''';
 
-  final String type;
-  final PreferredSizeWidget appBar;
-  final Widget initialChild;
-  IamportWebView(this.type, this.appBar, this.initialChild);
+  final ActionType type;
+  final PreferredSizeWidget? appBar;
+  final Widget? initialChild;
+  final ValueSetter<WebViewController?> executeJS;
+  final ValueSetter<Map<String, String>> useQueryData;
+  final Function isPaymentOver;
+  final Function customPGAction;
+
+  IamportWebView({
+    required this.type,
+    this.appBar,
+    this.initialChild,
+    required this.executeJS,
+    required this.useQueryData,
+    required this.isPaymentOver,
+    required this.customPGAction,
+  });
+
+  @override
+  _IamportWebViewState createState() => _IamportWebViewState();
+}
+
+class _IamportWebViewState extends State<IamportWebView> {
+  WebViewController? _webViewController;
+  int _idx = 1;
 
   @override
   Widget build(BuildContext context) {
-    return new WebviewScaffold(
-      url: new Uri.dataFromString(html, mimeType: 'text/html').toString(),
-      appBar: appBar ??
-          new AppBar(
-            title: new Text('아임포트 $type'),
-            backgroundColor: primaryColor,
+    String? typeText;
+    if (widget.type == ActionType.auth) {
+      typeText = '본인인증';
+    } else if (widget.type == ActionType.payment) {
+      typeText = '결제';
+    }
+
+    return Scaffold(
+      appBar: widget.appBar ??
+          AppBar(
+            title: Text('아임포트 $typeText'),
+            backgroundColor: IamportWebView.primaryColor,
           ),
-      hidden: true,
-      initialChild: initialChild ??
-          Container(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('assets/images/iamport-logo.png'),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                    child:
-                        Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
+      body: IndexedStack(
+        index: _idx,
+        children: [
+          WebView(
+            initialUrl:
+                Uri.dataFromString(IamportWebView.html, mimeType: 'text/html')
+                    .toString(),
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (controller) {
+              this._webViewController = controller;
+              if (widget.type == ActionType.payment) {
+                // 현재는 스마일페이일 경우에만 실행
+                widget.customPGAction(
+                    this._webViewController, IamportWebView.html);
+              }
+              // 웹뷰 로딩 완료시에 화면 전환
+              setState(() {
+                _idx = 0;
+              });
+            },
+            onPageFinished: (String url) {
+              // 페이지 로딩 완료시 IMP 코드 실행
+              widget.executeJS(this._webViewController);
+            },
+            navigationDelegate: (request) async {
+              if (widget.isPaymentOver(request.url)) {
+                String decodedUrl = Uri.decodeComponent(request.url);
+                widget.useQueryData(Uri.parse(decodedUrl).queryParameters);
+
+                return NavigationDecision.prevent;
+              }
+
+              final iamportUrl = IamportUrl(request.url);
+              if (iamportUrl.isAppLink()) {
+                // 앱 실행 로직을 iamport_url 모듈로 이동
+                iamportUrl.launchApp();
+                return NavigationDecision.prevent;
+              }
+
+              return NavigationDecision.navigate;
+            },
+          ),
+          widget.initialChild ??
+              Container(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/images/iamport-logo.png'),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+                        child: Text('잠시만 기다려주세요...',
+                            style: TextStyle(fontSize: 20.0)),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-      invalidUrlRegex: Platform.isAndroid
-          ? '^(?!https://|http://|about:blank|data:).+'
-          : null,
+        ],
+      ),
     );
   }
 }

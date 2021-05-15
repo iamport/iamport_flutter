@@ -1,6 +1,6 @@
 class Utils {
   static String getUserCodeByPg(String pg) {
-    switch(pg) {
+    switch (pg) {
       case 'kakao':
         return 'imp10391932';
       case 'paypal':
@@ -13,7 +13,8 @@ class Utils {
       case 'smilepay':
         return 'imp49241793';
       case 'chai':
-        return 'imp37739582';
+        // return 'imp37739582';
+        return 'imp43161593';
       case 'alipay':
         return 'imp87936124';
       case 'payple':

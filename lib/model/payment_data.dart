@@ -3,33 +3,33 @@ import 'dart:convert';
 import './iamport_url.dart';
 
 class PaymentData {
-  String pg; // PG사
-  String payMethod; // 결제수단
-  Map<String, List<int>> display; // 할부개월수
-  String vbankDue; // 가상계좌 입금기한
-  String bizNum; // 사업자번호
-  bool digital; // 실물컨텐츠 여부
-  bool escrow; // 에스크로 여부
-  String name; // 주문명
-  int amount; // 결제금액
-  String currency; // 화폐단위
-  Map<String, String> customData; // 임의 지정 데이터
-  int taxFree; // 면세 공급 가액
-  int vat; // 부가세
-  String language; // 언어설정
-  String merchantUid; // 주문번호
-  String buyerName; // 구매자 이름
-  String buyerTel; // 구매자 연락처
-  String buyerEmail; // 구매자 이메일
-  String buyerAddr; // 구매자 주소
-  String buyerPostcode; // 구매자 우편번호
-  String noticeUrl;
-  String customerUid; // 정기결제 카드정보
-  String appScheme; // 앱 스킴
-  bool popup; // 페이팔 팝업 여부
-  bool naverPopupMode; // 네이버페이 팝업 여부
-  Map<String, String> period; // [이니시스. 다날. 나이스] 서비스 제공기간 표기
-  String company; // [다날 - 휴대폰 소액결제 전용] 주문명: (company) name 대비
+  String? pg; // PG사
+  String? payMethod; // 결제수단
+  Map<String, List<int>>? display; // 할부개월수
+  String? vbankDue; // 가상계좌 입금기한
+  String? bizNum; // 사업자번호
+  bool? digital; // 실물컨텐츠 여부
+  bool? escrow; // 에스크로 여부
+  String? name; // 주문명
+  int? amount; // 결제금액
+  String? currency; // 화폐단위
+  Map<String, String>? customData; // 임의 지정 데이터
+  int? taxFree; // 면세 공급 가액
+  int? vat; // 부가세
+  String? language; // 언어설정
+  String? merchantUid; // 주문번호
+  String? buyerName; // 구매자 이름
+  String? buyerTel; // 구매자 연락처
+  String? buyerEmail; // 구매자 이메일
+  String? buyerAddr; // 구매자 주소
+  String? buyerPostcode; // 구매자 우편번호
+  String? noticeUrl;
+  String? customerUid; // 정기결제 카드정보
+  String? appScheme; // 앱 스킴
+  bool? popup; // 페이팔 팝업 여부
+  bool? naverPopupMode; // 네이버페이 팝업 여부
+  Map<String, String>? period; // [이니시스. 다날. 나이스] 서비스 제공기간 표기
+  String? company; // [다날 - 휴대폰 소액결제 전용] 주문명: (company) name 대비
 
   PaymentData(
     this.pg,
@@ -125,7 +125,7 @@ class PaymentData {
     }
     if (display != null) {
       jsonData['display'] = {
-        'card_quota': display['cardQuota'],
+        'card_quota': display!['cardQuota'],
       };
     }
     if (vbankDue != null) {

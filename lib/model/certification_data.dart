@@ -3,12 +3,12 @@ import 'dart:convert';
 import './iamport_url.dart';
 
 class CertificationData {
-  String merchnatUid; // 주문번호
-  String company; // 회사명 또는 URL
-  String carrier; // 통신사
-  String name; // 본인인증 할 이름
-  String phone; // 본인인증 할 휴대폰 번호
-  int minAge; // 허용 최소 만 나이
+  String? merchnatUid; // 주문번호
+  String? company; // 회사명 또는 URL
+  String? carrier; // 통신사
+  String? name; // 본인인증 할 이름
+  String? phone; // 본인인증 할 휴대폰 번호
+  int? minAge; // 허용 최소 만 나이
 
   CertificationData(
     this.merchnatUid,
