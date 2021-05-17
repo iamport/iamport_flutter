@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
-import './model/iamport_url.dart';
 import './model/certification_data.dart';
 import './widget/iamport_webview.dart';
+import './model/url_data.dart';
 
 class IamportCertification extends StatelessWidget {
   final PreferredSizeWidget? appBar;
@@ -37,7 +37,7 @@ class IamportCertification extends StatelessWidget {
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
-              location.href = "${IamportUrl.redirectUrl}" + "?" + query.join("&");
+              location.href = "${UrlData.redirectUrl}" + "?" + query.join("&");
             });
           ''');
       },
@@ -45,7 +45,7 @@ class IamportCertification extends StatelessWidget {
         this.callback(data);
       },
       isPaymentOver: (String url) {
-        return url.startsWith(IamportUrl.redirectUrl);
+        return url.startsWith(UrlData.redirectUrl);
       },
       customPGAction: (WebViewController? controller) {},
     );

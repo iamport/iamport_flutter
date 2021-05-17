@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import './iamport_url.dart';
+import './url_data.dart';
 
 class PaymentData {
   String? pg; // PG사
@@ -100,7 +99,7 @@ class PaymentData {
       'buyer_name': buyerName,
       'buyer_tel': buyerTel,
       'buyer_email': buyerEmail,
-      'm_redirect_url': IamportUrl.redirectUrl,
+      'm_redirect_url': UrlData.redirectUrl,
       'app_scheme': appScheme,
       'niceMobileV2': true,
     };

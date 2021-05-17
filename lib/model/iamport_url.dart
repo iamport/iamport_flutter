@@ -1,33 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:url_launcher/url_launcher.dart';
+import './url_data.dart';
 
 class IamportUrl {
   String? url;
   String? appScheme;
   String? appUrl;
   String? package; // Android only
-
-  static const String redirectUrl = 'http://localhost/iamport';
-
-  static const String ANDROID_MARKET_PREFIX = 'market://details?id=';
-  static const String IOS_MARKET_PREFIX = 'https://itunes.apple.com/app/';
-
-  static const String ISP = 'ispmobile';
-  static const String BANKPAY = 'kftc-bankpay';
-  static const String KB_BANKPAY = 'kb-bankpay';
-  static const String NH_BANKPAY = 'nhb-bankpay';
-  static const String MG_BANKPAY = 'mg-bankpay';
-  static const String KN_BANKPAY = 'kn-bankpay';
-
-  static const String PACKAGE_ISP = 'kvp.jjy.MispAndroid320';
-  static const String PACKAGE_BANKPAY = 'com.kftc.bankpay.android';
-  static const String PACKAGE_KB_BANKPAY = 'com.kbstar.liivbank';
-  static const String PACKAGE_NH_BANKPAY = 'com.nh.cashcardapp';
-  static const String PACKAGE_MG_BANKPAY = 'kr.co.kfcc.mobilebank';
-  static const String PACKAGE_KN_BANKPAY = 'com.knb.psb';
-
-  static const String SMILE_PAY_BASE_URL = "https://www.mysmilepay.com/";
 
   IamportUrl(String incomeUrl) {
     this.url = incomeUrl;
@@ -91,60 +71,92 @@ class IamportUrl {
     if (Platform.isIOS) {
       switch (this.appScheme) {
         case 'kftc-bankpay': // 뱅크페이
-          return IOS_MARKET_PREFIX + 'id398456030';
+          return UrlData.IOS_MARKET_PREFIX + 'id398456030';
         case 'ispmobile': // ISP/페이북
-          return IOS_MARKET_PREFIX + 'id369125087';
+          return UrlData.IOS_MARKET_PREFIX + 'id369125087';
         case 'hdcardappcardansimclick': // 현대카드 앱카드
-          return IOS_MARKET_PREFIX + 'id702653088';
+          return UrlData.IOS_MARKET_PREFIX + 'id702653088';
         case 'shinhan-sr-ansimclick': // 신한 앱카드
-          return IOS_MARKET_PREFIX + 'id572462317';
+          return UrlData.IOS_MARKET_PREFIX + 'id572462317';
         case 'kb-acp': // KB국민 앱카드
-          return IOS_MARKET_PREFIX + 'id695436326';
+          return UrlData.IOS_MARKET_PREFIX + 'id695436326';
         case 'mpocket.online.ansimclick': // 삼성앱카드
-          return IOS_MARKET_PREFIX + 'id535125356';
+          return UrlData.IOS_MARKET_PREFIX + 'id535125356';
         case 'lottesmartpay': // 롯데 모바일결제
-          return IOS_MARKET_PREFIX + 'id668497947';
+          return UrlData.IOS_MARKET_PREFIX + 'id668497947';
         case 'lotteappcard': // 롯데 앱카드
-          return IOS_MARKET_PREFIX + 'id688047200';
+          return UrlData.IOS_MARKET_PREFIX + 'id688047200';
         case 'cloudpay': // 하나1Q페이(앱카드)
-          return IOS_MARKET_PREFIX + 'id847268987';
+          return UrlData.IOS_MARKET_PREFIX + 'id847268987';
         case 'citimobileapp': // 시티은행 앱카드
-          return IOS_MARKET_PREFIX + 'id1179759666';
+          return UrlData.IOS_MARKET_PREFIX + 'id1179759666';
         case 'payco': // 페이코
-          return IOS_MARKET_PREFIX + 'id924292102';
+          return UrlData.IOS_MARKET_PREFIX + 'id924292102';
         case 'kakaotalk': // 카카오톡
-          return IOS_MARKET_PREFIX + 'id362057947';
+          return UrlData.IOS_MARKET_PREFIX + 'id362057947';
         case 'lpayapp': // 롯데 L.pay
-          return IOS_MARKET_PREFIX + 'id1036098908';
+          return UrlData.IOS_MARKET_PREFIX + 'id1036098908';
         case 'wooripay': // 우리페이
-          return IOS_MARKET_PREFIX + 'id1201113419';
+          return UrlData.IOS_MARKET_PREFIX + 'id1201113419';
         case 'nhallonepayansimclick': // NH농협카드 올원페이(앱카드)
-          return IOS_MARKET_PREFIX + 'id1177889176';
+          return UrlData.IOS_MARKET_PREFIX + 'id1177889176';
         case 'hanawalletmembers': // 하나카드(하나멤버스 월렛)
-          return IOS_MARKET_PREFIX + 'id1038288833';
+          return UrlData.IOS_MARKET_PREFIX + 'id1038288833';
         case 'shinsegaeeasypayment': // 신세계 SSGPAY
-          return IOS_MARKET_PREFIX + 'id666237916';
+          return UrlData.IOS_MARKET_PREFIX + 'id666237916';
         default:
           return this.url;
       }
     } else if (Platform.isAndroid) {
       if (this.package != null) {
         // 앱이 설치되어 있지 않아 실행 불가능할 경우 추출된 package 정보를 이용해 플레이스토어 열기
-        return ANDROID_MARKET_PREFIX + this.package!;
+        return UrlData.ANDROID_MARKET_PREFIX + this.package!;
       } else {
         switch (this.appScheme) {
-          case ISP:
-            return ANDROID_MARKET_PREFIX + PACKAGE_ISP;
-          case BANKPAY:
-            return ANDROID_MARKET_PREFIX + PACKAGE_BANKPAY;
-          case KB_BANKPAY:
-            return ANDROID_MARKET_PREFIX + PACKAGE_KB_BANKPAY;
-          case NH_BANKPAY:
-            return ANDROID_MARKET_PREFIX + PACKAGE_NH_BANKPAY;
-          case MG_BANKPAY:
-            return ANDROID_MARKET_PREFIX + PACKAGE_MG_BANKPAY;
-          case KN_BANKPAY:
-            return ANDROID_MARKET_PREFIX + PACKAGE_KN_BANKPAY;
+          case UrlData.ISP:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_ISP;
+          case UrlData.BANKPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_BANKPAY;
+          case UrlData.KB_BANKPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KB_BANKPAY;
+          case UrlData.NH_BANKPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NH_BANKPAY;
+          case UrlData.MG_BANKPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_MG_BANKPAY;
+          case UrlData.KN_BANKPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KN_BANKPAY;
+          case UrlData.KAKAOPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KAKAOPAY;
+          case UrlData.SMILEPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SMILEPAY;
+          case UrlData.CHAIPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_CHAIPAY;
+          case UrlData.PAYCO:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYCO;
+          case UrlData.HYUNDAICARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_HYUNDAICARD;
+          case UrlData.TOSS:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_TOSS;
+          case UrlData.SHINHANCARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SHINHANCARD;
+          case UrlData.HANACARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_HANACARD;
+          case UrlData.SAMSUNGCARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SAMSUNGCARD;
+          case UrlData.KBCARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KBCARD;
+          case UrlData.NHCARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NHCARD;
+          case UrlData.CITICARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_CITICARD;
+          case UrlData.LOTTECARD:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LOTTECARD;
+          case UrlData.LPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPAY;
+          case UrlData.SSGPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SSGPAY;
+          case UrlData.KPAY:
+            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KPAY;
           default:
         }
       }
