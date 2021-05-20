@@ -13,8 +13,7 @@ class Utils {
       case 'smilepay':
         return 'imp49241793';
       case 'chai':
-        // return 'imp37739582';
-        return 'imp43161593';
+        return 'imp37739582';
       case 'alipay':
         return 'imp87936124';
       case 'payple':
