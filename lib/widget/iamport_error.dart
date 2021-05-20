@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iamport_flutter/widget/iamport_webview.dart';
+import './iamport_webview.dart';
 
 class IamportError extends StatelessWidget {
   static final Color failureColor = Color(0xfff5222d);

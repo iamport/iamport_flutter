@@ -10,17 +10,17 @@ import './model/url_data.dart';
 class IamportCertification extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Container? initialChild;
-  final String? userCode;
-  final CertificationData? data;
+  final String userCode;
+  final CertificationData data;
   final callback;
 
   IamportCertification({
     Key? key,
     this.appBar,
     this.initialChild,
-    this.userCode,
-    this.data,
-    this.callback,
+    required this.userCode,
+    required this.data,
+    required this.callback,
   }) : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class IamportCertification extends StatelessWidget {
       executeJS: (WebViewController? controller) {
         controller?.evaluateJavascript('''
             IMP.init("${this.userCode}");
-            IMP.certification(${this.data!.toJsonString()}, function(response) {
+            IMP.certification(${this.data.toJsonString()}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
@@ -47,6 +47,7 @@ class IamportCertification extends StatelessWidget {
       isPaymentOver: (String url) {
         return url.startsWith(UrlData.redirectUrl);
       },
+      // 인증에는 customPGAction 수행할 필요 없음
       customPGAction: (WebViewController? controller) {},
     );
   }

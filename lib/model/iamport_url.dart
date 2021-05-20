@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import './url_data.dart';
 
 class IamportUrl {
-  String? url;
+  late String url;
   String? appScheme;
   String? appUrl;
   String? package; // Android only
@@ -13,7 +13,7 @@ class IamportUrl {
     this.url = incomeUrl;
 
     List<String> splittedUrl =
-        this.url!.replaceFirst(RegExp(r'://'), ' ').split(' ');
+        this.url.replaceFirst(RegExp(r'://'), ' ').split(' ');
     this.appScheme = splittedUrl[0];
 
     if (Platform.isIOS) {
@@ -60,7 +60,7 @@ class IamportUrl {
 
   bool isAppLink() {
     return !['http', 'https', 'about:blank', 'data', '']
-        .contains(Uri.parse(this.url!).scheme);
+        .contains(Uri.parse(this.url).scheme);
   }
 
   Future<String?> getAppUrl() async {
@@ -111,73 +111,71 @@ class IamportUrl {
       if (this.package != null) {
         // 앱이 설치되어 있지 않아 실행 불가능할 경우 추출된 package 정보를 이용해 플레이스토어 열기
         return UrlData.ANDROID_MARKET_PREFIX + this.package!;
-      } else {
-        switch (this.appScheme) {
-          case UrlData.ISP:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_ISP;
-          case UrlData.BANKPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_BANKPAY;
-          case UrlData.KB_BANKPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KB_BANKPAY;
-          case UrlData.NH_BANKPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NH_BANKPAY;
-          case UrlData.MG_BANKPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_MG_BANKPAY;
-          case UrlData.KN_BANKPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KN_BANKPAY;
-          case UrlData.KAKAOPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KAKAOPAY;
-          case UrlData.SMILEPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SMILEPAY;
-          case UrlData.CHAIPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_CHAIPAY;
-          case UrlData.PAYCO:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYCO;
-          case UrlData.HYUNDAICARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_HYUNDAICARD;
-          case UrlData.TOSS:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_TOSS;
-          case UrlData.SHINHANCARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SHINHANCARD;
-          case UrlData.HANACARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_HANACARD;
-          case UrlData.SAMSUNGCARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SAMSUNGCARD;
-          case UrlData.KBCARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KBCARD;
-          case UrlData.NHCARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NHCARD;
-          case UrlData.CITICARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_CITICARD;
-          case UrlData.LOTTECARD:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LOTTECARD;
-          case UrlData.LPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPAY;
-          case UrlData.SSGPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SSGPAY;
-          case UrlData.KPAY:
-            return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KPAY;
-          default:
-        }
+      }
+      switch (this.appScheme) {
+        case UrlData.ISP:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_ISP;
+        case UrlData.BANKPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_BANKPAY;
+        case UrlData.KB_BANKPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KB_BANKPAY;
+        case UrlData.NH_BANKPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NH_BANKPAY;
+        case UrlData.MG_BANKPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_MG_BANKPAY;
+        case UrlData.KN_BANKPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KN_BANKPAY;
+        case UrlData.KAKAOPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KAKAOPAY;
+        case UrlData.SMILEPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SMILEPAY;
+        case UrlData.CHAIPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_CHAIPAY;
+        case UrlData.PAYCO:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYCO;
+        case UrlData.HYUNDAICARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_HYUNDAICARD;
+        case UrlData.TOSS:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_TOSS;
+        case UrlData.SHINHANCARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SHINHANCARD;
+        case UrlData.HANACARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_HANACARD;
+        case UrlData.SAMSUNGCARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SAMSUNGCARD;
+        case UrlData.KBCARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KBCARD;
+        case UrlData.NHCARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NHCARD;
+        case UrlData.CITICARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_CITICARD;
+        case UrlData.LOTTECARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LOTTECARD;
+        case UrlData.LPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPAY;
+        case UrlData.SSGPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SSGPAY;
+        case UrlData.KPAY:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KPAY;
+        default:
+          return this.url;
       }
     }
   }
 
   Future<bool> launchApp() async {
     if (Platform.isIOS) {
-      if (await canLaunch(this.url!)) {
-        return await launch(await (this.getAppUrl() as FutureOr<String>));
-      } else {
-        return await launch(await (this.getMarketUrl() as FutureOr<String>));
+      if (await canLaunch(this.url)) {
+        return await launch((await this.getAppUrl())!);
       }
+      return await launch((await this.getMarketUrl())!);
     } else if (Platform.isAndroid) {
       try {
-        return await launch(await (this.getAppUrl() as FutureOr<String>));
+        return await launch((await this.getAppUrl())!);
       } catch (e) {
-        return await launch(await (this.getMarketUrl() as FutureOr<String>));
+        return await launch((await this.getMarketUrl())!);
       }
-    } else {
-      return false;
     }
+    return false;
   }
 }

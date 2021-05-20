@@ -11,17 +11,17 @@ import './model/url_data.dart';
 class IamportPayment extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Container? initialChild;
-  final String? userCode;
-  final PaymentData? data;
+  final String userCode;
+  final PaymentData data;
   final callback;
 
   IamportPayment({
     Key? key,
     this.appBar,
     this.initialChild,
-    this.userCode,
-    this.data,
-    this.callback,
+    required this.userCode,
+    required this.data,
+    required this.callback,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class IamportPayment extends StatelessWidget {
         executeJS: (WebViewController? controller) {
           controller?.evaluateJavascript('''
             IMP.init("${this.userCode}");
-            IMP.request_pay(${this.data!.toJsonString()}, function(response) {
+            IMP.request_pay(${this.data.toJsonString()}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
@@ -51,9 +51,9 @@ class IamportPayment extends StatelessWidget {
             String decodedUrl = Uri.decodeComponent(url);
             Uri parsedUrl = Uri.parse(decodedUrl);
             String scheme = parsedUrl.scheme;
-            if (scheme == this.data!.appScheme!.toLowerCase() &&
-                this.data!.pg == 'nice' &&
-                this.data!.payMethod == 'trans') {
+            if (scheme == this.data.appScheme.toLowerCase() &&
+                this.data.pg == 'nice' &&
+                this.data.payMethod == 'trans') {
               String queryToString = parsedUrl.query;
 
               /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
@@ -70,7 +70,7 @@ class IamportPayment extends StatelessWidget {
           } on FormatException {}
         },
         customPGAction: (WebViewController? controller, String? data) {
-          if (this.data!.pg == 'smilepay') {
+          if (this.data.pg == 'smilepay') {
             // webview_flutter에서 iOS는 쿠키가 기본적으로 허용되어있는 것으로 추정
             if (Platform.isAndroid) {
               controller?.setAcceptThirdPartyCookies(true);
@@ -87,16 +87,18 @@ class IamportPayment extends StatelessWidget {
             return true;
           }
 
-          if (this.data!.payMethod == 'trans') {
+          if (this.data.payMethod == 'trans') {
             /* [IOS] imp_uid와 merchant_uid값만 전달되기 때문에 결제 성공 또는 실패 구분할 수 없음 */
             String decodedUrl = Uri.decodeComponent(url);
             Uri parsedUrl = Uri.parse(decodedUrl);
             String scheme = parsedUrl.scheme;
-            if (this.data!.pg == 'html5_inicis') {
+            if (this.data.pg == 'html5_inicis') {
               Map<String, String> query = parsedUrl.queryParameters;
-              if (scheme == this.data!.appScheme!.toLowerCase() &&
-                  query['m_redirect_url']!.contains(UrlData.redirectUrl)) {
-                return true;
+              if (query['m_redirect_url'] != null) {
+                if (scheme == this.data.appScheme.toLowerCase() &&
+                    query['m_redirect_url']!.contains(UrlData.redirectUrl)) {
+                  return true;
+                }
               }
             }
           }

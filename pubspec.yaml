@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   iamport_webview_flutter: '3.0.0+3'
-  url_launcher: ^6.0.3
+  url_launcher: ^6.0.4
 
 dev_dependencies:
   flutter_test:

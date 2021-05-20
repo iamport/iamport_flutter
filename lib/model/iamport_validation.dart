@@ -4,43 +4,43 @@ class IamportValidation {
   bool isValid = true;
   String? errorMessage;
 
-  IamportValidation(String? userCode, PaymentData? data, Function? callback) {
+  IamportValidation(String userCode, PaymentData data, Function callback) {
     print('data: $data');
-    if (userCode == null) {
-      isValid = false;
-      errorMessage = '가맹점 식별코드(userCode)는 필수입력입니다.';
-      return;
-    }
+    // if (userCode != null) {
+    //   isValid = false;
+    //   errorMessage = '가맹점 식별코드(userCode)는 필수입력입니다.';
+    //   return;
+    // }
 
-    if (data == null) {
-      isValid = false;
-      errorMessage = '결제 데이터(data)는 필수입력입니다.';
-      return;
-    }
+    // if (data == null) {
+    //   isValid = false;
+    //   errorMessage = '결제 데이터(data)는 필수입력입니다.';
+    //   return;
+    // }
 
-    if (callback == null) {
-      isValid = false;
-      errorMessage = '콜백함수(callback)는 필수입력입니다.';
-      return;
-    }
+    // if (callback == null) {
+    //   isValid = false;
+    //   errorMessage = '콜백함수(callback)는 필수입력입니다.';
+    //   return;
+    // }
 
-    if (data.merchantUid == null) {
-      isValid = false;
-      errorMessage = '주문번호(merchantUid)는 필수입력입니다.';
-      return;
-    }
+    // if (data.merchantUid == null) {
+    //   isValid = false;
+    //   errorMessage = '주문번호(merchantUid)는 필수입력입니다.';
+    //   return;
+    // }
 
-    if (data.amount == null) {
-      isValid = false;
-      errorMessage = '결제금액(amount)은 필수입력입니다.';
-      return;
-    }
+    // if (data.amount == null) {
+    //   isValid = false;
+    //   errorMessage = '결제금액(amount)은 필수입력입니다.';
+    //   return;
+    // }
 
-    if (data.appScheme == null) {
-      isValid = false;
-      errorMessage = '앱 스킴(appScheme)은 필수입력입니다.';
-      return;
-    }
+    // if (data.appScheme == null) {
+    //   isValid = false;
+    //   errorMessage = '앱 스킴(appScheme)은 필수입력입니다.';
+    //   return;
+    // }
 
     if (data.payMethod == 'vbank') {
       if (data.vbankDue == null) {

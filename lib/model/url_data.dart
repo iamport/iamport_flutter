@@ -1,7 +1,7 @@
 class UrlData {
-  static const String redirectUrl = 'http://localhost/iamport';
+  static const String redirectUrl = 'http://detectchangingwebview/iamport/f'; // f는 flutter의 f
   static const String ANDROID_MARKET_PREFIX = 'market://details?id=';
-  static const String IOS_MARKET_PREFIX = 'https://itunes.apple.com/app/';
+  static const String IOS_MARKET_PREFIX = 'https://apps.apple.com/app/';
 
   static const String ISP = 'ispmobile';
   static const String PACKAGE_ISP = 'kvp.jjy.MispAndroid320';
