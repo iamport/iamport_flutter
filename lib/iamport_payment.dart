@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
@@ -37,7 +38,7 @@ class IamportPayment extends StatelessWidget {
         executeJS: (WebViewController? controller) {
           controller?.evaluateJavascript('''
             IMP.init("${this.userCode}");
-            IMP.request_pay(${this.data.toJsonString()}, function(response) {
+            IMP.request_pay(${JsonMapper.serialize(this.data)}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);

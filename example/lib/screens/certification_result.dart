@@ -58,7 +58,7 @@ class CertificationResult extends StatelessWidget {
                               style: TextStyle(color: Colors.grey))),
                       Expanded(
                         flex: 5,
-                        child: Text(result['imp_uid'] == null
+                        child: Text(result['imp_uid'] != null
                             ? result['imp_uid']!
                             : ""),
                       ),

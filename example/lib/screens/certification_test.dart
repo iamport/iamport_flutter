@@ -110,13 +110,13 @@ class _CertificationTestState extends State<CertificationTest> {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
 
-                      CertificationData data = CertificationData.fromJson({
-                        'merchantUid': merchantUid,
-                        'carrier': carrier,
-                      });
-                      data.company = company;
-                      data.name = name;
-                      data.phone = phone;
+                      CertificationData data = CertificationData(
+                        merchantUid: merchantUid,
+                        carrier: carrier,
+                        company: company,
+                        name: name,
+                        phone: phone,
+                      );
                       if (minAge.length > 0) {
                         data.minAge = int.parse(minAge);
                       }

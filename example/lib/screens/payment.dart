@@ -10,7 +10,7 @@ class Payment extends StatelessWidget {
   Widget build(BuildContext context) {
     PaymentData data =
         ModalRoute.of(context)!.settings.arguments as PaymentData;
-    data.appScheme = 'example';
+    // data.appScheme = 'example';
 
     return IamportPayment(
       appBar: new AppBar(

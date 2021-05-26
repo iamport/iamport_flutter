@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:iamport_flutter/iamport_flutter.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('iamport_flutter');
@@ -15,9 +14,5 @@ void main() {
 
   tearDown(() {
     channel.setMockMethodCallHandler(null);
-  });
-
-  test('getPlatformVersion', () async {
-    expect(await IamportFlutter.platformVersion, '42');
   });
 }

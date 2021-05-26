@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:iamport_flutter/model/pg/naver/naver_pay_products.dart';
+import 'package:iamport_flutter/model/pg/naver/naver_co_products.dart';
+import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
+import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
 
 import '../model/pg.dart';
 import '../model/method.dart';
@@ -220,25 +224,26 @@ class _PaymentTestState extends State<PaymentTest> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
+                      print('creating payment data...');
 
-                      PaymentData data = PaymentData.fromJson({
-                        'pg': pg,
-                        'payMethod': payMethod,
-                        'escrow': escrow,
-                        'name': name,
-                        'amount': int.parse(amount),
-                        'merchantUid': merchantUid,
-                        'buyerName': buyerName,
-                        'buyerTel': buyerTel,
-                        'buyerEmail': buyerEmail,
-                        'appScheme': 'example',
-                        'niceMobileV2': true,
-                      });
+                      PaymentData data = PaymentData(
+                        pg: pg,
+                        payMethod: payMethod,
+                        escrow: escrow,
+                        name: name,
+                        amount: int.parse(amount),
+                        merchantUid: merchantUid,
+                        buyerName: buyerName,
+                        buyerTel: buyerTel,
+                        buyerEmail: buyerEmail,
+                        appScheme: 'example',
+                        niceMobileV2: true,
+                      );
                       if (payMethod == 'card' && cardQuota != '0') {
-                        data.display = {
-                          'cardQuota':
-                              cardQuota == '1' ? [] : [int.parse(cardQuota)],
-                        };
+                        data.displayCardQuota = [];
+                        if (cardQuota != '1') {
+                          data.displayCardQuota!.add(int.parse(cardQuota));
+                        }
                       }
 
                       // 가상계좌의 경우, 입금기한 추가
@@ -264,6 +269,22 @@ class _PaymentTestState extends State<PaymentTest> {
                       if (pg == 'kcp_billing') {
                         data.customerUid =
                             'cuid_${DateTime.now().millisecondsSinceEpoch}';
+                      }
+
+                      // 네이버페이 관련 정보 추가
+                      if (pg == 'naverpay') {
+                        NaverPayProducts p = NaverPayProducts(
+                          name: '한국사',
+                          categoryId: 'GENERAL',
+                          categoryType: 'BOOK',
+                          count: 10,
+                          uid: '107922211',
+                          payReferrer: 'NAVER_BOOK',
+                        );
+                        data.naverUseCfm = '20210606';
+                        data.naverCultureBenefit = false;
+                        data.naverPopupMode = false;
+                        data.naverProducts = [p];
                       }
 
                       // [이니시스-빌링.나이스.다날] 제공기간 표기

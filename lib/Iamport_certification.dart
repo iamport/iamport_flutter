@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import './model/certification_data.dart';
 import './widget/iamport_webview.dart';
 import './model/url_data.dart';
@@ -32,7 +33,7 @@ class IamportCertification extends StatelessWidget {
       executeJS: (WebViewController? controller) {
         controller?.evaluateJavascript('''
             IMP.init("${this.userCode}");
-            IMP.certification(${this.data.toJsonString()}, function(response) {
+            IMP.certification(${JsonMapper.serialize(this.data)}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
