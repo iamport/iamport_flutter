@@ -1,4 +1,11 @@
-## [0.9.15](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.0](https://github.com/iamport/iamport_flutter/tree/master)
+- [안드로이드] 외부 앱 로딩 방식을 변경했습니다.
+- flutter v2로의 마이그레이션 및 dart 버전 업그레이드에 따른 null safety에 대한 대응을 완료했습니다.
+- 네이버페이 및 체크아웃 결제용 파라미터를 추가했습니다.
+- 일부 pg 결제화면에서 javascript 팝업이 제대로 나타나지 않는 현상을 해결했습니다.
+- 결제 데이터를 json으로 변환하는 방식을 변경했습니다.
+
+## [0.9.15](https://github.com/iamport/iamport_flutter/tree/v0.9.15)
 - [안드로이드] 코틀린 환경에서 registerWith 함수가 트리거되지 않는 상황을 대비해 ActivityAware 인터페이스를 implement 하도록 로직을 추가하였습니다.
 
 ## [0.9.14](https://github.com/iamport/iamport_flutter/tree/v0.9.14)
