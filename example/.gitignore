@@ -28,6 +28,7 @@
 .pub/
 /build/
 .pubspec.lock
+lib/main.mapper.g.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar
