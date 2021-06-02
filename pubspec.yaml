@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  iamport_webview_flutter: '3.0.0+3'
+  iamport_webview_flutter: ^3.0.1
   url_launcher: ^6.0.4
   dart_json_mapper: ^2.1.0
 
