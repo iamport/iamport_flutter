@@ -10,6 +10,7 @@
 - [지원정보](SUPPORT.md)
 - 설치하기
 - 설정하기
+  - 공통 사항
   - IOS 설정하기
   - Android 설정하기
   - [실시간 계좌이체 설정하기](example/manuals/TRANS.md)
@@ -17,7 +18,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.0](https://github.com/iamport/iamport_flutter/tree/master)입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.10.0](https://github.com/iamport/iamport_flutter/tree/master) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -31,6 +32,11 @@ dependencies:
 ```
 
 ## 설정하기
+
+### 공통 사항
+v0.10.0 부터는 json 처리를 위해 [dart_json_mapper](https://pub.dev/packages/dart_json_mapper) 를 사용합니다. 따라서 [가이드](https://pub.dev/packages/dart_json_mapper#basic-setup) 를 참고하여 `build.yaml` 파일을 작성한 뒤 파일과 동일한 경로에서 `dart run build_runner build`를 실행해 mapper 파일을 생성해주셔야 합니다.
+mapper 파일이 생성되었다면 main 함수가 있는 파일에서 mapper 파일을 import한 뒤 main 함수에 `initializeJsonMapper()`을 한번 실행해주셔야 json 매핑이 정상적으로 진행됩니다. build_runner 명령어는 main 함수가 바뀔 때마다 실행해주셔야 합니다.
+
 ### IOS 설정하기
 IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.plist` 파일에 아래 3가지 항목을 설정해주셔야 합니다. `[프로젝트 이름]/ios/Runner.xcworkspace` 파일을 열어 왼쪽 프로젝트 패널 > Runner > info.plist 파일을 클릭합니다.
 
@@ -124,7 +130,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
 ```
 
 ### Android 설정하기
-안드로이드 API 레벨 30에서 특정 카드사로 결제 시도시 `net::ERR_CLEARTEXT_NOT_PERMITTED` 오류가 발생한다는 버그가 보고되었습니다. 이를 해결하기 위해서는 [AndroidManifest.xml 파일](https://github.com/iamport/iamport_flutter/blob/develop/example/android/app/src/main/AndroidManifest.xml#L13)에 아래와 같이 [usesclearTextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) 속성을 `true`로 설정해주셔야 합니다.
+안드로이드 API 레벨 30에서 특정 카드사로 결제 시도시 `net::ERR_CLEARTEXT_NOT_PERMITTED` 오류가 발생한다는 버그가 보고되었습니다. 이를 해결하기 위해서는 [AndroidManifest.xml](https://github.com/iamport/iamport_flutter/blob/develop/example/android/app/src/main/AndroidManifest.xml#L13) 파일에 아래와 같이 [usesclearTextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) 속성을 `true`로 설정해주셔야 합니다.
 
 ```xml
 <manifest ...>
