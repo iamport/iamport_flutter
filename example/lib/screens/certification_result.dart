@@ -6,7 +6,8 @@ class CertificationResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> result = ModalRoute.of(context).settings.arguments;
+    Map<String, String> result =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     String message;
     IconData icon;
     Color color;
@@ -52,12 +53,14 @@ class CertificationResult extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
-                        flex: 4,
-                        child: Text('아임포트 번호', style: TextStyle(color: Colors.grey))
-                      ),
+                          flex: 4,
+                          child: Text('아임포트 번호',
+                              style: TextStyle(color: Colors.grey))),
                       Expanded(
                         flex: 5,
-                        child: Text(result['imp_uid']),
+                        child: Text(result['imp_uid'] != null
+                            ? result['imp_uid']!
+                            : ""),
                       ),
                     ],
                   ),
@@ -70,11 +73,14 @@ class CertificationResult extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 4,
-                          child: Text('에러 메시지', style: TextStyle(color: Colors.grey)),
+                          child: Text('에러 메시지',
+                              style: TextStyle(color: Colors.grey)),
                         ),
                         Expanded(
                           flex: 5,
-                          child: Text(result['error_msg']),
+                          child: Text(result['error_msg'] == null
+                              ? result['error_msg']!
+                              : ""),
                         ),
                       ],
                     ),

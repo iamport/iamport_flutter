@@ -22,11 +22,13 @@
 **/doc/api/
 .dart_tool/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 /build/
 .pubspec.lock
+lib/main.mapper.g.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar

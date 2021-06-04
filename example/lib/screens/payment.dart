@@ -8,8 +8,9 @@ import '../utils/index.dart';
 class Payment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    PaymentData data = ModalRoute.of(context).settings.arguments;
-    data.appScheme = 'example';
+    PaymentData data =
+        ModalRoute.of(context)!.settings.arguments as PaymentData;
+    // data.appScheme = 'example';
 
     return IamportPayment(
       appBar: new AppBar(
@@ -29,7 +30,7 @@ class Payment extends StatelessWidget {
           ),
         ),
       ),
-      userCode: Utils.getUserCodeByPg(data.pg),
+      userCode: Utils.getUserCodeByPg(data.pg!),
       data: data,
       callback: (Map<String, String> result) {
         Navigator.pushReplacementNamed(

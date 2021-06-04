@@ -16,7 +16,8 @@ class PaymentResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> result = ModalRoute.of(context).settings.arguments;
+    Map<String, String> result =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     bool isSuccessed = getIsSuccessed(result);
     String message;
     IconData icon;
@@ -60,9 +61,9 @@ class PaymentResult extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
-                        flex: 4,
-                        child: Text('아임포트 번호', style: TextStyle(color: Colors.grey))
-                      ),
+                          flex: 4,
+                          child: Text('아임포트 번호',
+                              style: TextStyle(color: Colors.grey))),
                       Expanded(
                         flex: 5,
                         child: Text(result['imp_uid'] ?? '-'),
@@ -70,37 +71,40 @@ class PaymentResult extends StatelessWidget {
                     ],
                   ),
                 ),
-                isSuccessed ? Container(
-                  padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: Text('주문 번호', style: TextStyle(color: Colors.grey))
+                isSuccessed
+                    ? Container(
+                        padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                                flex: 4,
+                                child: Text('주문 번호',
+                                    style: TextStyle(color: Colors.grey))),
+                            Expanded(
+                              flex: 5,
+                              child: Text(result['merchant_uid'] ?? '-'),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(
+                        padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Text('에러 메시지',
+                                  style: TextStyle(color: Colors.grey)),
+                            ),
+                            Expanded(
+                              flex: 5,
+                              child: Text(result['error_msg'] ?? '-'),
+                            ),
+                          ],
+                        ),
                       ),
-                      Expanded(
-                        flex: 5,
-                        child: Text(result['merchant_uid'] ?? '-'),
-                      ),
-                    ],
-                  ),
-                ) : Container(
-                  padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: Text('에러 메시지', style: TextStyle(color: Colors.grey)),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Text(result['error_msg'] ?? '-'),
-                      ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

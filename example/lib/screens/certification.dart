@@ -8,7 +8,8 @@ class Certification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CertificationData data = ModalRoute.of(context).settings.arguments;
+    CertificationData data =
+        ModalRoute.of(context)!.settings.arguments as CertificationData;
 
     return IamportCertification(
       appBar: new AppBar(

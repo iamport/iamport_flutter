@@ -1,6 +1,6 @@
 class Utils {
   static String getUserCodeByPg(String pg) {
-    switch(pg) {
+    switch (pg) {
       case 'kakao':
         return 'imp10391932';
       case 'paypal':
