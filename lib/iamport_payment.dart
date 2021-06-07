@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
+import 'package:uni_links/uni_links.dart';
 import './widget/iamport_error.dart';
 import './widget/iamport_webview.dart';
 import './model/iamport_validation.dart';
@@ -46,39 +48,40 @@ class IamportPayment extends StatelessWidget {
               location.href = "${UrlData.redirectUrl}" + "?" + query.join("&");
             });
           ''');
-
-          try {
-            String url = controller?.currentUrl() as String;
-            String decodedUrl = Uri.decodeComponent(url);
-            Uri parsedUrl = Uri.parse(decodedUrl);
-            String scheme = parsedUrl.scheme;
-            if (scheme == this.data.appScheme.toLowerCase() &&
-                this.data.pg == 'nice' &&
-                this.data.payMethod == 'trans') {
-              String queryToString = parsedUrl.query;
-
-              /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
-              String? niceTransRedirectionUrl;
-              parsedUrl.queryParameters.forEach((key, value) {
-                if (key == 'callbackparam1') {
-                  niceTransRedirectionUrl = value;
-                }
-              });
-              controller?.evaluateJavascript('''
-                location.href = "$niceTransRedirectionUrl?$queryToString";
-              ''');
-            }
-          } on FormatException {}
         },
-        customPGAction: (WebViewController? controller, String? data) {
+        customPGAction: (WebViewController? controller) {
           if (this.data.pg == 'smilepay') {
             // webview_flutter에서 iOS는 쿠키가 기본적으로 허용되어있는 것으로 추정
             if (Platform.isAndroid) {
               controller?.setAcceptThirdPartyCookies(true);
             }
-            // controller?.loadDataWithBaseURL(
-            //     IamportUrl.SMILE_PAY_BASE_URL, data!, 'text/html', null, null);
           }
+          /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
+          if (this.data.pg == 'nice' && this.data.payMethod == 'trans') {
+            try {
+              StreamSubscription sub = linkStream.listen((String? link) async {
+                if (link != null) {
+                  String decodedUrl = Uri.decodeComponent(link);
+                  Uri parsedUrl = Uri.parse(decodedUrl);
+                  String scheme = parsedUrl.scheme;
+                  if (scheme == data.appScheme.toLowerCase()) {
+                    String queryToString = parsedUrl.query;
+                    String? niceTransRedirectionUrl;
+                    parsedUrl.queryParameters.forEach((key, value) {
+                      if (key == 'callbackparam1') {
+                        niceTransRedirectionUrl = value;
+                      }
+                    });
+                    await controller!.evaluateJavascript('''
+                    location.href = "$niceTransRedirectionUrl?$queryToString";
+                  ''');
+                  }
+                }
+              });
+              return sub;
+            } on FormatException {}
+          }
+          return null;
         },
         useQueryData: (Map<String, String> data) {
           this.callback(data);

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../model/iamport_url.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
@@ -43,7 +45,14 @@ class IamportWebView extends StatefulWidget {
 
 class _IamportWebViewState extends State<IamportWebView> {
   WebViewController? _webViewController;
+  StreamSubscription? _sub;
   int _idx = 1;
+
+  @override
+  void dispose() {
+    super.dispose();
+    if (_sub != null) _sub!.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +81,7 @@ class _IamportWebViewState extends State<IamportWebView> {
               this._webViewController = controller;
               if (widget.type == ActionType.payment) {
                 // 현재는 스마일페이일 경우에만 실행
-                widget.customPGAction(
-                    this._webViewController, IamportWebView.html);
+                _sub = widget.customPGAction(this._webViewController);
               }
               // 웹뷰 로딩 완료시에 화면 전환
               setState(() {
