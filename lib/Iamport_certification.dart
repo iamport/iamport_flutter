@@ -30,8 +30,8 @@ class IamportCertification extends StatelessWidget {
       type: ActionType.auth,
       appBar: this.appBar,
       initialChild: this.initialChild,
-      executeJS: (WebViewController? controller) {
-        controller?.evaluateJavascript('''
+      executeJS: (WebViewController controller) {
+        controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
             IMP.certification(${JsonMapper.serialize(this.data)}, function(response) {
               const query = [];
@@ -49,7 +49,7 @@ class IamportCertification extends StatelessWidget {
         return url.startsWith(UrlData.redirectUrl);
       },
       // 인증에는 customPGAction 수행할 필요 없음
-      customPGAction: (WebViewController? controller) {},
+      customPGAction: (WebViewController controller) {},
     );
   }
 }

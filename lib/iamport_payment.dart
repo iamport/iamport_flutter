@@ -37,8 +37,8 @@ class IamportPayment extends StatelessWidget {
         type: ActionType.payment,
         appBar: this.appBar,
         initialChild: this.initialChild,
-        executeJS: (WebViewController? controller) {
-          controller?.evaluateJavascript('''
+        executeJS: (WebViewController controller) {
+          controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
             IMP.request_pay(${JsonMapper.serialize(this.data)}, function(response) {
               const query = [];
@@ -49,11 +49,11 @@ class IamportPayment extends StatelessWidget {
             });
           ''');
         },
-        customPGAction: (WebViewController? controller) {
+        customPGAction: (WebViewController controller) {
           if (this.data.pg == 'smilepay') {
             // webview_flutter에서 iOS는 쿠키가 기본적으로 허용되어있는 것으로 추정
             if (Platform.isAndroid) {
-              controller?.setAcceptThirdPartyCookies(true);
+              controller.setAcceptThirdPartyCookies(true);
             }
           }
           /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
@@ -72,7 +72,7 @@ class IamportPayment extends StatelessWidget {
                         niceTransRedirectionUrl = value;
                       }
                     });
-                    await controller!.evaluateJavascript('''
+                    await controller.evaluateJavascript('''
                     location.href = "$niceTransRedirectionUrl?$queryToString";
                   ''');
                   }
