@@ -18,3 +18,4 @@ example/ios/Podfile.lock
 **/Flutter/flutter_assets/
 example/ios/Podfile.lock
 example/.flutter-plugins-dependencies
+example/ios/Flutter/flutter_export_environment.sh
