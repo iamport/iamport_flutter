@@ -104,6 +104,8 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id1038288833';
         case 'shinsegaeeasypayment': // 신세계 SSGPAY
           return UrlData.IOS_MARKET_PREFIX + 'id666237916';
+        case 'lguthepay-xpay':
+          return UrlData.IOS_MARKET_PREFIX + 'id760098906';
         default:
           return this.url;
       }
@@ -157,6 +159,8 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SSGPAY;
         case UrlData.KPAY:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KPAY;
+        case UrlData.PAYNOW:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYNOW;
         default:
           return this.url;
       }

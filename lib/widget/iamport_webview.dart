@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../model/iamport_url.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
@@ -22,7 +24,7 @@ class IamportWebView extends StatefulWidget {
   final ActionType type;
   final PreferredSizeWidget? appBar;
   final Widget? initialChild;
-  final ValueSetter<WebViewController?> executeJS;
+  final ValueSetter<WebViewController> executeJS;
   final ValueSetter<Map<String, String>> useQueryData;
   final Function isPaymentOver;
   final Function customPGAction;
@@ -42,8 +44,15 @@ class IamportWebView extends StatefulWidget {
 }
 
 class _IamportWebViewState extends State<IamportWebView> {
-  WebViewController? _webViewController;
+  late WebViewController _webViewController;
+  StreamSubscription? _sub;
   int _idx = 1;
+
+  @override
+  void dispose() {
+    super.dispose();
+    if (_sub != null) _sub!.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +80,8 @@ class _IamportWebViewState extends State<IamportWebView> {
             onWebViewCreated: (controller) {
               this._webViewController = controller;
               if (widget.type == ActionType.payment) {
-                // 현재는 스마일페이일 경우에만 실행
-                widget.customPGAction(
-                    this._webViewController, IamportWebView.html);
+                // 스마일페이, 나이스 실시간 계좌이체
+                _sub = widget.customPGAction(this._webViewController);
               }
               // 웹뷰 로딩 완료시에 화면 전환
               setState(() {
@@ -85,7 +93,7 @@ class _IamportWebViewState extends State<IamportWebView> {
               widget.executeJS(this._webViewController);
             },
             navigationDelegate: (request) async {
-              print("url: " + request.url);
+              // print("url: " + request.url);
               if (widget.isPaymentOver(request.url)) {
                 String decodedUrl = Uri.decodeComponent(request.url);
                 widget.useQueryData(Uri.parse(decodedUrl).queryParameters);
@@ -95,7 +103,7 @@ class _IamportWebViewState extends State<IamportWebView> {
 
               final iamportUrl = IamportUrl(request.url);
               if (iamportUrl.isAppLink()) {
-                print("appLink: " + iamportUrl.appUrl!);
+                // print("appLink: " + iamportUrl.appUrl!);
                 // 앱 실행 로직을 iamport_url 모듈로 이동
                 iamportUrl.launchApp();
                 return NavigationDecision.prevent;

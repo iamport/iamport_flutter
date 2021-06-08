@@ -1,5 +1,6 @@
 class UrlData {
-  static const String redirectUrl = 'http://detectchangingwebview/iamport/f'; // f는 flutter의 f
+  static const String redirectUrl =
+      'http://detectchangingwebview/iamport/f'; // f는 flutter의 f
   static const String ANDROID_MARKET_PREFIX = 'market://details?id=';
   static const String IOS_MARKET_PREFIX = 'https://apps.apple.com/app/';
 
@@ -65,8 +66,12 @@ class UrlData {
   static const String PACKAGE_LPAY = 'com.lotte.lpay';
 
   static const String SSGPAY = 'shinsegaeeasypayment';
-  static const String PACKAGE_SSGPAY = 'com.ssg.serviceapp.android.egiftcertificate';
+  static const String PACKAGE_SSGPAY =
+      'com.ssg.serviceapp.android.egiftcertificate';
 
   static const String KPAY = 'kpay';
   static const String PACKAGE_KPAY = 'com.inicis.kpay';
+
+  static const String PAYNOW = 'lguthepay-xpay';
+  static const String PACKAGE_PAYNOW = 'com.lguplus.paynow';
 }

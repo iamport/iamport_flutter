@@ -7,7 +7,7 @@ class IamportValidation {
   String? errorMessage;
 
   IamportValidation(String userCode, PaymentData data, Function callback) {
-    print('data: ${JsonMapper.serialize(data)}');
+    // print('data: ${JsonMapper.serialize(data)}');
     // if (userCode == null) {
     //   isValid = false;
     //   errorMessage = '가맹점 식별코드(userCode)는 필수입력입니다.';
