@@ -96,15 +96,17 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id362057947';
         case 'lpayapp': // 롯데 L.pay
           return UrlData.IOS_MARKET_PREFIX + 'id1036098908';
-        case 'wooripay': // 우리페이
+        case 'wooripay': // 우리페이 (2021.6.30 지원종료)
           return UrlData.IOS_MARKET_PREFIX + 'id1201113419';
+        case 'com.wooricard.wcard': // 우리WON카드
+          return UrlData.IOS_MARKET_PREFIX + 'id1499598869';
         case 'nhallonepayansimclick': // NH농협카드 올원페이(앱카드)
           return UrlData.IOS_MARKET_PREFIX + 'id1177889176';
         case 'hanawalletmembers': // 하나카드(하나멤버스 월렛)
           return UrlData.IOS_MARKET_PREFIX + 'id1038288833';
         case 'shinsegaeeasypayment': // 신세계 SSGPAY
           return UrlData.IOS_MARKET_PREFIX + 'id666237916';
-        case 'lguthepay-xpay':
+        case 'lguthepay-xpay': // 페이나우
           return UrlData.IOS_MARKET_PREFIX + 'id760098906';
         default:
           return this.url;
@@ -161,6 +163,8 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KPAY;
         case UrlData.PAYNOW:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYNOW;
+        case UrlData.WOORIWONCARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONCARD;
         default:
           return this.url;
       }

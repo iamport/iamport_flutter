@@ -74,4 +74,7 @@ class UrlData {
 
   static const String PAYNOW = 'lguthepay-xpay';
   static const String PACKAGE_PAYNOW = 'com.lguplus.paynow';
+
+  static const String WOORIWONCARD = 'com.wooricard.smartapp';
+  static const String PACKAGE_WOORIWONCARD = 'com.wooricard.smartapp';
 }
