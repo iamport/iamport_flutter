@@ -101,6 +101,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>kakaotalk</string> <!-- 카카오톡 -->
   <string>payco</string> <!-- 페이코 -->
   <string>lpayapp</string> <!-- 롯데 L페이 -->
+  <string>lmslpay</string> <!-- 롯데 L.POINT -->
   <string>hanamopmoasign</string> <!-- 하나카드 공인인증앱 -->
   <string>wooripay</string> <!-- 우리페이 -->
   <string>com.wooricard.wcard</string> <!-- 우리WON카드 -->

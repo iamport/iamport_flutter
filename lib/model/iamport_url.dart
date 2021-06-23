@@ -108,6 +108,8 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id666237916';
         case 'lguthepay-xpay': // 페이나우
           return UrlData.IOS_MARKET_PREFIX + 'id760098906';
+        case 'lmslpay':
+          return UrlData.IOS_MARKET_PREFIX + 'id473250588';
         default:
           return this.url;
       }
@@ -165,6 +167,8 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYNOW;
         case UrlData.WOORIWONCARD:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONCARD;
+        case UrlData.LPOINT:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPOINT;
         default:
           return this.url;
       }

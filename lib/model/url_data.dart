@@ -77,4 +77,7 @@ class UrlData {
 
   static const String WOORIWONCARD = 'com.wooricard.smartapp';
   static const String PACKAGE_WOORIWONCARD = 'com.wooricard.smartapp';
+
+  static const String LPOINT = 'lmslpay';
+  static const String PACKAGE_LPOINT = 'com.lottemembers.android';
 }
