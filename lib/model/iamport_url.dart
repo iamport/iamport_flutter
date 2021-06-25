@@ -106,9 +106,11 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id1038288833';
         case 'shinsegaeeasypayment': // 신세계 SSGPAY
           return UrlData.IOS_MARKET_PREFIX + 'id666237916';
+        case 'naversearchthirdlogin': // 네이버페이 앱 로그인
+          return UrlData.IOS_MARKET_PREFIX + 'id393499958';
         case 'lguthepay-xpay': // 페이나우
           return UrlData.IOS_MARKET_PREFIX + 'id760098906';
-        case 'lmslpay':
+        case 'lmslpay': // 롯데 L.POINT
           return UrlData.IOS_MARKET_PREFIX + 'id473250588';
         default:
           return this.url;
