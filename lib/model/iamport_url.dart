@@ -31,6 +31,10 @@ class IamportUrl {
         if (this.appScheme!.contains('intent')) {
           List<String> intentUrl = splittedUrl[1].split('#Intent;');
           String host = intentUrl[0];
+          // 농협카드 일반결제 예외처리
+          if (host.contains(':')) {
+            host = host.replaceAll(RegExp(r':'), '%3A');
+          }
           List<String> arguments = intentUrl[1].split(';');
 
           // scheme이 intent로 시작하면 뒷쪽의 정보를 통해 appscheme과 package 정보 추출
@@ -59,8 +63,13 @@ class IamportUrl {
   }
 
   bool isAppLink() {
-    return !['http', 'https', 'about:blank', 'data', '']
-        .contains(Uri.parse(this.url).scheme);
+    String? scheme;
+    try {
+      scheme = Uri.parse(this.url).scheme;
+    } catch (e) {
+      scheme = this.appScheme;
+    }
+    return !['http', 'https', 'about:blank', 'data', ''].contains(scheme);
   }
 
   Future<String?> getAppUrl() async {
