@@ -1,4 +1,10 @@
-## [0.10.0-dev.1](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.0-dev.2](https://github.com/iamport/iamport_flutter/tree/master)
+- [안드로이드] NH카드 V3 url 파싱 에러를 해결했습니다.
+- 우리페이 앱 지원 종료에 따른 우리WON카드 지원을 추가했습니다.
+- L.PAY 및 L.POINT 앱 통합에 따른 L.POINT 지원을 추가했습니다.
+- 네이버페이 앱 로그인 기능을 추가했습니다.
+
+## [0.10.0-dev.1](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.1)
 - [안드로이드] 외부 앱 로딩 방식을 변경했습니다.
 - flutter v2로의 마이그레이션 및 dart 버전 업그레이드에 따른 null safety에 대한 대응을 완료했습니다.
 - 네이버페이 및 체크아웃 결제용 파라미터를 추가했습니다.

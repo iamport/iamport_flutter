@@ -31,6 +31,10 @@ class IamportUrl {
         if (this.appScheme!.contains('intent')) {
           List<String> intentUrl = splittedUrl[1].split('#Intent;');
           String host = intentUrl[0];
+          // 농협카드 일반결제 예외처리
+          if (host.contains(':')) {
+            host = host.replaceAll(RegExp(r':'), '%3A');
+          }
           List<String> arguments = intentUrl[1].split(';');
 
           // scheme이 intent로 시작하면 뒷쪽의 정보를 통해 appscheme과 package 정보 추출
@@ -59,8 +63,13 @@ class IamportUrl {
   }
 
   bool isAppLink() {
-    return !['http', 'https', 'about:blank', 'data', '']
-        .contains(Uri.parse(this.url).scheme);
+    String? scheme;
+    try {
+      scheme = Uri.parse(this.url).scheme;
+    } catch (e) {
+      scheme = this.appScheme;
+    }
+    return !['http', 'https', 'about:blank', 'data', ''].contains(scheme);
   }
 
   Future<String?> getAppUrl() async {
@@ -96,16 +105,22 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id362057947';
         case 'lpayapp': // 롯데 L.pay
           return UrlData.IOS_MARKET_PREFIX + 'id1036098908';
-        case 'wooripay': // 우리페이
+        case 'wooripay': // 우리페이 (2021.6.30 지원종료)
           return UrlData.IOS_MARKET_PREFIX + 'id1201113419';
+        case 'com.wooricard.wcard': // 우리WON카드
+          return UrlData.IOS_MARKET_PREFIX + 'id1499598869';
         case 'nhallonepayansimclick': // NH농협카드 올원페이(앱카드)
           return UrlData.IOS_MARKET_PREFIX + 'id1177889176';
         case 'hanawalletmembers': // 하나카드(하나멤버스 월렛)
           return UrlData.IOS_MARKET_PREFIX + 'id1038288833';
         case 'shinsegaeeasypayment': // 신세계 SSGPAY
           return UrlData.IOS_MARKET_PREFIX + 'id666237916';
-        case 'lguthepay-xpay':
+        case 'naversearchthirdlogin': // 네이버페이 앱 로그인
+          return UrlData.IOS_MARKET_PREFIX + 'id393499958';
+        case 'lguthepay-xpay': // 페이나우
           return UrlData.IOS_MARKET_PREFIX + 'id760098906';
+        case 'lmslpay': // 롯데 L.POINT
+          return UrlData.IOS_MARKET_PREFIX + 'id473250588';
         default:
           return this.url;
       }
@@ -161,6 +176,10 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KPAY;
         case UrlData.PAYNOW:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_PAYNOW;
+        case UrlData.WOORIWONCARD:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONCARD;
+        case UrlData.LPOINT:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPOINT;
         default:
           return this.url;
       }
