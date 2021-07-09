@@ -121,6 +121,8 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id760098906';
         case 'lmslpay': // 롯데 L.POINT
           return UrlData.IOS_MARKET_PREFIX + 'id473250588';
+        case 'liivbank' :
+          return UrlData.IOS_MARKET_PREFIX + 'id1126232922';
         default:
           return this.url;
       }
