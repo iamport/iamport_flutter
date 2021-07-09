@@ -107,6 +107,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>com.wooricard.wcard</string> <!-- 우리WON카드 -->
   <string>nhallonepayansimclick</string> <!-- NH 올원페이 -->
   <string>hanawalletmembers</string> <!-- 하나카드(하나멤버스 월렛) -->
+  <string>liivbank</string> <!-- 리브 -->
 </array>
 ...
 ```
