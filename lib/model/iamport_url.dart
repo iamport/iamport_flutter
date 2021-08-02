@@ -192,10 +192,15 @@ class IamportUrl {
 
   Future<bool> launchApp() async {
     if (Platform.isIOS) {
-      if (await canLaunch(this.url)) {
-        return await launch((await this.getAppUrl())!);
+      try {
+        if (await canLaunch(this.url)) {
+          return await launch((await this.getAppUrl())!);
+        } else {
+          return await launch((await this.getAppUrl())!);
+        }
+      } catch (e) {
+        return await launch((await this.getMarketUrl())!);
       }
-      return await launch((await this.getMarketUrl())!);
     } else if (Platform.isAndroid) {
       try {
         return await launch((await this.getAppUrl())!);
