@@ -105,7 +105,7 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id362057947';
         case 'lpayapp': // 롯데 L.pay
           return UrlData.IOS_MARKET_PREFIX + 'id1036098908';
-        case 'wooripay': // 우리페이 (2021.6.30 지원종료)
+        case 'wooripay': // 우리페이
           return UrlData.IOS_MARKET_PREFIX + 'id1201113419';
         case 'com.wooricard.wcard': // 우리WON카드
           return UrlData.IOS_MARKET_PREFIX + 'id1499598869';
@@ -121,8 +121,10 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id760098906';
         case 'lmslpay': // 롯데 L.POINT
           return UrlData.IOS_MARKET_PREFIX + 'id473250588';
-        case 'liivbank' :
+        case 'liivbank': // Liiv 국민
           return UrlData.IOS_MARKET_PREFIX + 'id1126232922';
+        case 'supertoss': // 토스
+          return UrlData.IOS_MARKET_PREFIX + 'id839333328';
         default:
           return this.url;
       }
