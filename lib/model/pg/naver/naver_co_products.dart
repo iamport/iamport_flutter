@@ -2,7 +2,7 @@ import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
 
 @jsonSerializable
-@Json(name: 'naverProducts')
+@Json(ignoreNullMembers: true)
 class NaverCoProducts implements NaverProducts {
   String? id;
   String? merchantProductId;
@@ -36,6 +36,7 @@ class NaverCoProducts implements NaverProducts {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoOption {
   int? optionQuantity;
   int? optionPrice;
@@ -44,6 +45,7 @@ class NaverCoOption {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoOptionItem {
   String? code;
   String? label;
@@ -57,6 +59,7 @@ class NaverCoOptionItem {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoSupplement {
   String? id;
   String? name;
@@ -72,6 +75,7 @@ class NaverCoSupplement {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoShipping {
   String? groupId;
   String? method;
@@ -89,6 +93,7 @@ class NaverCoShipping {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoFeeRule {
   int? freeByThreshold;
   int? repeatByQty;
@@ -104,6 +109,7 @@ class NaverCoFeeRule {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoFeeRangeByQty {
   int? from;
   int? surcharge;
@@ -115,6 +121,7 @@ class NaverCoFeeRangeByQty {
 }
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverCoFeeAreaByQty {
   List<String>? from;
   int? surcharge;
