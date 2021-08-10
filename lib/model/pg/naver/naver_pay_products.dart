@@ -2,6 +2,7 @@ import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
 
 @jsonSerializable
+@Json(ignoreNullMembers: true)
 class NaverPayProducts implements NaverProducts {
   String categoryType;
   String categoryId;

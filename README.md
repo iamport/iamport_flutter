@@ -18,7 +18,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.0-dev.2](https://github.com/iamport/iamport_flutter/tree/master) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.10.0-dev.3](https://github.com/iamport/iamport_flutter/tree/master) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -100,14 +100,19 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>citimobileapp</string> <!-- 씨티카드-간편결제 -->
   <string>kakaotalk</string> <!-- 카카오톡 -->
   <string>payco</string> <!-- 페이코 -->
-  <string>lpayapp</string> <!-- 롯데 L페이 -->
-  <string>lmslpay</string> <!-- 롯데 L.POINT -->
+  <string>lpayapp</string> <!-- (구)롯데 L페이 -->
   <string>hanamopmoasign</string> <!-- 하나카드 공인인증앱 -->
-  <string>wooripay</string> <!-- 우리페이 -->
-  <string>com.wooricard.wcard</string> <!-- 우리WON카드 -->
+  <string>wooripay</string> <!-- (구) 우리페이 -->
   <string>nhallonepayansimclick</string> <!-- NH 올원페이 -->
   <string>hanawalletmembers</string> <!-- 하나카드(하나멤버스 월렛) -->
-  <string>liivbank</string> <!-- 리브 -->
+  <string>chaipayment</string> <!-- 차이 -->
+  <string>kb-auth</string> <!-- 국민 -->
+  <string>hyundaicardappcardid</string>  <!-- 현대카드 -->
+  <string>com.wooricard.wcard</string>  <!-- 우리won페이 -->
+  <string>lmslpay</string>  <!-- 롯데 L페이 -->
+  <string>lguthepay-xpay</string>  <!-- 페이나우 -->
+  <string>liivbank</string>  <!-- Liiv 국민 -->
+  <string>supertoss</string> <!-- 토스 -->
 </array>
 ...
 ```

@@ -236,7 +236,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         buyerName: buyerName,
                         buyerTel: buyerTel,
                         buyerEmail: buyerEmail,
-                        appScheme: 'example',
+                        appScheme: 'flutterexample',
                         niceMobileV2: true,
                       );
                       if (payMethod == 'card' && cardQuota != '0') {

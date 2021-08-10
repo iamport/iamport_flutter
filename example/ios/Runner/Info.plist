@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>example</string>
+				<string>flutterexample</string>
 			</array>
 		</dict>
 	</array>
@@ -63,6 +63,7 @@
 		<string>nhallonepayansimclick</string>
 		<string>hanawalletmembers</string>
 		<string>liivbank</string>
+		<string>supertoss</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

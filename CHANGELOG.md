@@ -1,4 +1,8 @@
-## [0.10.0-dev.2](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.0-dev.3](https://github.com/iamport/iamport_flutter/tree/master)
+- 토스 지원을 추가했습니다.
+- 네이버페이 결제형에서 발생하는 json에 불필요한 값이 들어가는 오류를 수정했습니다.
+
+## [0.10.0-dev.2](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.2)
 - [안드로이드] NH카드 V3 url 파싱 에러를 해결했습니다.
 - [ios] 리브 앱 지원을 추가했습니다.
 - 우리페이 앱 지원 종료에 따른 우리WON카드 지원을 추가했습니다.

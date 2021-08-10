@@ -1,7 +1,7 @@
 import 'package:dart_json_mapper/dart_json_mapper.dart';
 
 @jsonSerializable
-@Json(name: 'naverInterface')
+@Json(ignoreNullMembers: true)
 class NaverInterface {
   String? cpaInflowCode;
   String? naverInflowCode;
