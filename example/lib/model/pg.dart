@@ -14,7 +14,7 @@ class Pg {
     'paypal',
     'mobilians',
     'payco',
-    'exmibay',
+    'eximbay',
     'settle',
     'naverco',
     'naverpay',
