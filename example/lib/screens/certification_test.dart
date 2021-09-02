@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:iamport_flutter/model/certification_data.dart';
-
-import '../model/carrier.dart';
+import 'package:iamport_flutter_example/model/carrier.dart';
 
 class CertificationTest extends StatefulWidget {
   @override
@@ -105,7 +103,7 @@ class _CertificationTestState extends State<CertificationTest> {
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(0, 30.0, 0, 0),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
@@ -126,8 +124,12 @@ class _CertificationTestState extends State<CertificationTest> {
                     }
                   },
                   child: Text('본인인증 하기', style: TextStyle(fontSize: 20)),
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(15.0),
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                  ),
                 ),
               ),
             ],

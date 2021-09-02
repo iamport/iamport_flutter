@@ -7,9 +7,9 @@ import 'package:iamport_flutter/model/pg/naver/naver_co_products.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
 
-import '../model/pg.dart';
-import '../model/method.dart';
-import '../model/quota.dart';
+import 'package:iamport_flutter_example/model/pg.dart';
+import 'package:iamport_flutter_example/model/method.dart';
+import 'package:iamport_flutter_example/model/quota.dart';
 
 class PaymentTest extends StatefulWidget {
   @override
@@ -221,7 +221,7 @@ class _PaymentTestState extends State<PaymentTest> {
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(0, 30.0, 0, 0),
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
@@ -290,16 +290,20 @@ class _PaymentTestState extends State<PaymentTest> {
 
                       // [이니시스-빌링.나이스.다날] 제공기간 표기
                       data.period = {
-                        'from': '20200101',
-                        'to': '20201231',
+                        'from': '20210101',
+                        'to': '202011231',
                       };
 
                       Navigator.pushNamed(context, '/payment', arguments: data);
                     }
                   },
                   child: Text('결제하기', style: TextStyle(fontSize: 20)),
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(15.0),
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                  ),
                 ),
               ),
             ],

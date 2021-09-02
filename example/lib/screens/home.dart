@@ -73,35 +73,49 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 0.0,
-                        top: 0.0,
-                        right: 10.0,
-                        bottom: 0.0,
+                      padding: EdgeInsets.only(
+                        left: 30,
                       ),
-                      child: RaisedButton.icon(
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
                         icon: Icon(Icons.payment),
                         onPressed: () {
                           Navigator.pushNamed(context, '/payment-test');
                         },
                         label: Text('결제 테스트'),
-                        color: Colors.white,
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.all(10),
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 10.0,
-                        top: 0.0,
-                        right: 0.0,
-                        bottom: 0.0,
+                      padding: EdgeInsets.only(
+                        left: 15,
+                        right: 15,
                       ),
-                      child: RaisedButton.icon(
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
                         icon: Icon(Icons.people),
                         onPressed: () {
                           Navigator.pushNamed(context, '/certification-test');
                         },
                         label: Text('본인인증 테스트'),
-                        color: Colors.white,
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.all(10),
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: 30,
                       ),
                     ),
                   ],
