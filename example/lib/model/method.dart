@@ -82,7 +82,8 @@ class Method {
       case 'kakaopay':
       case 'kakao':
       case 'paypal':
-      case 'payco': 
+      case 'payco':
+      case 'eximbay':
       case 'smilepay':
       case 'alipay':
         return METHOD_FOR_CARD;

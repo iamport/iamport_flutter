@@ -14,6 +14,7 @@ class Pg {
     'paypal',
     'mobilians',
     'payco',
+    'eximbay',
     'settle',
     'naverco',
     'naverpay',
@@ -21,6 +22,9 @@ class Pg {
     'chai',
     'payple',
     'alipay',
+    'bluewalnut',
+    'tosspay',
+    'smartro'
   ];
 
   static String getLabel(String pg) {
@@ -32,7 +36,7 @@ class Pg {
       case 'kcp_billing':
         return 'NHN KCP 정기결제';
       case 'uplus':
-        return 'LG 유플러스';
+        return '토스페이먼츠 - (구)LG 유플러스';
       case 'jtnet':
         return 'JTNET';
       case 'nice':
@@ -53,6 +57,8 @@ class Pg {
         return '모빌리언스';
       case 'payco':
         return '페이코';
+      case 'eximbay':
+        return '엑심베이';
       case 'settle':
         return '세틀뱅크 가상계좌';
       case 'naverco':
@@ -67,6 +73,12 @@ class Pg {
         return '페이플';
       case 'alipay':
         return '알리페이';
+      case 'bluewalnut':
+        return '블루월넛';
+      case 'tosspay':
+        return '토스 - 간편결제';
+      case 'smartro':
+        return '스마트로';
       default:
         return '-';
     }

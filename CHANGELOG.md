@@ -1,4 +1,8 @@
-## [0.10.0-dev.3](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.0-dev.4](https://github.com/iamport/iamport_flutter/tree/master)
+- JS SDK를 v1.2.0로 업데이트했습니다.
+- 스마트로를 추가했습니다.
+
+## [0.10.0-dev.3](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.3)
 - 토스 지원을 추가했습니다.
 - 네이버페이 결제형에서 발생하는 json에 불필요한 값이 들어가는 오류를 수정했습니다.
 
