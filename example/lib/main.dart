@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iamport_flutter_example/main.mapper.g.dart';
 
 import './screens/home.dart';
 import './screens/payment_test.dart';
@@ -7,20 +8,19 @@ import './screens/payment_result.dart';
 import './screens/certification_test.dart';
 import './screens/certification.dart';
 import './screens/certification_result.dart';
-import './main.mapper.g.dart';
 
 void main() {
   initializeJsonMapper();
 
-  runApp(new MyApp());
+  runApp(new IamportApp());
 }
 
-class MyApp extends StatefulWidget {
+class IamportApp extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _IamportAppState createState() => _IamportAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _IamportAppState extends State<IamportApp> {
   static const Color primaryColor = Color(0xff344e81);
 
   @override
