@@ -1,13 +1,13 @@
-import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'dart:convert';
 
-import './payment_data.dart';
+import 'package:iamport_flutter/model/payment_data.dart';
 
 class IamportValidation {
   bool isValid = true;
   String? errorMessage;
 
   IamportValidation(String userCode, PaymentData data, Function callback) {
-    // print('data: ${JsonMapper.serialize(data)}');
+    print('data: ${jsonEncode(data.toJson())}');
     // if (userCode == null) {
     //   isValid = false;
     //   errorMessage = '가맹점 식별코드(userCode)는 필수입력입니다.';

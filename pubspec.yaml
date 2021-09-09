@@ -10,14 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  iamport_webview_flutter: '3.0.3'
+  iamport_webview_flutter: 3.0.3
   url_launcher: ^6.0.4
-  dart_json_mapper: ^2.1.0
   uni_links: ^0.5.1
+  json_annotation: ^4.0.1
 
 dev_dependencies:
   test: ^1.17.10
   build_runner: ^2.0.3
+  json_serializable: ^4.1.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

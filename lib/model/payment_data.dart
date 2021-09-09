@@ -1,70 +1,70 @@
-import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
+import 'package:iamport_flutter/model/url_data.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import './url_data.dart';
+part 'payment_data.g.dart';
 
-@jsonSerializable
-@Json(ignoreNullMembers: true)
+@JsonSerializable()
 class PaymentData {
   String? pg; // PG사
 
-  @JsonProperty(name: 'pay_method')
+  @JsonKey(name: 'pay_method')
   String payMethod; // 결제수단
 
   bool? escrow; // 에스크로 여부
 
-  @JsonProperty(name: 'merchant_uid')
+  @JsonKey(name: 'merchant_uid')
   String merchantUid; // 주문번호
 
   String? name; // 주문명
   int amount; // 결제금액
 
-  @JsonProperty(name: 'custom_data')
+  @JsonKey(name: 'custom_data')
   Map<String, String>? customData; // 임의 지정 데이터
 
-  @JsonProperty(name: 'tax_free')
+  @JsonKey(name: 'tax_free')
   int? taxFree; // 면세 공급 가액
 
   int? vat; // 부가세
   String? currency; // 화폐단위
   String? language; // 언어설정
 
-  @JsonProperty(name: 'buyer_name')
+  @JsonKey(name: 'buyer_name')
   String? buyerName; // 구매자 이름
 
-  @JsonProperty(name: 'buyer_tel')
+  @JsonKey(name: 'buyer_tel')
   String buyerTel; // 구매자 연락처
 
-  @JsonProperty(name: 'buyer_email')
+  @JsonKey(name: 'buyer_email')
   String? buyerEmail; // 구매자 이메일
 
-  @JsonProperty(name: 'buyer_addr')
+  @JsonKey(name: 'buyer_addr')
   String? buyerAddr; // 구매자 주소
 
-  @JsonProperty(name: 'buyer_postcode')
+  @JsonKey(name: 'buyer_postcode')
   String? buyerPostcode; // 구매자 우편번호
 
-  @JsonProperty(name: 'notice_url')
+  @JsonKey(name: 'notice_url')
   String? noticeUrl;
 
-  @JsonProperty(name: 'display/card_quota')
+  @JsonKey(name: 'display/card_quota')
   List<int>? displayCardQuota; // 할부개월수
   bool? digital; // 실물컨텐츠 여부
 
-  @JsonProperty(name: 'vbank_due')
+  @JsonKey(name: 'vbank_due')
   String? vbankDue; // 가상계좌 입금기한
 
-  @JsonProperty(name: 'm_redirect_url')
+  @JsonKey(name: 'm_redirect_url')
   String? mRedirectUrl;
 
-  @JsonProperty(name: 'app_scheme')
+  @JsonKey(name: 'app_scheme')
   String appScheme; // 앱 스킴
 
-  @JsonProperty(name: 'biz_num')
+  @JsonKey(name: 'biz_num')
   String? bizNum; // 사업자번호
 
-  @JsonProperty(name: 'customer_uid')
+  @JsonKey(name: 'customer_uid')
   String? customerUid; // 정기결제 카드정보
 
   bool? popup; // 페이팔 팝업 여부
@@ -115,4 +115,9 @@ class PaymentData {
     this.company,
     this.niceMobileV2,
   });
+
+  factory PaymentData.fromJson(Map<String, dynamic> json) =>
+      _$PaymentDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PaymentDataToJson(this);
 }

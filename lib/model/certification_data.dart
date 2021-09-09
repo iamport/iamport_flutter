@@ -1,9 +1,10 @@
-import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-@jsonSerializable
-@Json(ignoreNullMembers: true)
+part 'certification_data.g.dart';
+
+@JsonSerializable()
 class CertificationData {
-  @JsonProperty(name: 'merchant_uid')
+  @JsonKey(name: 'merchant_uid')
   String? merchantUid;
 
   String? company;
@@ -11,7 +12,7 @@ class CertificationData {
   String? name;
   String? phone;
 
-  @JsonProperty(name: 'min_age')
+  @JsonKey(name: 'min_age')
   int? minAge;
 
   CertificationData({
@@ -22,4 +23,9 @@ class CertificationData {
     this.phone,
     this.minAge,
   });
+
+  factory CertificationData.fromJson(Map<String, dynamic> json) =>
+      _$CertificationDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CertificationDataToJson(this);
 }

@@ -1,7 +1,8 @@
-import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-@jsonSerializable
-@Json(ignoreNullMembers: true)
+part 'naver_interface.g.dart';
+
+@JsonSerializable()
 class NaverInterface {
   String? cpaInflowCode;
   String? naverInflowCode;
@@ -16,4 +17,9 @@ class NaverInterface {
     this.merchantCustomCode1,
     this.merchantCustomCode2,
   });
+
+  factory NaverInterface.fromJson(Map<String, dynamic> json) =>
+      _$NaverInterfaceFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NaverInterfaceToJson(this);
 }
