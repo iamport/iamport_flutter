@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 import 'package:iamport_flutter_example/model/carrier.dart';
 
@@ -21,9 +23,16 @@ class _CertificationTestState extends State<CertificationTest> {
     return Scaffold(
       appBar: AppBar(
         title: Text('아임포트 본인인증 테스트'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
+      body: SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: 15),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -102,7 +111,7 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(0, 30.0, 0, 0),
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -119,16 +128,24 @@ class _CertificationTestState extends State<CertificationTest> {
                         data.minAge = int.parse(minAge);
                       }
 
-                      Navigator.pushNamed(context, '/certification',
-                          arguments: data);
+                      Get.toNamed('/certification', arguments: data);
                     }
                   },
-                  child: Text('본인인증 하기', style: TextStyle(fontSize: 20)),
-                  style: ElevatedButton.styleFrom(
-                    textStyle: TextStyle(
+                  child: Text(
+                    '본인인증 하기',
+                    style: TextStyle(
+                      fontSize: 25,
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                    padding: EdgeInsets.all(15.0),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    elevation: 0,
+                    shadowColor: Colors.transparent,
                   ),
                 ),
               ),

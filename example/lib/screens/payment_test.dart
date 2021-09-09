@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:get/get.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_pay_products.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_co_products.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
-
-import 'package:iamport_flutter_example/model/pg.dart';
 import 'package:iamport_flutter_example/model/method.dart';
+import 'package:iamport_flutter_example/model/pg.dart';
 import 'package:iamport_flutter_example/model/quota.dart';
 
 class PaymentTest extends StatefulWidget {
@@ -37,10 +33,16 @@ class _PaymentTestState extends State<PaymentTest> {
     return Scaffold(
       appBar: AppBar(
         title: Text('아임포트 결제 테스트'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.all(20.0),
+      body: SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: 15),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -220,7 +222,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 },
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(0, 30.0, 0, 0),
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -291,18 +293,27 @@ class _PaymentTestState extends State<PaymentTest> {
                       // [이니시스-빌링.나이스.다날] 제공기간 표기
                       data.period = {
                         'from': '20210101',
-                        'to': '202011231',
+                        'to': '20211231',
                       };
 
-                      Navigator.pushNamed(context, '/payment', arguments: data);
+                      Get.toNamed('/payment', arguments: data);
                     }
                   },
-                  child: Text('결제하기', style: TextStyle(fontSize: 20)),
-                  style: ElevatedButton.styleFrom(
-                    textStyle: TextStyle(
+                  child: Text(
+                    '결제하기',
+                    style: TextStyle(
+                      fontSize: 25,
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                    padding: EdgeInsets.all(15.0),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    elevation: 0,
+                    shadowColor: Colors.transparent,
                   ),
                 ),
               ),

@@ -6,24 +6,23 @@ class Method {
     'phone',
   ];
 
-  static List<String> METHODS_FOR_INICIS =
-    METHODS + [
-      'samsung',
-      'kapy',
-      'cultureland',
-      'smartculture',
-      'happymoney',
-    ];
+  static List<String> METHODS_FOR_INICIS = METHODS +
+      [
+        'samsung',
+        'kapy',
+        'cultureland',
+        'smartculture',
+        'happymoney',
+      ];
 
-  static List<String>  METHODS_FOR_UPLUS =
-    METHODS + [
-      'cultureland',
-      'smartculture',
-      'booknlife',
-    ];
+  static List<String> METHODS_FOR_UPLUS = METHODS +
+      [
+        'cultureland',
+        'smartculture',
+        'booknlife',
+      ];
 
-  static List<String> METHODS_FOR_KCP =
-    METHODS + ['samsung'];
+  static List<String> METHODS_FOR_KCP = METHODS + ['samsung'];
 
   static List<String> METHODS_FOR_MOBILIANS = ['card', 'phone'];
   static List<String> METHOD_FOR_CARD = ['card'];
@@ -73,8 +72,8 @@ class Method {
   }
 
   static List<String> getListsByPg(String pg) {
-    switch(pg) {
-      case 'html5_inicis': 
+    switch (pg) {
+      case 'html5_inicis':
         return METHODS_FOR_INICIS;
       case 'kcp':
         return METHODS_FOR_KCP;

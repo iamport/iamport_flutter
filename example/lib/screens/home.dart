@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -74,50 +75,69 @@ class _HomeState extends State<Home> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        left: 30,
+                        left: 20,
                       ),
                     ),
                     Expanded(
                       child: ElevatedButton.icon(
-                        icon: Icon(Icons.payment),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/payment-test');
-                        },
-                        label: Text('결제 테스트'),
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.all(10),
-                          textStyle: TextStyle(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                        ),
+                        icon: Icon(
+                          Icons.payment,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        label: Text(
+                          '결제 테스트',
+                          style: TextStyle(
                             color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
+                        onPressed: () {
+                          Get.toNamed('/payment-test');
+                        },
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
                     ),
                     Expanded(
                       child: ElevatedButton.icon(
-                        icon: Icon(Icons.people),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/certification-test');
-                        },
-                        label: Text('본인인증 테스트'),
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.all(10),
-                          textStyle: TextStyle(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                        ),
+                        icon: Icon(
+                          Icons.people,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        label: Text(
+                          '본인인증 테스트',
+                          style: TextStyle(
                             color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
+                        onPressed: () {
+                          Get.toNamed('/certification-test');
+                        },
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: 30,
-                      ),
-                    ),
+                    Padding(padding: EdgeInsets.only(right: 20)),
                   ],
                 ),
               ),
