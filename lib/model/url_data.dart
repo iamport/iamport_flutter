@@ -80,4 +80,8 @@ class UrlData {
 
   static const String LPOINT = 'lmslpay';
   static const String PACKAGE_LPOINT = 'com.lottemembers.android';
+
+  // 안드로이드 scheme이 무엇인지 명확하지 않음
+  // static const String WOORIWONBANK = 'NewSmartPib';
+  // static const String PACKAGE_WOORIWONBANK = 'com.wooribank.smart.npib';
 }

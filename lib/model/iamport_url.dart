@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:io';
+
+import 'package:iamport_flutter/model/url_data.dart';
 import 'package:url_launcher/url_launcher.dart';
-import './url_data.dart';
 
 class IamportUrl {
   late String url;
@@ -125,6 +126,8 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id1126232922';
         case 'supertoss': // 토스
           return UrlData.IOS_MARKET_PREFIX + 'id839333328';
+        case 'NewSmartPib': // 우리WON뱅킹
+          return UrlData.IOS_MARKET_PREFIX + 'id1470181651';
         default:
           return this.url;
       }
