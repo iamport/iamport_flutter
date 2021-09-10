@@ -18,7 +18,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.0-dev.4](https://github.com/iamport/iamport_flutter/tree/master) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.10.0-rc.0](https://github.com/iamport/iamport_flutter/tree/master) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -28,14 +28,10 @@
 
 ```
 dependencies:
-  iamport_flutter: ^0.10.0-dev.2
+  iamport_flutter: ^0.10.0-rc.0
 ```
 
 ## 설정하기
-
-### 공통 사항
-v0.10.0 부터는 json 처리를 위해 [dart_json_mapper](https://pub.dev/packages/dart_json_mapper) 를 사용합니다. 따라서 [가이드](https://pub.dev/packages/dart_json_mapper#basic-setup) 를 참고하여 `build.yaml` 파일을 작성한 뒤 파일과 동일한 경로에서 `dart run build_runner build`를 실행해 mapper 파일을 생성해주셔야 합니다.
-mapper 파일이 생성되었다면 main 함수가 있는 파일에서 mapper 파일을 import한 뒤 main 함수에 `initializeJsonMapper()`을 한번 실행해주셔야 json 매핑이 정상적으로 진행됩니다. build_runner 명령어는 main 함수가 바뀔 때마다 실행해주셔야 합니다.
 
 ### IOS 설정하기
 IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.plist` 파일에 아래 3가지 항목을 설정해주셔야 합니다. `[프로젝트 이름]/ios/Runner.xcworkspace` 파일을 열어 왼쪽 프로젝트 패널 > Runner > info.plist 파일을 클릭합니다.
@@ -108,11 +104,12 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>chaipayment</string> <!-- 차이 -->
   <string>kb-auth</string> <!-- 국민 -->
   <string>hyundaicardappcardid</string>  <!-- 현대카드 -->
-  <string>com.wooricard.wcard</string>  <!-- 우리won페이 -->
+  <string>com.wooricard.wcard</string>  <!-- 우리WON페이 -->
   <string>lmslpay</string>  <!-- 롯데 L페이 -->
   <string>lguthepay-xpay</string>  <!-- 페이나우 -->
   <string>liivbank</string>  <!-- Liiv 국민 -->
   <string>supertoss</string> <!-- 토스 -->
+  <string>NewSmartPib</string> <!-- 우리WON뱅킹 -->
 </array>
 ...
 ```
