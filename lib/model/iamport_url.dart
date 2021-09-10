@@ -126,7 +126,7 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id1126232922';
         case 'supertoss': // 토스
           return UrlData.IOS_MARKET_PREFIX + 'id839333328';
-        case 'NewSmartPib': // 우리WON뱅킹
+        case 'newsmartpib': // 우리WON뱅킹
           return UrlData.IOS_MARKET_PREFIX + 'id1470181651';
         default:
           return this.url;
