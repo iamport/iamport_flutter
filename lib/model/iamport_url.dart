@@ -187,6 +187,8 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONCARD;
         case UrlData.LPOINT:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPOINT;
+        case UrlData.WOORIWONBANK:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONBANK;
         default:
           return this.url;
       }
