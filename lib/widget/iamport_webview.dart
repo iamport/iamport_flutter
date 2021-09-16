@@ -46,14 +46,16 @@ class IamportWebView extends StatefulWidget {
 class _IamportWebViewState extends State<IamportWebView> {
   late WebViewController _webViewController;
   StreamSubscription? _sub;
-  late int _idx;
+  late int _isWebviewLoaded;
+  late int _isImpLoaded;
 
   @override
   void initState() {
     super.initState();
-    _idx = 0;
+    _isWebviewLoaded = 0;
+    _isImpLoaded = 0;
     if (widget.initialChild != null) {
-      _idx++;
+      _isWebviewLoaded++;
     }
   }
 
@@ -69,7 +71,7 @@ class _IamportWebViewState extends State<IamportWebView> {
       appBar: widget.appBar,
       body: SafeArea(
         child: IndexedStack(
-          index: _idx,
+          index: _isWebviewLoaded,
           children: [
             WebView(
               initialUrl:
@@ -85,13 +87,16 @@ class _IamportWebViewState extends State<IamportWebView> {
               },
               onPageFinished: (String url) {
                 // 웹뷰 로딩 완료시에 화면 전환
-                if (_idx == 1) {
+                if (_isWebviewLoaded == 1) {
                   setState(() {
-                    _idx = 0;
+                    _isWebviewLoaded = 0;
                   });
                 }
                 // 페이지 로딩 완료시 IMP 코드 실행
-                widget.executeJS(this._webViewController);
+                if (_isImpLoaded == 0) {
+                  widget.executeJS(this._webViewController);
+                  _isImpLoaded++;
+                }
               },
               navigationDelegate: (request) async {
                 // print("url: " + request.url);
@@ -113,7 +118,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                 return NavigationDecision.navigate;
               },
             ),
-            if (_idx == 1) widget.initialChild!,
+            if (_isWebviewLoaded == 1) widget.initialChild!,
           ],
         ),
       ),
