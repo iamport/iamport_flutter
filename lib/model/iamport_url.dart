@@ -70,7 +70,7 @@ class IamportUrl {
     } catch (e) {
       scheme = this.appScheme;
     }
-    return !['http', 'https', 'about:blank', 'data', ''].contains(scheme);
+    return !['http', 'https', 'about', 'data', ''].contains(scheme);
   }
 
   Future<String?> getAppUrl() async {
