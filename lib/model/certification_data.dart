@@ -1,3 +1,4 @@
+import 'package:iamport_flutter/model/url_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'certification_data.g.dart';
@@ -11,9 +12,13 @@ class CertificationData {
   String? carrier;
   String? name;
   String? phone;
+  bool? popup;
 
   @JsonKey(name: 'min_age')
   int? minAge;
+
+  @JsonKey(name: 'm_redirect_url')
+  String? mRedirectUrl;
 
   CertificationData({
     this.merchantUid,
@@ -21,7 +26,9 @@ class CertificationData {
     this.carrier,
     this.name,
     this.phone,
+    this.popup,
     this.minAge,
+    this.mRedirectUrl = UrlData.redirectUrl,
   });
 
   factory CertificationData.fromJson(Map<String, dynamic> json) =>

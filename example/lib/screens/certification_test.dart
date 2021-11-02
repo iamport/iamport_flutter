@@ -123,6 +123,7 @@ class _CertificationTestState extends State<CertificationTest> {
                         company: company,
                         name: name,
                         phone: phone,
+                        // popup: false,
                       );
                       if (minAge.length > 0) {
                         data.minAge = int.parse(minAge);
