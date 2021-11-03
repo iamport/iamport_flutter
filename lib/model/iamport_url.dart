@@ -189,6 +189,12 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPOINT;
         case UrlData.WOORIWONBANK:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONBANK;
+        case UrlData.KTFAUTH:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KTFAUTH;
+        case UrlData.LGTAUTH:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LGTAUTH;
+        case UrlData.SKTAUTH:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SKTAUTH;
         default:
           return this.url;
       }

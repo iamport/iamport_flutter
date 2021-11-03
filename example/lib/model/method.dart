@@ -9,7 +9,7 @@ class Method {
   static List<String> METHODS_FOR_INICIS = METHODS +
       [
         'samsung',
-        'kapy',
+        'kpay',
         'cultureland',
         'smartculture',
         'happymoney',
