@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iamport_flutter_example/screens/certification.dart';
 import 'package:iamport_flutter_example/screens/certification_result.dart';
@@ -22,11 +23,16 @@ class _IamportAppState extends State<IamportApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
+    ));
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
     return GetMaterialApp(
       initialRoute: '/',
       theme: ThemeData(
         primaryColor: primaryColor,
-        buttonColor: primaryColor,
       ),
       getPages: [
         GetPage(name: '/', page: () => Home()),

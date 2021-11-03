@@ -6,16 +6,17 @@ part of 'certification_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CertificationData _$CertificationDataFromJson(Map<String, dynamic> json) {
-  return CertificationData(
-    merchantUid: json['merchant_uid'] as String?,
-    company: json['company'] as String?,
-    carrier: json['carrier'] as String?,
-    name: json['name'] as String?,
-    phone: json['phone'] as String?,
-    minAge: json['min_age'] as int?,
-  );
-}
+CertificationData _$CertificationDataFromJson(Map<String, dynamic> json) =>
+    CertificationData(
+      merchantUid: json['merchant_uid'] as String?,
+      company: json['company'] as String?,
+      carrier: json['carrier'] as String?,
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      popup: json['popup'] as bool?,
+      minAge: json['min_age'] as int?,
+      mRedirectUrl: json['m_redirect_url'] as String? ?? UrlData.redirectUrl,
+    );
 
 Map<String, dynamic> _$CertificationDataToJson(CertificationData instance) {
   final val = <String, dynamic>{};
@@ -31,6 +32,8 @@ Map<String, dynamic> _$CertificationDataToJson(CertificationData instance) {
   writeNotNull('carrier', instance.carrier);
   writeNotNull('name', instance.name);
   writeNotNull('phone', instance.phone);
+  writeNotNull('popup', instance.popup);
   writeNotNull('min_age', instance.minAge);
+  writeNotNull('m_redirect_url', instance.mRedirectUrl);
   return val;
 }
