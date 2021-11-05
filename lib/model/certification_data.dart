@@ -1,4 +1,5 @@
 import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'package:iamport_flutter/model/url_data.dart';
 
 @jsonSerializable
 @Json(ignoreNullMembers: true)
@@ -14,6 +15,9 @@ class CertificationData {
   @JsonProperty(name: 'min_age')
   int? minAge;
 
+  @JsonProperty(name: 'm_redirect_url')
+  String? mRedirectUrl;
+
   CertificationData({
     this.merchantUid,
     this.company,
@@ -21,5 +25,6 @@ class CertificationData {
     this.name,
     this.phone,
     this.minAge,
+    this.mRedirectUrl,
   });
 }
