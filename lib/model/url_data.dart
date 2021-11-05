@@ -80,4 +80,13 @@ class UrlData {
 
   static const String LPOINT = 'lmslpay';
   static const String PACKAGE_LPOINT = 'com.lottemembers.android';
+
+  static const String KTFAUTH = 'ktauthexternalcall';
+  static const String PACKAGE_KTFAUTH = 'com.kt.ktauth';
+
+  static const String LGTAUTH = 'upluscorporation';
+  static const String PACKAGE_LGTAUTH = 'com.lguplus.smartotp';
+
+  static const String SKTAUTH = 'tauthlink';
+  static const String PACKAGE_SKTAUTH = 'com.sktelecom.tauth';
 }

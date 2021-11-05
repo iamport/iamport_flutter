@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:iamport_flutter/model/url_data.dart';
 
 import '../model/carrier.dart';
 
@@ -116,6 +117,7 @@ class _CertificationTestState extends State<CertificationTest> {
                         company: company,
                         name: name,
                         phone: phone,
+                        mRedirectUrl: UrlData.redirectUrl,
                       );
                       if (minAge.length > 0) {
                         data.minAge = int.parse(minAge);
