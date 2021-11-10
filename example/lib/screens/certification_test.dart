@@ -117,7 +117,6 @@ class _CertificationTestState extends State<CertificationTest> {
                         company: company,
                         name: name,
                         phone: phone,
-                        mRedirectUrl: UrlData.redirectUrl,
                       );
                       if (minAge.length > 0) {
                         data.minAge = int.parse(minAge);

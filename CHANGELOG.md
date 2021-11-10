@@ -1,3 +1,6 @@
+## [0.10.0-dev.6](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.6)
+- [안드로이드] 다날 일반결제에서 페이북을 통해 결제할 때 앱을 실행시 발생하는 오류를 해결했습니다.
+
 ## [0.10.0-dev.5](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.5)
 - [안드로이드] 리뉴얼된 다날 본인인증 UI에서 PASS 앱 실행을 위한 m_redirect_url을 추가했습니다.
 
