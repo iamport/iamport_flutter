@@ -42,7 +42,7 @@ class Method {
         return '휴대폰 소액결제';
       case 'samsung':
         return '삼성페이';
-      case 'kapy':
+      case 'kpay':
         return 'KPAY';
       case 'cultureland':
         return '문화상품권';
