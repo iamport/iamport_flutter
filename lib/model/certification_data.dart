@@ -26,7 +26,7 @@ class CertificationData {
     this.name,
     this.phone,
     this.minAge,
-    this.mRedirectUrl = UrlData.redirectUrl,
+    this.mRedirectUrl,
   });
 
   factory CertificationData.fromJson(Map<String, dynamic> json) =>

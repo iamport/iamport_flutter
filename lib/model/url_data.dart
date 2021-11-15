@@ -83,7 +83,7 @@ class UrlData {
 
   static const String WOORIWONBANK = 'wooribank';
   static const String PACKAGE_WOORIWONBANK = 'com.wooribank.smart.npib';
-
+  
   static const String KTFAUTH = 'ktauthexternalcall';
   static const String PACKAGE_KTFAUTH = 'com.kt.ktauth';
 
