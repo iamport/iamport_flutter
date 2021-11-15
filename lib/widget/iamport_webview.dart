@@ -15,7 +15,7 @@ class IamportWebView extends StatefulWidget {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
-        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+        <script type="text/javascript" src="https://e166-110-9-118-118.ap.ngrok.io/js/iamport-1.2.0.js"></script>
       </head>
       <body></body>
     </html>
@@ -67,6 +67,7 @@ class _IamportWebViewState extends State<IamportWebView> {
 
   @override
   Widget build(BuildContext context) {
+    print(WebView.platform.toString());
     return Scaffold(
       appBar: widget.appBar,
       body: SafeArea(
@@ -99,7 +100,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                 }
               },
               navigationDelegate: (request) async {
-                // print("url: " + request.url);
+                print("url: " + request.url);
                 if (widget.isPaymentOver(request.url)) {
                   String decodedUrl = Uri.decodeComponent(request.url);
                   widget.useQueryData(Uri.parse(decodedUrl).queryParameters);
@@ -109,7 +110,7 @@ class _IamportWebViewState extends State<IamportWebView> {
 
                 final iamportUrl = IamportUrl(request.url);
                 if (iamportUrl.isAppLink()) {
-                  // print("appLink: " + iamportUrl.appUrl!);
+                  print("appLink: " + iamportUrl.appUrl!);
                   // 앱 실행 로직을 iamport_url 모듈로 이동
                   iamportUrl.launchApp();
                   return NavigationDecision.prevent;

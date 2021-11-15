@@ -284,7 +284,7 @@ class _PaymentTestState extends State<PaymentTest> {
                           uid: '107922211',
                           payReferrer: 'NAVER_BOOK',
                         );
-                        data.naverUseCfm = '20210606';
+                        data.naverUseCfm = '20211026';
                         data.naverCultureBenefit = false;
                         data.naverPopupMode = false;
                         data.naverProducts = [p];

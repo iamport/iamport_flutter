@@ -12,7 +12,6 @@ class CertificationData {
   String? carrier;
   String? name;
   String? phone;
-  bool? popup;
 
   @JsonKey(name: 'min_age')
   int? minAge;
@@ -26,7 +25,6 @@ class CertificationData {
     this.carrier,
     this.name,
     this.phone,
-    this.popup,
     this.minAge,
     this.mRedirectUrl = UrlData.redirectUrl,
   });
