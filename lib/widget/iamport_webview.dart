@@ -15,7 +15,7 @@ class IamportWebView extends StatefulWidget {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
-        <script type="text/javascript" src="https://e166-110-9-118-118.ap.ngrok.io/js/iamport-1.2.0.js"></script>
+        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
       </head>
       <body></body>
     </html>
