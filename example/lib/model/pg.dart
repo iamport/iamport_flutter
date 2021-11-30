@@ -7,7 +7,6 @@ class Pg {
     'jtnet',
     'nice',
     'kakaopay',
-    'kakao',
     'danal',
     'danal_tpay',
     'kicc',
@@ -16,7 +15,6 @@ class Pg {
     'payco',
     'eximbay',
     'settle',
-    'naverco',
     'naverpay',
     'smilepay',
     'chai',
@@ -36,15 +34,13 @@ class Pg {
       case 'kcp_billing':
         return 'NHN KCP 정기결제';
       case 'uplus':
-        return '토스페이먼츠 - (구)LG 유플러스';
+        return '토스페이먼츠';
       case 'jtnet':
         return 'JTNET';
       case 'nice':
         return '나이스 정보통신';
       case 'kakaopay':
-        return '신 - 카카오페이';
-      case 'kakao':
-        return '구 - LG CNS 카카오페이';
+        return '카카오페이';
       case 'danal':
         return '다날 휴대폰 소액결제';
       case 'danal_tpay':
@@ -61,8 +57,6 @@ class Pg {
         return '엑심베이';
       case 'settle':
         return '세틀뱅크 가상계좌';
-      case 'naverco':
-        return '네이버 체크아웃';
       case 'naverpay':
         return '네이버페이';
       case 'smilepay':
@@ -76,7 +70,7 @@ class Pg {
       case 'bluewalnut':
         return '블루월넛';
       case 'tosspay':
-        return '토스 - 간편결제';
+        return '토스 간편결제';
       case 'smartro':
         return '스마트로';
       default:

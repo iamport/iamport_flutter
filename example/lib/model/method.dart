@@ -22,7 +22,7 @@ class Method {
         'booknlife',
       ];
 
-  static List<String> METHODS_FOR_KCP = METHODS + ['samsung'];
+  static List<String> METHODS_FOR_KCP = METHODS + ['samsung', 'naverpay'];
 
   static List<String> METHODS_FOR_MOBILIANS = ['card', 'phone'];
   static List<String> METHOD_FOR_CARD = ['card'];
@@ -52,6 +52,8 @@ class Method {
         return '해피머니';
       case 'booknlife':
         return '도서상품권';
+      case 'naverpay':
+        return '네이버페이';
       default:
         return '-';
     }
