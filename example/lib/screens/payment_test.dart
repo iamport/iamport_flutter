@@ -295,7 +295,8 @@ class _PaymentTestState extends State<PaymentTest> {
                         'from': '20210101',
                         'to': '20211231',
                       };
-
+            
+                      data.popup = false;
                       Get.toNamed('/payment', arguments: data);
                     }
                   },

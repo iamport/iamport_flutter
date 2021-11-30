@@ -70,7 +70,8 @@ class IamportValidation {
       return;
     }
 
-    if (data.pg == 'eximbay' || data.pg == 'syrup') {
+    // if (data.pg == 'eximbay' || data.pg == 'syrup') {
+    if (data.pg == 'syrup') {
       isValid = false;
       errorMessage = '해당 모듈은 해당 PG사를 지원하지 않습니다.';
       return;
