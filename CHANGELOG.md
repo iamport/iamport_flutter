@@ -1,4 +1,4 @@
-## [1.0.0](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.0](https://github.com/iamport/iamport_flutter/tree/master)
 - 예제 UI를 개선했습니다.
 - 로딩 컴포넌트가 보이지 않는 문제를 해결했습니다.
 - 로딩 컴포넌트 및 AppBar 커스터마이징 기능을 개선했습니다.
