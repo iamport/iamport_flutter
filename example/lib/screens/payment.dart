@@ -10,8 +10,8 @@ class Payment extends StatelessWidget {
     PaymentData data = Get.arguments as PaymentData;
 
     return IamportPayment(
-      appBar: new AppBar(
-        title: new Text('아임포트 결제'),
+      appBar: AppBar(
+        title: Text('아임포트 결제'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),

@@ -25,7 +25,7 @@ class CertificationResult extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: new AppBar(
+      appBar: AppBar(
         title: Text('본인인증 결과'),
         centerTitle: true,
         automaticallyImplyLeading: false,

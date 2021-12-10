@@ -19,7 +19,7 @@ class IamportError extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: new AppBar(
+      appBar: AppBar(
         title: Text('아임포트 $actionText 결과'),
         centerTitle: true,
         automaticallyImplyLeading: false,

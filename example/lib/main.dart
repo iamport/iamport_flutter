@@ -10,7 +10,7 @@ import 'package:iamport_flutter_example/screens/payment_result.dart';
 import 'package:iamport_flutter_example/screens/payment_test.dart';
 
 void main() {
-  runApp(new IamportApp());
+  runApp(IamportApp());
 }
 
 class IamportApp extends StatefulWidget {

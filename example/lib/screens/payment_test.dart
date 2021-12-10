@@ -103,7 +103,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         );
                       }).toList(),
                     )
-                  : new Container(),
+                  : Container(),
               payMethod == 'vbank'
                   ? TextFormField(
                       decoration: InputDecoration(
@@ -113,7 +113,7 @@ class _PaymentTestState extends State<PaymentTest> {
                       validator: (value) {
                         if (value!.isEmpty) return '입금기한은 필수입력입니다';
                         if (value.length > 0) {
-                          RegExp regex = new RegExp(r'^[0-9]+$');
+                          RegExp regex = RegExp(r'^[0-9]+$');
                           if (!regex.hasMatch(value)) return '입금기한이 올바르지 않습니다.';
                         }
                         return null;
@@ -123,7 +123,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         vbankDue = value!;
                       },
                     )
-                  : new Container(),
+                  : Container(),
               payMethod == 'vbank' && pg == 'danal_tpay'
                   ? TextFormField(
                       decoration: InputDecoration(
@@ -132,7 +132,7 @@ class _PaymentTestState extends State<PaymentTest> {
                       validator: (value) {
                         if (value!.isEmpty) return '사업자번호는 필수입력입니다';
                         if (value.length > 0) {
-                          RegExp regex = new RegExp(r'^[0-9]+$');
+                          RegExp regex = RegExp(r'^[0-9]+$');
                           if (!regex.hasMatch(value))
                             return '사업자번호가 올바르지 않습니다.';
                           if (value.length != 10) return '사업자번호는 10자리 숫자입니다.';
@@ -144,7 +144,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         bizNum = value!;
                       },
                     )
-                  : new Container(),
+                  : Container(),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: '주문명',
@@ -165,7 +165,7 @@ class _PaymentTestState extends State<PaymentTest> {
                     return '결제금액은 필수입력입니다.';
                   }
                   if (value.length > 0) {
-                    RegExp regex = new RegExp(r'^[0-9]+$');
+                    RegExp regex = RegExp(r'^[0-9]+$');
                     if (!regex.hasMatch(value)) return '결제금액이 올바르지 않습니다.';
                   }
                   return null;
@@ -201,7 +201,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 initialValue: '01012341234',
                 validator: (value) {
                   if (value!.length > 0) {
-                    RegExp regex = new RegExp(r'^[0-9]+$');
+                    RegExp regex = RegExp(r'^[0-9]+$');
                     if (!regex.hasMatch(value)) return '전화번호가 올바르지 않습니다.';
                   }
                   return null;
@@ -295,7 +295,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         'from': '20210101',
                         'to': '20211231',
                       };
-            
+
                       data.popup = false;
                       Get.toNamed('/payment', arguments: data);
                     }

@@ -33,7 +33,7 @@ class PaymentResult extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: new AppBar(
+      appBar: AppBar(
         title: Text('아임포트 결제 결과'),
         centerTitle: true,
         automaticallyImplyLeading: false,

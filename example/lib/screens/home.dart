@@ -10,7 +10,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: new Container(
+      child: Container(
         decoration: BoxDecoration(color: Color(0xff344e81)),
         child: Center(
           child: Column(

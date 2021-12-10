@@ -100,7 +100,7 @@ class _CertificationTestState extends State<CertificationTest> {
                 ),
                 validator: (value) {
                   if (value!.length > 0) {
-                    RegExp regex = new RegExp(r'^[0-9]+$');
+                    RegExp regex = RegExp(r'^[0-9]+$');
                     if (!regex.hasMatch(value)) return '최소 연령이 올바르지 않습니다.';
                   }
                   return null;

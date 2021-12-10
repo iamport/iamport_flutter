@@ -11,8 +11,8 @@ class Certification extends StatelessWidget {
     CertificationData data = Get.arguments as CertificationData;
 
     return IamportCertification(
-      appBar: new AppBar(
-        title: new Text('아임포트 본인인증'),
+      appBar: AppBar(
+        title: Text('아임포트 본인인증'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
