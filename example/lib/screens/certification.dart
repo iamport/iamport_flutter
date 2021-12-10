@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'package:iamport_flutter/iamport_certification.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 
@@ -8,23 +8,27 @@ class Certification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CertificationData data =
-        ModalRoute.of(context)!.settings.arguments as CertificationData;
+    CertificationData data = Get.arguments as CertificationData;
 
     return IamportCertification(
-      appBar: new AppBar(
-        title: new Text('아임포트 본인인증'),
+      appBar: AppBar(
+        title: Text('아임포트 본인인증'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
-      initialChild: Container(
+      initialChild: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/iamport-logo.png'),
-              Container(
-                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                child: Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
-              ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
             ],
           ),
         ),
@@ -32,11 +36,7 @@ class Certification extends StatelessWidget {
       userCode: userCode,
       data: data,
       callback: (Map<String, String> result) {
-        Navigator.pushReplacementNamed(
-          context,
-          '/certification-result',
-          arguments: result,
-        );
+        Get.offNamed('/certification-result', arguments: result);
       },
     );
   }

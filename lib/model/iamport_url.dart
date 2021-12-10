@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:io';
+
+import 'package:iamport_flutter/model/url_data.dart';
 import 'package:url_launcher/url_launcher.dart';
-import './url_data.dart';
 
 class IamportUrl {
   late String url;
@@ -69,7 +70,7 @@ class IamportUrl {
     } catch (e) {
       scheme = this.appScheme;
     }
-    return !['http', 'https', 'about:blank', 'data', ''].contains(scheme);
+    return !['http', 'https', 'about', 'data', ''].contains(scheme);
   }
 
   Future<String?> getAppUrl() async {
@@ -125,6 +126,8 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id1126232922';
         case 'supertoss': // 토스
           return UrlData.IOS_MARKET_PREFIX + 'id839333328';
+        case 'newsmartpib': // 우리WON뱅킹
+          return UrlData.IOS_MARKET_PREFIX + 'id1470181651';
         default:
           return this.url;
       }
@@ -184,6 +187,8 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONCARD;
         case UrlData.LPOINT:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LPOINT;
+        case UrlData.WOORIWONBANK:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_WOORIWONBANK;
         case UrlData.KTFAUTH:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KTFAUTH;
         case UrlData.LGTAUTH:

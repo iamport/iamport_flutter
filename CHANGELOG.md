@@ -1,3 +1,11 @@
+## [1.0.0](https://github.com/iamport/iamport_flutter/tree/master)
+- 예제 UI를 개선했습니다.
+- 로딩 컴포넌트가 보이지 않는 문제를 해결했습니다.
+- 로딩 컴포넌트 및 AppBar 커스터마이징 기능을 개선했습니다.
+- json 라이브러리를 json_serializable로 교체했습니다.
+- 우리페이 확대에 따른 우리WON뱅킹 지원을 추가했습니다.
+- [iOS] 연속적인 자바스크립트 실행으로 인해 불필요한 로그가 생성되지 않도록 수정했습니다.
+
 ## [0.10.0-dev.6](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.6)
 - [안드로이드] 다날 일반결제에서 페이북을 통해 결제할 때 앱을 실행시 발생하는 오류를 해결했습니다.
 

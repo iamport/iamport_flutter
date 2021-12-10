@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: new Container(
+      child: Container(
         decoration: BoxDecoration(color: Color(0xff344e81)),
         child: Center(
           child: Column(
@@ -73,37 +74,70 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 0.0,
-                        top: 0.0,
-                        right: 10.0,
-                        bottom: 0.0,
+                      padding: EdgeInsets.only(
+                        left: 20,
                       ),
-                      child: RaisedButton.icon(
-                        icon: Icon(Icons.payment),
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                        ),
+                        icon: Icon(
+                          Icons.payment,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        label: Text(
+                          '결제 테스트',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/payment-test');
+                          Get.toNamed('/payment-test');
                         },
-                        label: Text('결제 테스트'),
-                        color: Colors.white,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 10.0,
-                        top: 0.0,
-                        right: 0.0,
-                        bottom: 0.0,
-                      ),
-                      child: RaisedButton.icon(
-                        icon: Icon(Icons.people),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          elevation: 0,
+                          shadowColor: Colors.transparent,
+                        ),
+                        icon: Icon(
+                          Icons.people,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        label: Text(
+                          '본인인증 테스트',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         onPressed: () {
-                          Navigator.pushNamed(context, '/certification-test');
+                          Get.toNamed('/certification-test');
                         },
-                        label: Text('본인인증 테스트'),
-                        color: Colors.white,
                       ),
                     ),
+                    Padding(padding: EdgeInsets.only(right: 20)),
                   ],
                 ),
               ),

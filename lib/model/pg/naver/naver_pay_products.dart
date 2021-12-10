@@ -1,8 +1,9 @@
-import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-@jsonSerializable
-@Json(ignoreNullMembers: true)
+part 'naver_pay_products.g.dart';
+
+@JsonSerializable()
 class NaverPayProducts implements NaverProducts {
   String categoryType;
   String categoryId;
@@ -19,4 +20,9 @@ class NaverPayProducts implements NaverProducts {
     required this.count,
     this.payReferrer,
   });
+
+  factory NaverPayProducts.fromJson(Map<String, dynamic> json) =>
+      _$NaverPayProductsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$NaverPayProductsToJson(this);
 }

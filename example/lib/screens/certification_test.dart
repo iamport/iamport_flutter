@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
-import 'package:iamport_flutter/model/url_data.dart';
-
-import '../model/carrier.dart';
+import 'package:iamport_flutter_example/model/carrier.dart';
 
 class CertificationTest extends StatefulWidget {
   @override
@@ -24,9 +23,16 @@ class _CertificationTestState extends State<CertificationTest> {
     return Scaffold(
       appBar: AppBar(
         title: Text('아임포트 본인인증 테스트'),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
+      body: SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: 15),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -94,7 +100,7 @@ class _CertificationTestState extends State<CertificationTest> {
                 ),
                 validator: (value) {
                   if (value!.length > 0) {
-                    RegExp regex = new RegExp(r'^[0-9]+$');
+                    RegExp regex = RegExp(r'^[0-9]+$');
                     if (!regex.hasMatch(value)) return '최소 연령이 올바르지 않습니다.';
                   }
                   return null;
@@ -105,8 +111,8 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(0, 30.0, 0, 0),
-                child: RaisedButton(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
@@ -118,17 +124,30 @@ class _CertificationTestState extends State<CertificationTest> {
                         name: name,
                         phone: phone,
                       );
+                      print("m_redirect_url: ${data.mRedirectUrl}");
                       if (minAge.length > 0) {
                         data.minAge = int.parse(minAge);
                       }
 
-                      Navigator.pushNamed(context, '/certification',
-                          arguments: data);
+                      Get.toNamed('/certification', arguments: data);
                     }
                   },
-                  child: Text('본인인증 하기', style: TextStyle(fontSize: 20)),
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    '본인인증 하기',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    elevation: 0,
+                    shadowColor: Colors.transparent,
+                  ),
                 ),
               ),
             ],

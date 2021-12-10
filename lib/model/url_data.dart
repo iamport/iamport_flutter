@@ -45,7 +45,7 @@ class UrlData {
   static const String PACKAGE_SHINHANCARD = 'com.shcard.smartpay';
 
   static const String HANACARD = 'cloudpay';
-  static const String PACKAGE_HANACARD = 'com.hanaskard.paycla';
+  static const String PACKAGE_HANACARD = 'com.hanaskcard.paycla';
 
   static const String SAMSUNGCARD = 'mpocket.online.ansimclick';
   static const String PACKAGE_SAMSUNGCARD = 'kr.co.samsungcard.mpocket';
@@ -80,6 +80,9 @@ class UrlData {
 
   static const String LPOINT = 'lmslpay';
   static const String PACKAGE_LPOINT = 'com.lottemembers.android';
+
+  static const String WOORIWONBANK = 'wooribank';
+  static const String PACKAGE_WOORIWONBANK = 'com.wooribank.smart.npib';
 
   static const String KTFAUTH = 'ktauthexternalcall';
   static const String PACKAGE_KTFAUTH = 'com.kt.ktauth';

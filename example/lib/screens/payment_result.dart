@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PaymentResult extends StatelessWidget {
   static const Color successColor = Color(0xff52c41a);
@@ -16,8 +17,7 @@ class PaymentResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> result =
-        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    Map<String, String> result = Get.arguments as Map<String, String>;
     bool isSuccessed = getIsSuccessed(result);
     String message;
     IconData icon;
@@ -33,92 +33,100 @@ class PaymentResult extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: new AppBar(
+      appBar: AppBar(
         title: Text('아임포트 결제 결과'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            color: color,
-            size: 200.0,
-          ),
-          Text(
-            message,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              color: color,
+              size: 200,
             ),
-          ),
-          Container(
-            padding: EdgeInsets.fromLTRB(50.0, 30.0, 50.0, 50.0),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(
-                          flex: 4,
-                          child: Text('아임포트 번호',
-                              style: TextStyle(color: Colors.grey))),
-                      Expanded(
-                        flex: 5,
-                        child: Text(result['imp_uid'] ?? '-'),
-                      ),
-                    ],
+            Text(
+              message,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                            flex: 4,
+                            child: Text('아임포트 번호',
+                                style: TextStyle(color: Colors.grey))),
+                        Expanded(
+                          flex: 5,
+                          child: Text(result['imp_uid'] ?? '-'),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                isSuccessed
-                    ? Container(
-                        padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
+                  isSuccessed
+                      ? Container(
+                          padding: EdgeInsets.symmetric(vertical: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                  flex: 4,
+                                  child: Text('주문 번호',
+                                      style: TextStyle(color: Colors.grey))),
+                              Expanded(
+                                flex: 5,
+                                child: Text(result['merchant_uid'] ?? '-'),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Container(
+                          padding: EdgeInsets.symmetric(vertical: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
                                 flex: 4,
-                                child: Text('주문 번호',
-                                    style: TextStyle(color: Colors.grey))),
-                            Expanded(
-                              flex: 5,
-                              child: Text(result['merchant_uid'] ?? '-'),
-                            ),
-                          ],
+                                child: Text('에러 메시지',
+                                    style: TextStyle(color: Colors.grey)),
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: Text(result['error_msg'] ?? '-'),
+                              ),
+                            ],
+                          ),
                         ),
-                      )
-                    : Container(
-                        padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              flex: 4,
-                              child: Text('에러 메시지',
-                                  style: TextStyle(color: Colors.grey)),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: Text(result['error_msg'] ?? '-'),
-                            ),
-                          ],
-                        ),
-                      ),
-              ],
+                ],
+              ),
             ),
-          ),
-          RaisedButton.icon(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, '/payment-test');
-            },
-            label: Text('돌아가기', style: TextStyle(fontSize: 16.0)),
-            color: Colors.white,
-            textColor: color,
-          ),
-        ],
+            ElevatedButton.icon(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Get.offAllNamed('/');
+              },
+              label: Text(
+                '돌아가기',
+                style: TextStyle(fontSize: 16, color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                shadowColor: Colors.transparent,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

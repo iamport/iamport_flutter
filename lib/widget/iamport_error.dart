@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './iamport_webview.dart';
+import 'package:iamport_flutter/widget/iamport_webview.dart';
 
 class IamportError extends StatelessWidget {
   static final Color failureColor = Color(0xfff5222d);
@@ -19,52 +19,59 @@ class IamportError extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: new AppBar(
+      appBar: AppBar(
         title: Text('아임포트 $actionText 결과'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-      body: Container(
+      body: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Flexible(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   Icon(
                     Icons.error,
                     color: failureColor,
-                    size: 200.0,
+                    size: 200,
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                       '아임포트 $actionText 파라메터 오류',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
+                        fontSize: 20,
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 50.0),
+                    padding: EdgeInsets.fromLTRB(50, 10, 50, 50),
                     child: Text(
                       errorMessage!,
                       style: TextStyle(
                         height: 1.2,
-                        fontSize: 16.0,
+                        fontSize: 16,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  RaisedButton.icon(
+                  ElevatedButton.icon(
                     icon: Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    label: Text('돌아가기', style: TextStyle(fontSize: 16.0)),
-                    color: Colors.white,
-                    textColor: failureColor,
+                    label: Text(
+                      '돌아가기',
+                      style: TextStyle(fontSize: 16, color: failureColor),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                    ),
                   ),
                 ],
               ),

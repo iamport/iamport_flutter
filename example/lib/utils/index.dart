@@ -7,7 +7,6 @@ class Utils {
         return 'imp09350031';
       case 'mobilians':
         return 'imp60029475';
-      case 'naverco':
       case 'naverpay':
         return 'imp41073887';
       case 'smilepay':

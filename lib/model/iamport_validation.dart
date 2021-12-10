@@ -1,49 +1,12 @@
-import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'dart:convert';
 
-import './payment_data.dart';
+import 'package:iamport_flutter/model/payment_data.dart';
 
 class IamportValidation {
   bool isValid = true;
   String? errorMessage;
 
   IamportValidation(String userCode, PaymentData data, Function callback) {
-    // print('data: ${JsonMapper.serialize(data)}');
-    // if (userCode == null) {
-    //   isValid = false;
-    //   errorMessage = '가맹점 식별코드(userCode)는 필수입력입니다.';
-    //   return;
-    // }
-
-    // if (data == null) {
-    //   isValid = false;
-    //   errorMessage = '결제 데이터(data)는 필수입력입니다.';
-    //   return;
-    // }
-
-    // if (callback == null) {
-    //   isValid = false;
-    //   errorMessage = '콜백함수(callback)는 필수입력입니다.';
-    //   return;
-    // }
-
-    // if (data.merchantUid == null) {
-    //   isValid = false;
-    //   errorMessage = '주문번호(merchantUid)는 필수입력입니다.';
-    //   return;
-    // }
-
-    // if (data.amount == null) {
-    //   isValid = false;
-    //   errorMessage = '결제금액(amount)은 필수입력입니다.';
-    //   return;
-    // }
-
-    // if (data.appScheme == null) {
-    //   isValid = false;
-    //   errorMessage = '앱 스킴(appScheme)은 필수입력입니다.';
-    //   return;
-    // }
-
     if (data.payMethod == 'vbank') {
       if (data.vbankDue == null) {
         isValid = false;
@@ -70,7 +33,7 @@ class IamportValidation {
       return;
     }
 
-    if (data.pg == 'eximbay' || data.pg == 'syrup') {
+    if (data.pg == 'syrup') {
       isValid = false;
       errorMessage = '해당 모듈은 해당 PG사를 지원하지 않습니다.';
       return;

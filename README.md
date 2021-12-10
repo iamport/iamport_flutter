@@ -18,7 +18,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.0-dev.5](https://github.com/iamport/iamport_flutter/tree/v0.10.0-dev.5) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v1.0.0](https://github.com/iamport/iamport_flutter/tree/master) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -28,14 +28,10 @@
 
 ```
 dependencies:
-  iamport_flutter: ^0.10.0-dev.2
+  iamport_flutter: ^1.0.0
 ```
 
 ## 설정하기
-
-### 공통 사항
-v0.10.0 부터는 json 처리를 위해 [dart_json_mapper](https://pub.dev/packages/dart_json_mapper) 를 사용합니다. 따라서 [가이드](https://pub.dev/packages/dart_json_mapper#basic-setup) 를 참고하여 `build.yaml` 파일을 작성한 뒤 파일과 동일한 경로에서 `dart run build_runner build`를 실행해 mapper 파일을 생성해주셔야 합니다.
-mapper 파일이 생성되었다면 main 함수가 있는 파일에서 mapper 파일을 import한 뒤 main 함수에 `initializeJsonMapper()`을 한번 실행해주셔야 json 매핑이 정상적으로 진행됩니다. build_runner 명령어는 main 함수가 바뀔 때마다 실행해주셔야 합니다.
 
 ### IOS 설정하기
 IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.plist` 파일에 아래 3가지 항목을 설정해주셔야 합니다. `[프로젝트 이름]/ios/Runner.xcworkspace` 파일을 열어 왼쪽 프로젝트 패널 > Runner > info.plist 파일을 클릭합니다.
@@ -108,11 +104,12 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>chaipayment</string> <!-- 차이 -->
   <string>kb-auth</string> <!-- 국민 -->
   <string>hyundaicardappcardid</string>  <!-- 현대카드 -->
-  <string>com.wooricard.wcard</string>  <!-- 우리won페이 -->
+  <string>com.wooricard.wcard</string>  <!-- 우리WON페이 -->
   <string>lmslpay</string>  <!-- 롯데 L페이 -->
   <string>lguthepay-xpay</string>  <!-- 페이나우 -->
   <string>liivbank</string>  <!-- Liiv 국민 -->
   <string>supertoss</string> <!-- 토스 -->
+  <string>newsmartpib</string> <!-- 우리WON뱅킹 -->
 </array>
 ...
 ```
@@ -181,10 +178,8 @@ class Payment extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/iamport-logo.png'),
-              Container(
-                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                child: Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
-              ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ],
           ),
         ),
@@ -192,22 +187,20 @@ class Payment extends StatelessWidget {
       /* [필수입력] 가맹점 식별코드 */
       userCode: 'iamport',
       /* [필수입력] 결제 데이터 */
-      data: PaymentData.fromJson({
-        'pg': 'html5_inicis',                                          // PG사
-        'payMethod': 'card',                                           // 결제수단
-        'name': '아임포트 결제데이터 분석',                                  // 주문명
-        'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
-        'amount': 39000,                                               // 결제금액
-        'buyerName': '홍길동',                                           // 구매자 이름
-        'buyerTel': '01012345678',                                     // 구매자 연락처
-        'buyerEmail': 'example@naver.com',                             // 구매자 이메일
-        'buyerAddr': '서울시 강남구 신사동 661-16',                         // 구매자 주소
-        'buyerPostcode': '06018',                                      // 구매자 우편번호
-        'appScheme': 'example',                                        // 앱 URL scheme
-        'display' : {
-          'cardQuota' : [2,3]                                            //결제창 UI 내 할부개월수 제한
-        }
-      }),
+      data: PaymentData(
+        pg: 'html5_inicis',                                          // PG사
+        payMethod: 'card',                                           // 결제수단
+        name: '아임포트 결제데이터 분석',                                  // 주문명
+        merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
+        amount: 39000,                                               // 결제금액
+        buyerName: '홍길동',                                           // 구매자 이름
+        buyerTel: '01012345678',                                     // 구매자 연락처
+        buyerEmail: 'example@naver.com',                             // 구매자 이메일
+        buyerAddr: '서울시 강남구 신사동 661-16',                         // 구매자 주소
+        buyerPostcode: '06018',                                      // 구매자 우편번호
+        appScheme: 'example',                                        // 앱 URL scheme
+        displayCardQuota : [2,3]                                     //결제창 UI 내 할부개월수 제한
+      ),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
         Navigator.pushReplacementNamed(
@@ -245,10 +238,8 @@ class Certification extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/iamport-logo.png'),
-              Container(
-                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                child: Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
-              ),
+              Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ],
           ),
         ),
@@ -256,13 +247,13 @@ class Certification extends StatelessWidget {
       /* [필수입력] 가맹점 식별코드 */
       userCode: 'iamport',
       /* [필수입력] 본인인증 데이터 */
-      data: CertificationData.fromJson({
-        'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}',  // 주문번호
-        'company': '아임포트',                                            // 회사명 또는 URL
-        'carrier': 'SKT',                                               // 통신사
-        'name': '홍길동',                                                 // 이름
-        'phone': '01012341234',                                         // 전화번호
-      }),
+      data: CertificationData(
+        merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}',  // 주문번호
+        company: '아임포트',                                            // 회사명 또는 URL
+        carrier: 'SKT',                                               // 통신사
+        name: '홍길동',                                                 // 이름
+        phone: '01012341234',                                         // 전화번호
+      ),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
         Navigator.pushReplacementNamed(

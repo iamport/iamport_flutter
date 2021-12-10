@@ -1,16 +1,17 @@
+import 'dart:convert';
 import 'dart:core';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:iamport_flutter/model/url_data.dart';
+import 'package:iamport_flutter/widget/iamport_webview.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
-import 'package:dart_json_mapper/dart_json_mapper.dart';
-import './model/certification_data.dart';
-import './widget/iamport_webview.dart';
-import './model/url_data.dart';
 
 class IamportCertification extends StatelessWidget {
   final PreferredSizeWidget? appBar;
-  final Container? initialChild;
+  final Widget? initialChild;
   final String userCode;
   final CertificationData data;
   final callback;
@@ -33,7 +34,7 @@ class IamportCertification extends StatelessWidget {
       executeJS: (WebViewController controller) {
         controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
-            IMP.certification(${JsonMapper.serialize(this.data)}, function(response) {
+            IMP.certification(${jsonEncode(this.data.toJson())}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);

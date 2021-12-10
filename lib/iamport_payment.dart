@@ -1,19 +1,20 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
-import 'package:dart_json_mapper/dart_json_mapper.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iamport_flutter/model/iamport_validation.dart';
+import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:iamport_flutter/model/url_data.dart';
+import 'package:iamport_flutter/widget/iamport_error.dart';
+import 'package:iamport_flutter/widget/iamport_webview.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
 import 'package:uni_links/uni_links.dart';
-import './widget/iamport_error.dart';
-import './widget/iamport_webview.dart';
-import './model/iamport_validation.dart';
-import './model/payment_data.dart';
-import './model/url_data.dart';
 
 class IamportPayment extends StatelessWidget {
   final PreferredSizeWidget? appBar;
-  final Container? initialChild;
+  final Widget? initialChild;
   final String userCode;
   final PaymentData data;
   final callback;
@@ -40,7 +41,7 @@ class IamportPayment extends StatelessWidget {
         executeJS: (WebViewController controller) {
           controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
-            IMP.request_pay(${JsonMapper.serialize(this.data)}, function(response) {
+            IMP.request_pay(${jsonEncode(this.data.toJson())}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
