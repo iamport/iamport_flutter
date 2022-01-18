@@ -81,7 +81,7 @@ class CertificationResult extends StatelessWidget {
                           ),
                           Expanded(
                             flex: 5,
-                            child: Text(result['error_msg'] == null
+                            child: Text(result['error_msg'] != null
                                 ? result['error_msg']!
                                 : ""),
                           ),
