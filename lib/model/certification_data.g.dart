@@ -14,6 +14,7 @@ CertificationData _$CertificationDataFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       minAge: json['min_age'] as int?,
+      popup: json['popup'] as bool?,
       mRedirectUrl: json['m_redirect_url'] as String?,
     );
 
@@ -32,6 +33,7 @@ Map<String, dynamic> _$CertificationDataToJson(CertificationData instance) {
   writeNotNull('name', instance.name);
   writeNotNull('phone', instance.phone);
   writeNotNull('min_age', instance.minAge);
+  writeNotNull('popup', instance.popup);
   writeNotNull('m_redirect_url', instance.mRedirectUrl);
   return val;
 }
