@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_flutter/model/iamport_url.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
@@ -49,9 +51,20 @@ class _IamportWebViewState extends State<IamportWebView> {
   late int _isWebviewLoaded;
   late int _isImpLoaded;
 
+  Future<AndroidDeviceInfo> getAndroidInfo() async {
+    return await DeviceInfoPlugin().androidInfo;
+  }
+
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration.zero, () async {
+      if (Platform.isAndroid) {
+        var info = await DeviceInfoPlugin().androidInfo;
+        if (info.version.sdkInt == 31)
+          WebView.platform = SurfaceAndroidWebView();
+      }
+    });
     _isWebviewLoaded = 0;
     _isImpLoaded = 0;
     if (widget.initialChild != null) {
@@ -67,7 +80,6 @@ class _IamportWebViewState extends State<IamportWebView> {
 
   @override
   Widget build(BuildContext context) {
-    print(WebView.platform.toString());
     return Scaffold(
       appBar: widget.appBar,
       body: SafeArea(
