@@ -10,6 +10,8 @@ import 'package:iamport_flutter/model/url_data.dart';
 import 'package:iamport_flutter/widget/iamport_error.dart';
 import 'package:iamport_flutter/widget/iamport_webview.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
+
+// import 'package:webview_flutter/webview_flutter.dart';
 import 'package:uni_links/uni_links.dart';
 
 class IamportPayment extends StatelessWidget {
@@ -88,8 +90,14 @@ class IamportPayment extends StatelessWidget {
           this.callback(data);
         },
         isPaymentOver: (String url) {
-          if (url.startsWith(UrlData.redirectUrl)) {
-            return true;
+          if (this.data.mRedirectUrl != null) {
+            if (url.startsWith(this.data.mRedirectUrl!)) {
+              return true;
+            }
+          } else {
+            if (url.startsWith(UrlData.redirectUrl)) {
+              return true;
+            }
           }
 
           if (this.data.payMethod == 'trans') {
@@ -99,10 +107,17 @@ class IamportPayment extends StatelessWidget {
             String scheme = parsedUrl.scheme;
             if (this.data.pg == 'html5_inicis') {
               Map<String, String> query = parsedUrl.queryParameters;
-              if (query['m_redirect_url'] != null) {
-                if (scheme == this.data.appScheme.toLowerCase() &&
-                    query['m_redirect_url']!.contains(UrlData.redirectUrl)) {
-                  return true;
+              if (query['m_redirect_url'] != null &&
+                  scheme == this.data.appScheme.toLowerCase()) {
+                if (this.data.mRedirectUrl != null) {
+                  if (query['m_redirect_url']!
+                      .contains(this.data.mRedirectUrl!)) {
+                    return true;
+                  }
+                } else {
+                  if (query['m_redirect_url']!.contains(UrlData.redirectUrl)) {
+                    return true;
+                  }
                 }
               }
             }

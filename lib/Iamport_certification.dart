@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 import 'package:iamport_flutter/model/url_data.dart';
 import 'package:iamport_flutter/widget/iamport_webview.dart';
+
+// import 'package:webview_flutter/webview_flutter.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
 
 class IamportCertification extends StatelessWidget {
@@ -47,7 +48,16 @@ class IamportCertification extends StatelessWidget {
         this.callback(data);
       },
       isPaymentOver: (String url) {
-        return url.startsWith(UrlData.redirectUrl);
+        if (this.data.mRedirectUrl != null) {
+          if (url.startsWith(this.data.mRedirectUrl!)) {
+            return true;
+          }
+        } else {
+          if (url.startsWith(UrlData.redirectUrl)) {
+            return true;
+          }
+        }
+        return false;
       },
       // 인증에는 customPGAction 수행할 필요 없음
       customPGAction: (WebViewController controller) {},
