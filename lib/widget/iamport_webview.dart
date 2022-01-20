@@ -51,10 +51,6 @@ class _IamportWebViewState extends State<IamportWebView> {
   late int _isWebviewLoaded;
   late int _isImpLoaded;
 
-  Future<AndroidDeviceInfo> getAndroidInfo() async {
-    return await DeviceInfoPlugin().androidInfo;
-  }
-
   @override
   void initState() {
     super.initState();
