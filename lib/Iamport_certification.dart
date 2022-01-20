@@ -8,8 +8,6 @@ import 'package:iamport_flutter/model/iamport_validation.dart';
 import 'package:iamport_flutter/model/url_data.dart';
 import 'package:iamport_flutter/widget/iamport_error.dart';
 import 'package:iamport_flutter/widget/iamport_webview.dart';
-
-// import 'package:webview_flutter/webview_flutter.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
 
 class IamportCertification extends StatelessWidget {
@@ -30,6 +28,11 @@ class IamportCertification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var redirectUrl = UrlData.redirectUrl;
+    if (this.data.mRedirectUrl != null && this.data.mRedirectUrl!.isNotEmpty) {
+      redirectUrl = this.data.mRedirectUrl!;
+    }
+
     IamportValidation validation =
         IamportValidation.fromCertificationData(userCode, data, callback);
     if (validation.getIsValid()) {
@@ -45,7 +48,7 @@ class IamportCertification extends StatelessWidget {
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
-              location.href = "${UrlData.redirectUrl}" + "?" + query.join("&");
+              location.href = "$redirectUrl" + "?" + query.join("&");
             });
           ''');
         },
@@ -53,16 +56,7 @@ class IamportCertification extends StatelessWidget {
           this.callback(data);
         },
         isPaymentOver: (String url) {
-          if (this.data.mRedirectUrl != null) {
-            if (url.startsWith(this.data.mRedirectUrl!)) {
-              return true;
-            }
-          } else {
-            if (url.startsWith(UrlData.redirectUrl)) {
-              return true;
-            }
-          }
-          return false;
+          return url.startsWith(redirectUrl);
         },
         // 인증에는 customPGAction 수행할 필요 없음
         customPGAction: (WebViewController controller) {},

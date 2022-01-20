@@ -10,8 +10,6 @@ import 'package:iamport_flutter/model/url_data.dart';
 import 'package:iamport_flutter/widget/iamport_error.dart';
 import 'package:iamport_flutter/widget/iamport_webview.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
-
-// import 'package:webview_flutter/webview_flutter.dart';
 import 'package:uni_links/uni_links.dart';
 
 class IamportPayment extends StatelessWidget {
@@ -36,6 +34,12 @@ class IamportPayment extends StatelessWidget {
         IamportValidation(this.userCode, this.data, this.callback);
 
     if (validation.getIsValid()) {
+      var redirectUrl = UrlData.redirectUrl;
+      if (this.data.mRedirectUrl != null &&
+          this.data.mRedirectUrl!.isNotEmpty) {
+        redirectUrl = this.data.mRedirectUrl!;
+      }
+
       return IamportWebView(
         type: ActionType.payment,
         appBar: this.appBar,
@@ -48,7 +52,7 @@ class IamportPayment extends StatelessWidget {
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
-              location.href = "${UrlData.redirectUrl}" + "?" + query.join("&");
+              location.href = "$redirectUrl" + "?" + query.join("&");
             });
           ''');
         },
@@ -90,14 +94,8 @@ class IamportPayment extends StatelessWidget {
           this.callback(data);
         },
         isPaymentOver: (String url) {
-          if (this.data.mRedirectUrl != null) {
-            if (url.startsWith(this.data.mRedirectUrl!)) {
-              return true;
-            }
-          } else {
-            if (url.startsWith(UrlData.redirectUrl)) {
-              return true;
-            }
+          if (url.startsWith(redirectUrl)) {
+            return true;
           }
 
           if (this.data.payMethod == 'trans') {
@@ -109,19 +107,13 @@ class IamportPayment extends StatelessWidget {
               Map<String, String> query = parsedUrl.queryParameters;
               if (query['m_redirect_url'] != null &&
                   scheme == this.data.appScheme.toLowerCase()) {
-                if (this.data.mRedirectUrl != null) {
-                  if (query['m_redirect_url']!
-                      .contains(this.data.mRedirectUrl!)) {
-                    return true;
-                  }
-                } else {
-                  if (query['m_redirect_url']!.contains(UrlData.redirectUrl)) {
-                    return true;
-                  }
+                if (query['m_redirect_url']!.contains(redirectUrl)) {
+                  return true;
                 }
               }
             }
           }
+
           return false;
         },
       );
