@@ -14,7 +14,6 @@ dependencies:
   url_launcher: ^6.0.4
   uni_links: ^0.5.1
   json_annotation: '>=4.4.0 <4.5.0'
-  device_info_plus: ^3.2.1
 
 dev_dependencies:
   test: ^1.19.0
