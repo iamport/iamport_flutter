@@ -103,7 +103,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                 }
               },
               navigationDelegate: (request) async {
-                print("url: " + request.url);
+                // print("url: " + request.url);
                 if (widget.isPaymentOver(request.url)) {
                   String decodedUrl = Uri.decodeComponent(request.url);
                   widget.useQueryData(Uri.parse(decodedUrl).queryParameters);
@@ -113,7 +113,7 @@ class _IamportWebViewState extends State<IamportWebView> {
 
                 final iamportUrl = IamportUrl(request.url);
                 if (iamportUrl.isAppLink()) {
-                  print("appLink: " + iamportUrl.appUrl!);
+                  // print("appLink: " + iamportUrl.appUrl!);
                   // 앱 실행 로직을 iamport_url 모듈로 이동
                   iamportUrl.launchApp();
                   return NavigationDecision.prevent;
