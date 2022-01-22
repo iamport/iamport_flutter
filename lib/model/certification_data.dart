@@ -1,4 +1,3 @@
-import 'package:iamport_flutter/model/url_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'certification_data.g.dart';
@@ -16,6 +15,8 @@ class CertificationData {
   @JsonKey(name: 'min_age')
   int? minAge;
 
+  bool? popup;
+
   @JsonKey(name: 'm_redirect_url')
   String? mRedirectUrl;
 
@@ -26,6 +27,7 @@ class CertificationData {
     this.name,
     this.phone,
     this.minAge,
+    this.popup,
     this.mRedirectUrl,
   });
 

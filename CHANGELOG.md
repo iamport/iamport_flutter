@@ -1,4 +1,9 @@
-## [0.10.0](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.1](https://github.com/iamport/iamport_flutter/tree/master)
+- 안드로이드 12에서 웹뷰에서 키보드가 나타니지 않는 문제를 해결했습니다.
+- 임의의 m_redirect_url을 받고 처리할 수 있도록 수정했습니다.
+- 본인인증시 팝업 파라미터를 추가했습니다.(명시적 false 필요할 경우 사용)
+
+## [0.10.0](https://github.com/iamport/iamport_flutter/tree/v0.10.0)
 - 예제 UI를 개선했습니다.
 - 로딩 컴포넌트가 보이지 않는 문제를 해결했습니다.
 - 로딩 컴포넌트 및 AppBar 커스터마이징 기능을 개선했습니다.

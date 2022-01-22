@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:iamport_flutter/model/certification_data.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 
 class IamportValidation {
@@ -49,6 +48,21 @@ class IamportValidation {
         data.naverPopupMode == true) {
       isValid = false;
       errorMessage = '해당 모듈에서 네이버페이 - 팝업 방식은 지원하지 않습니다.';
+      return;
+    }
+
+    if (data.popup == true) {
+      isValid = false;
+      errorMessage = '해당 모듈은 팝업 방식을 지원하지 않습니다.';
+      return;
+    }
+  }
+
+  IamportValidation.fromCertificationData(
+      String userCode, CertificationData data, Function callback) {
+    if (data.popup == true) {
+      isValid = false;
+      errorMessage = '해당 모듈은 팝업 방식을 지원하지 않습니다.';
       return;
     }
   }

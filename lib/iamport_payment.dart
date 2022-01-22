@@ -34,6 +34,12 @@ class IamportPayment extends StatelessWidget {
         IamportValidation(this.userCode, this.data, this.callback);
 
     if (validation.getIsValid()) {
+      var redirectUrl = UrlData.redirectUrl;
+      if (this.data.mRedirectUrl != null &&
+          this.data.mRedirectUrl!.isNotEmpty) {
+        redirectUrl = this.data.mRedirectUrl!;
+      }
+
       return IamportWebView(
         type: ActionType.payment,
         appBar: this.appBar,
@@ -46,7 +52,7 @@ class IamportPayment extends StatelessWidget {
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
               });
-              location.href = "${UrlData.redirectUrl}" + "?" + query.join("&");
+              location.href = "$redirectUrl" + "?" + query.join("&");
             });
           ''');
         },
@@ -88,7 +94,7 @@ class IamportPayment extends StatelessWidget {
           this.callback(data);
         },
         isPaymentOver: (String url) {
-          if (url.startsWith(UrlData.redirectUrl)) {
+          if (url.startsWith(redirectUrl)) {
             return true;
           }
 
@@ -99,14 +105,15 @@ class IamportPayment extends StatelessWidget {
             String scheme = parsedUrl.scheme;
             if (this.data.pg == 'html5_inicis') {
               Map<String, String> query = parsedUrl.queryParameters;
-              if (query['m_redirect_url'] != null) {
-                if (scheme == this.data.appScheme.toLowerCase() &&
-                    query['m_redirect_url']!.contains(UrlData.redirectUrl)) {
+              if (query['m_redirect_url'] != null &&
+                  scheme == this.data.appScheme.toLowerCase()) {
+                if (query['m_redirect_url']!.contains(redirectUrl)) {
                   return true;
                 }
               }
             }
           }
+
           return false;
         },
       );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 import 'package:iamport_flutter_example/model/carrier.dart';
