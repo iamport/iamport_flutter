@@ -36,21 +36,19 @@ class Payment extends StatelessWidget {
       /* [필수입력] 가맹점 식별코드 */
       userCode: 'iamport',
       /* [필수입력] 결제 데이터 */
-      data: PaymentData.fromJson({
-        'pg': 'html5_inicis',                                          // PG사
-        'payMethod': 'card',                                           // 결제수단
-        'name': '아임포트 결제데이터 분석',                                  // 주문명
-        'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
-        'amount': 39000,                                               // 결제금액
-        'buyerName': '홍길동',                                           // 구매자 이름
-        'buyerTel': '01012345678',                                     // 구매자 연락처
-        'buyerEmail': 'example@naver.com',                             // 구매자 이메일
-        'buyerAddr': '서울시 강남구 신사동 661-16',                         // 구매자 주소
-        'buyerPostcode': '06018',                                      // 구매자 우편번호
-        'appScheme': 'example',                                        // 앱 URL scheme
-        'display': {
-          'cardQuota' : [2,3]                                          //결제창 UI 내 할부개월수 제한
-        }
+      data: PaymentData({
+        pg: 'html5_inicis',                                          // PG사
+        payMethod: 'card',                                           // 결제수단
+        name: '아임포트 결제데이터 분석',                                  // 주문명
+        merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
+        amount: 39000,                                               // 결제금액
+        buyerName: '홍길동',                                           // 구매자 이름
+        buyerTel: '01012345678',                                     // 구매자 연락처
+        buyerEmail: 'example@naver.com',                             // 구매자 이메일
+        buyerAddr: '서울시 강남구 신사동 661-16',                         // 구매자 주소
+        buyerPostcode: '06018',                                      // 구매자 우편번호
+        appScheme: 'example',                                        // 앱 URL scheme
+        displayCardQuota: [2, 3]                                     // 결제창 UI 내 할부개월수 제한
       }),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
@@ -75,7 +73,7 @@ class Payment extends StatelessWidget {
 | data             | `PaymentData`       | 결제에 필요한 정보        | true       |
 | callback         | function            | 결제 후 실행 될 함수      | true       |
 
-### PaymentData 모델 [자세히보기](https://docs.iamport.kr/tech/imp#param)
+### PaymentData 모델 [자세히보기](https://docs.iamport.kr/sdk/javascript-sdk#request_pay)
 
 | Key            | Type                     |  Description   | Required                 |
 | -------------- | ------------------------ | -------------- | ------------------------ |
@@ -162,12 +160,12 @@ class Certification extends StatelessWidget {
       /* [필수입력] 가맹점 식별코드 */
       userCode: 'iamport',
       /* [필수입력] 본인인증 데이터 */
-      data: CertificationData.fromJson({
-        'merchantUid': 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
-        'company': '아임포트',                                            // 회사명 또는 URL
-        'carrier': 'SKT',                                               // 통신사
-        'name': '홍길동',                                                 // 이름
-        'phone': '01012341234',                                         // 전화번호
+      data: CertificationData({
+        merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
+        company: '아임포트',                                            // 회사명 또는 URL
+        carrier: 'SKT',                                               // 통신사
+        name: '홍길동',                                                 // 이름
+        phone: '01012341234',                                         // 전화번호
       }),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
@@ -192,7 +190,7 @@ class Certification extends StatelessWidget {
 | data          | `CertificationData` | 본인인증에 필요한 정보     | true       |
 | callback      | function            | 본인인증 후 실행 될 함수   | true       |
 
-### CertificationData 모델 [자세히보기](https://docs.iamport.kr/tech/mobile-authentication#call-authentication)
+### CertificationData 모델 [자세히보기](https://docs.iamport.kr/sdk/javascript-sdk#certification)
 
 | Key          | Type   |  Description    | Required |
 | ------------ | ------ | --------------- | -------- |
