@@ -14,9 +14,20 @@ import 'package:uni_links/uni_links.dart';
 
 class IamportPayment extends StatelessWidget {
   final PreferredSizeWidget? appBar;
+
+  /// 웹뷰 로딩 컴포넌트
   final Widget? initialChild;
+
+  /// 가맹점 식별코드
   final String userCode;
+
+  /// 결제 데이터
   final PaymentData data;
+
+  /// 콜백 함수
+  ///
+  /// 콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 라우트 이동을 위해 아래와 같이 로직을 작성할
+  /// 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](https://github.com/iamport/iamport_flutter/blob/main/example/manuals/CALLBACK.md)를 참고하세요.
   final callback;
 
   IamportPayment({
