@@ -67,7 +67,7 @@ class PaymentData {
   /// - `unionpay`(유니온페이 / 엑심베이 전용)
   /// - `tenpay`(텐페이 / 엑심베이 전용)
   @JsonKey(name: 'pay_method')
-  String payMethod; // 결제수단
+  String payMethod;
 
   /// 에스크로가 적용되는 결제창을 호출할지 여부
   bool? escrow;
@@ -76,7 +76,7 @@ class PaymentData {
   ///
   /// 이미 결제가 승인 된(status: paid) merchant_uid로는 재결제 불가
   @JsonKey(name: 'merchant_uid')
-  String merchantUid; // 주문번호
+  String merchantUid;
 
   /// 주문명
   ///
@@ -92,13 +92,13 @@ class PaymentData {
   ///
   /// 주문건에 대해 부가정보를 저장할 공간이 필요할 때 사용
   @JsonKey(name: 'custom_data')
-  Map<String, String>? customData; // 임의 지정 데이터
+  Map<String, String>? customData;
 
   /// [amount] 중 면세공급가액에 해당하는 금액
   ///
   /// [자세히보기](https://docs.iamport.kr/tech/vat?lang=ko)
   @JsonKey(name: 'tax_free')
-  int? taxFree; // 면세 공급 가액
+  int? taxFree;
 
   /// [amount] 중 부가세 금액
   ///
@@ -185,7 +185,7 @@ class PaymentData {
   ///
   /// 다날-가상계좌 결제시 필수 항목
   @JsonKey(name: 'biz_num')
-  String? bizNum; // 사업자번호
+  String? bizNum;
 
   @JsonKey(name: 'customer_uid')
   String? customerUid; // 정기결제 카드정보
