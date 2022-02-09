@@ -1,4 +1,7 @@
-## [0.10.1+1](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.1+2](https://github.com/iamport/iamport_flutter/tree/master)
+- confirm_url 지원을 추가했습니다.
+
+## [0.10.1+1](https://github.com/iamport/iamport_flutter/tree/v0.10.1+1)
 - README 예제 및 링크를 수정했습니다.
 - 일부 기기에서 의도치 않게 확대가 되는 기능을 차단했습니다.
 

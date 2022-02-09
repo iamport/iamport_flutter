@@ -55,6 +55,9 @@ class PaymentData {
   @JsonKey(name: 'vbank_due')
   String? vbankDue; // 가상계좌 입금기한
 
+  @JsonKey(name: 'confirm_url')
+  String? confirmUrl;
+
   @JsonKey(name: 'm_redirect_url')
   String? mRedirectUrl;
 
@@ -97,8 +100,10 @@ class PaymentData {
     this.buyerAddr,
     this.buyerPostcode,
     this.noticeUrl,
+    this.displayCardQuota,
     this.digital,
     this.vbankDue,
+    this.confirmUrl,
     this.mRedirectUrl = UrlData.redirectUrl,
     required this.appScheme,
     this.bizNum,
