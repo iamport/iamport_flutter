@@ -26,8 +26,12 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       buyerAddr: json['buyer_addr'] as String?,
       buyerPostcode: json['buyer_postcode'] as String?,
       noticeUrl: json['notice_url'] as String?,
+      displayCardQuota: (json['display/card_quota'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList(),
       digital: json['digital'] as bool?,
       vbankDue: json['vbank_due'] as String?,
+      confirmUrl: json['confirm_url'] as String?,
       mRedirectUrl: json['m_redirect_url'] as String? ?? UrlData.redirectUrl,
       appScheme: json['app_scheme'] as String,
       bizNum: json['biz_num'] as String?,
@@ -50,9 +54,7 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       ),
       company: json['company'] as String?,
       niceMobileV2: json['niceMobileV2'] as bool?,
-    )..displayCardQuota = (json['display/card_quota'] as List<dynamic>?)
-        ?.map((e) => e as int)
-        .toList();
+    );
 
 Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   final val = <String, dynamic>{};
@@ -83,6 +85,7 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   writeNotNull('display/card_quota', instance.displayCardQuota);
   writeNotNull('digital', instance.digital);
   writeNotNull('vbank_due', instance.vbankDue);
+  writeNotNull('confirm_url', instance.confirmUrl);
   writeNotNull('m_redirect_url', instance.mRedirectUrl);
   val['app_scheme'] = instance.appScheme;
   writeNotNull('biz_num', instance.bizNum);
