@@ -169,7 +169,7 @@ class _PaymentTestState extends State<PaymentTest> {
                   }
                   return null;
                 },
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
                 onSaved: (String? value) {
                   amount = value!;
                 },
