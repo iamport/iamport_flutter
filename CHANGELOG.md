@@ -1,4 +1,8 @@
-## [0.10.1+2](https://github.com/iamport/iamport_flutter/tree/master)
+## [0.10.1+3](https://github.com/iamport/iamport_flutter/tree/master)
+- gradle kotlin 플러그인 버전을 업데이트했습니다.
+- amount 값을 int 대신 num으로 받을 수 있도록 변경했습니다.
+
+## [0.10.1+2](https://github.com/iamport/iamport_flutter/tree/v0.10.0+2)
 - confirm_url 지원을 추가했습니다.
 
 ## [0.10.1+1](https://github.com/iamport/iamport_flutter/tree/v0.10.1+1)

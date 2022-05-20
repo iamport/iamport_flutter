@@ -12,7 +12,7 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       escrow: json['escrow'] as bool?,
       merchantUid: json['merchant_uid'] as String,
       name: json['name'] as String?,
-      amount: json['amount'] as int,
+      amount: json['amount'] as num,
       customData: (json['custom_data'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),

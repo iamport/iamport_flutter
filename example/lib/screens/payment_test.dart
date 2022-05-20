@@ -164,12 +164,12 @@ class _PaymentTestState extends State<PaymentTest> {
                     return '결제금액은 필수입력입니다.';
                   }
                   if (value.length > 0) {
-                    RegExp regex = RegExp(r'^[0-9]+$');
+                    RegExp regex = RegExp(r'^\d+(\.\d+)?$');
                     if (!regex.hasMatch(value)) return '결제금액이 올바르지 않습니다.';
                   }
                   return null;
                 },
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
                 onSaved: (String? value) {
                   amount = value!;
                 },
@@ -233,7 +233,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         payMethod: payMethod,
                         escrow: escrow,
                         name: name,
-                        amount: int.parse(amount),
+                        amount: num.parse(amount),
                         merchantUid: merchantUid,
                         buyerName: buyerName,
                         buyerTel: buyerTel,
