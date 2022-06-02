@@ -2,6 +2,11 @@ class Quota {
   static List<String> QUOTAS = [
     '0',
     '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6'
   ];
 
   static String getLabel(String quota) {
@@ -27,9 +32,6 @@ class Quota {
 
   static List<String> getListsByPg(String pg) {
     switch (pg) {
-      case 'html5_inicis':
-      case 'kcp':
-        return QUOTAS + ['2', '3', '4', '5', '6'];
       default:
         return QUOTAS;
     }

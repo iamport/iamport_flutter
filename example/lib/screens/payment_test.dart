@@ -13,7 +13,7 @@ class PaymentTest extends StatefulWidget {
 
 class _PaymentTestState extends State<PaymentTest> {
   final _formKey = GlobalKey<FormState>();
-  String pg = 'html5_inicis'; // PG사
+  String pg = 'tosspayments.port-dev-test'; // PG사
   String payMethod = 'card'; // 결제수단
   String cardQuota = '0'; // 할부개월수
   late String vbankDue; // 가상계좌 입금기한
@@ -21,6 +21,7 @@ class _PaymentTestState extends State<PaymentTest> {
   bool digital = false; // 실물컨텐츠 여부
   bool escrow = false; // 에스크로 여부
   late String name; // 주문명
+  late String customerUid;
   late String amount; // 결제금액
   late String merchantUid; // 주문번호
   late String buyerName; // 구매자 이름
@@ -156,6 +157,16 @@ class _PaymentTestState extends State<PaymentTest> {
               ),
               TextFormField(
                 decoration: InputDecoration(
+                  labelText: 'customer_uid',
+                ),
+                initialValue: 'customer_uid_${DateTime.now().millisecondsSinceEpoch}',
+                validator: (value) => value!.isEmpty ? 'customer_uid는 필수입력입니다' : null,
+                onSaved: (String? value) {
+                  customerUid = value!;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(
                   labelText: '결제금액',
                 ),
                 initialValue: '39000',
@@ -233,6 +244,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         payMethod: payMethod,
                         escrow: escrow,
                         name: name,
+                        customerUid: customerUid,
                         amount: num.parse(amount),
                         merchantUid: merchantUid,
                         buyerName: buyerName,
