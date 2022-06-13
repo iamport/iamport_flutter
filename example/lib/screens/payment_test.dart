@@ -13,7 +13,7 @@ class PaymentTest extends StatefulWidget {
 
 class _PaymentTestState extends State<PaymentTest> {
   final _formKey = GlobalKey<FormState>();
-  String pg = 'tosspayments.port-dev-test'; // PG사
+  String pg = 'tosspayments.kream-prod-live'; // PG사
   String payMethod = 'card'; // 결제수단
   String cardQuota = '0'; // 할부개월수
   late String vbankDue; // 가상계좌 입금기한
