@@ -13,12 +13,12 @@ dependencies:
   iamport_webview_flutter: 3.0.4
   url_launcher: ^6.0.4
   uni_links: ^0.5.1
-  json_annotation: '>=4.4.0 <4.5.0'
+  json_annotation: ^4.4.0
 
 dev_dependencies:
   test: ^1.19.0
-  build_runner: ^2.1.0
-  json_serializable: ^6.1.0
+  build_runner: ^2.0.0
+  json_serializable: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
