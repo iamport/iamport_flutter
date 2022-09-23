@@ -54,6 +54,9 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       ),
       company: json['company'] as String?,
       niceMobileV2: json['niceMobileV2'] as bool?,
+      kcpProducts: (json['kcpProducts'] as List<dynamic>?)
+          ?.map((e) => KcpProducts.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
@@ -101,5 +104,6 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   writeNotNull('period', instance.period);
   writeNotNull('company', instance.company);
   writeNotNull('niceMobileV2', instance.niceMobileV2);
+  writeNotNull('kcpProducts', instance.kcpProducts);
   return val;
 }
