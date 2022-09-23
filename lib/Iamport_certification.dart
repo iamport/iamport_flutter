@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 import 'package:iamport_flutter/model/iamport_validation.dart';
@@ -16,6 +18,7 @@ class IamportCertification extends StatelessWidget {
   final String userCode;
   final CertificationData data;
   final callback;
+  final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
   IamportCertification({
     Key? key,
@@ -24,6 +27,7 @@ class IamportCertification extends StatelessWidget {
     required this.userCode,
     required this.data,
     required this.callback,
+    this.gestureRecognizers,
   }) : super(key: key);
 
   @override
@@ -40,6 +44,7 @@ class IamportCertification extends StatelessWidget {
         type: ActionType.auth,
         appBar: this.appBar,
         initialChild: this.initialChild,
+        gestureRecognizers: this.gestureRecognizers,
         executeJS: (WebViewController controller) {
           controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
