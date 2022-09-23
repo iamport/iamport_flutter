@@ -1,4 +1,7 @@
-## [0.10.1+4](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.2](https://github.com/iamport/iamport_flutter/tree/main)
+- 웹뷰 컴포넌트들에 gestureRecognizers 파라미터를 추가했습니다.
+
+## [0.10.1+4](https://github.com/iamport/iamport_flutter/tree/v0.10.1+4)
 - json_serializable 및 json_annotation의 버전 제약조건을 완화했습니다.
 
 ## [0.10.1+3](https://github.com/iamport/iamport_flutter/tree/v0.10.1+3)
