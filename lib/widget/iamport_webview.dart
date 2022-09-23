@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_flutter/model/iamport_url.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
@@ -29,6 +31,7 @@ class IamportWebView extends StatefulWidget {
   final ValueSetter<Map<String, String>> useQueryData;
   final Function isPaymentOver;
   final Function customPGAction;
+  final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
   IamportWebView({
     required this.type,
@@ -38,6 +41,7 @@ class IamportWebView extends StatefulWidget {
     required this.useQueryData,
     required this.isPaymentOver,
     required this.customPGAction,
+    this.gestureRecognizers,
   });
 
   @override
@@ -82,6 +86,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                   Uri.dataFromString(IamportWebView.html, mimeType: 'text/html')
                       .toString(),
               javascriptMode: JavascriptMode.unrestricted,
+              gestureRecognizers: widget.gestureRecognizers,
               onWebViewCreated: (controller) {
                 this._webViewController = controller;
                 if (widget.type == ActionType.payment) {

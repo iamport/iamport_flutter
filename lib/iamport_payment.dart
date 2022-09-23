@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:iamport_flutter/model/iamport_validation.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
@@ -18,6 +20,7 @@ class IamportPayment extends StatelessWidget {
   final String userCode;
   final PaymentData data;
   final callback;
+  final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
 
   IamportPayment({
     Key? key,
@@ -26,6 +29,7 @@ class IamportPayment extends StatelessWidget {
     required this.userCode,
     required this.data,
     required this.callback,
+    this.gestureRecognizers,
   }) : super(key: key);
 
   @override
@@ -44,6 +48,7 @@ class IamportPayment extends StatelessWidget {
         type: ActionType.payment,
         appBar: this.appBar,
         initialChild: this.initialChild,
+        gestureRecognizers: this.gestureRecognizers,
         executeJS: (WebViewController controller) {
           controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
