@@ -1,5 +1,6 @@
 import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
+import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
 import 'package:iamport_flutter/model/url_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -81,6 +82,7 @@ class PaymentData {
   Map<String, String>? period; // [이니시스. 다날. 나이스] 서비스 제공기간 표기
   String? company; // [다날 - 휴대폰 소액결제 전용] 주문명: (company) name 대비
   bool? niceMobileV2 = true;
+  List<KcpProducts>? kcpProducts; // kcp 상품정보
 
   PaymentData({
     this.pg,
@@ -119,6 +121,7 @@ class PaymentData {
     this.period,
     this.company,
     this.niceMobileV2,
+    this.kcpProducts,
   });
 
   factory PaymentData.fromJson(Map<String, dynamic> json) =>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_pay_products.dart';
+import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
 import 'package:iamport_flutter_example/model/method.dart';
 import 'package:iamport_flutter_example/model/pg.dart';
 import 'package:iamport_flutter_example/model/quota.dart';
@@ -287,6 +288,17 @@ class _PaymentTestState extends State<PaymentTest> {
                         data.naverCultureBenefit = false;
                         data.naverPopupMode = false;
                         data.naverProducts = [p];
+                      }
+
+                      // kcp 에스크로 관련 정보 추가
+                      if (pg == 'kcp' && escrow == true) {
+                        KcpProducts p = KcpProducts(
+                          orderNumber: 'order1234',
+                          name: '에스크로 주문',
+                          quantity: 3,
+                          amount: 5000,
+                        );
+                        data.kcpProducts = [p];
                       }
 
                       // [이니시스-빌링.나이스.다날] 제공기간 표기
