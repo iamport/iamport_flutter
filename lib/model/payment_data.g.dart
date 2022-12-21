@@ -26,9 +26,8 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       buyerAddr: json['buyer_addr'] as String?,
       buyerPostcode: json['buyer_postcode'] as String?,
       noticeUrl: json['notice_url'] as String?,
-      displayCardQuota: (json['display/card_quota'] as List<dynamic>?)
-          ?.map((e) => e as int)
-          .toList(),
+      cardQuota: PaymentData._cardQuotaFromJson(
+          json['display'] as Map<String, dynamic>),
       digital: json['digital'] as bool?,
       vbankDue: json['vbank_due'] as String?,
       confirmUrl: json['confirm_url'] as String?,
@@ -85,7 +84,7 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   writeNotNull('buyer_addr', instance.buyerAddr);
   writeNotNull('buyer_postcode', instance.buyerPostcode);
   writeNotNull('notice_url', instance.noticeUrl);
-  writeNotNull('display/card_quota', instance.displayCardQuota);
+  writeNotNull('display', PaymentData._cardQuotaToJson(instance.cardQuota));
   writeNotNull('digital', instance.digital);
   writeNotNull('vbank_due', instance.vbankDue);
   writeNotNull('confirm_url', instance.confirmUrl);

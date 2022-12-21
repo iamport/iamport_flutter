@@ -1,4 +1,7 @@
-## [0.10.3](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.4](https://github.com/iamport/iamport_flutter/tree/main)
+- 할부개월수 파라미터가 제대로 들어가도록 수정했습니다.
+
+## [0.10.3](https://github.com/iamport/iamport_flutter/tree/v0.10.3)
 - kcpProducts 파라미터를 추가했습니다.
 
 ## [0.10.2](https://github.com/iamport/iamport_flutter/tree/v0.10.2)

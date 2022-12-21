@@ -18,7 +18,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.3](https://github.com/iamport/iamport_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.10.4](https://github.com/iamport/iamport_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -199,7 +199,7 @@ class Payment extends StatelessWidget {
         buyerAddr: '서울시 강남구 신사동 661-16',                         // 구매자 주소
         buyerPostcode: '06018',                                      // 구매자 우편번호
         appScheme: 'example',                                        // 앱 URL scheme
-        displayCardQuota : [2,3]                                     //결제창 UI 내 할부개월수 제한
+        cardQuota : [2,3]                                            //결제창 UI 내 할부개월수 제한
       ),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
