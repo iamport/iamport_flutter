@@ -243,9 +243,9 @@ class _PaymentTestState extends State<PaymentTest> {
                         niceMobileV2: true,
                       );
                       if (payMethod == 'card' && cardQuota != '0') {
-                        data.displayCardQuota = [];
+                        data.cardQuota = [];
                         if (cardQuota != '1') {
-                          data.displayCardQuota!.add(int.parse(cardQuota));
+                          data.cardQuota!.add(int.parse(cardQuota));
                         }
                       }
 

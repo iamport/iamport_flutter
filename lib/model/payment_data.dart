@@ -49,8 +49,13 @@ class PaymentData {
   @JsonKey(name: 'notice_url')
   String? noticeUrl;
 
-  @JsonKey(name: 'display/card_quota')
-  List<int>? displayCardQuota; // 할부개월수
+  @JsonKey(
+    name: 'display',
+    toJson: _cardQuotaToJson,
+    fromJson: _cardQuotaFromJson,
+  )
+  List<int>? cardQuota; // 할부개월수
+
   bool? digital; // 실물컨텐츠 여부
 
   @JsonKey(name: 'vbank_due')
@@ -102,7 +107,7 @@ class PaymentData {
     this.buyerAddr,
     this.buyerPostcode,
     this.noticeUrl,
-    this.displayCardQuota,
+    this.cardQuota,
     this.digital,
     this.vbankDue,
     this.confirmUrl,
@@ -128,4 +133,19 @@ class PaymentData {
       _$PaymentDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentDataToJson(this);
+
+  static List<int>? _cardQuotaFromJson(Map<String, dynamic> json) =>
+      (json['card_quota'] as List<dynamic>?)?.map((e) => e as int).toList();
+
+  static Map<String, dynamic>? _cardQuotaToJson(List<int>? list) {
+    if (list != null) {
+      final val = <String, dynamic>{};
+
+      val['card_quota'] = list;
+
+      return val;
+    } else {
+      return null;
+    }
+  }
 }
