@@ -284,7 +284,7 @@ class _PaymentTestState extends State<PaymentTest> {
                           uid: '107922211',
                           payReferrer: 'NAVER_BOOK',
                         );
-                        data.naverUseCfm = '20211026';
+                        data.naverUseCfm = '20231026';
                         data.naverCultureBenefit = false;
                         data.naverPopupMode = false;
                         data.naverProducts = [p];
@@ -303,8 +303,8 @@ class _PaymentTestState extends State<PaymentTest> {
 
                       // [이니시스-빌링.나이스.다날] 제공기간 표기
                       data.period = {
-                        'from': '20210101',
-                        'to': '20211231',
+                        'from': '20230101',
+                        'to': '20231231',
                       };
 
                       data.popup = false;

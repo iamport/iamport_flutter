@@ -22,7 +22,8 @@ class Pg {
     'alipay',
     'bluewalnut',
     'tosspay',
-    'smartro'
+    'smartro',
+    'tosspayments'
   ];
 
   static String getLabel(String pg) {
@@ -73,6 +74,8 @@ class Pg {
         return '토스 간편결제';
       case 'smartro':
         return '스마트로';
+      case 'tosspayments':
+        return '토스페이먼츠';
       default:
         return '-';
     }

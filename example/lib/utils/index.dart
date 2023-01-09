@@ -17,6 +17,8 @@ class Utils {
         return 'imp87936124';
       case 'payple':
         return 'imp42284830';
+      case 'tosspayments':
+        return 'imp89347847';
       default:
         return 'imp19424728';
     }
