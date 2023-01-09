@@ -1,4 +1,7 @@
-## [0.10.4](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.5](https://github.com/iamport/iamport_flutter/tree/main)
+- 코틀린 버전을 1.7.20으로 업데이트했습니다.
+
+## [0.10.4](https://github.com/iamport/iamport_flutter/tree/v0.10.4)
 - 할부개월수 파라미터가 제대로 들어가도록 수정했습니다.
 
 ## [0.10.3](https://github.com/iamport/iamport_flutter/tree/v0.10.3)
