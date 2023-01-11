@@ -1,4 +1,7 @@
-## [0.10.6](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.7](https://github.com/iamport/iamport_flutter/tree/main)
+- 네이버페이 비밀번호 패드에서 클릭이 잘 되지 않는 문제를 해결했습니다.
+
+## [0.10.6](https://github.com/iamport/iamport_flutter/tree/v0.10.6)
 - Javascript SDK 버전을 변경했습니다.
 - 토스페이먼츠를 추가했습니다.
 
