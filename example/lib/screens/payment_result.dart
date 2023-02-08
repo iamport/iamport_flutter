@@ -1,24 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+typedef PaymentResultPayload = Map<String, String>;
+
+extension SuccessResult on PaymentResultPayload {
+  bool get isSuccessed {
+    bool? getBoolean(String? value) {
+      switch (value) {
+        case "true":
+          return true;
+        case "false":
+          return false;
+      }
+      return null;
+    }
+
+    return getBoolean(this["imp_success"]) ??
+        getBoolean(this['success']) ??
+        this['error_code'] == null && this['code'] == null;
+  }
+
+  String get transactionId {
+    return this['imp_uid'] ?? this['txId'] ?? '-';
+  }
+
+  String get paymentId {
+    return this['merchant_uid'] ?? this['paymentId'] ?? '-';
+  }
+
+  String get errorCode {
+    return this['error_code'] ?? this['code'] ?? '-';
+  }
+
+  String get errorMessage {
+    return this['error_msg'] ?? this['message'] ?? '-';
+  }
+}
+
 class PaymentResult extends StatelessWidget {
   static const Color successColor = Color(0xff52c41a);
   static const Color failureColor = Color(0xfff5222d);
 
-  bool getIsSuccessed(Map<String, String> result) {
-    if (result['imp_success'] == 'true') {
-      return true;
-    }
-    if (result['success'] == 'true') {
-      return true;
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
-    Map<String, String> result = Get.arguments as Map<String, String>;
-    bool isSuccessed = getIsSuccessed(result);
+    PaymentResultPayload payload = Get.arguments as PaymentResultPayload;
+    bool isSuccessed = payload.isSuccessed;
     String message;
     IconData icon;
     Color color;
@@ -69,7 +95,7 @@ class PaymentResult extends StatelessWidget {
                                 style: TextStyle(color: Colors.grey))),
                         Expanded(
                           flex: 5,
-                          child: Text(result['imp_uid'] ?? '-'),
+                          child: Text(payload.transactionId),
                         ),
                       ],
                     ),
@@ -86,7 +112,7 @@ class PaymentResult extends StatelessWidget {
                                       style: TextStyle(color: Colors.grey))),
                               Expanded(
                                 flex: 5,
-                                child: Text(result['merchant_uid'] ?? '-'),
+                                child: Text(payload.paymentId),
                               ),
                             ],
                           ),
@@ -98,12 +124,21 @@ class PaymentResult extends StatelessWidget {
                             children: [
                               Expanded(
                                 flex: 4,
+                                child: Text('에러 코드',
+                                    style: TextStyle(color: Colors.grey)),
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: Text(payload.errorCode),
+                              ),
+                              Expanded(
+                                flex: 4,
                                 child: Text('에러 메시지',
                                     style: TextStyle(color: Colors.grey)),
                               ),
                               Expanded(
                                 flex: 5,
-                                child: Text(result['error_msg'] ?? '-'),
+                                child: Text(payload.errorMessage),
                               ),
                             ],
                           ),
