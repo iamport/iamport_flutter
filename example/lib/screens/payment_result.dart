@@ -119,27 +119,34 @@ class PaymentResult extends StatelessWidget {
                         )
                       : Container(
                           padding: EdgeInsets.symmetric(vertical: 5),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                          child: Column(
                             children: [
-                              Expanded(
-                                flex: 4,
-                                child: Text('에러 코드',
-                                    style: TextStyle(color: Colors.grey)),
-                              ),
-                              Expanded(
-                                flex: 5,
-                                child: Text(payload.errorCode),
-                              ),
-                              Expanded(
-                                flex: 4,
-                                child: Text('에러 메시지',
-                                    style: TextStyle(color: Colors.grey)),
-                              ),
-                              Expanded(
-                                flex: 5,
-                                child: Text(payload.errorMessage),
-                              ),
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      flex: 4,
+                                      child: Text('에러 코드',
+                                          style: TextStyle(color: Colors.grey)),
+                                    ),
+                                    Expanded(
+                                      flex: 5,
+                                      child: Text(payload.errorCode),
+                                    )
+                                  ]),
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      flex: 4,
+                                      child: Text('에러 메시지',
+                                          style: TextStyle(color: Colors.grey)),
+                                    ),
+                                    Expanded(
+                                      flex: 5,
+                                      child: Text(payload.errorMessage),
+                                    ),
+                                  ])
                             ],
                           ),
                         ),
