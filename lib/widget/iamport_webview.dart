@@ -17,7 +17,6 @@ class IamportWebView extends StatefulWidget {
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
         <script type="text/javascript" src="https://cdn.iamport.kr/v1/iamport.js"></script>
       </head>
       <body></body>
