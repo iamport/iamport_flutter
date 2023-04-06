@@ -1,3 +1,4 @@
+import 'package:iamport_flutter/model/pg/bypass.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
 import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
@@ -88,6 +89,7 @@ class PaymentData {
   String? company; // [다날 - 휴대폰 소액결제 전용] 주문명: (company) name 대비
   bool? niceMobileV2 = true;
   List<KcpProducts>? kcpProducts; // kcp 상품정보
+  Bypass? bypass;
 
   PaymentData({
     this.pg,
@@ -127,6 +129,7 @@ class PaymentData {
     this.company,
     this.niceMobileV2,
     this.kcpProducts,
+    this.bypass,
   });
 
   factory PaymentData.fromJson(Map<String, dynamic> json) =>

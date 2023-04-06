@@ -56,6 +56,9 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       kcpProducts: (json['kcpProducts'] as List<dynamic>?)
           ?.map((e) => KcpProducts.fromJson(e as Map<String, dynamic>))
           .toList(),
+      bypass: json['bypass'] == null
+          ? null
+          : Bypass.fromJson(json['bypass'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
@@ -104,5 +107,6 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   writeNotNull('company', instance.company);
   writeNotNull('niceMobileV2', instance.niceMobileV2);
   writeNotNull('kcpProducts', instance.kcpProducts);
+  writeNotNull('bypass', instance.bypass);
   return val;
 }
