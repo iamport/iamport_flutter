@@ -23,7 +23,8 @@ class Pg {
     'bluewalnut',
     'tosspay',
     'smartro',
-    'tosspayments'
+    'tosspayments',
+    'ksnet'
   ];
 
   static String getLabel(String pg) {
@@ -35,7 +36,7 @@ class Pg {
       case 'kcp_billing':
         return 'NHN KCP 정기결제';
       case 'uplus':
-        return '토스페이먼츠';
+        return '(구)토스페이먼츠';
       case 'jtnet':
         return 'JTNET';
       case 'nice':
@@ -76,6 +77,8 @@ class Pg {
         return '스마트로';
       case 'tosspayments':
         return '토스페이먼츠';
+      case 'ksnet':
+        return 'KSNET';
       default:
         return '-';
     }

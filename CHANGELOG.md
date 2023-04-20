@@ -1,4 +1,8 @@
-## [0.10.8](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.9](https://github.com/iamport/iamport_flutter/tree/main)
+- 토스페이먼츠 전용 파라미터를 추가했습니다.
+- v3, KB 앱스킴들을 추가했습니다.
+
+## [0.10.8](https://github.com/iamport/iamport_flutter/tree/v0.10.8)
 - 키움페이(다우, 페이조아) 전용 파라미터를 추가했습니다.
 
 ## [0.10.7](https://github.com/iamport/iamport_flutter/tree/v0.10.7)

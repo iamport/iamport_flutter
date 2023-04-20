@@ -128,6 +128,12 @@ class IamportUrl {
           return UrlData.IOS_MARKET_PREFIX + 'id839333328';
         case 'newsmartpib': // 우리WON뱅킹
           return UrlData.IOS_MARKET_PREFIX + 'id1470181651';
+        case 'v3mobileplusweb': // V3 Mobile Plus
+          return UrlData.IOS_MARKET_PREFIX + 'id1481938658';
+        case 'kbbank': // KB스타뱅킹
+          return UrlData.IOS_MARKET_PREFIX + 'id373742138';
+        case 'newliiv': // 리브 Next
+          return UrlData.IOS_MARKET_PREFIX + 'id1573528126';
         default:
           return this.url;
       }
@@ -195,6 +201,12 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LGTAUTH;
         case UrlData.SKTAUTH:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_SKTAUTH;
+        case UrlData.V3_MOBILE_PLUS:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_V3_MOBILE_PLUS;
+        case UrlData.KBBANK:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KBBANK;
+        case UrlData.LIIV_NEXT:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LIIV_NEXT;
         default:
           return this.url;
       }

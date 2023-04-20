@@ -92,4 +92,13 @@ class UrlData {
 
   static const String SKTAUTH = 'tauthlink';
   static const String PACKAGE_SKTAUTH = 'com.sktelecom.tauth';
+
+  static const String V3_MOBILE_PLUS = 'v3mobileplusweb';
+  static const String PACKAGE_V3_MOBILE_PLUS = 'com.ahnlab.v3mobileplus';
+
+  static const String KBBANK = 'kbbank';
+  static const String PACKAGE_KBBANK = 'com.kbstar.kbkank';
+
+  static const String LIIV_NEXT = 'newliiv';
+  static const String PACKAGE_LIIV_NEXT = 'com.kbstar.reboot';
 }
