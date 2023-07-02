@@ -1,4 +1,7 @@
-## [0.10.9](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.10](https://github.com/iamport/iamport_flutter/tree/main)
+- 본인인증 pg 파라미터를 추가했습니다.
+
+## [0.10.9](https://github.com/iamport/iamport_flutter/tree/v0.10.9)
 - 토스페이먼츠 전용 파라미터를 추가했습니다.
 - v3, KB 앱스킴들을 추가했습니다.
 

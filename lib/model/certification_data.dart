@@ -4,6 +4,8 @@ part 'certification_data.g.dart';
 
 @JsonSerializable()
 class CertificationData {
+  String? pg;
+
   @JsonKey(name: 'merchant_uid')
   String? merchantUid;
 
@@ -21,6 +23,7 @@ class CertificationData {
   String? mRedirectUrl;
 
   CertificationData({
+    this.pg,
     this.merchantUid,
     this.company,
     this.carrier,
