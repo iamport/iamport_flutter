@@ -8,6 +8,7 @@ part of 'certification_data.dart';
 
 CertificationData _$CertificationDataFromJson(Map<String, dynamic> json) =>
     CertificationData(
+      pg: json['pg'] as String?,
       merchantUid: json['merchant_uid'] as String?,
       company: json['company'] as String?,
       carrier: json['carrier'] as String?,
@@ -27,6 +28,7 @@ Map<String, dynamic> _$CertificationDataToJson(CertificationData instance) {
     }
   }
 
+  writeNotNull('pg', instance.pg);
   writeNotNull('merchant_uid', instance.merchantUid);
   writeNotNull('company', instance.company);
   writeNotNull('carrier', instance.carrier);

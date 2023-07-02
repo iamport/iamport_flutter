@@ -10,6 +10,7 @@ class CertificationTest extends StatefulWidget {
 
 class _CertificationTestState extends State<CertificationTest> {
   final _formKey = GlobalKey<FormState>();
+  String pg = 'danal';
   late String merchantUid; // 주문번호
   String company = '아임포트'; // 회사명 또는 URL
   String carrier = 'SKT'; // 통신사
@@ -36,6 +37,28 @@ class _CertificationTestState extends State<CertificationTest> {
           key: _formKey,
           child: ListView(
             children: [
+              DropdownButtonFormField(
+                decoration: InputDecoration(
+                  labelText: 'PG사',
+                ),
+                value: pg,
+                onChanged: (String? value) {
+                  setState(() {
+                    pg = value!;
+                  });
+
+                  print(pg);
+                },
+                items: ['danal', 'inicis_unified']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value == 'danal'
+                        ? '다날 휴대폰 본인인증'
+                        : (value == 'inicis_unified' ? '이니시스 통합인증' : '')),
+                  );
+                }).toList(),
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: '주문번호',
@@ -117,6 +140,7 @@ class _CertificationTestState extends State<CertificationTest> {
                       _formKey.currentState!.save();
 
                       CertificationData data = CertificationData(
+                        pg: pg,
                         merchantUid: merchantUid,
                         carrier: carrier,
                         company: company,
