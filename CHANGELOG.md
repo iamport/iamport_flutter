@@ -1,4 +1,8 @@
-## [0.10.10](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.11](https://github.com/iamport/iamport_flutter/tree/main)
+- 안드로이드에서 이니시스 간편결제 아이콘이 깨지는 문제를 해결했습니다.
+- flutter sdk 버전 조건을 수정했습니다.
+
+## [0.10.10](https://github.com/iamport/iamport_flutter/tree/v0.10.10)
 - 본인인증 pg 파라미터를 추가했습니다.
 
 ## [0.10.9](https://github.com/iamport/iamport_flutter/tree/v0.10.9)
