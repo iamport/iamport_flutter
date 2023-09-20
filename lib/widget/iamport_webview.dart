@@ -31,6 +31,7 @@ class IamportWebView extends StatefulWidget {
   final Function isPaymentOver;
   final Function customPGAction;
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
+  final String? customUserAgent;
 
   IamportWebView({
     required this.type,
@@ -41,6 +42,7 @@ class IamportWebView extends StatefulWidget {
     required this.isPaymentOver,
     required this.customPGAction,
     this.gestureRecognizers,
+    this.customUserAgent,
   });
 
   @override
@@ -86,6 +88,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                       .toString(),
               javascriptMode: JavascriptMode.unrestricted,
               gestureRecognizers: widget.gestureRecognizers,
+              userAgent: widget.customUserAgent,
               onWebViewCreated: (controller) {
                 this._webViewController = controller;
                 if (widget.type == ActionType.payment) {

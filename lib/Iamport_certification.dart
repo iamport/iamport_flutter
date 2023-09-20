@@ -19,6 +19,7 @@ class IamportCertification extends StatelessWidget {
   final CertificationData data;
   final callback;
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
+  final String? customUserAgent;
 
   IamportCertification({
     Key? key,
@@ -28,6 +29,7 @@ class IamportCertification extends StatelessWidget {
     required this.data,
     required this.callback,
     this.gestureRecognizers,
+    this.customUserAgent,
   }) : super(key: key);
 
   @override
@@ -45,6 +47,7 @@ class IamportCertification extends StatelessWidget {
         appBar: this.appBar,
         initialChild: this.initialChild,
         gestureRecognizers: this.gestureRecognizers,
+        customUserAgent: this.customUserAgent,
         executeJS: (WebViewController controller) {
           controller.evaluateJavascript('''
             IMP.init("${this.userCode}");
