@@ -15,6 +15,9 @@ Bypass _$BypassFromJson(Map<String, dynamic> json) => Bypass(
       tosspayments: json['tosspayments'] == null
           ? null
           : Tosspayments.fromJson(json['tosspayments'] as Map<String, dynamic>),
+      settle: json['settle'] == null
+          ? null
+          : Settle.fromJson(json['settle'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BypassToJson(Bypass instance) {
@@ -30,5 +33,6 @@ Map<String, dynamic> _$BypassToJson(Bypass instance) {
   writeNotNull('cashReceiptType', instance.cashReceiptType);
   writeNotNull('daou', instance.daou);
   writeNotNull('tosspayments', instance.tosspayments);
+  writeNotNull('settle', instance.settle);
   return val;
 }
