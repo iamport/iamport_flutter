@@ -211,6 +211,7 @@ class IamportUrl {
           return this.url;
       }
     }
+    return null;
   }
 
   Future<bool> launchApp() async {

@@ -1,4 +1,7 @@
-## [0.10.12](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.13](https://github.com/iamport/iamport_flutter/tree/main)
+- 헥토파이낸셜 전용 파라미터를 추가했습니다.
+
+## [0.10.12](https://github.com/iamport/iamport_flutter/tree/v0.10.12)
 - 본인인증시 임의의 user agent를 넣을 수 있는 기능을 추가했습니다.
 
 ## [0.10.11](https://github.com/iamport/iamport_flutter/tree/v0.10.11)
