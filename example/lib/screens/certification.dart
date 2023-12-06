@@ -4,16 +4,20 @@ import 'package:iamport_flutter/iamport_certification.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
-  static const String userCode = 'imp10391932';
-
   @override
   Widget build(BuildContext context) {
-    CertificationData data = Get.arguments as CertificationData;
+    String userCode = Get.arguments['userCode'] as String;
+    CertificationData data = Get.arguments['data'] as CertificationData;
 
     return IamportCertification(
       appBar: AppBar(
         title: Text('아임포트 본인인증'),
         centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 24,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {

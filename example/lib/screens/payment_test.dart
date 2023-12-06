@@ -14,6 +14,7 @@ class PaymentTest extends StatefulWidget {
 
 class _PaymentTestState extends State<PaymentTest> {
   final _formKey = GlobalKey<FormState>();
+  late String userCode; // 가맹점 식별코드
   String pg = 'html5_inicis'; // PG사
   String payMethod = 'card'; // 결제수단
   String cardQuota = '0'; // 할부개월수
@@ -34,6 +35,11 @@ class _PaymentTestState extends State<PaymentTest> {
       appBar: AppBar(
         title: Text('아임포트 결제 테스트'),
         centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 24,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -47,6 +53,17 @@ class _PaymentTestState extends State<PaymentTest> {
           key: _formKey,
           child: ListView(
             children: [
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: '가맹점 식별코드',
+                ),
+                validator: (value) =>
+                    value!.isEmpty ? '가맹점 식별코드는 필수입력입니다' : null,
+                initialValue: '',
+                onSaved: (String? value) {
+                  userCode = value!;
+                },
+              ),
               DropdownButtonFormField(
                 decoration: InputDecoration(
                   labelText: 'PG사',
@@ -159,7 +176,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 decoration: InputDecoration(
                   labelText: '결제금액',
                 ),
-                initialValue: '39000',
+                initialValue: '1000',
                 validator: (value) {
                   if (value!.isEmpty) {
                     return '결제금액은 필수입력입니다.';
@@ -308,7 +325,13 @@ class _PaymentTestState extends State<PaymentTest> {
                       };
 
                       data.popup = false;
-                      Get.toNamed('/payment', arguments: data);
+                      Get.toNamed(
+                        '/payment',
+                        arguments: {
+                          'userCode': userCode,
+                          'data': data,
+                        },
+                      );
                     }
                   },
                   child: Text(
@@ -326,6 +349,7 @@ class _PaymentTestState extends State<PaymentTest> {
                     ),
                     elevation: 0,
                     shadowColor: Colors.transparent,
+                    backgroundColor: Colors.blue,
                   ),
                 ),
               ),

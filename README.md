@@ -215,7 +215,11 @@ class Payment extends StatelessWidget {
 ```
 
 
-#### 휴대폰 본인인증 예제
+#### 본인인증 예제
+
+이니시스 통합인증의 경우 다날 휴대폰 본인인증과 달리 `mRedirectUrl` 파라미터를 필수로 설정해주셔야 합니다.
+
+##### 다날 휴대폰 본인인증
 ```dart
 import 'package:flutter/material.dart';
 
@@ -248,11 +252,61 @@ class Certification extends StatelessWidget {
       userCode: 'iamport',
       /* [필수입력] 본인인증 데이터 */
       data: CertificationData(
+        pg: 'danal',                                                  // PG사
         merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}',  // 주문번호
-        company: '아임포트',                                            // 회사명 또는 URL
+        company: '아임포트',                                           // 회사명 또는 URL
         carrier: 'SKT',                                               // 통신사
-        name: '홍길동',                                                 // 이름
+        name: '홍길동',                                                // 이름
         phone: '01012341234',                                         // 전화번호
+      ),
+      /* [필수입력] 콜백 함수 */
+      callback: (Map<String, String> result) {
+        Navigator.pushReplacementNamed(
+          context,
+          '/result',
+          arguments: result,
+        );
+      },
+    );
+  }
+}
+```
+##### 이니시스 통합인증
+```dart
+import 'package:flutter/material.dart';
+
+/* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
+import 'package:iamport_flutter/iamport_certification.dart';
+/* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
+import 'package:iamport_flutter/model/certification_data.dart';
+
+class Certification extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return IamportCertification(
+      appBar: new AppBar(
+        title: new Text('아임포트 본인인증'),
+      ),
+      /* 웹뷰 로딩 컴포넌트 */
+      initialChild: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/iamport-logo.png'),
+              Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
+            ],
+          ),
+        ),
+      ),
+      /* [필수입력] 가맹점 식별코드 */
+      userCode: 'iamport',
+      /* [필수입력] 본인인증 데이터 */
+      data: CertificationData(
+        pg: 'inicis_unified',                                         // PG사
+        merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}',  // 주문번호
+        mRedirectUrl: 'https://example.com',                          // 본인인증 후 이동할 URL
       ),
       /* [필수입력] 콜백 함수 */
       callback: (Map<String, String> result) {
