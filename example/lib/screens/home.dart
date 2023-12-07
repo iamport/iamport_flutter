@@ -90,13 +90,13 @@ class _HomeState extends State<Home> {
                         ),
                         icon: Icon(
                           Icons.payment,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 25,
                         ),
                         label: Text(
                           '결제 테스트',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
@@ -121,13 +121,13 @@ class _HomeState extends State<Home> {
                         ),
                         icon: Icon(
                           Icons.people,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 25,
                         ),
                         label: Text(
                           '본인인증 테스트',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),

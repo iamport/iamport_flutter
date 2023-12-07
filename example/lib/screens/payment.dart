@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iamport_flutter/iamport_payment.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
-import 'package:iamport_flutter_example/utils/index.dart';
 
 class Payment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    PaymentData data = Get.arguments as PaymentData;
+    String userCode = Get.arguments['userCode'] as String;
+    PaymentData data = Get.arguments['data'] as PaymentData;
 
     return IamportPayment(
       appBar: AppBar(
         title: Text('아임포트 결제'),
         centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 24,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -32,7 +37,7 @@ class Payment extends StatelessWidget {
           ),
         ),
       ),
-      userCode: Utils.getUserCodeByPg(data.pg!),
+      userCode: userCode,
       data: data,
       callback: (Map<String, String> result) {
         Get.offNamed('/payment-result', arguments: result);
