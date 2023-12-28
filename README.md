@@ -18,7 +18,7 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.13](https://github.com/iamport/iamport_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.10.14](https://github.com/iamport/iamport_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
@@ -110,6 +110,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
   <string>liivbank</string>  <!-- Liiv 국민 -->
   <string>supertoss</string> <!-- 토스 -->
   <string>newsmartpib</string> <!-- 우리WON뱅킹 -->
+  <string>naversearchthirdlogin</string> <!-- 네이버페이 앱 로그인 -->
 </array>
 ...
 ```

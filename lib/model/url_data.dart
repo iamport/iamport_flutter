@@ -2,7 +2,7 @@ class UrlData {
   static const String redirectUrl =
       'http://detectchangingwebview/iamport/f'; // f는 flutter의 f
   static const String ANDROID_MARKET_PREFIX = 'market://details?id=';
-  static const String IOS_MARKET_PREFIX = 'https://apps.apple.com/app/';
+  static const String IOS_MARKET_PREFIX = 'itms-apps://itunes.apple.com/app/';
 
   static const String ISP = 'ispmobile';
   static const String PACKAGE_ISP = 'kvp.jjy.MispAndroid320';
@@ -101,4 +101,7 @@ class UrlData {
 
   static const String LIIV_NEXT = 'newliiv';
   static const String PACKAGE_LIIV_NEXT = 'com.kbstar.reboot';
+
+  static const String NAVER = 'nidlogin';
+  static const String PACKAGE_NAVER = 'com.nhn.android.search';
 }
