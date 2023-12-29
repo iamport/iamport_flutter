@@ -1,4 +1,7 @@
-## [0.10.13](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.14](https://github.com/iamport/iamport_flutter/tree/main)
+- 앱 실행 방식을 개선했습니다.
+
+## [0.10.13](https://github.com/iamport/iamport_flutter/tree/v0.10.13)
 - 헥토파이낸셜 전용 파라미터를 추가했습니다.
 
 ## [0.10.12](https://github.com/iamport/iamport_flutter/tree/v0.10.12)

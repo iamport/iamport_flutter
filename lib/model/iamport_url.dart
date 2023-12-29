@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:iamport_flutter/model/url_data.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class IamportUrl {
   late String url;
@@ -17,10 +17,7 @@ class IamportUrl {
         this.url.replaceFirst(RegExp(r'://'), ' ').split(' ');
     this.appScheme = splittedUrl[0];
 
-    if (Platform.isIOS) {
-      this.appUrl =
-          this.appScheme == 'itmss' ? 'https://${splittedUrl[1]}' : this.url;
-    } else if (Platform.isAndroid) {
+    if (Platform.isAndroid) {
       /*
         Android scheme은 크게 3가지 형태
         1. intent://
@@ -60,6 +57,8 @@ class IamportUrl {
       } else {
         this.appUrl = this.url;
       }
+    } else {
+      this.appUrl = this.url;
     }
   }
 
@@ -70,6 +69,15 @@ class IamportUrl {
     } catch (e) {
       scheme = this.appScheme;
     }
+
+    if (Platform.isAndroid && this.appScheme == 'https') {
+      if (this
+          .url
+          .startsWith('https://play.google.com/store/apps/details?id=')) {
+        return true;
+      }
+    }
+
     return !['http', 'https', 'about', 'data', ''].contains(scheme);
   }
 
@@ -207,6 +215,8 @@ class IamportUrl {
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_KBBANK;
         case UrlData.LIIV_NEXT:
           return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_LIIV_NEXT;
+        case UrlData.NAVER:
+          return UrlData.ANDROID_MARKET_PREFIX + UrlData.PACKAGE_NAVER;
         default:
           return this.url;
       }
@@ -215,23 +225,21 @@ class IamportUrl {
   }
 
   Future<bool> launchApp() async {
+    bool opened = false;
+    String appUrl = (await this.getAppUrl())!;
+
     if (Platform.isIOS) {
-      try {
-        if (await canLaunch(this.url)) {
-          return await launch((await this.getAppUrl())!);
-        } else {
-          return await launch((await this.getAppUrl())!);
-        }
-      } catch (e) {
-        return await launch((await this.getMarketUrl())!);
-      }
+      opened = await launchUrlString(appUrl);
     } else if (Platform.isAndroid) {
-      try {
-        return await launch((await this.getAppUrl())!);
-      } catch (e) {
-        return await launch((await this.getMarketUrl())!);
+      if (await canLaunchUrlString(appUrl)) {
+        opened = await launchUrlString(appUrl);
       }
     }
-    return false;
+
+    if (!opened) {
+      opened = await launchUrlString((await this.getMarketUrl())!);
+    }
+
+    return opened;
   }
 }
