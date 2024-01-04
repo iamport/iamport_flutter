@@ -228,13 +228,9 @@ class IamportUrl {
     bool opened = false;
     String appUrl = (await this.getAppUrl())!;
 
-    if (Platform.isIOS) {
+    try {
       opened = await launchUrlString(appUrl);
-    } else if (Platform.isAndroid) {
-      try {
-        opened = await launchUrlString(appUrl);
-      } catch (e) {}
-    }
+    } catch (e) {}
 
     if (!opened) {
       opened = await launchUrlString((await this.getMarketUrl())!);
