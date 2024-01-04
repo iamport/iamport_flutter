@@ -229,11 +229,11 @@ class IamportUrl {
     String appUrl = (await this.getAppUrl())!;
 
     if (Platform.isIOS) {
-      opened = await launchUrlString(appUrl);
-    } else if (Platform.isAndroid) {
       if (await canLaunchUrlString(appUrl)) {
         opened = await launchUrlString(appUrl);
       }
+    } else if (Platform.isAndroid) {
+      opened = await launchUrlString(appUrl);
     }
 
     if (!opened) {
