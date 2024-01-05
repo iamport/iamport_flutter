@@ -1,4 +1,7 @@
-## [0.10.14](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.15](https://github.com/iamport/iamport_flutter/tree/main)
+- 앱 실행 방식 개선 후 오류를 해결하였습니다.
+
+## [0.10.14](https://github.com/iamport/iamport_flutter/tree/v0.10.14)
 - 앱 실행 방식을 개선했습니다.
 
 ## [0.10.13](https://github.com/iamport/iamport_flutter/tree/v0.10.13)
