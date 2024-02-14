@@ -44,6 +44,10 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       naverCultureBenefit: json['naverCultureBenefit'] as bool?,
       naverProductCode: json['naverProductCode'] as String?,
       naverActionType: json['naverActionType'] as String?,
+      naverPurchaserName: json['naverPurchaserName'] as String?,
+      naverPurchaserBirthday: json['naverPurchaserBirthday'] as String?,
+      naverChainId: json['naverChainId'] as String?,
+      naverMerchantUserKey: json['naverMerchantUserKey'] as String?,
       naverInterface: json['naverInterface'] == null
           ? null
           : NaverInterface.fromJson(
@@ -102,6 +106,10 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   writeNotNull('naverCultureBenefit', instance.naverCultureBenefit);
   writeNotNull('naverProductCode', instance.naverProductCode);
   writeNotNull('naverActionType', instance.naverActionType);
+  writeNotNull('naverPurchaserName', instance.naverPurchaserName);
+  writeNotNull('naverPurchaserBirthday', instance.naverPurchaserBirthday);
+  writeNotNull('naverChainId', instance.naverChainId);
+  writeNotNull('naverMerchantUserKey', instance.naverMerchantUserKey);
   writeNotNull('naverInterface', instance.naverInterface);
   writeNotNull('period', instance.period);
   writeNotNull('company', instance.company);

@@ -84,6 +84,10 @@ class PaymentData {
   bool? naverCultureBenefit;
   String? naverProductCode;
   String? naverActionType;
+  String? naverPurchaserName;
+  String? naverPurchaserBirthday;
+  String? naverChainId;
+  String? naverMerchantUserKey;
   NaverInterface? naverInterface;
   Map<String, String>? period; // [이니시스. 다날. 나이스] 서비스 제공기간 표기
   String? company; // [다날 - 휴대폰 소액결제 전용] 주문명: (company) name 대비
@@ -124,6 +128,10 @@ class PaymentData {
     this.naverCultureBenefit,
     this.naverProductCode,
     this.naverActionType,
+    this.naverPurchaserName,
+    this.naverPurchaserBirthday,
+    this.naverChainId,
+    this.naverMerchantUserKey,
     this.naverInterface,
     this.period,
     this.company,
