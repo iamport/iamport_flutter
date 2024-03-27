@@ -1,4 +1,7 @@
-## [0.10.17](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.18](https://github.com/iamport/iamport_flutter/tree/main)
+- customer_id 파라미터를 추가했습니다.
+
+## [0.10.17](https://github.com/iamport/iamport_flutter/tree/v0.10.17)
 - 누락된 네이버페이 전용 파라미터들을 추가했습니다.
 
 ## [0.10.16](https://github.com/iamport/iamport_flutter/tree/v0.10.16)

@@ -25,7 +25,8 @@ class Pg {
     'smartro',
     'tosspayments',
     'ksnet',
-    'welcome'
+    'welcome',
+    'tosspay_v2'
   ];
 
   static String getLabel(String pg) {
@@ -82,6 +83,8 @@ class Pg {
         return 'KSNET';
       case 'welcome':
         return '웰컴페이먼츠';
+      case 'tosspay_v2':
+        return '토스페이(V2)';
       default:
         return '-';
     }

@@ -74,6 +74,9 @@ class PaymentData {
   @JsonKey(name: 'biz_num')
   String? bizNum; // 사업자번호
 
+  @JsonKey(name: 'customer_id')
+  String? customerId; // 회원 고유 id
+
   @JsonKey(name: 'customer_uid')
   String? customerUid; // 정기결제 카드정보
 
@@ -120,6 +123,7 @@ class PaymentData {
     this.mRedirectUrl = UrlData.redirectUrl,
     required this.appScheme,
     this.bizNum,
+    this.customerId,
     this.customerUid,
     this.popup,
     this.naverUseCfm,
