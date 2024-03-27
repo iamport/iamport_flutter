@@ -34,6 +34,7 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       mRedirectUrl: json['m_redirect_url'] as String? ?? UrlData.redirectUrl,
       appScheme: json['app_scheme'] as String,
       bizNum: json['biz_num'] as String?,
+      customerId: json['customer_id'] as String?,
       customerUid: json['customer_uid'] as String?,
       popup: json['popup'] as bool?,
       naverUseCfm: json['naverUseCfm'] as String?,
@@ -98,6 +99,7 @@ Map<String, dynamic> _$PaymentDataToJson(PaymentData instance) {
   writeNotNull('m_redirect_url', instance.mRedirectUrl);
   val['app_scheme'] = instance.appScheme;
   writeNotNull('biz_num', instance.bizNum);
+  writeNotNull('customer_id', instance.customerId);
   writeNotNull('customer_uid', instance.customerUid);
   writeNotNull('popup', instance.popup);
   writeNotNull('naverUseCfm', instance.naverUseCfm);
