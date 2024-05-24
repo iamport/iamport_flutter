@@ -4,14 +4,29 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:iamport_flutter/model/iamport_url.dart';
+
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
+
+import 'package:iamport_flutter/model/iamport_url.dart';
 
 enum ActionType { auth, payment }
 
 class IamportWebView extends StatefulWidget {
-  static final Color primaryColor = Color(0xff344e81);
-  static final String html = '''
+  const IamportWebView({
+    super.key,
+    required this.type,
+    this.appBar,
+    this.initialChild,
+    required this.executeJS,
+    required this.useQueryData,
+    required this.isPaymentOver,
+    required this.customPGAction,
+    this.gestureRecognizers,
+    this.customUserAgent,
+  });
+
+  static const Color primaryColor = Color(0xFF344E81);
+  static const String html = '''
     <html>
       <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -28,25 +43,13 @@ class IamportWebView extends StatefulWidget {
   final Widget? initialChild;
   final ValueSetter<WebViewController> executeJS;
   final ValueSetter<Map<String, String>> useQueryData;
-  final Function isPaymentOver;
-  final Function customPGAction;
+  final bool Function(String) isPaymentOver;
+  final StreamSubscription? Function(WebViewController) customPGAction;
   final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
   final String? customUserAgent;
 
-  IamportWebView({
-    required this.type,
-    this.appBar,
-    this.initialChild,
-    required this.executeJS,
-    required this.useQueryData,
-    required this.isPaymentOver,
-    required this.customPGAction,
-    this.gestureRecognizers,
-    this.customUserAgent,
-  });
-
   @override
-  _IamportWebViewState createState() => _IamportWebViewState();
+  State<IamportWebView> createState() => _IamportWebViewState();
 }
 
 class _IamportWebViewState extends State<IamportWebView> {
@@ -71,7 +74,10 @@ class _IamportWebViewState extends State<IamportWebView> {
   @override
   void dispose() {
     super.dispose();
-    if (_sub != null) _sub!.cancel();
+    if (_sub != null) {
+      // ignore: discarded_futures
+      _sub!.cancel();
+    }
   }
 
   @override
@@ -90,10 +96,10 @@ class _IamportWebViewState extends State<IamportWebView> {
               gestureRecognizers: widget.gestureRecognizers,
               userAgent: widget.customUserAgent,
               onWebViewCreated: (controller) {
-                this._webViewController = controller;
+                _webViewController = controller;
                 if (widget.type == ActionType.payment) {
                   // 스마일페이, 나이스 실시간 계좌이체
-                  _sub = widget.customPGAction(this._webViewController);
+                  _sub = widget.customPGAction(_webViewController);
                 }
               },
               onPageFinished: (String url) {
@@ -105,14 +111,14 @@ class _IamportWebViewState extends State<IamportWebView> {
                 }
                 // 페이지 로딩 완료시 IMP 코드 실행
                 if (_isImpLoaded == 0) {
-                  widget.executeJS(this._webViewController);
+                  widget.executeJS(_webViewController);
                   _isImpLoaded++;
                 }
               },
               navigationDelegate: (request) async {
                 // print("url: " + request.url);
                 if (widget.isPaymentOver(request.url)) {
-                  String decodedUrl = Uri.decodeComponent(request.url);
+                  final decodedUrl = Uri.decodeComponent(request.url);
                   widget.useQueryData(Uri.parse(decodedUrl).queryParameters);
 
                   return NavigationDecision.prevent;
@@ -122,7 +128,7 @@ class _IamportWebViewState extends State<IamportWebView> {
                 if (iamportUrl.isAppLink()) {
                   // print("appLink: " + iamportUrl.appUrl!);
                   // 앱 실행 로직을 iamport_url 모듈로 이동
-                  iamportUrl.launchApp();
+                  await iamportUrl.launchApp();
                   return NavigationDecision.prevent;
                 }
 
