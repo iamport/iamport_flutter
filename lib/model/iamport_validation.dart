@@ -2,10 +2,7 @@ import 'package:iamport_flutter/model/certification_data.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 
 class IamportValidation {
-  bool isValid = true;
-  String? errorMessage;
-
-  IamportValidation(String userCode, PaymentData data, Function callback) {
+  IamportValidation(PaymentData data) {
     if (data.payMethod == 'vbank') {
       if (data.vbankDue == null) {
         isValid = false;
@@ -38,20 +35,21 @@ class IamportValidation {
       return;
     }
 
-    if (data.pg == 'paypal' && data.popup == true) {
+    if (data.pg == 'paypal' && data.popup != null && data.popup!) {
       isValid = false;
       errorMessage = '해당 모듈에서 페이팔 - 팝업 방식은 지원하지 않습니다.';
       return;
     }
 
     if ((data.pg == 'naverpay' || data.pg == 'naverco') &&
-        data.naverPopupMode == true) {
+        data.naverPopupMode != null &&
+        data.naverPopupMode!) {
       isValid = false;
       errorMessage = '해당 모듈에서 네이버페이 - 팝업 방식은 지원하지 않습니다.';
       return;
     }
 
-    if (data.popup == true) {
+    if (data.popup != null && data.popup!) {
       isValid = false;
       errorMessage = '해당 모듈은 팝업 방식을 지원하지 않습니다.';
       return;
@@ -59,13 +57,17 @@ class IamportValidation {
   }
 
   IamportValidation.fromCertificationData(
-      String userCode, CertificationData data, Function callback) {
-    if (data.popup == true) {
+    CertificationData data,
+  ) {
+    if (data.popup != null && data.popup!) {
       isValid = false;
       errorMessage = '해당 모듈은 팝업 방식을 지원하지 않습니다.';
       return;
     }
   }
+
+  bool isValid = true;
+  String? errorMessage;
 
   bool getIsValid() {
     return isValid;

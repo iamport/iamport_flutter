@@ -5,12 +5,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'model/certification_data.dart';
-import 'model/iamport_validation.dart';
-import 'model/url_data.dart';
-import 'widget/iamport_error.dart';
-import 'widget/iamport_webview.dart';
+
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
+
+import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:iamport_flutter/model/iamport_validation.dart';
+import 'package:iamport_flutter/model/url_data.dart';
+import 'package:iamport_flutter/widget/iamport_error.dart';
+import 'package:iamport_flutter/widget/iamport_webview.dart';
 
 class IamportCertification extends StatelessWidget {
   const IamportCertification({
