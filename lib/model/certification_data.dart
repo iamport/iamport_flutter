@@ -4,6 +4,21 @@ part 'certification_data.g.dart';
 
 @JsonSerializable()
 class CertificationData {
+  CertificationData({
+    this.pg,
+    this.merchantUid,
+    this.company,
+    this.carrier,
+    this.name,
+    this.phone,
+    this.minAge,
+    this.popup,
+    this.mRedirectUrl,
+  });
+
+  factory CertificationData.fromJson(Map<String, dynamic> json) =>
+      _$CertificationDataFromJson(json);
+
   String? pg;
 
   @JsonKey(name: 'merchant_uid')
@@ -21,21 +36,6 @@ class CertificationData {
 
   @JsonKey(name: 'm_redirect_url')
   String? mRedirectUrl;
-
-  CertificationData({
-    this.pg,
-    this.merchantUid,
-    this.company,
-    this.carrier,
-    this.name,
-    this.phone,
-    this.minAge,
-    this.popup,
-    this.mRedirectUrl,
-  });
-
-  factory CertificationData.fromJson(Map<String, dynamic> json) =>
-      _$CertificationDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$CertificationDataToJson(this);
 }

@@ -183,14 +183,16 @@ Map<String, dynamic> _$NaverCoFeeRuleToJson(NaverCoFeeRule instance) {
 }
 
 NaverCoFeeRangeByQty _$NaverCoFeeRangeByQtyFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     NaverCoFeeRangeByQty(
       from: json['from'] as int?,
       surcharge: json['surcharge'] as int?,
     );
 
 Map<String, dynamic> _$NaverCoFeeRangeByQtyToJson(
-    NaverCoFeeRangeByQty instance) {
+  NaverCoFeeRangeByQty instance,
+) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
