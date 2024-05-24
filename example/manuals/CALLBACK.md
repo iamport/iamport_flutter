@@ -72,17 +72,14 @@ class Result extends StatelessWidget {
         children: [
           Text(
             isSucceed ? '성공하였습니다' : '실패하였습니다',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-            ),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(50.0, 30.0, 50.0, 50.0),
+            padding: const EdgeInsets.fromLTRB(50, 30, 50, 50),
             child: Column(
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -98,7 +95,7 @@ class Result extends StatelessWidget {
                   ),
                 ),
                 isSucceed ? Container(
-                  padding: const EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -113,7 +110,7 @@ class Result extends StatelessWidget {
                     ],
                   ),
                 ) : Container(
-                  padding: const EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

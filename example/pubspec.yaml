@@ -1,6 +1,6 @@
 name: iamport_flutter_example
 description: Demonstrates how to use the iamport_flutter plugin.
-publish_to: 'none'
+publish_to: none
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
@@ -13,19 +13,18 @@ dependencies:
   cupertino_icons: ^1.0.3
   get: ^4.6.0
 
+  iamport_flutter:
+    path: ../
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  iamport_flutter:
-    path: ../
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

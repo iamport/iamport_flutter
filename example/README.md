@@ -28,8 +28,8 @@ class Payment extends StatelessWidget {
           children: [
             Image.asset('assets/images/iamport-logo.png'),
             Container(
-              padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-              child: const Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
+              padding: const EdgeInsets.only(top: 30),
+              child: const Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ),
           ],
         ),
@@ -157,8 +157,8 @@ class Certification extends StatelessWidget {
           children: [
             Image.asset('assets/images/iamport-logo.png'),
             Container(
-              padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-              child: const Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
+              padding: const EdgeInsets.only(top: 30),
+              child: const Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ),
           ],
         ),
