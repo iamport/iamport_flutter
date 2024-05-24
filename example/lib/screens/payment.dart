@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:iamport_flutter/iamport_payment.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
@@ -13,10 +14,7 @@ class Payment extends StatelessWidget {
       appBar: AppBar(
         title: Text('아임포트 결제'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -32,7 +30,7 @@ class Payment extends StatelessWidget {
             children: [
               Image.asset('assets/images/iamport-logo.png'),
               Padding(padding: EdgeInsets.symmetric(vertical: 15)),
-              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
+              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ],
           ),
         ),

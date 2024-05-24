@@ -26,7 +26,7 @@ class Pg {
     'tosspayments',
     'ksnet',
     'welcome',
-    'tosspay_v2'
+    'tosspay_v2',
   ];
 
   static String getLabel(String pg) {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 class CertificationResult extends StatelessWidget {
-  static const Color successColor = Color(0xff52c41a);
-  static const Color failureColor = Color(0xfff5222d);
+  static const Color successColor = Color(0xFF52C41A);
+  static const Color failureColor = Color(0xFFF5222D);
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +35,10 @@ class CertificationResult extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              color: color,
-              size: 200,
-            ),
+            Icon(icon, color: color, size: 200),
             Text(
               message,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
@@ -53,17 +47,17 @@ class CertificationResult extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
-                            flex: 4,
-                            child: Text('아임포트 번호',
-                                style: TextStyle(color: Colors.grey))),
+                          flex: 4,
+                          child: Text(
+                            '아임포트 번호',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
                         Expanded(
                           flex: 5,
-                          child: Text(result['imp_uid'] != null
-                              ? result['imp_uid']!
-                              : ""),
+                          child: Text(result['imp_uid'] ?? ''),
                         ),
                       ],
                     ),
@@ -72,18 +66,17 @@ class CertificationResult extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.symmetric(vertical: 5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
                             flex: 4,
-                            child: Text('에러 메시지',
-                                style: TextStyle(color: Colors.grey)),
+                            child: Text(
+                              '에러 메시지',
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                           Expanded(
                             flex: 5,
-                            child: Text(result['error_msg'] != null
-                                ? result['error_msg']!
-                                : ""),
+                            child: Text(result['error_msg'] ?? ''),
                           ),
                         ],
                       ),

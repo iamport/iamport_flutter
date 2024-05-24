@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
@@ -11,7 +12,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(color: Color(0xff344e81)),
+        decoration: BoxDecoration(color: Color(0xFF344E81)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -20,18 +21,13 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 0,
-                      top: 20.0,
-                      right: 0,
-                      bottom: 20.0,
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       '아임포트 테스트',
                       style: TextStyle(
-                        fontSize: 24.0,
+                        fontSize: 24,
                         color: Colors.white,
-                        height: 2.0,
+                        height: 2,
                       ),
                     ),
                   ),
@@ -43,7 +39,7 @@ class _HomeState extends State<Home> {
                   Text(
                     '아임포트 플러터 모듈 테스트 화면입니다.',
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       color: Colors.white,
                       height: 1.2,
                     ),
@@ -56,7 +52,7 @@ class _HomeState extends State<Home> {
                   Text(
                     '아래 버튼을 눌러 결제 또는 본인인증 테스트를 진행해주세요.',
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       color: Colors.white,
                       height: 1.2,
                     ),
@@ -64,20 +60,11 @@ class _HomeState extends State<Home> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 0,
-                  top: 50.0,
-                  right: 0,
-                  bottom: 0,
-                ),
+                padding: const EdgeInsets.only(top: 50),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 20,
-                      ),
-                    ),
+                    Padding(padding: EdgeInsets.only(left: 20)),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(

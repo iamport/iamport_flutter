@@ -56,9 +56,7 @@ class IamportValidation {
     }
   }
 
-  IamportValidation.fromCertificationData(
-    CertificationData data,
-  ) {
+  IamportValidation.fromCertificationData(CertificationData data) {
     if (data.popup != null && data.popup!) {
       isValid = false;
       errorMessage = '해당 모듈은 팝업 방식을 지원하지 않습니다.';
