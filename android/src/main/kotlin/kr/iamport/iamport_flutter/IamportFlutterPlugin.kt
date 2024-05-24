@@ -1,6 +1,5 @@
 package kr.iamport.iamport_flutter
 
-import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -17,16 +16,14 @@ class IamportFlutterPlugin : FlutterPlugin, MethodCallHandler {
      */
     private lateinit var channel: MethodChannel
 
-    override fun onAttachedToEngine(
-        @NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding,
-    ) {
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "iamport_flutter")
         channel.setMethodCallHandler(this)
     }
 
     override fun onMethodCall(
-        @NonNull call: MethodCall,
-        @NonNull result: Result,
+        call: MethodCall,
+        result: Result,
     ) {
         if (call.method == "getPlatformVersion") {
             result.success("Android ${android.os.Build.VERSION.RELEASE}")
@@ -35,9 +32,7 @@ class IamportFlutterPlugin : FlutterPlugin, MethodCallHandler {
         }
     }
 
-    override fun onDetachedFromEngine(
-        @NonNull binding: FlutterPlugin.FlutterPluginBinding,
-    ) {
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 }
