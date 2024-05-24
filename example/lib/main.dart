@@ -12,12 +12,14 @@ import 'package:iamport_flutter_example/screens/payment_result.dart';
 import 'package:iamport_flutter_example/screens/payment_test.dart';
 
 void main() {
-  runApp(IamportApp());
+  runApp(const IamportApp());
 }
 
 class IamportApp extends StatefulWidget {
+  const IamportApp({super.key});
+
   @override
-  _IamportAppState createState() => _IamportAppState();
+  State<IamportApp> createState() => _IamportAppState();
 }
 
 class _IamportAppState extends State<IamportApp> {
@@ -37,15 +39,18 @@ class _IamportAppState extends State<IamportApp> {
       initialRoute: '/',
       theme: ThemeData(primaryColor: primaryColor),
       getPages: [
-        GetPage(name: '/', page: () => Home()),
-        GetPage(name: '/payment-test', page: () => PaymentTest()),
-        GetPage(name: '/payment', page: () => Payment()),
-        GetPage(name: '/payment-result', page: () => PaymentResult()),
-        GetPage(name: '/certification-test', page: () => CertificationTest()),
-        GetPage(name: '/certification', page: () => Certification()),
+        GetPage(name: '/', page: () => const Home()),
+        GetPage(name: '/payment-test', page: () => const PaymentTest()),
+        GetPage(name: '/payment', page: () => const Payment()),
+        GetPage(name: '/payment-result', page: () => const PaymentResult()),
+        GetPage(name: '/certification', page: () => const Certification()),
+        GetPage(
+          name: '/certification-test',
+          page: () => const CertificationTest(),
+        ),
         GetPage(
           name: '/certification-result',
-          page: () => CertificationResult(),
+          page: () => const CertificationResult(),
         ),
       ],
     );

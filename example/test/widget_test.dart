@@ -14,7 +14,7 @@ import 'package:iamport_flutter_example/main.dart';
 void main() {
   testWidgets('Verify Platform version', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(IamportApp());
+    await tester.pumpWidget(const IamportApp());
 
     // Verify that platform version is retrieved.
     expect(

@@ -5,6 +5,8 @@ import 'package:iamport_flutter/iamport_certification.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
+  const Certification({super.key});
+
   @override
   Widget build(BuildContext context) {
     String userCode = Get.arguments['userCode'] as String;
@@ -12,12 +14,12 @@ class Certification extends StatelessWidget {
 
     return IamportCertification(
       appBar: AppBar(
-        title: Text('아임포트 본인인증'),
+        title: const Text('아임포트 본인인증'),
         centerTitle: true,
-        titleTextStyle: TextStyle(fontSize: 24, color: Colors.white),
+        titleTextStyle: const TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.blue,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Get.back();
           },
@@ -29,8 +31,8 @@ class Certification extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/iamport-logo.png'),
-              Padding(padding: EdgeInsets.symmetric(vertical: 15)),
-              Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+              const Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20)),
             ],
           ),
         ),

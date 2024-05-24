@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -12,16 +14,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(color: Color(0xFF344E81)),
+        decoration: const BoxDecoration(color: Color(0xFF344E81)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       '아임포트 테스트',
                       style: TextStyle(
@@ -33,7 +35,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -46,7 +48,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -64,23 +66,23 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(padding: EdgeInsets.only(left: 20)),
+                    const Padding(padding: EdgeInsets.only(left: 20)),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           elevation: 0,
                           shadowColor: Colors.transparent,
                         ),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.payment,
                           color: Colors.black,
                           size: 25,
                         ),
-                        label: Text(
+                        label: const Text(
                           '결제 테스트',
                           style: TextStyle(
                             color: Colors.black,
@@ -93,25 +95,25 @@ class _HomeState extends State<Home> {
                         },
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                     ),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           elevation: 0,
                           shadowColor: Colors.transparent,
                         ),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.people,
                           color: Colors.black,
                           size: 25,
                         ),
-                        label: Text(
+                        label: const Text(
                           '본인인증 테스트',
                           style: TextStyle(
                             color: Colors.black,
@@ -124,7 +126,7 @@ class _HomeState extends State<Home> {
                         },
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(right: 20)),
+                    const Padding(padding: EdgeInsets.only(right: 20)),
                   ],
                 ),
               ),

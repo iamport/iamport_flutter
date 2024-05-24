@@ -42,6 +42,8 @@ class PaymentResult extends StatelessWidget {
   static const Color successColor = Color(0xFF52C41A);
   static const Color failureColor = Color(0xFFF5222D);
 
+  const PaymentResult({super.key});
+
   @override
   Widget build(BuildContext context) {
     PaymentResultPayload payload = Get.arguments as PaymentResultPayload;
@@ -61,7 +63,7 @@ class PaymentResult extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('아임포트 결제 결과'),
+        title: const Text('아임포트 결제 결과'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -72,17 +74,17 @@ class PaymentResult extends StatelessWidget {
             Icon(icon, color: color, size: 200),
             Text(
               message,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
+              padding: const EdgeInsets.fromLTRB(50, 30, 50, 50),
               child: Column(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.symmetric(vertical: 5),
                     child: Row(
                       children: [
-                        Expanded(
+                        const Expanded(
                           flex: 4,
                           child: Text(
                             '아임포트 번호',
@@ -95,10 +97,10 @@ class PaymentResult extends StatelessWidget {
                   ),
                   isSucceed
                       ? Container(
-                          padding: EdgeInsets.symmetric(vertical: 5),
+                          padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Row(
                             children: [
-                              Expanded(
+                              const Expanded(
                                 flex: 4,
                                 child: Text(
                                   '주문 번호',
@@ -110,12 +112,12 @@ class PaymentResult extends StatelessWidget {
                           ),
                         )
                       : Container(
-                          padding: EdgeInsets.symmetric(vertical: 5),
+                          padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Column(
                             children: [
                               Row(
                                 children: [
-                                  Expanded(
+                                  const Expanded(
                                     flex: 4,
                                     child: Text(
                                       '에러 코드',
@@ -130,7 +132,7 @@ class PaymentResult extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Expanded(
+                                  const Expanded(
                                     flex: 4,
                                     child: Text(
                                       '에러 메시지',
@@ -150,11 +152,11 @@ class PaymentResult extends StatelessWidget {
               ),
             ),
             ElevatedButton.icon(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Get.offAllNamed('/');
               },
-              label: Text(
+              label: const Text(
                 '돌아가기',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
