@@ -9,8 +9,8 @@ class Certification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String userCode = Get.arguments['userCode'] as String;
-    CertificationData data = Get.arguments['data'] as CertificationData;
+    final userCode = Get.arguments['userCode'] as String;
+    final data = Get.arguments['data'] as CertificationData;
 
     return IamportCertification(
       appBar: AppBar(
@@ -39,7 +39,7 @@ class Certification extends StatelessWidget {
       ),
       userCode: userCode,
       data: data,
-      callback: (Map<String, String> result) {
+      callback: (Map<String, String> result) async {
         Get.offNamed('/certification-result', arguments: result);
       },
     );

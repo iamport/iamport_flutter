@@ -46,8 +46,8 @@ class PaymentResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PaymentResultPayload payload = Get.arguments as PaymentResultPayload;
-    bool isSucceed = payload.isSucceed;
+    final payload = Get.arguments as PaymentResultPayload;
+    final isSucceed = payload.isSucceed;
     String message;
     IconData icon;
     Color color;
@@ -153,7 +153,7 @@ class PaymentResult extends StatelessWidget {
             ),
             ElevatedButton.icon(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {
+              onPressed: () async {
                 Get.offAllNamed('/');
               },
               label: const Text(

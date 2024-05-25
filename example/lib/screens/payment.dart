@@ -9,8 +9,8 @@ class Payment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String userCode = Get.arguments['userCode'] as String;
-    PaymentData data = Get.arguments['data'] as PaymentData;
+    final userCode = Get.arguments['userCode'] as String;
+    final data = Get.arguments['data'] as PaymentData;
 
     return IamportPayment(
       appBar: AppBar(
@@ -39,7 +39,7 @@ class Payment extends StatelessWidget {
       ),
       userCode: userCode,
       data: data,
-      callback: (Map<String, String> result) {
+      callback: (Map<String, String> result) async {
         Get.offNamed('/payment-result', arguments: result);
       },
     );

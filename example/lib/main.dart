@@ -11,7 +11,14 @@ import 'package:iamport_flutter_example/screens/payment.dart';
 import 'package:iamport_flutter_example/screens/payment_result.dart';
 import 'package:iamport_flutter_example/screens/payment_test.dart';
 
-void main() {
+Future<void> main() async {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
+    ),
+  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(const IamportApp());
 }
 
@@ -27,13 +34,6 @@ class _IamportAppState extends State<IamportApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.transparent,
-        statusBarColor: Colors.transparent,
-      ),
-    );
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
     return GetMaterialApp(
       initialRoute: '/',

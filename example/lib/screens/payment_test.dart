@@ -281,7 +281,7 @@ class _PaymentTestState extends State<PaymentTest> {
 
                       // 네이버페이 관련 정보 추가
                       if (pg == Pgs.naverpay) {
-                        NaverPayProducts p = NaverPayProducts(
+                        final naverProduct = NaverPayProducts(
                           name: '한국사',
                           categoryId: 'GENERAL',
                           categoryType: 'BOOK',
@@ -292,18 +292,18 @@ class _PaymentTestState extends State<PaymentTest> {
                         data.naverUseCfm = '20231026';
                         data.naverCultureBenefit = false;
                         data.naverPopupMode = false;
-                        data.naverProducts = [p];
+                        data.naverProducts = [naverProduct];
                       }
 
                       // kcp 에스크로 관련 정보 추가
                       if (pg == Pgs.kcp && escrow == true) {
-                        KcpProducts p = KcpProducts(
+                        final kcpProduct = KcpProducts(
                           orderNumber: 'order1234',
                           name: '에스크로 주문',
                           quantity: 3,
                           amount: 5000,
                         );
-                        data.kcpProducts = [p];
+                        data.kcpProducts = [kcpProduct];
                       }
 
                       // [이니시스-빌링.나이스.다날] 제공기간 표기

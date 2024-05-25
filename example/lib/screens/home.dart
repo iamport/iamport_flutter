@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           Get.toNamed('/payment-test');
                         },
                       ),
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           Get.toNamed('/certification-test');
                         },
                       ),

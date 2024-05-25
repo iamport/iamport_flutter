@@ -146,7 +146,7 @@ class _CertificationTestState extends State<CertificationTest> {
                   ),
                   validator: (value) {
                     if (value!.isNotEmpty) {
-                      RegExp regex = RegExp(r'^[0-9]+$');
+                      final regex = RegExp(r'^[0-9]+$');
                       if (!regex.hasMatch(value)) return '최소 연령이 올바르지 않습니다.';
                     }
                     return null;
@@ -160,11 +160,11 @@ class _CertificationTestState extends State<CertificationTest> {
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
 
-                      CertificationData data = CertificationData(
+                      final data = CertificationData(
                         pg: pg.name,
                         merchantUid: merchantUid,
                       );

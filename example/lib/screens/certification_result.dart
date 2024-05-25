@@ -10,7 +10,7 @@ class CertificationResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> result = Get.arguments as Map<String, String>;
+    final result = Get.arguments as Map<String, String>;
     String message;
     IconData icon;
     Color color;
@@ -88,7 +88,7 @@ class CertificationResult extends StatelessWidget {
             ),
             ElevatedButton.icon(
               icon: const Icon(Icons.arrow_back),
-              onPressed: () {
+              onPressed: () async {
                 Get.offAllNamed('/');
               },
               label: const Text(
