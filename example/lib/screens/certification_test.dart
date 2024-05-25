@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:iamport_flutter/model/certification_data.dart';
-import 'package:iamport_flutter_example/model/carrier.dart';
 import 'package:iamport_flutter/model/url_data.dart';
 
+import 'package:iamport_flutter_example/model/carrier.dart';
+import 'package:iamport_flutter_example/model/pg.dart';
+
 class CertificationTest extends StatefulWidget {
+  const CertificationTest({super.key});
+
   @override
-  _CertificationTestState createState() => _CertificationTestState();
+  State<CertificationTest> createState() => _CertificationTestState();
 }
 
 class _CertificationTestState extends State<CertificationTest> {
   final _formKey = GlobalKey<FormState>();
   late String userCode; // 가맹점 식별코드
-  String pg = 'danal'; // PG사
+  Pgs pg = Pgs.danal; // PG사
   late String merchantUid; // 주문번호
   String company = '아임포트'; // 회사명 또는 URL
-  String carrier = 'SKT'; // 통신사
+  Carriers carrier = Carriers.SKT; // 통신사
   late String name; // 본인인증 할 이름
   late String phone; // 본인인증 할 전화번호
   late String minAge; // 최소 허용 만 나이
@@ -24,30 +29,25 @@ class _CertificationTestState extends State<CertificationTest> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('아임포트 본인인증 테스트'),
+        title: const Text('아임포트 본인인증 테스트'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontSize: 24,
-          color: Colors.white,
-        ),
+        titleTextStyle: const TextStyle(fontSize: 24, color: Colors.white),
         backgroundColor: Colors.blue,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Get.back();
           },
         ),
       ),
       body: SafeArea(
-        minimum: EdgeInsets.symmetric(horizontal: 15),
+        minimum: const EdgeInsets.symmetric(horizontal: 15),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '가맹점 식별코드',
-                ),
+                decoration: const InputDecoration(labelText: '가맹점 식별코드'),
                 validator: (value) =>
                     value!.isEmpty ? '가맹점 식별코드는 필수입력입니다' : null,
                 initialValue: '',
@@ -56,29 +56,27 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
               ),
               DropdownButtonFormField(
-                decoration: InputDecoration(
-                  labelText: 'PG사',
-                ),
+                decoration: const InputDecoration(labelText: 'PG사'),
                 value: pg,
-                onChanged: (String? value) {
+                onChanged: (Pgs? value) {
                   setState(() {
                     pg = value!;
                   });
                 },
-                items: ['danal', 'inicis_unified']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
+                items: [Pgs.danal, Pgs.html5_inicis]
+                    .map<DropdownMenuItem<Pgs>>((Pgs value) {
+                  return DropdownMenuItem<Pgs>(
                     value: value,
-                    child: Text(value == 'danal'
-                        ? '다날 휴대폰 본인인증'
-                        : (value == 'inicis_unified' ? '이니시스 통합인증' : '')),
+                    child: Text(
+                      value == Pgs.danal
+                          ? '다날 휴대폰 본인인증'
+                          : (value == Pgs.html5_inicis ? '이니시스 통합인증' : ''),
+                    ),
                   );
                 }).toList(),
               ),
               TextFormField(
-                decoration: InputDecoration(
-                  labelText: '주문번호',
-                ),
+                decoration: const InputDecoration(labelText: '주문번호'),
                 validator: (value) => value!.isEmpty ? '주문번호는 필수입력입니다' : null,
                 initialValue: 'mid_${DateTime.now().millisecondsSinceEpoch}',
                 onSaved: (String? value) {
@@ -86,41 +84,38 @@ class _CertificationTestState extends State<CertificationTest> {
                 },
               ),
               Visibility(
+                visible: pg == Pgs.danal,
                 child: TextFormField(
                   initialValue: company,
-                  decoration: InputDecoration(
-                    labelText: '회사명',
-                  ),
+                  decoration: const InputDecoration(labelText: '회사명'),
                   onSaved: (String? value) {
                     company = value!;
                   },
                 ),
-                visible: pg == 'danal',
               ),
               Visibility(
+                visible: pg == Pgs.danal,
                 child: DropdownButtonFormField(
-                  decoration: InputDecoration(
-                    labelText: '통신사',
-                  ),
+                  decoration: const InputDecoration(labelText: '통신사'),
                   value: carrier,
-                  onChanged: (String? value) {
+                  onChanged: (Carriers? value) {
                     setState(() {
                       carrier = value!;
                     });
                   },
-                  items: Carrier.getLists()
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
+                  items: Carriers.values
+                      .map<DropdownMenuItem<Carriers>>((Carriers value) {
+                    return DropdownMenuItem<Carriers>(
                       value: value,
-                      child: Text(Carrier.getLabel(value)),
+                      child: Text(value.name),
                     );
                   }).toList(),
                 ),
-                visible: pg == 'danal',
               ),
               Visibility(
+                visible: pg == Pgs.danal,
                 child: TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: '이름',
                     hintText: '본인인증 할 이름',
                   ),
@@ -128,11 +123,11 @@ class _CertificationTestState extends State<CertificationTest> {
                     name = value!;
                   },
                 ),
-                visible: pg == 'danal',
               ),
               Visibility(
+                visible: pg == Pgs.danal,
                 child: TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: '전화번호',
                     hintText: '본인인증 할 전화번호',
                   ),
@@ -141,17 +136,17 @@ class _CertificationTestState extends State<CertificationTest> {
                     phone = value!;
                   },
                 ),
-                visible: pg == 'danal',
               ),
               Visibility(
+                visible: pg == Pgs.danal,
                 child: TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: '최소연령',
                     hintText: '허용 최소 만 나이',
                   ),
                   validator: (value) {
-                    if (value!.length > 0) {
-                      RegExp regex = RegExp(r'^[0-9]+$');
+                    if (value!.isNotEmpty) {
+                      final regex = RegExp(r'^[0-9]+$');
                       if (!regex.hasMatch(value)) return '최소 연령이 올바르지 않습니다.';
                     }
                     return null;
@@ -161,28 +156,27 @@ class _CertificationTestState extends State<CertificationTest> {
                     minAge = value!;
                   },
                 ),
-                visible: pg == 'danal',
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
 
-                      CertificationData data = CertificationData(
-                        pg: pg,
+                      final data = CertificationData(
+                        pg: pg.name,
                         merchantUid: merchantUid,
                       );
 
-                      if (pg == 'inicis_unified') {
+                      if (pg == Pgs.html5_inicis) {
                         data.mRedirectUrl = UrlData.redirectUrl;
                       } else {
-                        data.carrier = carrier;
+                        data.carrier = carrier.name;
                         data.company = company;
                         data.name = name;
                         data.phone = phone;
-                        if (minAge.length > 0) {
+                        if (minAge.isNotEmpty) {
                           data.minAge = int.parse(minAge);
                         }
                       }
@@ -196,22 +190,22 @@ class _CertificationTestState extends State<CertificationTest> {
                       );
                     }
                   },
-                  child: Text(
-                    '본인인증 하기',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
                     elevation: 0,
                     shadowColor: Colors.transparent,
                     backgroundColor: Colors.blue,
+                  ),
+                  child: const Text(
+                    '본인인증 하기',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

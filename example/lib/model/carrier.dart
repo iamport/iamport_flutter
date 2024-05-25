@@ -1,27 +1,17 @@
-class Carrier {
-  static List<String> CARRIERS = [
-    'SKT',
-    'KTF',
-    'LGT',
-    'MVNO',
-  ];
+enum Carriers {
+  SKT,
+  KTF,
+  LGT,
+  MVNO,
+}
 
-  static String getLabel(String pg) {
-    switch (pg) {
-      case 'SKT':
-        return 'SKT';
-      case 'KTF':
-        return 'KT';
-      case 'LGT':
-        return 'LGU+';
-      case 'MVNO':
-        return '알뜰폰';
-      default:
-        return '-';
-    }
-  }
-
-  static List<String> getLists() {
-    return CARRIERS;
+extension LabelExt on Carriers {
+  String get label {
+    return switch (this) {
+      Carriers.SKT => 'SKT',
+      Carriers.KTF => 'KT',
+      Carriers.LGT => 'LGU+',
+      Carriers.MVNO => '알뜰폰',
+    };
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -11,52 +14,47 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BoxDecoration(color: Color(0xff344e81)),
+        decoration: const BoxDecoration(color: Color(0xFF344E81)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      left: 0,
-                      top: 20.0,
-                      right: 0,
-                      bottom: 20.0,
-                    ),
+                    padding: EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       '아임포트 테스트',
                       style: TextStyle(
-                        fontSize: 24.0,
+                        fontSize: 24,
                         color: Colors.white,
-                        height: 2.0,
+                        height: 2,
                       ),
                     ),
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     '아임포트 플러터 모듈 테스트 화면입니다.',
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       color: Colors.white,
                       height: 1.2,
                     ),
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     '아래 버튼을 눌러 결제 또는 본인인증 테스트를 진행해주세요.',
                     style: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 14,
                       color: Colors.white,
                       height: 1.2,
                     ),
@@ -64,36 +62,27 @@ class _HomeState extends State<Home> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 0,
-                  top: 50.0,
-                  right: 0,
-                  bottom: 0,
-                ),
+                padding: const EdgeInsets.only(top: 50),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 20,
-                      ),
-                    ),
+                    const Padding(padding: EdgeInsets.only(left: 20)),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           elevation: 0,
                           shadowColor: Colors.transparent,
                         ),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.payment,
                           color: Colors.black,
                           size: 25,
                         ),
-                        label: Text(
+                        label: const Text(
                           '결제 테스트',
                           style: TextStyle(
                             color: Colors.black,
@@ -101,30 +90,30 @@ class _HomeState extends State<Home> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           Get.toNamed('/payment-test');
                         },
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                     ),
                     Expanded(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           elevation: 0,
                           shadowColor: Colors.transparent,
                         ),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.people,
                           color: Colors.black,
                           size: 25,
                         ),
-                        label: Text(
+                        label: const Text(
                           '본인인증 테스트',
                           style: TextStyle(
                             color: Colors.black,
@@ -132,12 +121,12 @@ class _HomeState extends State<Home> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           Get.toNamed('/certification-test');
                         },
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(right: 20)),
+                    const Padding(padding: EdgeInsets.only(right: 20)),
                   ],
                 ),
               ),

@@ -4,12 +4,6 @@ part 'naver_interface.g.dart';
 
 @JsonSerializable()
 class NaverInterface {
-  String? cpaInflowCode;
-  String? naverInflowCode;
-  String? saClickId;
-  String? merchantCustomCode1;
-  String? merchantCustomCode2;
-
   NaverInterface({
     this.cpaInflowCode,
     this.naverInflowCode,
@@ -20,6 +14,12 @@ class NaverInterface {
 
   factory NaverInterface.fromJson(Map<String, dynamic> json) =>
       _$NaverInterfaceFromJson(json);
+
+  String? cpaInflowCode;
+  String? naverInflowCode;
+  String? saClickId;
+  String? merchantCustomCode1;
+  String? merchantCustomCode2;
 
   Map<String, dynamic> toJson() => _$NaverInterfaceToJson(this);
 }

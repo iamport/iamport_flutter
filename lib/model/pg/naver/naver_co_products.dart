@@ -1,24 +1,11 @@
-import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
 
 part 'naver_co_products.g.dart';
 
 @JsonSerializable()
 class NaverCoProducts implements NaverProducts {
-  String? id;
-  String? merchantProductId;
-  String? ecMallProductId;
-  String? name;
-  int? basePrice;
-  String? taxType;
-  int? quantity;
-  String? infoUrl;
-  String? imageUrl;
-  String? giftName;
-  List<NaverCoOption>? options;
-  NaverCoShipping? shipping;
-  List<NaverCoSupplement>? supplements;
-
   NaverCoProducts({
     this.id,
     this.merchantProductId,
@@ -38,16 +25,26 @@ class NaverCoProducts implements NaverProducts {
   factory NaverCoProducts.fromJson(Map<String, dynamic> json) =>
       _$NaverCoProductsFromJson(json);
 
+  String? id;
+  String? merchantProductId;
+  String? ecMallProductId;
+  String? name;
+  int? basePrice;
+  String? taxType;
+  int? quantity;
+  String? infoUrl;
+  String? imageUrl;
+  String? giftName;
+  List<NaverCoOption>? options;
+  NaverCoShipping? shipping;
+  List<NaverCoSupplement>? supplements;
+
+  @override
   Map<String, dynamic> toJson() => _$NaverCoProductsToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoOption {
-  int? optionQuantity;
-  int? optionPrice;
-  String? selectionCode;
-  List<NaverCoOptionItem>? selections;
-
   NaverCoOption({
     this.optionQuantity,
     this.optionPrice,
@@ -58,15 +55,16 @@ class NaverCoOption {
   factory NaverCoOption.fromJson(Map<String, dynamic> json) =>
       _$NaverCoOptionFromJson(json);
 
+  int? optionQuantity;
+  int? optionPrice;
+  String? selectionCode;
+  List<NaverCoOptionItem>? selections;
+
   Map<String, dynamic> toJson() => _$NaverCoOptionToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoOptionItem {
-  String? code;
-  String? label;
-  String? value;
-
   NaverCoOptionItem({
     this.code,
     this.label,
@@ -76,16 +74,15 @@ class NaverCoOptionItem {
   factory NaverCoOptionItem.fromJson(Map<String, dynamic> json) =>
       _$NaverCoOptionItemFromJson(json);
 
+  String? code;
+  String? label;
+  String? value;
+
   Map<String, dynamic> toJson() => _$NaverCoOptionItemToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoSupplement {
-  String? id;
-  String? name;
-  int? price;
-  int? quantity;
-
   NaverCoSupplement({
     this.id,
     this.name,
@@ -96,17 +93,16 @@ class NaverCoSupplement {
   factory NaverCoSupplement.fromJson(Map<String, dynamic> json) =>
       _$NaverCoSupplementFromJson(json);
 
+  String? id;
+  String? name;
+  int? price;
+  int? quantity;
+
   Map<String, dynamic> toJson() => _$NaverCoSupplementToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoShipping {
-  String? groupId;
-  String? method;
-  int? baseFee;
-  String? feePayType;
-  NaverCoFeeRule? feeRule;
-
   NaverCoShipping({
     this.groupId,
     this.method,
@@ -118,16 +114,17 @@ class NaverCoShipping {
   factory NaverCoShipping.fromJson(Map<String, dynamic> json) =>
       _$NaverCoShippingFromJson(json);
 
+  String? groupId;
+  String? method;
+  int? baseFee;
+  String? feePayType;
+  NaverCoFeeRule? feeRule;
+
   Map<String, dynamic> toJson() => _$NaverCoShippingToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoFeeRule {
-  int? freeByThreshold;
-  int? repeatByQty;
-  List<NaverCoFeeRangeByQty>? rangesByQty;
-  List<NaverCoFeeAreaByQty>? surchargesByArea;
-
   NaverCoFeeRule({
     this.freeByThreshold,
     this.repeatByQty,
@@ -138,14 +135,16 @@ class NaverCoFeeRule {
   factory NaverCoFeeRule.fromJson(Map<String, dynamic> json) =>
       _$NaverCoFeeRuleFromJson(json);
 
+  int? freeByThreshold;
+  int? repeatByQty;
+  List<NaverCoFeeRangeByQty>? rangesByQty;
+  List<NaverCoFeeAreaByQty>? surchargesByArea;
+
   Map<String, dynamic> toJson() => _$NaverCoFeeRuleToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoFeeRangeByQty {
-  int? from;
-  int? surcharge;
-
   NaverCoFeeRangeByQty({
     this.from,
     this.surcharge,
@@ -154,14 +153,14 @@ class NaverCoFeeRangeByQty {
   factory NaverCoFeeRangeByQty.fromJson(Map<String, dynamic> json) =>
       _$NaverCoFeeRangeByQtyFromJson(json);
 
+  int? from;
+  int? surcharge;
+
   Map<String, dynamic> toJson() => _$NaverCoFeeRangeByQtyToJson(this);
 }
 
 @JsonSerializable()
 class NaverCoFeeAreaByQty {
-  List<String>? from;
-  int? surcharge;
-
   NaverCoFeeAreaByQty({
     this.from,
     this.surcharge,
@@ -169,6 +168,9 @@ class NaverCoFeeAreaByQty {
 
   factory NaverCoFeeAreaByQty.fromJson(Map<String, dynamic> json) =>
       _$NaverCoFeeAreaByQtyFromJson(json);
+
+  List<String>? from;
+  int? surcharge;
 
   Map<String, dynamic> toJson() => _$NaverCoFeeAreaByQtyToJson(this);
 }

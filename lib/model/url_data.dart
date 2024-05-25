@@ -27,7 +27,7 @@ class UrlData {
 
   static const String SMILEPAY = 'smilepayapp';
   static const String PACKAGE_SMILEPAY = 'com.mysmilepay.app';
-  static const String SMILEPAY_BASE_URL = "https://www.mysmilepay.com/";
+  static const String SMILEPAY_BASE_URL = 'https://www.mysmilepay.com/';
 
   static const String CHAIPAY = 'chaipayment';
   static const String PACKAGE_CHAIPAY = 'finance.chai.app';
