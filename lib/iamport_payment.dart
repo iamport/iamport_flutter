@@ -12,7 +12,7 @@ import 'package:iamport_flutter/model/url_data.dart';
 import 'package:iamport_flutter/widget/iamport_error.dart';
 import 'package:iamport_flutter/widget/iamport_webview.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
-import 'package:uni_links/uni_links.dart';
+import 'package:app_links/app_links.dart';
 
 class IamportPayment extends StatelessWidget {
   final PreferredSizeWidget? appBar;
@@ -71,23 +71,21 @@ class IamportPayment extends StatelessWidget {
           /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
           if (this.data.pg == 'nice' && this.data.payMethod == 'trans') {
             try {
-              StreamSubscription sub = linkStream.listen((String? link) async {
-                if (link != null) {
-                  String decodedUrl = Uri.decodeComponent(link);
-                  Uri parsedUrl = Uri.parse(decodedUrl);
-                  String scheme = parsedUrl.scheme;
-                  if (scheme == data.appScheme.toLowerCase()) {
-                    String queryToString = parsedUrl.query;
-                    String? niceTransRedirectionUrl;
-                    parsedUrl.queryParameters.forEach((key, value) {
-                      if (key == 'callbackparam1') {
-                        niceTransRedirectionUrl = value;
-                      }
-                    });
-                    await controller.evaluateJavascript('''
+              final _appLinks = AppLinks();
+              StreamSubscription sub =
+                  _appLinks.uriLinkStream.listen((Uri uri) async {
+                String scheme = uri.scheme;
+                if (scheme == data.appScheme.toLowerCase()) {
+                  String queryToString = uri.query;
+                  String? niceTransRedirectionUrl;
+                  uri.queryParameters.forEach((key, value) {
+                    if (key == 'callbackparam1') {
+                      niceTransRedirectionUrl = value;
+                    }
+                  });
+                  await controller.evaluateJavascript('''
                     location.href = "$niceTransRedirectionUrl?$queryToString";
                   ''');
-                  }
                 }
               });
               return sub;
