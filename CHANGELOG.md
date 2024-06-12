@@ -1,4 +1,8 @@
-## [0.10.18](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.19](https://github.com/iamport/iamport_flutter/tree/main)
+- 안드로이드 gradle plugin 버전을 8.4.2로 업데이트했습니다.
+- uni_links를 app_links로 변경했습니다.
+
+## [0.10.18](https://github.com/iamport/iamport_flutter/tree/v0.10.18)
 - customer_id 파라미터를 추가했습니다.
 
 ## [0.10.17](https://github.com/iamport/iamport_flutter/tree/v0.10.17)
