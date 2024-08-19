@@ -12,7 +12,7 @@ NaverPayProducts _$NaverPayProductsFromJson(Map<String, dynamic> json) =>
       categoryId: json['categoryId'] as String,
       uid: json['uid'] as String,
       name: json['name'] as String,
-      count: json['count'] as int,
+      count: (json['count'] as num).toInt(),
       payReferrer: json['payReferrer'] as String?,
     );
 

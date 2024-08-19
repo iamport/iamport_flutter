@@ -16,8 +16,8 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       customData: (json['custom_data'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      taxFree: json['tax_free'] as int?,
-      vat: json['vat'] as int?,
+      taxFree: (json['tax_free'] as num?)?.toInt(),
+      vat: (json['vat'] as num?)?.toInt(),
       currency: json['currency'] as String?,
       language: json['language'] as String?,
       buyerName: json['buyer_name'] as String?,
