@@ -12,9 +12,9 @@ NaverCoProducts _$NaverCoProductsFromJson(Map<String, dynamic> json) =>
       merchantProductId: json['merchantProductId'] as String?,
       ecMallProductId: json['ecMallProductId'] as String?,
       name: json['name'] as String?,
-      basePrice: json['basePrice'] as int?,
+      basePrice: (json['basePrice'] as num?)?.toInt(),
       taxType: json['taxType'] as String?,
-      quantity: json['quantity'] as int?,
+      quantity: (json['quantity'] as num?)?.toInt(),
       infoUrl: json['infoUrl'] as String?,
       imageUrl: json['imageUrl'] as String?,
       giftName: json['giftName'] as String?,
@@ -56,8 +56,8 @@ Map<String, dynamic> _$NaverCoProductsToJson(NaverCoProducts instance) {
 
 NaverCoOption _$NaverCoOptionFromJson(Map<String, dynamic> json) =>
     NaverCoOption(
-      optionQuantity: json['optionQuantity'] as int?,
-      optionPrice: json['optionPrice'] as int?,
+      optionQuantity: (json['optionQuantity'] as num?)?.toInt(),
+      optionPrice: (json['optionPrice'] as num?)?.toInt(),
       selectionCode: json['selectionCode'] as String?,
       selections: (json['selections'] as List<dynamic>?)
           ?.map((e) => NaverCoOptionItem.fromJson(e as Map<String, dynamic>))
@@ -106,8 +106,8 @@ NaverCoSupplement _$NaverCoSupplementFromJson(Map<String, dynamic> json) =>
     NaverCoSupplement(
       id: json['id'] as String?,
       name: json['name'] as String?,
-      price: json['price'] as int?,
-      quantity: json['quantity'] as int?,
+      price: (json['price'] as num?)?.toInt(),
+      quantity: (json['quantity'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$NaverCoSupplementToJson(NaverCoSupplement instance) {
@@ -130,7 +130,7 @@ NaverCoShipping _$NaverCoShippingFromJson(Map<String, dynamic> json) =>
     NaverCoShipping(
       groupId: json['groupId'] as String?,
       method: json['method'] as String?,
-      baseFee: json['baseFee'] as int?,
+      baseFee: (json['baseFee'] as num?)?.toInt(),
       feePayType: json['feePayType'] as String?,
       feeRule: json['feeRule'] == null
           ? null
@@ -156,8 +156,8 @@ Map<String, dynamic> _$NaverCoShippingToJson(NaverCoShipping instance) {
 
 NaverCoFeeRule _$NaverCoFeeRuleFromJson(Map<String, dynamic> json) =>
     NaverCoFeeRule(
-      freeByThreshold: json['freeByThreshold'] as int?,
-      repeatByQty: json['repeatByQty'] as int?,
+      freeByThreshold: (json['freeByThreshold'] as num?)?.toInt(),
+      repeatByQty: (json['repeatByQty'] as num?)?.toInt(),
       rangesByQty: (json['rangesByQty'] as List<dynamic>?)
           ?.map((e) => NaverCoFeeRangeByQty.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -183,14 +183,16 @@ Map<String, dynamic> _$NaverCoFeeRuleToJson(NaverCoFeeRule instance) {
 }
 
 NaverCoFeeRangeByQty _$NaverCoFeeRangeByQtyFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     NaverCoFeeRangeByQty(
-      from: json['from'] as int?,
-      surcharge: json['surcharge'] as int?,
+      from: (json['from'] as num?)?.toInt(),
+      surcharge: (json['surcharge'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$NaverCoFeeRangeByQtyToJson(
-    NaverCoFeeRangeByQty instance) {
+  NaverCoFeeRangeByQty instance,
+) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -207,7 +209,7 @@ Map<String, dynamic> _$NaverCoFeeRangeByQtyToJson(
 NaverCoFeeAreaByQty _$NaverCoFeeAreaByQtyFromJson(Map<String, dynamic> json) =>
     NaverCoFeeAreaByQty(
       from: (json['from'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      surcharge: json['surcharge'] as int?,
+      surcharge: (json['surcharge'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$NaverCoFeeAreaByQtyToJson(NaverCoFeeAreaByQty instance) {

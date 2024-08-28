@@ -15,4 +15,6 @@ abstract class NaverProducts {
       return NaverPayProducts.fromJson(json);
     }
   }
+
+  Map<String, dynamic> toJson() => _$NaverProductsToJson(this);
 }

@@ -16,8 +16,8 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       customData: (json['custom_data'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      taxFree: json['tax_free'] as int?,
-      vat: json['vat'] as int?,
+      taxFree: (json['tax_free'] as num?)?.toInt(),
+      vat: (json['vat'] as num?)?.toInt(),
       currency: json['currency'] as String?,
       language: json['language'] as String?,
       buyerName: json['buyer_name'] as String?,
@@ -27,7 +27,8 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       buyerPostcode: json['buyer_postcode'] as String?,
       noticeUrl: json['notice_url'] as String?,
       cardQuota: PaymentData._cardQuotaFromJson(
-          json['display'] as Map<String, dynamic>),
+        json['display'] as Map<String, dynamic>,
+      ),
       digital: json['digital'] as bool?,
       vbankDue: json['vbank_due'] as String?,
       confirmUrl: json['confirm_url'] as String?,
@@ -52,7 +53,8 @@ PaymentData _$PaymentDataFromJson(Map<String, dynamic> json) => PaymentData(
       naverInterface: json['naverInterface'] == null
           ? null
           : NaverInterface.fromJson(
-              json['naverInterface'] as Map<String, dynamic>),
+              json['naverInterface'] as Map<String, dynamic>,
+            ),
       period: (json['period'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
