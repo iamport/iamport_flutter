@@ -4,16 +4,13 @@ part 'tosspayments.g.dart';
 
 @JsonSerializable()
 class Tosspayments {
-  bool? useInternationalCardOnly;
-  String? discountCode;
-
-  Tosspayments({
-    this.useInternationalCardOnly,
-    this.discountCode,
-  });
+  const Tosspayments({this.useInternationalCardOnly, this.discountCode});
 
   factory Tosspayments.fromJson(Map<String, dynamic> json) =>
       _$TosspaymentsFromJson(json);
+
+  final bool? useInternationalCardOnly;
+  final String? discountCode;
 
   Map<String, dynamic> toJson() => _$TosspaymentsToJson(this);
 }

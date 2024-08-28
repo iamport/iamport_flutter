@@ -1,14 +1,64 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import 'package:iamport_flutter/model/pg/bypass.dart';
+import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
 import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
-import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
 import 'package:iamport_flutter/model/url_data.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_data.g.dart';
 
 @JsonSerializable()
 class PaymentData {
+  PaymentData({
+    this.pg,
+    required this.payMethod,
+    this.escrow,
+    required this.merchantUid,
+    this.name,
+    required this.amount,
+    this.customData,
+    this.taxFree,
+    this.vat,
+    this.currency,
+    this.language,
+    this.buyerName,
+    required this.buyerTel,
+    this.buyerEmail,
+    this.buyerAddr,
+    this.buyerPostcode,
+    this.noticeUrl,
+    this.cardQuota,
+    this.digital,
+    this.vbankDue,
+    this.confirmUrl,
+    this.mRedirectUrl = UrlData.redirectUrl,
+    required this.appScheme,
+    this.bizNum,
+    this.customerId,
+    this.customerUid,
+    this.popup,
+    this.naverUseCfm,
+    this.naverPopupMode,
+    this.naverProducts,
+    this.naverCultureBenefit,
+    this.naverProductCode,
+    this.naverActionType,
+    this.naverPurchaserName,
+    this.naverPurchaserBirthday,
+    this.naverChainId,
+    this.naverMerchantUserKey,
+    this.naverInterface,
+    this.period,
+    this.company,
+    this.niceMobileV2,
+    this.kcpProducts,
+    this.bypass,
+  });
+
+  factory PaymentData.fromJson(Map<String, dynamic> json) =>
+      _$PaymentDataFromJson(json);
+
   String? pg; // PG사
 
   @JsonKey(name: 'pay_method')
@@ -97,55 +147,6 @@ class PaymentData {
   bool? niceMobileV2 = true;
   List<KcpProducts>? kcpProducts; // kcp 상품정보
   Bypass? bypass;
-
-  PaymentData({
-    this.pg,
-    required this.payMethod,
-    this.escrow,
-    required this.merchantUid,
-    this.name,
-    required this.amount,
-    this.customData,
-    this.taxFree,
-    this.vat,
-    this.currency,
-    this.language,
-    this.buyerName,
-    required this.buyerTel,
-    this.buyerEmail,
-    this.buyerAddr,
-    this.buyerPostcode,
-    this.noticeUrl,
-    this.cardQuota,
-    this.digital,
-    this.vbankDue,
-    this.confirmUrl,
-    this.mRedirectUrl = UrlData.redirectUrl,
-    required this.appScheme,
-    this.bizNum,
-    this.customerId,
-    this.customerUid,
-    this.popup,
-    this.naverUseCfm,
-    this.naverPopupMode,
-    this.naverProducts,
-    this.naverCultureBenefit,
-    this.naverProductCode,
-    this.naverActionType,
-    this.naverPurchaserName,
-    this.naverPurchaserBirthday,
-    this.naverChainId,
-    this.naverMerchantUserKey,
-    this.naverInterface,
-    this.period,
-    this.company,
-    this.niceMobileV2,
-    this.kcpProducts,
-    this.bypass,
-  });
-
-  factory PaymentData.fromJson(Map<String, dynamic> json) =>
-      _$PaymentDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentDataToJson(this);
 
