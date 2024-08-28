@@ -14,7 +14,7 @@ CertificationData _$CertificationDataFromJson(Map<String, dynamic> json) =>
       carrier: json['carrier'] as String?,
       name: json['name'] as String?,
       phone: json['phone'] as String?,
-      minAge: json['min_age'] as int?,
+      minAge: (json['min_age'] as num?)?.toInt(),
       popup: json['popup'] as bool?,
       mRedirectUrl: json['m_redirect_url'] as String?,
     );

@@ -9,8 +9,8 @@ part of 'kcp_products.dart';
 KcpProducts _$KcpProductsFromJson(Map<String, dynamic> json) => KcpProducts(
       orderNumber: json['orderNumber'] as String,
       name: json['name'] as String,
-      quantity: json['quantity'] as int,
-      amount: json['amount'] as int,
+      quantity: (json['quantity'] as num).toInt(),
+      amount: (json['amount'] as num).toInt(),
     );
 
 Map<String, dynamic> _$KcpProductsToJson(KcpProducts instance) =>

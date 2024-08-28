@@ -8,7 +8,7 @@ part of 'daou.dart';
 
 Daou _$DaouFromJson(Map<String, dynamic> json) => Daou(
       productCode: json['PRODUCTCODE'] as String?,
-      cashReceiptFlag: json['CASHRECEIPTFLAG'] as int,
+      cashReceiptFlag: (json['CASHRECEIPTFLAG'] as num).toInt(),
     );
 
 Map<String, dynamic> _$DaouToJson(Daou instance) {
