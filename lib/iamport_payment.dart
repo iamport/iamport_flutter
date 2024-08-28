@@ -6,54 +6,55 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_links/app_links.dart';
+import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
+
 import 'package:iamport_flutter/model/iamport_validation.dart';
 import 'package:iamport_flutter/model/payment_data.dart';
 import 'package:iamport_flutter/model/url_data.dart';
 import 'package:iamport_flutter/widget/iamport_error.dart';
 import 'package:iamport_flutter/widget/iamport_webview.dart';
-import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
-import 'package:app_links/app_links.dart';
 
 class IamportPayment extends StatelessWidget {
-  final PreferredSizeWidget? appBar;
-  final Widget? initialChild;
-  final String userCode;
-  final PaymentData data;
-  final callback;
-  final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
-  final _appLinks = AppLinks();
-
-  IamportPayment({
-    Key? key,
+  const IamportPayment({
+    super.key,
     this.appBar,
     this.initialChild,
     required this.userCode,
     required this.data,
     required this.callback,
     this.gestureRecognizers,
-  }) : super(key: key);
+  });
+
+  final PreferredSizeWidget? appBar;
+  final Widget? initialChild;
+  final String userCode;
+  final PaymentData data;
+  final ValueChanged<Map<String, String>> callback;
+  final Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
+
+  AppLinks get _appLinks => AppLinks();
 
   @override
   Widget build(BuildContext context) {
-    IamportValidation validation =
-        IamportValidation(this.userCode, this.data, this.callback);
+    final validation = IamportValidation(userCode, data, callback);
 
     if (validation.getIsValid()) {
       var redirectUrl = UrlData.redirectUrl;
-      if (this.data.mRedirectUrl != null &&
-          this.data.mRedirectUrl!.isNotEmpty) {
-        redirectUrl = this.data.mRedirectUrl!;
+      if (data.mRedirectUrl != null && data.mRedirectUrl!.isNotEmpty) {
+        redirectUrl = data.mRedirectUrl!;
       }
 
       return IamportWebView(
         type: ActionType.payment,
-        appBar: this.appBar,
-        initialChild: this.initialChild,
-        gestureRecognizers: this.gestureRecognizers,
-        executeJS: (WebViewController controller) {
-          controller.evaluateJavascript('''
-            IMP.init("${this.userCode}");
-            IMP.request_pay(${jsonEncode(this.data.toJson())}, function(response) {
+        appBar: appBar,
+        initialChild: initialChild,
+        gestureRecognizers: gestureRecognizers,
+        executeJS: (WebViewController controller) async {
+          await controller.evaluateJavascript('''
+            IMP.init("$userCode");
+            IMP.request_pay(${jsonEncode(data.toJson())}, function(response) {
               const query = [];
               Object.keys(response).forEach(function(key) {
                 query.push(key + "=" + response[key]);
@@ -62,58 +63,60 @@ class IamportPayment extends StatelessWidget {
             });
           ''');
         },
-        customPGAction: (WebViewController controller) {
-          if (this.data.pg == 'smilepay') {
+        customPGAction: (WebViewController controller) async {
+          if (data.pg == 'smilepay') {
             // webview_flutter에서 iOS는 쿠키가 기본적으로 허용되어있는 것으로 추정
             if (Platform.isAndroid) {
-              controller.setAcceptThirdPartyCookies(true);
+              await controller.setAcceptThirdPartyCookies(true);
             }
           }
           /* [v0.9.6] niceMobileV2: true 대비 코드 작성 */
-          if (this.data.pg == 'nice' && this.data.payMethod == 'trans') {
+          if (data.pg == 'nice' && data.payMethod == 'trans') {
             try {
-              StreamSubscription sub =
+              final StreamSubscription sub =
                   _appLinks.uriLinkStream.listen((Uri? link) async {
                 if (link != null) {
-                  String decodedUrl = Uri.decodeComponent(link.toString());
-                  Uri parsedUrl = Uri.parse(decodedUrl);
-                  String scheme = parsedUrl.scheme;
+                  final decodedUrl = Uri.decodeComponent(link.toString());
+                  final parsedUrl = Uri.parse(decodedUrl);
+                  final scheme = parsedUrl.scheme;
                   if (scheme == data.appScheme.toLowerCase()) {
-                    String queryToString = parsedUrl.query;
+                    final queryToString = parsedUrl.query;
                     String? niceTransRedirectionUrl;
                     parsedUrl.queryParameters.forEach((key, value) {
                       if (key == 'callbackparam1') {
                         niceTransRedirectionUrl = value;
                       }
                     });
+
                     await controller.evaluateJavascript('''
                     location.href = "$niceTransRedirectionUrl?$queryToString";
                   ''');
                   }
                 }
               });
+
               return sub;
-            } on FormatException {}
+            } on FormatException {
+              return null;
+            }
           }
           return null;
         },
-        useQueryData: (Map<String, String> data) {
-          this.callback(data);
-        },
+        useQueryData: callback,
         isPaymentOver: (String url) {
           if (url.startsWith(redirectUrl)) {
             return true;
           }
 
-          if (this.data.payMethod == 'trans') {
+          if (data.payMethod == 'trans') {
             /* [IOS] imp_uid와 merchant_uid값만 전달되기 때문에 결제 성공 또는 실패 구분할 수 없음 */
-            String decodedUrl = Uri.decodeComponent(url);
-            Uri parsedUrl = Uri.parse(decodedUrl);
-            String scheme = parsedUrl.scheme;
-            if (this.data.pg == 'html5_inicis') {
-              Map<String, String> query = parsedUrl.queryParameters;
+            final decodedUrl = Uri.decodeComponent(url);
+            final parsedUrl = Uri.parse(decodedUrl);
+            final scheme = parsedUrl.scheme;
+            if (data.pg == 'html5_inicis') {
+              final query = parsedUrl.queryParameters;
               if (query['m_redirect_url'] != null &&
-                  scheme == this.data.appScheme.toLowerCase()) {
+                  scheme == data.appScheme.toLowerCase()) {
                 if (query['m_redirect_url']!.contains(redirectUrl)) {
                   return true;
                 }
