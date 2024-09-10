@@ -78,6 +78,7 @@ class _IamportWebViewState extends State<IamportWebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: widget.appBar,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: IndexedStack(
           index: _isWebviewLoaded,
