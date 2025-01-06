@@ -27,7 +27,7 @@
 
 ```
 dependencies:
-  portone_flutter: ^0.10.0
+  portone_flutter: ^0.11.0
 ```
 
 ## 설정하기
