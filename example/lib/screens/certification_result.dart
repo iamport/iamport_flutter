@@ -57,7 +57,7 @@ class CertificationResult extends StatelessWidget {
                       children: [
                         Expanded(
                             flex: 4,
-                            child: Text('포트원 V1 번호',
+                            child: Text('포트원 고유 결제번호',
                                 style: TextStyle(color: Colors.grey))),
                         Expanded(
                           flex: 5,

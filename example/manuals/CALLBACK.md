@@ -32,7 +32,7 @@ callback: (Map<String, String> result) {
 | key           |  Description       | 
 | ------------- | ------------------ | 
 | success       | 성공 여부            |
-| imp_uid       | 포트원 V1 번호         |
+| imp_uid       | 포트원 고유 결제번호    |
 | merchant_uid  | 주문번호             |
 | error_msg     | 실패한 경우, 에러메시지  |
 
@@ -82,7 +82,7 @@ class Result extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 4,
-                        child: Text('포트원 V1 번호', style: TextStyle(color: Colors.grey))
+                        child: Text('포트원 고유 결제번호', style: TextStyle(color: Colors.grey))
                       ),
                       Expanded(
                         flex: 5,
