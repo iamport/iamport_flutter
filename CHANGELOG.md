@@ -1,4 +1,7 @@
-## [0.10.20](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.21](https://github.com/iamport/iamport_flutter/tree/v0.10.21)
+- iamport_flutter discontinued 안내 추가
+
+## [0.10.20](https://github.com/iamport/iamport_flutter/tree/v0.10.20)
 - Flutter 3.27.0 부터 발생하는 오류를 해결했습니다.
 
 ## [0.10.19](https://github.com/iamport/iamport_flutter/tree/v0.10.19)
