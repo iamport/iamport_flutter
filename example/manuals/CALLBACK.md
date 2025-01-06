@@ -27,7 +27,7 @@ callback: (Map<String, String> result) {
 ```
 
 ### 결과에 따라 로직 작성하기
-콜백 함수의 첫번째 인자(result)는 결제/본인인증 결과를 담고 있는 오브젝트로 아래와 같이 구성되어 있습니다. 자세한 내용은 포트원 V1 공식 문서 [IMP.request_pay - param, rsp 객체 - Callback 함수의 rsp 객제](https://docs.iamport.kr/tech/imp#callback)를 참고해주세요.
+콜백 함수의 첫번째 인자(result)는 결제/본인인증 결과를 담고 있는 오브젝트로 아래와 같이 구성되어 있습니다. 자세한 내용은 포트원 개발자센터 [인증 결제 연동하기 - 3. 결제 결과 처리하기](https://developers.portone.io/opi/ko/integration/start/v1/auth?v=v1#3-%EA%B2%B0%EC%A0%9C-%EA%B2%B0%EA%B3%BC-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-)를 참고해주세요.
 
 | key           |  Description       | 
 | ------------- | ------------------ | 
@@ -36,7 +36,7 @@ callback: (Map<String, String> result) {
 | merchant_uid  | 주문번호             |
 | error_msg     | 실패한 경우, 에러메시지  |
 
-response에 따라 결제/본인인증 성공/실패 여부를 판단해 아래와 같이 각기 다른 로직을 구성할 수 있습니다. 아래 코드는 예시일 뿐 실제 결제 성공/실패여부는 결제 유효성 검사 후 포트원 V1 REST API로 결제내역을 조회해 판단해야 합니다. 자세한 내용은 포트원 V1 공식 문서 [일반결제 연동하기 - STEP5. 서버에서 거래 검증 및 데이터 동기화](https://docs.iamport.kr/implementation/payment#server-side-logic)를 참고해주세요.
+response에 따라 결제/본인인증 성공/실패 여부를 판단해 아래와 같이 각기 다른 로직을 구성할 수 있습니다. 아래 코드는 예시일 뿐 실제 결제 성공/실패여부는 결제 유효성 검사 후 포트원 V1 REST API로 결제내역을 조회해 판단해야 합니다. 자세한 내용은 포트원 V1 공식 문서 [인증 결제 연동하기 - 4. 결제 완료 처리하기](https://developers.portone.io/opi/ko/integration/start/v1/auth?v=v1#4-%EA%B2%B0%EC%A0%9C-%EC%99%84%EB%A3%8C-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-)를 참고해주세요.
 
 ```dart
 import 'package:flutter/material.dart';
