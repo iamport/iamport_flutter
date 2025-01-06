@@ -1,3 +1,6 @@
+## [0.11.0](https://github.com/portone-io/portone_flutter/tree/master)
+- portone_flutter 패키지로 이전
+
 ## [0.10.21](https://github.com/iamport/iamport_flutter/tree/v0.10.21)
 - iamport_flutter discontinued 안내 추가
 

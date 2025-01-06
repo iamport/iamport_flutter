@@ -1,6 +1,6 @@
 name: portone_flutter
-description: Plugin that allows Flutter to use Portone payment and certification functions.
-version: 0.10.20
+description: Plugin that allows Flutter to use PortOne V1 payment and certification functions.
+version: 0.11.0
 homepage: https://github.com/portone/portone_flutter
 
 environment:
