@@ -1,6 +1,6 @@
 name: iamport_flutter
 description: Plugin that allows Flutter to use Iamport payment and certification functions.
-version: 0.10.19
+version: 0.10.20
 homepage: https://github.com/iamport/iamport_flutter
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  iamport_webview_flutter: 3.0.7
+  iamport_webview_flutter: 3.0.8
   url_launcher: ^6.0.4
   app_links: ^6.1.1
   json_annotation: ^4.8.1

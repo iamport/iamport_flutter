@@ -1,4 +1,7 @@
-## [0.10.19](https://github.com/iamport/iamport_flutter/tree/main)
+## [0.10.20](https://github.com/iamport/iamport_flutter/tree/main)
+- Flutter 3.27.0 부터 발생하는 오류를 해결했습니다.
+
+## [0.10.19](https://github.com/iamport/iamport_flutter/tree/v0.10.19)
 - 안드로이드 gradle plugin 버전을 8.4.2로 업데이트했습니다.
 - uni_links를 app_links로 변경했습니다.
 
