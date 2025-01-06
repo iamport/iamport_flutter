@@ -281,7 +281,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         data.digital = digital;
                         if (pg == 'danal') {
                           // 다날 && 휴대폰 소액결제의 경우, company 파라메터 추가
-                          data.company = '포트원 V1';
+                          data.company = '포트원';
                         }
                       }
 

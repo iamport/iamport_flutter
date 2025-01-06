@@ -14,7 +14,7 @@ class _CertificationTestState extends State<CertificationTest> {
   late String userCode; // 가맹점 식별코드
   String pg = 'danal'; // PG사
   late String merchantUid; // 주문번호
-  String company = '포트원 V1'; // 회사명 또는 URL
+  String company = '포트원'; // 회사명 또는 URL
   String carrier = 'SKT'; // 통신사
   late String name; // 본인인증 할 이름
   late String phone; // 본인인증 할 전화번호
