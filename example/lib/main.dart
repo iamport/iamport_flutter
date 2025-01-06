@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:iamport_flutter_example/screens/certification.dart';
-import 'package:iamport_flutter_example/screens/certification_result.dart';
-import 'package:iamport_flutter_example/screens/certification_test.dart';
-import 'package:iamport_flutter_example/screens/home.dart';
-import 'package:iamport_flutter_example/screens/payment.dart';
-import 'package:iamport_flutter_example/screens/payment_result.dart';
-import 'package:iamport_flutter_example/screens/payment_test.dart';
+import 'package:portone_flutter_example/screens/certification.dart';
+import 'package:portone_flutter_example/screens/certification_result.dart';
+import 'package:portone_flutter_example/screens/certification_test.dart';
+import 'package:portone_flutter_example/screens/home.dart';
+import 'package:portone_flutter_example/screens/payment.dart';
+import 'package:portone_flutter_example/screens/payment_result.dart';
+import 'package:portone_flutter_example/screens/payment_test.dart';
 
 void main() {
   runApp(IamportApp());

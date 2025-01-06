@@ -1,4 +1,4 @@
-package kr.iamport.example
+package io.portone.example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
+import 'package:portone_flutter/model/pg/naver/naver_products.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'naver_pay_products.g.dart';

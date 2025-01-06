@@ -1,8 +1,8 @@
-import 'package:iamport_flutter/model/pg/bypass.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_interface.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_products.dart';
-import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
-import 'package:iamport_flutter/model/url_data.dart';
+import 'package:portone_flutter/model/pg/bypass.dart';
+import 'package:portone_flutter/model/pg/naver/naver_interface.dart';
+import 'package:portone_flutter/model/pg/naver/naver_products.dart';
+import 'package:portone_flutter/model/pg/kcp/kcp_products.dart';
+import 'package:portone_flutter/model/url_data.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_data.g.dart';
