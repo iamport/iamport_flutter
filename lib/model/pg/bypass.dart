@@ -1,7 +1,7 @@
-import 'package:iamport_flutter/model/pg/danal/danal.dart';
-import 'package:iamport_flutter/model/pg/daou/daou.dart';
-import 'package:iamport_flutter/model/pg/tosspayments/tosspayments.dart';
-import 'package:iamport_flutter/model/pg/settle/settle.dart';
+import 'package:portone_flutter/model/pg/danal/danal.dart';
+import 'package:portone_flutter/model/pg/daou/daou.dart';
+import 'package:portone_flutter/model/pg/tosspayments/tosspayments.dart';
+import 'package:portone_flutter/model/pg/settle/settle.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'bypass.g.dart';

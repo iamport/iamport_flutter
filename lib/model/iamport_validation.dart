@@ -1,5 +1,5 @@
-import 'package:iamport_flutter/model/certification_data.dart';
-import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:portone_flutter/model/certification_data.dart';
+import 'package:portone_flutter/model/payment_data.dart';
 
 class IamportValidation {
   bool isValid = true;

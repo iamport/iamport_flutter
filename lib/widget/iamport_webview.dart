@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:iamport_flutter/model/iamport_url.dart';
+import 'package:portone_flutter/model/iamport_url.dart';
 import 'package:iamport_webview_flutter/iamport_webview_flutter.dart';
 
 enum ActionType { auth, payment }

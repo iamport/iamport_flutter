@@ -29,10 +29,10 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    namespace = 'kr.iamport.iamport_flutter_example'
+    namespace = 'io.portone.portone_flutter_example'
 
     defaultConfig {
-        applicationId "kr.iamport.iamport_flutter_example"
+        applicationId "io.portone.portone_flutter_example"
         minSdkVersion 23
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()

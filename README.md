@@ -1,6 +1,7 @@
 # Discontinued
 
-> 이 패키지는 더 이상 관리되지 않습니다. 대신 [portone_flutter](https://pub.dev/packages/portone_flutter) 를 사용해주세요.
+# portone_flutter
+[![pub package](https://img.shields.io/pub/v/portone_flutter.svg)](https://pub.dev/packages/portone_flutter)
 
 ## 목차
 - [버전정보](CHANGELOG.md)
@@ -15,17 +16,17 @@
 - [콜백 함수 설정하기](example/manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v0.10.21](https://github.com/iamport/iamport_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
+최신버전은 [v0.10.20](https://github.com/portone-io/portone_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
 아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
 
 ## 설치하기
-`pubspec.yaml` 파일에 `iamport_flutter` 모듈을 추가해 귀하의 프로젝트에 아임포트 플러터 모듈을 설치할 수 있습니다.
+`pubspec.yaml` 파일에 `portone_flutter` 모듈을 추가해 귀하의 프로젝트에 아임포트 플러터 모듈을 설치할 수 있습니다.
 
 ```
 dependencies:
-  iamport_flutter: ^0.10.0
+  portone_flutter: ^0.10.0
 ```
 
 ## 설정하기
@@ -133,7 +134,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
 ```
 
 ### Android 설정하기
-안드로이드 API 레벨 30에서 특정 카드사로 결제 시도시 `net::ERR_CLEARTEXT_NOT_PERMITTED` 오류가 발생한다는 버그가 보고되었습니다. 이를 해결하기 위해서는 [AndroidManifest.xml](https://github.com/iamport/iamport_flutter/blob/develop/example/android/app/src/main/AndroidManifest.xml#L13) 파일에 아래와 같이 [usesclearTextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) 속성을 `true`로 설정해주셔야 합니다.
+안드로이드 API 레벨 30에서 특정 카드사로 결제 시도시 `net::ERR_CLEARTEXT_NOT_PERMITTED` 오류가 발생한다는 버그가 보고되었습니다. 이를 해결하기 위해서는 [AndroidManifest.xml](https://github.com/portone-io/portone_flutter/blob/develop/example/android/app/src/main/AndroidManifest.xml#L13) 파일에 아래와 같이 [usesclearTextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) 속성을 `true`로 설정해주셔야 합니다.
 
 ```xml
 <manifest ...>
@@ -158,9 +159,9 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
 import 'package:flutter/material.dart';
 
 /* 아임포트 결제 모듈을 불러옵니다. */
-import 'package:iamport_flutter/iamport_payment.dart';
+import 'package:portone_flutter/iamport_payment.dart';
 /* 아임포트 결제 데이터 모델을 불러옵니다. */
-import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:portone_flutter/model/payment_data.dart';
 
 class Payment extends StatelessWidget {
   @override
@@ -222,9 +223,9 @@ class Payment extends StatelessWidget {
 import 'package:flutter/material.dart';
 
 /* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
-import 'package:iamport_flutter/iamport_certification.dart';
+import 'package:portone_flutter/iamport_certification.dart';
 /* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
-import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
   @override
@@ -274,9 +275,9 @@ class Certification extends StatelessWidget {
 import 'package:flutter/material.dart';
 
 /* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
-import 'package:iamport_flutter/iamport_certification.dart';
+import 'package:portone_flutter/iamport_certification.dart';
 /* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
-import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
   @override

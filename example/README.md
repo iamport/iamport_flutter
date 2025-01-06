@@ -1,4 +1,4 @@
-# iamport_flutter_example
+# portone_flutter_example
 
 아임포트 플러터 모듈 예제 안내입니다.
 
@@ -7,9 +7,9 @@
 import 'package:flutter/material.dart';
 
 /* 아임포트 결제 모듈을 불러옵니다. */
-import 'package:iamport_flutter/iamport_payment.dart';
+import 'package:portone_flutter/iamport_payment.dart';
 /* 아임포트 결제 데이터 모델을 불러옵니다. */
-import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:portone_flutter/model/payment_data.dart';
 
 class Payment extends StatelessWidget {
   @override
@@ -131,9 +131,9 @@ data: PaymentData.fromJson({
 import 'package:flutter/material.dart';
 
 /* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
-import 'package:iamport_flutter/iamport_certification.dart';
+import 'package:portone_flutter/iamport_certification.dart';
 /* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
-import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
   @override

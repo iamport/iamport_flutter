@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iamport_flutter/iamport_payment.dart';
-import 'package:iamport_flutter/model/payment_data.dart';
+import 'package:portone_flutter/iamport_payment.dart';
+import 'package:portone_flutter/model/payment_data.dart';
 
 class Payment extends StatelessWidget {
   @override

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iamport_flutter/model/payment_data.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_pay_products.dart';
-import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
-import 'package:iamport_flutter_example/model/method.dart';
-import 'package:iamport_flutter_example/model/pg.dart';
-import 'package:iamport_flutter_example/model/quota.dart';
+import 'package:portone_flutter/model/payment_data.dart';
+import 'package:portone_flutter/model/pg/naver/naver_pay_products.dart';
+import 'package:portone_flutter/model/pg/kcp/kcp_products.dart';
+import 'package:portone_flutter_example/model/method.dart';
+import 'package:portone_flutter_example/model/pg.dart';
+import 'package:portone_flutter_example/model/quota.dart';
 
 class PaymentTest extends StatefulWidget {
   @override

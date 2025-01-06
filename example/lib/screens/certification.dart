@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iamport_flutter/iamport_certification.dart';
-import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:portone_flutter/iamport_certification.dart';
+import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
   @override
