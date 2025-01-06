@@ -1,5 +1,3 @@
-# Discontinued
-
 # portone_flutter
 [![pub package](https://img.shields.io/pub/v/portone_flutter.svg)](https://pub.dev/packages/portone_flutter)
 
