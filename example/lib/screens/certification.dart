@@ -11,7 +11,7 @@ class Certification extends StatelessWidget {
 
     return IamportCertification(
       appBar: AppBar(
-        title: Text('아임포트 본인인증'),
+        title: Text('포트원 V1 본인인증'),
         centerTitle: true,
         titleTextStyle: TextStyle(
           fontSize: 24,

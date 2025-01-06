@@ -3,6 +3,9 @@
 # portone_flutter
 [![pub package](https://img.shields.io/pub/v/portone_flutter.svg)](https://pub.dev/packages/portone_flutter)
 
+---
+포트원 V1 플러터 모듈입니다.
+
 ## 목차
 - [버전정보](CHANGELOG.md)
 - [지원정보](SUPPORT.md)
@@ -19,10 +22,10 @@
 최신버전은 [v0.10.20](https://github.com/portone-io/portone_flutter/tree/main) 입니다. 버전 히스토리는 [버전정보](CHANGELOG.md)를 참고하세요.
 
 ## 지원정보
-아임포트 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
+포트원 V1 플러터 모듈은 일반/정기결제 및 휴대폰 본인인증 기능을 지원합니다. 결제 모듈이 지원하는 PG사 및 결제수단에 대한 자세한 내용은 [지원정보](SUPPORT.md)를 참고해주세요.
 
 ## 설치하기
-`pubspec.yaml` 파일에 `portone_flutter` 모듈을 추가해 귀하의 프로젝트에 아임포트 플러터 모듈을 설치할 수 있습니다.
+`pubspec.yaml` 파일에 `portone_flutter` 모듈을 추가해 귀하의 프로젝트에 포트원 V1 플러터 모듈을 설치할 수 있습니다.
 
 ```
 dependencies:
@@ -32,7 +35,7 @@ dependencies:
 ## 설정하기
 
 ### IOS 설정하기
-IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.plist` 파일에 아래 3가지 항목을 설정해주셔야 합니다. `[프로젝트 이름]/ios/Runner.xcworkspace` 파일을 열어 왼쪽 프로젝트 패널 > Runner > info.plist 파일을 클릭합니다.
+IOS에서 포트원 V1 결제연동 모듈을 사용하기 위해서는 `info.plist` 파일에 아래 3가지 항목을 설정해주셔야 합니다. `[프로젝트 이름]/ios/Runner.xcworkspace` 파일을 열어 왼쪽 프로젝트 패널 > Runner > info.plist 파일을 클릭합니다.
 
 #### 1. App Scheme 등록
 외부 결제 앱(예) 페이코, 신한 판 페이)에서 결제 후 돌아올 때 사용할 URL identifier를 설정해야합니다.
@@ -152,15 +155,15 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 `info.pl
 
 
 ## 예제
-아임포트 플러터 모듈로 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 보다 자세한 내용은 [예제](example/README.md)를 참고하세요.
+포트원 V1 플러터 모듈로 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 보다 자세한 내용은 [예제](example/README.md)를 참고하세요.
 
 #### 일반/정기결제 예제
 ```dart
 import 'package:flutter/material.dart';
 
-/* 아임포트 결제 모듈을 불러옵니다. */
+/* 포트원 V1 결제 모듈을 불러옵니다. */
 import 'package:portone_flutter/iamport_payment.dart';
-/* 아임포트 결제 데이터 모델을 불러옵니다. */
+/* 포트원 V1 결제 데이터 모델을 불러옵니다. */
 import 'package:portone_flutter/model/payment_data.dart';
 
 class Payment extends StatelessWidget {
@@ -168,7 +171,7 @@ class Payment extends StatelessWidget {
   Widget build(BuildContext context) {
     return IamportPayment(
       appBar: new AppBar(
-        title: new Text('아임포트 결제'),
+        title: new Text('포트원 V1 결제'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(
@@ -189,7 +192,7 @@ class Payment extends StatelessWidget {
       data: PaymentData(
         pg: 'html5_inicis',                                          // PG사
         payMethod: 'card',                                           // 결제수단
-        name: '아임포트 결제데이터 분석',                                  // 주문명
+        name: '포트원 V1 결제데이터 분석',                                  // 주문명
         merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
         amount: 39000,                                               // 결제금액
         buyerName: '홍길동',                                           // 구매자 이름
@@ -222,9 +225,9 @@ class Payment extends StatelessWidget {
 ```dart
 import 'package:flutter/material.dart';
 
-/* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
+/* 포트원 V1 휴대폰 본인인증 모듈을 불러옵니다. */
 import 'package:portone_flutter/iamport_certification.dart';
-/* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
+/* 포트원 V1 휴대폰 본인인증 데이터 모델을 불러옵니다. */
 import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
@@ -232,7 +235,7 @@ class Certification extends StatelessWidget {
   Widget build(BuildContext context) {
     return IamportCertification(
       appBar: new AppBar(
-        title: new Text('아임포트 본인인증'),
+        title: new Text('포트원 V1 본인인증'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(
@@ -253,7 +256,7 @@ class Certification extends StatelessWidget {
       data: CertificationData(
         pg: 'danal',                                                  // PG사
         merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}',  // 주문번호
-        company: '아임포트',                                           // 회사명 또는 URL
+        company: '포트원 V1',                                           // 회사명 또는 URL
         carrier: 'SKT',                                               // 통신사
         name: '홍길동',                                                // 이름
         phone: '01012341234',                                         // 전화번호
@@ -274,9 +277,9 @@ class Certification extends StatelessWidget {
 ```dart
 import 'package:flutter/material.dart';
 
-/* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
+/* 포트원 V1 휴대폰 본인인증 모듈을 불러옵니다. */
 import 'package:portone_flutter/iamport_certification.dart';
-/* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
+/* 포트원 V1 휴대폰 본인인증 데이터 모델을 불러옵니다. */
 import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
@@ -284,7 +287,7 @@ class Certification extends StatelessWidget {
   Widget build(BuildContext context) {
     return IamportCertification(
       appBar: new AppBar(
-        title: new Text('아임포트 본인인증'),
+        title: new Text('포트원 V1 본인인증'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(

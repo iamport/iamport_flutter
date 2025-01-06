@@ -20,7 +20,7 @@ class IamportError extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('아임포트 $actionText 결과'),
+        title: Text('포트원 V1 $actionText 결과'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -41,7 +41,7 @@ class IamportError extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      '아임포트 $actionText 파라메터 오류',
+                      '포트원 V1 $actionText 파라메터 오류',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,

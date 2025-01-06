@@ -11,7 +11,7 @@ class Payment extends StatelessWidget {
 
     return IamportPayment(
       appBar: AppBar(
-        title: Text('아임포트 결제'),
+        title: Text('포트원 V1 결제'),
         centerTitle: true,
         titleTextStyle: TextStyle(
           fontSize: 24,

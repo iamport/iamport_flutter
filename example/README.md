@@ -1,14 +1,14 @@
 # portone_flutter_example
 
-아임포트 플러터 모듈 예제 안내입니다.
+포트원 V1 플러터 모듈 예제 안내입니다.
 
 ## 일반/정기결제 예제
 ```dart
 import 'package:flutter/material.dart';
 
-/* 아임포트 결제 모듈을 불러옵니다. */
+/* 포트원 V1 결제 모듈을 불러옵니다. */
 import 'package:portone_flutter/iamport_payment.dart';
-/* 아임포트 결제 데이터 모델을 불러옵니다. */
+/* 포트원 V1 결제 데이터 모델을 불러옵니다. */
 import 'package:portone_flutter/model/payment_data.dart';
 
 class Payment extends StatelessWidget {
@@ -16,7 +16,7 @@ class Payment extends StatelessWidget {
   Widget build(BuildContext context) {
     return IamportPayment(
       appBar: new AppBar(
-        title: new Text('아임포트 결제'),
+        title: new Text('포트원 V1 결제'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(
@@ -39,7 +39,7 @@ class Payment extends StatelessWidget {
       data: PaymentData({
         pg: 'html5_inicis',                                          // PG사
         payMethod: 'card',                                           // 결제수단
-        name: '아임포트 결제데이터 분석',                                  // 주문명
+        name: '포트원 V1 결제데이터 분석',                                  // 주문명
         merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
         amount: 39000,                                               // 결제금액
         buyerName: '홍길동',                                           // 구매자 이름
@@ -130,9 +130,9 @@ data: PaymentData.fromJson({
 ```dart
 import 'package:flutter/material.dart';
 
-/* 아임포트 휴대폰 본인인증 모듈을 불러옵니다. */
+/* 포트원 V1 휴대폰 본인인증 모듈을 불러옵니다. */
 import 'package:portone_flutter/iamport_certification.dart';
-/* 아임포트 휴대폰 본인인증 데이터 모델을 불러옵니다. */
+/* 포트원 V1 휴대폰 본인인증 데이터 모델을 불러옵니다. */
 import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
@@ -140,7 +140,7 @@ class Certification extends StatelessWidget {
   Widget build(BuildContext context) {
     return IamportCertification(
       appBar: new AppBar(
-        title: new Text('아임포트 본인인증'),
+        title: new Text('포트원 V1 본인인증'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
       initialChild: Container(
@@ -162,7 +162,7 @@ class Certification extends StatelessWidget {
       /* [필수입력] 본인인증 데이터 */
       data: CertificationData({
         merchantUid: 'mid_${DateTime.now().millisecondsSinceEpoch}', // 주문번호
-        company: '아임포트',                                            // 회사명 또는 URL
+        company: '포트원 V1',                                            // 회사명 또는 URL
         carrier: 'SKT',                                               // 통신사
         name: '홍길동',                                                 // 이름
         phone: '01012341234',                                         // 전화번호

@@ -60,7 +60,7 @@ class PaymentResult extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('아임포트 결제 결과'),
+        title: Text('포트원 V1 결제 결과'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -91,7 +91,7 @@ class PaymentResult extends StatelessWidget {
                       children: [
                         Expanded(
                             flex: 4,
-                            child: Text('아임포트 번호',
+                            child: Text('포트원 V1 번호',
                                 style: TextStyle(color: Colors.grey))),
                         Expanded(
                           flex: 5,
