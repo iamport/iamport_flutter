@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftIamportFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "iamport_flutter", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "portone_flutter", binaryMessenger: registrar.messenger())
     let instance = SwiftIamportFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
                       bottom: 20.0,
                     ),
                     child: Text(
-                      '아임포트 테스트',
+                      '포트원 V1 테스트',
                       style: TextStyle(
                         fontSize: 24.0,
                         color: Colors.white,
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '아임포트 플러터 모듈 테스트 화면입니다.',
+                    '포트원 V1 플러터 모듈 테스트 화면입니다.',
                     style: TextStyle(
                       fontSize: 14.0,
                       color: Colors.white,

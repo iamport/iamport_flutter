@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iamport_flutter/model/payment_data.dart';
-import 'package:iamport_flutter/model/pg/naver/naver_pay_products.dart';
-import 'package:iamport_flutter/model/pg/kcp/kcp_products.dart';
-import 'package:iamport_flutter_example/model/method.dart';
-import 'package:iamport_flutter_example/model/pg.dart';
-import 'package:iamport_flutter_example/model/quota.dart';
+import 'package:portone_flutter/model/payment_data.dart';
+import 'package:portone_flutter/model/pg/naver/naver_pay_products.dart';
+import 'package:portone_flutter/model/pg/kcp/kcp_products.dart';
+import 'package:portone_flutter_example/model/method.dart';
+import 'package:portone_flutter_example/model/pg.dart';
+import 'package:portone_flutter_example/model/quota.dart';
 
 class PaymentTest extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _PaymentTestState extends State<PaymentTest> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('아임포트 결제 테스트'),
+        title: Text('포트원 V1 결제 테스트'),
         centerTitle: true,
         titleTextStyle: TextStyle(
           fontSize: 24,
@@ -166,7 +166,7 @@ class _PaymentTestState extends State<PaymentTest> {
                 decoration: InputDecoration(
                   labelText: '주문명',
                 ),
-                initialValue: '아임포트 결제 데이터 분석',
+                initialValue: '포트원 V1 결제 데이터 분석',
                 validator: (value) => value!.isEmpty ? '주문명은 필수입력입니다' : null,
                 onSaved: (String? value) {
                   name = value!;
@@ -281,7 +281,7 @@ class _PaymentTestState extends State<PaymentTest> {
                         data.digital = digital;
                         if (pg == 'danal') {
                           // 다날 && 휴대폰 소액결제의 경우, company 파라메터 추가
-                          data.company = '아임포트';
+                          data.company = '포트원';
                         }
                       }
 

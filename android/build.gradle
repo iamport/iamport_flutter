@@ -1,4 +1,4 @@
-group 'kr.iamport.iamport_flutter'
+group 'io.portone.portone_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -27,7 +27,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdk 34
 
-    namespace = 'kr.iamport.iamport_flutter'
+    namespace = 'io.portone.portone_flutter'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'

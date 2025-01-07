@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:iamport_flutter/model/url_data.dart';
+import 'package:portone_flutter/model/url_data.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class IamportUrl {

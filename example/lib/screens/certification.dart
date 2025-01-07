@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iamport_flutter/iamport_certification.dart';
-import 'package:iamport_flutter/model/certification_data.dart';
+import 'package:portone_flutter/iamport_certification.dart';
+import 'package:portone_flutter/model/certification_data.dart';
 
 class Certification extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class Certification extends StatelessWidget {
 
     return IamportCertification(
       appBar: AppBar(
-        title: Text('아임포트 본인인증'),
+        title: Text('포트원 V1 본인인증'),
         centerTitle: true,
         titleTextStyle: TextStyle(
           fontSize: 24,

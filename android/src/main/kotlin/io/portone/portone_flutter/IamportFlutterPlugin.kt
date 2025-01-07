@@ -1,4 +1,4 @@
-package kr.iamport.iamport_flutter
+package io.portone.portone_flutter
 
 import androidx.annotation.NonNull
 
@@ -17,7 +17,7 @@ class IamportFlutterPlugin: FlutterPlugin, MethodCallHandler {
   private lateinit var channel : MethodChannel
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "iamport_flutter")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "portone_flutter")
     channel.setMethodCallHandler(this)
   }
 
