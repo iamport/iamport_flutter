@@ -1,4 +1,4 @@
-## [0.12.0](https://github.com/portone-io/portone_flutter/tree/master)
+## [0.12.0](https://github.com/portone-io/portone_flutter/tree/main)
 - Flutter 3.28 컴파일 오류의 원인인 iamport_webview_flutter 에서 v1 android embedding 제거
 
 ## [0.11.0](https://github.com/portone-io/portone_flutter/tree/v0.11.0)
